@@ -436,7 +436,7 @@ const projects = [
 					</div>
 				</div>
 
-				<form class="form" id="contact-form" novalidate>
+				<form class="form" id="contact-form" action="https://formspree.io/f/moeajqjw" method="POST" novalidate>
 					<div class="form__row form__row--two">
 						<label class="field">
 							<span class="field__label">Full name <span class="req">*</span></span>
@@ -533,15 +533,15 @@ const projects = [
 			const form = document.getElementById('contact-form');
 			const note = document.getElementById('form-note');
 			if (form) {
-				form.addEventListener('submit', (e) => {
+				const submitBtn = form.querySelector('button[type="submit"]');
+				const defaultLabel = submitBtn ? submitBtn.textContent : 'Send';
+
+				form.addEventListener('submit', async (e) => {
 					e.preventDefault();
 					const data = new FormData(form);
 					const name = (data.get('name') || '').toString().trim();
 					const email = (data.get('email') || '').toString().trim();
-					const company = (data.get('company') || '').toString().trim();
-					const budget = (data.get('budget') || '').toString().trim();
 					const message = (data.get('message') || '').toString().trim();
-					const svc = data.getAll('services').join(', ');
 
 					if (!name || !email || !message) {
 						note.textContent = 'Please fill in name, email and a short message.';
@@ -549,18 +549,43 @@ const projects = [
 						return;
 					}
 
-					const body =
-						`Name: ${name}\n` +
-						`Email: ${email}\n` +
-						`Company: ${company || 'N/A'}\n` +
-						`Budget: ${budget || 'N/A'}\n` +
-						`Services: ${svc || 'N/A'}\n\n` +
-						`${message}`;
-					const url = `mailto:hello@orbitlee.com?subject=${encodeURIComponent('New project brief from ' + name)}&body=${encodeURIComponent(body)}`;
-					window.location.href = url;
-
-					note.textContent = 'Opening your mail client, hit send to reach us.';
+					note.textContent = '';
 					note.classList.remove('form__note--error');
+					if (submitBtn) {
+						submitBtn.disabled = true;
+						submitBtn.textContent = 'Sending...';
+					}
+
+					try {
+						const res = await fetch(form.action, {
+							method: 'POST',
+							body: data,
+							headers: { Accept: 'application/json' },
+						});
+
+						if (res.ok) {
+							note.textContent = "Thanks! Your brief is in. We'll be in touch within one business day.";
+							form.reset();
+						} else {
+							let msg = 'Something went wrong. Please try again or email hello@orbitlee.com';
+							try {
+								const body = await res.json();
+								if (body && body.errors && body.errors.length) {
+									msg = body.errors.map((er) => er.message).join(', ');
+								}
+							} catch (_) {}
+							note.textContent = msg;
+							note.classList.add('form__note--error');
+						}
+					} catch (err) {
+						note.textContent = 'Network error. Please try again or email hello@orbitlee.com';
+						note.classList.add('form__note--error');
+					} finally {
+						if (submitBtn) {
+							submitBtn.disabled = false;
+							submitBtn.textContent = defaultLabel;
+						}
+					}
 				});
 			}
 		</script>
