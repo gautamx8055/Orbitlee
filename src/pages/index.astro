@@ -614,7 +614,10 @@ const projects = [
 			}
 
 			*, *::before, *::after { box-sizing: border-box; }
-			html { scroll-behavior: smooth; }
+			html {
+				scroll-behavior: smooth;
+				overflow-x: hidden;
+			}
 			body {
 				margin: 0;
 				background: var(--bg);
@@ -625,6 +628,7 @@ const projects = [
 				-webkit-font-smoothing: antialiased;
 				text-rendering: optimizeLegibility;
 				overflow-x: hidden;
+				max-width: 100vw;
 			}
 			img { display: block; max-width: 100%; }
 			a { color: inherit; text-decoration: none; }
@@ -896,7 +900,7 @@ const projects = [
 			.stat:not(:last-child)::after {
 				content: '';
 				position: absolute;
-				right: -8px;
+				right: 0;
 				top: 20%;
 				bottom: 20%;
 				width: 1px;
@@ -1683,6 +1687,18 @@ const projects = [
 				.footer__nav { flex-wrap: wrap; gap: 16px 20px; }
 				.footer__bar { flex-direction: column; align-items: flex-start; gap: 8px; }
 				.footer__brand img { height: 40px; }
+			}
+
+			/* Very small phone (up to 500px) — stack the hero CTAs */
+			@media (max-width: 500px) {
+				.hero__actions {
+					flex-direction: column;
+					align-items: stretch;
+				}
+				.hero__actions .btn {
+					width: 100%;
+					flex: none;
+				}
 			}
 
 			/* Small phone (up to 400px) */
