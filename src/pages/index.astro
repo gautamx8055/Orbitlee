@@ -172,23 +172,18 @@ const projects = [
 				<img src="/Orbitlee-logo-transparent.png" alt="Orbitlee" />
 			</a>
 			<nav class="nav">
-				<a href="#services">Services</a>
-				<a href="#projects">Projects</a>
-				<a href="#about">About</a>
-				<a href="#contact">Contact</a>
+				<a href="#home" data-nav="home">Home</a>
+				<a href="#services" data-nav="services">Services</a>
+				<a href="#projects" data-nav="projects">Projects</a>
+				<a href="#about" data-nav="about">About</a>
+				<a href="#contact" data-nav="contact">Contact</a>
 			</nav>
-			<div class="header__right">
-				<span class="header__status">
-					<span class="status-dot"></span>
-					Available
-				</span>
-				<a href="#contact" class="btn btn--primary btn--sm">Book a free audit</a>
-			</div>
+			<a href="#contact" class="btn btn--primary btn--sm">Book a free audit</a>
 		</header>
 
 		<main id="top">
 			<!-- HERO -->
-			<section class="hero">
+			<section id="home" class="hero">
 				<span class="eyebrow">
 					<span class="eyebrow__dot"></span>
 					We Circle, You Grow.
@@ -513,6 +508,28 @@ const projects = [
 		</footer>
 
 		<script is:inline>
+			// Highlight nav item for the section currently in view
+			(function () {
+				const navLinks = document.querySelectorAll('.nav a[data-nav]');
+				const sections = Array.from(navLinks)
+					.map((link) => ({ link, el: document.getElementById(link.getAttribute('data-nav')) }))
+					.filter((s) => s.el);
+
+				function updateActive() {
+					const trigger = window.scrollY + window.innerHeight * 0.32;
+					let active = sections[0];
+					for (const s of sections) {
+						if (s.el.offsetTop <= trigger) active = s;
+					}
+					sections.forEach((s) => s.link.classList.remove('active'));
+					if (active) active.link.classList.add('active');
+				}
+
+				window.addEventListener('scroll', updateActive, { passive: true });
+				window.addEventListener('resize', updateActive);
+				updateActive();
+			})();
+
 			const form = document.getElementById('contact-form');
 			const note = document.getElementById('form-note');
 			if (form) {
@@ -643,6 +660,13 @@ const projects = [
 			.nav a:hover {
 				color: var(--text);
 				background: rgba(255, 255, 255, 0.06);
+			}
+			.nav a.active {
+				color: #fff;
+				background: rgba(255, 255, 255, 0.05);
+				text-shadow:
+					0 0 10px rgba(163, 230, 53, 0.55),
+					0 0 22px rgba(167, 139, 250, 0.45);
 			}
 
 			.header__right {
