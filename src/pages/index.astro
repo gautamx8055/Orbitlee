@@ -100,49 +100,36 @@ const testimonials = [
 	},
 ];
 
-const projects = [
-	{
-		name: "Aurora Labs",
-		category: "Branding · Ecommerce",
-		blurb: "A clean-beauty rebrand, packaging system and Shopify launch that lifted AOV by 42%.",
-		tags: ["Identity", "Packaging", "Shopify"],
-		style: { "--p-a": "#a3e635", "--p-b": "#65a30d" },
-	},
-	{
-		name: "Kavya Foods",
-		category: "Packaging · Retail",
-		blurb: "Heritage spice startup, full identity system across 24 SKUs, ready for shelf.",
-		tags: ["Brand", "Packaging"],
-		style: { "--p-a": "#d946ef", "--p-b": "#a855f7" },
-	},
-	{
-		name: "Halo Studio",
-		category: "Product · UI/UX",
-		blurb: "Marketing site and dashboard UI for a fast-scaling productivity app.",
-		tags: ["Website", "UI/UX", "Motion"],
-		style: { "--p-a": "#a855f7", "--p-b": "#4f46e5" },
-	},
-	{
-		name: "Northwind & Co.",
-		category: "Marketing · Campaign",
-		blurb: "Meta + Google performance program for a boutique fashion label, 3.2× ROAS in 90 days.",
-		tags: ["Meta Ads", "Google Ads", "Creative"],
-		style: { "--p-a": "#f59e0b", "--p-b": "#d946ef" },
-	},
-	{
-		name: "Ember & Oak",
-		category: "Hospitality · Brand",
-		blurb: "Full identity for a hospitality group, from wordmark to menu to signage.",
-		tags: ["Identity", "Print", "Signage"],
-		style: { "--p-a": "#f472b6", "--p-b": "#a855f7" },
-	},
-	{
-		name: "Loop Robotics",
-		category: "Motion · Launch",
-		blurb: "Product launch film and motion system for a Series-A robotics company.",
-		tags: ["Motion", "Film", "Web"],
-		style: { "--p-a": "#22d3ee", "--p-b": "#a855f7" },
-	},
+const workVideos = [
+	{ src: "/ADVC UGC 1.mp4", label: "ADVC UGC — Spot 1", category: "AI UGC" },
+	{ src: "/ADVC UGC 2.mp4", label: "ADVC UGC — Spot 2", category: "AI UGC" },
+	{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial" },
+	{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel" },
+	{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC" },
+	{ src: "/BA .mp4", label: "BA Campaign", category: "Commercial" },
+];
+
+const workImages = [
+	{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix — Social Banner", category: "Branding" },
+	{ src: "/Post 1.png", label: "Social Post 01", category: "Social" },
+	{ src: "/Post 2.png", label: "Social Post 02", category: "Social" },
+	{ src: "/Post 3.png", label: "Social Post 03", category: "Social" },
+	{ src: "/Post 4.png", label: "Social Post 04", category: "Social" },
+	{ src: "/Post-5.png", label: "Social Post 05", category: "Social" },
+	{ src: "/Ads-try-1-F.jpg", label: "Ad Creative — Concept 1", category: "Ads" },
+	{ src: "/Ads-try-2-F.jpg", label: "Ad Creative — Concept 2", category: "Ads" },
+	{ src: "/Ads-try-3&4.jpg", label: "Ad Creative — Concepts 3 & 4", category: "Ads" },
+	{ src: "/1.jpg", label: "Portfolio 01", category: "Design" },
+	{ src: "/2.jpg", label: "Portfolio 02", category: "Design" },
+	{ src: "/3.jpg", label: "Portfolio 03", category: "Design" },
+	{ src: "/4.jpg", label: "Portfolio 04", category: "Design" },
+	{ src: "/5.jpg", label: "Portfolio 05", category: "Design" },
+	{ src: "/6.jpg", label: "Portfolio 06", category: "Design" },
+	{ src: "/7.jpg", label: "Portfolio 07", category: "Design" },
+	{ src: "/8.jpg", label: "Portfolio 08", category: "Design" },
+	{ src: "/9.jpg", label: "Portfolio 09", category: "Design" },
+	{ src: "/10.jpg", label: "Portfolio 10", category: "Design" },
+	{ src: "/11.jpg", label: "Portfolio 11", category: "Design" },
 ];
 ---
 
@@ -349,36 +336,80 @@ const projects = [
 				</ol>
 			</section>
 
-			<!-- PROJECTS -->
+			<!-- PROJECTS / WORK -->
 			<section id="projects" class="section section--projects">
 				<div class="section__head section__head--split">
 					<div>
-						<span class="eyebrow eyebrow--plain">Projects</span>
+						<span class="eyebrow eyebrow--plain">Our Work</span>
 						<h2 class="section__title section__title--left">Recent orbits <span class="hero__gradient">we've flown.</span></h2>
 					</div>
 					<a href="#contact" class="btn btn--ghost btn--sm">Start yours →</a>
 				</div>
 
-				<div class="projects-grid">
-					{projects.map((p) => (
-						<article class="project" style={p.style}>
-							<div class="project__cover">
-								<span class="project__mono">{p.name.charAt(0)}</span>
-								<span class="project__cat">{p.category}</span>
-							</div>
-							<div class="project__body">
-								<h3 class="project__title">{p.name}</h3>
-								<p class="project__blurb">{p.blurb}</p>
-								<div class="project__tags">
-									{p.tags.map((t) => (
-										<span class="project__tag">{t}</span>
-									))}
-								</div>
-							</div>
-						</article>
-					))}
+				<div class="work-tabs" role="tablist" aria-label="Portfolio filter">
+					<button class="work-tab is-active" role="tab" aria-selected="true" data-tab="videos">
+						<span class="work-tab__dot"></span>
+						Videos
+						<span class="work-tab__count">{workVideos.length}</span>
+					</button>
+					<button class="work-tab" role="tab" aria-selected="false" data-tab="images">
+						<span class="work-tab__dot"></span>
+						Images
+						<span class="work-tab__count">{workImages.length}</span>
+					</button>
+				</div>
+
+				<div class="work-panel is-active" data-panel="videos">
+					<div class="work-grid work-grid--videos">
+						{workVideos.map((v) => (
+							<button class="work-card work-card--video" data-video-src={v.src} data-video-label={v.label} aria-label={`Play ${v.label}`}>
+								<video
+									class="work-card__media"
+									src={v.src}
+									muted
+									loop
+									playsinline
+									preload="metadata"
+								></video>
+								<span class="work-card__play" aria-hidden="true">
+									<svg viewBox="0 0 24 24" fill="currentColor">
+										<path d="M8 5v14l11-7z" />
+									</svg>
+								</span>
+								<span class="work-card__foot">
+									<span class="work-card__cat">{v.category}</span>
+									<span class="work-card__label">{v.label}</span>
+								</span>
+							</button>
+						))}
+					</div>
+				</div>
+
+				<div class="work-panel" data-panel="images">
+					<div class="work-grid work-grid--images">
+						{workImages.map((img) => (
+							<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+								<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
+								<span class="work-card__foot">
+									<span class="work-card__cat">{img.category}</span>
+									<span class="work-card__label">{img.label}</span>
+								</span>
+							</button>
+						))}
+					</div>
 				</div>
 			</section>
+
+			<!-- LIGHTBOX / VIDEO MODAL -->
+			<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+				<button class="lightbox__close" type="button" aria-label="Close">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+						<path d="M6 6l12 12M18 6L6 18" />
+					</svg>
+				</button>
+				<div class="lightbox__stage" id="lightbox-stage"></div>
+				<p class="lightbox__caption" id="lightbox-caption"></p>
+			</div>
 
 			<!-- TESTIMONIALS -->
 			<section id="testimonials" class="section section--testimonials">
@@ -543,6 +574,107 @@ const projects = [
 				window.addEventListener('scroll', updateActive, { passive: true });
 				window.addEventListener('resize', updateActive);
 				updateActive();
+			})();
+
+			// Work section: tabs, hover-preview, lightbox
+			(function () {
+				const tabs = document.querySelectorAll('.work-tab');
+				const panels = document.querySelectorAll('.work-panel');
+				tabs.forEach((tab) => {
+					tab.addEventListener('click', () => {
+						const target = tab.getAttribute('data-tab');
+						tabs.forEach((t) => {
+							const active = t === tab;
+							t.classList.toggle('is-active', active);
+							t.setAttribute('aria-selected', active ? 'true' : 'false');
+						});
+						panels.forEach((p) => {
+							p.classList.toggle('is-active', p.getAttribute('data-panel') === target);
+						});
+						// Pause any playing video previews
+						document.querySelectorAll('.work-card--video video').forEach((v) => {
+							v.pause();
+							v.currentTime = 0;
+						});
+					});
+				});
+
+				// Hover to preview video (desktop only)
+				const isTouch = window.matchMedia('(hover: none)').matches;
+				if (!isTouch) {
+					document.querySelectorAll('.work-card--video').forEach((card) => {
+						const video = card.querySelector('video');
+						if (!video) return;
+						card.addEventListener('mouseenter', () => {
+							video.play().catch(() => {});
+						});
+						card.addEventListener('mouseleave', () => {
+							video.pause();
+							video.currentTime = 0;
+						});
+					});
+				}
+
+				// Lightbox
+				const lightbox = document.getElementById('lightbox');
+				const stage = document.getElementById('lightbox-stage');
+				const caption = document.getElementById('lightbox-caption');
+				const closeBtn = lightbox ? lightbox.querySelector('.lightbox__close') : null;
+
+				function openLightbox(node, label) {
+					if (!lightbox || !stage) return;
+					stage.innerHTML = '';
+					stage.appendChild(node);
+					caption.textContent = label || '';
+					lightbox.classList.add('is-open');
+					lightbox.setAttribute('aria-hidden', 'false');
+					document.body.style.overflow = 'hidden';
+				}
+
+				function closeLightbox() {
+					if (!lightbox || !stage) return;
+					const v = stage.querySelector('video');
+					if (v) { v.pause(); v.src = ''; }
+					stage.innerHTML = '';
+					caption.textContent = '';
+					lightbox.classList.remove('is-open');
+					lightbox.setAttribute('aria-hidden', 'true');
+					document.body.style.overflow = '';
+				}
+
+				document.querySelectorAll('.work-card--video').forEach((card) => {
+					card.addEventListener('click', () => {
+						const src = card.getAttribute('data-video-src');
+						const label = card.getAttribute('data-video-label');
+						const v = document.createElement('video');
+						v.src = src;
+						v.controls = true;
+						v.autoplay = true;
+						v.playsInline = true;
+						openLightbox(v, label);
+					});
+				});
+
+				document.querySelectorAll('.work-card--image').forEach((card) => {
+					card.addEventListener('click', () => {
+						const src = card.getAttribute('data-image-src');
+						const label = card.getAttribute('data-image-label');
+						const img = document.createElement('img');
+						img.src = src;
+						img.alt = label || '';
+						openLightbox(img, label);
+					});
+				});
+
+				if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+				if (lightbox) {
+					lightbox.addEventListener('click', (e) => {
+						if (e.target === lightbox) closeLightbox();
+					});
+				}
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) closeLightbox();
+				});
 			})();
 
 			const form = document.getElementById('contact-form');
@@ -1255,6 +1387,222 @@ const projects = [
 				padding: 4px 10px;
 			}
 
+			/* WORK TABS + GALLERY */
+			.work-tabs {
+				display: inline-flex;
+				gap: 4px;
+				padding: 4px;
+				margin: 0 auto 32px;
+				background: rgba(255, 255, 255, 0.03);
+				border: 1px solid var(--line);
+				border-radius: 999px;
+			}
+			.work-tab {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				padding: 10px 22px;
+				border-radius: 999px;
+				border: none;
+				background: transparent;
+				color: var(--muted);
+				font-size: 14px;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				cursor: pointer;
+				transition: color 0.2s, background 0.2s;
+			}
+			.work-tab__dot {
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: var(--muted-2);
+				transition: background 0.2s, box-shadow 0.2s;
+			}
+			.work-tab__count {
+				font-size: 12px;
+				font-weight: 600;
+				color: var(--muted-2);
+				padding: 2px 8px;
+				border-radius: 999px;
+				background: rgba(255, 255, 255, 0.04);
+				transition: color 0.2s, background 0.2s;
+			}
+			.work-tab:hover {
+				color: var(--text);
+			}
+			.work-tab.is-active {
+				background: rgba(255, 255, 255, 0.06);
+				color: #fff;
+			}
+			.work-tab.is-active .work-tab__dot {
+				background: var(--green);
+				box-shadow: 0 0 10px var(--green);
+			}
+			.work-tab.is-active .work-tab__count {
+				color: #0a0912;
+				background: var(--gradient);
+			}
+
+			.work-panel { display: none; }
+			.work-panel.is-active { display: block; animation: workFade 0.4s ease-out; }
+			@keyframes workFade {
+				from { opacity: 0; transform: translateY(6px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+
+			.work-grid {
+				display: grid;
+				gap: 20px;
+			}
+			.work-grid--videos { grid-template-columns: repeat(3, 1fr); }
+			.work-grid--images { grid-template-columns: repeat(3, 1fr); }
+
+			.work-card {
+				position: relative;
+				display: block;
+				padding: 0;
+				margin: 0;
+				border: 1px solid var(--line);
+				background: var(--panel);
+				border-radius: var(--radius);
+				overflow: hidden;
+				cursor: pointer;
+				text-align: left;
+				font: inherit;
+				color: inherit;
+				transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+			}
+			.work-card:hover {
+				transform: translateY(-4px);
+				border-color: var(--line-strong);
+				box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+			}
+			.work-card__media {
+				display: block;
+				width: 100%;
+				aspect-ratio: 4 / 5;
+				object-fit: cover;
+				background: #0a0912;
+			}
+			.work-card--video .work-card__media { aspect-ratio: 9 / 16; }
+			.work-card--image .work-card__media { aspect-ratio: 4 / 5; }
+
+			.work-card__play {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 64px;
+				height: 64px;
+				border-radius: 50%;
+				background: rgba(10, 9, 18, 0.55);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				color: #fff;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+				transition: transform 0.3s ease, background 0.3s ease;
+				pointer-events: none;
+			}
+			.work-card__play svg { width: 26px; height: 26px; margin-left: 3px; }
+			.work-card:hover .work-card__play {
+				transform: translate(-50%, -50%) scale(1.08);
+				background: rgba(168, 85, 247, 0.55);
+			}
+
+			.work-card__foot {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding: 16px 18px 14px;
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+				background: linear-gradient(180deg, transparent 0%, rgba(10, 9, 18, 0.85) 55%, rgba(10, 9, 18, 0.95) 100%);
+			}
+			.work-card__cat {
+				font-size: 11px;
+				font-weight: 600;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--green);
+			}
+			.work-card__label {
+				font-size: 15px;
+				font-weight: 600;
+				color: #fff;
+				letter-spacing: -0.005em;
+			}
+
+			/* LIGHTBOX */
+			.lightbox {
+				position: fixed;
+				inset: 0;
+				z-index: 100;
+				background: rgba(6, 5, 12, 0.92);
+				backdrop-filter: blur(14px);
+				display: none;
+				align-items: center;
+				justify-content: center;
+				padding: 40px;
+				opacity: 0;
+				transition: opacity 0.25s ease;
+			}
+			.lightbox.is-open {
+				display: flex;
+				opacity: 1;
+			}
+			.lightbox__stage {
+				max-width: min(1100px, 92vw);
+				max-height: 82vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.lightbox__stage img,
+			.lightbox__stage video {
+				max-width: 100%;
+				max-height: 82vh;
+				border-radius: 16px;
+				box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+				background: #0a0912;
+			}
+			.lightbox__caption {
+				position: absolute;
+				bottom: 24px;
+				left: 50%;
+				transform: translateX(-50%);
+				margin: 0;
+				font-size: 14px;
+				color: var(--muted);
+				letter-spacing: 0.02em;
+			}
+			.lightbox__close {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				width: 44px;
+				height: 44px;
+				border-radius: 50%;
+				border: 1px solid var(--line-strong);
+				background: rgba(255, 255, 255, 0.05);
+				color: #fff;
+				cursor: pointer;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				transition: background 0.2s, transform 0.2s;
+			}
+			.lightbox__close:hover {
+				background: rgba(255, 255, 255, 0.12);
+				transform: rotate(90deg);
+			}
+			.lightbox__close svg { width: 20px; height: 20px; }
+
 			/* PROCESS */
 			.steps {
 				list-style: none;
@@ -1618,6 +1966,8 @@ const projects = [
 
 				.services-grid { grid-template-columns: 1fr 1fr; }
 				.projects-grid { grid-template-columns: 1fr 1fr; }
+				.work-grid--videos,
+				.work-grid--images { grid-template-columns: 1fr 1fr 1fr; }
 
 				.section__title { font-size: clamp(30px, 4.8vw, 54px); }
 			}
@@ -1703,6 +2053,14 @@ const projects = [
 
 				.tm-grid { grid-template-columns: 1fr; }
 
+				.work-grid--videos,
+				.work-grid--images { grid-template-columns: 1fr 1fr; gap: 14px; }
+				.work-tab { padding: 9px 16px; font-size: 13px; }
+				.work-card__play { width: 54px; height: 54px; }
+				.work-card__play svg { width: 22px; height: 22px; }
+				.lightbox { padding: 24px; }
+				.lightbox__caption { bottom: 16px; font-size: 13px; }
+
 				.form { padding: 28px; }
 				.form__row--two { grid-template-columns: 1fr; }
 
@@ -1742,6 +2100,13 @@ const projects = [
 
 				.projects-grid { grid-template-columns: 1fr; gap: 16px; }
 				.project__body { padding: 20px 22px 22px; }
+
+				.work-grid--videos { grid-template-columns: 1fr 1fr; gap: 12px; }
+				.work-grid--images { grid-template-columns: 1fr 1fr; gap: 12px; }
+				.work-tabs { width: 100%; justify-content: center; }
+				.work-card__foot { padding: 12px 14px 12px; }
+				.work-card__label { font-size: 13px; }
+				.work-card__cat { font-size: 10px; }
 
 				.stats {
 					grid-template-columns: 1fr 1fr;
