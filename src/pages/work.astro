@@ -1,0 +1,438 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const siteUrl = "https://www.orbitlee.com";
+
+const clientWork = {
+	videos: [
+		{ src: "/ADVC UGC 1.mp4", label: "ADVC - AI UGC Spot 1", category: "AI UGC", client: "ADVC" },
+		{ src: "/ADVC UGC 2.mp4", label: "ADVC - AI UGC Spot 2", category: "AI UGC", client: "ADVC" },
+		{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial", client: "Horizon RE" },
+		{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel", client: "Gaurya Farms" },
+		{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC", client: "Green Elixir" },
+		{ src: "/BA .mp4", label: "BA Campaign", category: "Commercial", client: "BA" },
+	],
+	branding: [
+		{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix - Social Banner", category: "Branding", client: "Aurix" },
+		{ src: "/Post 1.png", label: "Social Creative 01", category: "Social", client: "" },
+		{ src: "/Post 2.png", label: "Social Creative 02", category: "Social", client: "" },
+		{ src: "/Post 3.png", label: "Social Creative 03", category: "Social", client: "" },
+		{ src: "/Post 4.png", label: "Social Creative 04", category: "Social", client: "" },
+		{ src: "/Post-5.png", label: "Social Creative 05", category: "Social", client: "" },
+	],
+	ads: [
+		{ src: "/Ads-try-1-F.jpg", label: "Ad Creative - Concept 1", category: "Paid Ads", client: "" },
+		{ src: "/Ads-try-2-F.jpg", label: "Ad Creative - Concept 2", category: "Paid Ads", client: "" },
+		{ src: "/Ads-try-3&4.jpg", label: "Ad Creative - Concepts 3 & 4", category: "Paid Ads", client: "" },
+	],
+	design: [
+		{ src: "/1.jpg", label: "Design Portfolio 01", category: "Design", client: "" },
+		{ src: "/2.jpg", label: "Design Portfolio 02", category: "Design", client: "" },
+		{ src: "/3.jpg", label: "Design Portfolio 03", category: "Design", client: "" },
+		{ src: "/4.jpg", label: "Design Portfolio 04", category: "Design", client: "" },
+		{ src: "/5.jpg", label: "Design Portfolio 05", category: "Design", client: "" },
+		{ src: "/6.jpg", label: "Design Portfolio 06", category: "Design", client: "" },
+		{ src: "/7.jpg", label: "Design Portfolio 07", category: "Design", client: "" },
+		{ src: "/8.jpg", label: "Design Portfolio 08", category: "Design", client: "" },
+		{ src: "/9.jpg", label: "Design Portfolio 09", category: "Design", client: "" },
+		{ src: "/10.jpg", label: "Design Portfolio 10", category: "Design", client: "" },
+		{ src: "/11.jpg", label: "Design Portfolio 11", category: "Design", client: "" },
+	],
+};
+
+const totalCount = clientWork.videos.length + clientWork.branding.length + clientWork.ads.length + clientWork.design.length;
+const featuredClients = ["ADVC", "Horizon RE", "Gaurya Farms", "Green Elixir", "Aurix", "BA"];
+
+const workStats = [
+	{ num: `${clientWork.videos.length}`, label: "Ad films & UGC" },
+	{ num: `${clientWork.branding.length}`, label: "Branding & social" },
+	{ num: `${clientWork.ads.length + clientWork.design.length}`, label: "Design & ad creative" },
+	{ num: `${featuredClients.length}+`, label: "Featured clients" },
+];
+
+const pageSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "CollectionPage",
+			"@id": `${siteUrl}/work/#collection`,
+			name: "Orbitlee Client Work & Portfolio",
+			description: "Full portfolio of client work by Orbitlee - AI UGC, ad films, brand identity, social creative and design for brands across India.",
+			url: `${siteUrl}/work/`,
+			isPartOf: { "@id": `${siteUrl}/#website` },
+			about: { "@id": `${siteUrl}/#organization` },
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Work", item: `${siteUrl}/work/` },
+			],
+		},
+		{
+			"@type": "ItemList",
+			name: "Orbitlee Portfolio",
+			description: "Selected client work from Orbitlee across video, branding, advertising and design.",
+			numberOfItems: totalCount,
+			itemListElement: [
+				...clientWork.videos.map((v, i) => ({
+					"@type": "ListItem",
+					position: i + 1,
+					item: {
+						"@type": "VideoObject",
+						name: v.label,
+						description: `${v.category} content produced by Orbitlee for ${v.client}.`,
+						contentUrl: `${siteUrl}${v.src}`,
+						thumbnailUrl: `${siteUrl}/Orbitlee-logo-transparent.png`,
+						uploadDate: "2024-06-01",
+						publisher: { "@id": `${siteUrl}/#organization` },
+					},
+				})),
+				...[...clientWork.branding, ...clientWork.ads, ...clientWork.design].map((img, i) => ({
+					"@type": "ListItem",
+					position: clientWork.videos.length + i + 1,
+					item: {
+						"@type": "ImageObject",
+						name: img.label,
+						description: `${img.category} work by Orbitlee${img.client ? ` for ${img.client}` : ''}.`,
+						contentUrl: `${siteUrl}${img.src}`,
+						creator: { "@id": `${siteUrl}/#organization` },
+					},
+				})),
+			],
+		},
+		{
+			"@type": "FAQPage",
+			mainEntity: [
+				{ "@type": "Question", name: "Which brands has Orbitlee worked with?", acceptedAnswer: { "@type": "Answer", text: `Orbitlee has produced creative, advertising and brand work for clients including ${featuredClients.join(", ")} and many more across India - spanning D2C brands, real estate, F&B, beauty and B2B services.` } },
+				{ "@type": "Question", name: "Can I hire Orbitlee for a single project?", acceptedAnswer: { "@type": "Answer", text: "Yes - Orbitlee takes on both one-off projects (a launch film, a rebrand, a landing page) and full-retainer engagements. Every engagement starts with a free 30-minute audit to scope the fastest, highest-leverage next step." } },
+			],
+		},
+	],
+};
+---
+
+<Layout
+	title="Our Work - Client Portfolio | Orbitlee Creative & Marketing Agency India"
+	description="Explore Orbitlee's client portfolio - AI UGC, ad films, brand identity, social creative and design work for D2C, real estate, F&B and beauty brands across India."
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
+
+	<!-- BREADCRUMB + HERO -->
+	<section class="page-hero">
+		<div class="breadcrumb">
+			<a href="/">Home</a>
+			<span class="breadcrumb__sep">›</span>
+			<span>Work</span>
+		</div>
+		<div class="page-hero__eyebrow">
+			<span class="eyebrow eyebrow--plain">Selected Work</span>
+		</div>
+		<h1 class="page-hero__title">Real orbits <span class="hero__gradient">we've flown.</span></h1>
+		<p class="page-hero__sub">
+			Every film, banner, ad and identity below was shipped for a real client. No mockups, no case-study fluff - pick a category and see the work.
+		</p>
+		<div class="hero__actions" style="margin-top: 32px;">
+			<a href="#gallery" class="btn btn--primary btn--lg">See the work</a>
+			<a href="/contact" class="btn btn--ghost btn--lg">Start a project</a>
+		</div>
+	</section>
+
+	<!-- STATS -->
+	<section class="trust" aria-label="Portfolio stats">
+		<ul class="stats">
+			{workStats.map((s) => (
+				<li class="stat">
+					<span class="stat__num">{s.num}</span>
+					<span class="stat__label">{s.label}</span>
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<!-- CLIENT WORK GALLERY -->
+	<section id="gallery" class="section section--projects" aria-labelledby="gallery-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">Client Work</span>
+			<h2 class="section__title" id="gallery-heading">
+				From concept to <span class="hero__gradient">live campaign.</span>
+			</h2>
+			<p class="section__sub">Ad films, AI UGC, brand identity and design - delivered for founders across India.</p>
+		</div>
+
+		<div class="work-tabs" role="tablist" aria-label="Portfolio categories">
+			<button class="work-tab is-active" role="tab" aria-selected="true" data-tab="videos">
+				<span class="work-tab__dot"></span>
+				Ad Films & UGC
+				<span class="work-tab__count">{clientWork.videos.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="branding">
+				<span class="work-tab__dot"></span>
+				Branding & Social
+				<span class="work-tab__count">{clientWork.branding.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="ads">
+				<span class="work-tab__dot"></span>
+				Ad Creatives
+				<span class="work-tab__count">{clientWork.ads.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="design">
+				<span class="work-tab__dot"></span>
+				Design
+				<span class="work-tab__count">{clientWork.design.length}</span>
+			</button>
+		</div>
+
+		<div class="work-panel is-active" data-panel="videos" role="tabpanel">
+			<div class="work-grid work-grid--videos">
+				{clientWork.videos.map((v) => (
+					<button class="work-card work-card--video" data-video-src={v.src} data-video-label={v.label} aria-label={`Play ${v.label}`}>
+						<video class="work-card__media" data-src={v.src} muted loop playsinline preload="metadata"></video>
+						<span class="work-card__play" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+						</span>
+						<span class="work-card__foot">
+							<span class="work-card__cat">{v.category}</span>
+							<span class="work-card__label">{v.label}</span>
+							{v.client && <span class="work-card__client">{v.client}</span>}
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<div class="work-panel" data-panel="branding" role="tabpanel">
+			<div class="work-grid work-grid--images">
+				{clientWork.branding.map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+							{img.client && <span class="work-card__client">{img.client}</span>}
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<div class="work-panel" data-panel="ads" role="tabpanel">
+			<div class="work-grid work-grid--images work-grid--ads">
+				{clientWork.ads.map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media work-card__media--wide" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<div class="work-panel" data-panel="design" role="tabpanel">
+			<div class="work-grid work-grid--images work-grid--design">
+				{clientWork.design.map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- LIGHTBOX -->
+	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Media viewer">
+		<button class="lightbox__close" type="button" aria-label="Close viewer">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+				<path d="M6 6l12 12M18 6L6 18"/>
+			</svg>
+		</button>
+		<div class="lightbox__stage" id="lightbox-stage"></div>
+		<p class="lightbox__caption" id="lightbox-caption"></p>
+	</div>
+
+	<!-- FEATURED CLIENTS STRIP -->
+	<section class="section" aria-labelledby="clients-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">Featured Clients</span>
+			<h2 class="section__title" id="clients-heading">Brands we've <span class="hero__gradient">put into orbit.</span></h2>
+		</div>
+		<div class="client-strip">
+			{featuredClients.map((c) => (
+				<span class="client-chip">{c}</span>
+			))}
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<div class="cta-strip">
+		<div class="cta-strip__inner">
+			<div class="cta-strip__copy">
+				<h2 class="cta-strip__title">Want work like this <span class="hero__gradient">for your brand?</span></h2>
+				<p class="cta-strip__sub">Free 30-minute audit. Actionable roadmap. No slide decks, no pressure.</p>
+			</div>
+			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
+		</div>
+	</div>
+
+	<script is:inline>
+		(function () {
+			const tabs = document.querySelectorAll('.work-tab');
+			const panels = document.querySelectorAll('.work-panel');
+			tabs.forEach((tab) => {
+				tab.addEventListener('click', () => {
+					const target = tab.getAttribute('data-tab');
+					tabs.forEach((t) => {
+						const active = t === tab;
+						t.classList.toggle('is-active', active);
+						t.setAttribute('aria-selected', active ? 'true' : 'false');
+					});
+					panels.forEach((p) => {
+						p.classList.toggle('is-active', p.getAttribute('data-panel') === target);
+					});
+					document.querySelectorAll('.work-card--video video').forEach((v) => { v.pause(); v.currentTime = 0; });
+				});
+			});
+
+			const videoCards = document.querySelectorAll('.work-card--video');
+			const attachVideoSrc = (card) => {
+				const video = card.querySelector('video');
+				if (!video || video.src) return;
+				const src = video.getAttribute('data-src');
+				if (!src) return;
+				// #t=0.1 hints browsers to seek to first frame (iOS Safari fix for black thumbnail)
+				video.src = src + '#t=0.1';
+				video.preload = 'metadata';
+				video.addEventListener('loadedmetadata', function () {
+					try { video.currentTime = 0.1; } catch (_) {}
+				}, { once: true });
+			};
+			if ('IntersectionObserver' in window) {
+				const io = new IntersectionObserver((entries) => {
+					entries.forEach((e) => { if (e.isIntersecting) { attachVideoSrc(e.target); io.unobserve(e.target); } });
+				}, { rootMargin: '200px' });
+				videoCards.forEach((c) => io.observe(c));
+			} else {
+				videoCards.forEach(attachVideoSrc);
+			}
+
+			const isTouch = window.matchMedia('(hover: none)').matches;
+			if (!isTouch) {
+				videoCards.forEach((card) => {
+					const video = card.querySelector('video');
+					if (!video) return;
+					card.addEventListener('mouseenter', () => { attachVideoSrc(card); video.play().catch(() => {}); });
+					card.addEventListener('mouseleave', () => { video.pause(); if (video.currentTime) video.currentTime = 0; });
+				});
+			}
+
+			const lightbox = document.getElementById('lightbox');
+			const stage = document.getElementById('lightbox-stage');
+			const caption = document.getElementById('lightbox-caption');
+			const closeBtn = lightbox ? lightbox.querySelector('.lightbox__close') : null;
+
+			function openLightbox(node, label) {
+				if (!lightbox || !stage) return;
+				stage.innerHTML = '';
+				stage.appendChild(node);
+				caption.textContent = label || '';
+				lightbox.classList.add('is-open');
+				lightbox.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			}
+			function closeLightbox() {
+				if (!lightbox || !stage) return;
+				const v = stage.querySelector('video');
+				if (v) { v.pause(); v.src = ''; }
+				stage.innerHTML = '';
+				caption.textContent = '';
+				lightbox.classList.remove('is-open');
+				lightbox.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+			}
+
+			document.querySelectorAll('.work-card--video').forEach((card) => {
+				card.addEventListener('click', () => {
+					const src = card.getAttribute('data-video-src');
+					const label = card.getAttribute('data-video-label');
+					const v = document.createElement('video');
+					v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
+					openLightbox(v, label);
+				});
+			});
+			document.querySelectorAll('.work-card--image').forEach((card) => {
+				card.addEventListener('click', () => {
+					const src = card.getAttribute('data-image-src');
+					const label = card.getAttribute('data-image-label');
+					const img = document.createElement('img');
+					img.src = src; img.alt = label || '';
+					openLightbox(img, label);
+				});
+			});
+
+			if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+			if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+			document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) closeLightbox(); });
+		})();
+	</script>
+
+	<style is:global>
+		@media (max-width: 640px) {
+			.work-tabs { flex-wrap: wrap; border-radius: 16px; }
+			.work-tab { flex: 1 1 auto; justify-content: center; min-width: 0; }
+			.work-tab__count { display: none; }
+		}
+		.work-grid--ads { grid-template-columns: repeat(3, 1fr); }
+		.work-grid--design { grid-template-columns: repeat(4, 1fr); }
+		.work-card__media--wide { aspect-ratio: 4 / 3 !important; }
+		.work-card__client {
+			font-size: 11px;
+			color: var(--violet);
+			font-weight: 500;
+			letter-spacing: 0.04em;
+		}
+
+		.client-strip {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			justify-content: center;
+			max-width: 900px;
+			margin: 0 auto;
+		}
+		.client-chip {
+			display: inline-flex;
+			align-items: center;
+			padding: 12px 22px;
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			font-size: 15px;
+			font-weight: 600;
+			color: var(--text);
+			letter-spacing: 0.01em;
+			transition: transform 0.2s, border-color 0.2s, background 0.2s;
+		}
+		.client-chip:hover {
+			transform: translateY(-2px);
+			border-color: var(--line-strong);
+			background: var(--panel-2);
+		}
+
+		@media (max-width: 900px) {
+			.work-grid--ads { grid-template-columns: 1fr 1fr; }
+			.work-grid--design { grid-template-columns: repeat(3, 1fr); }
+		}
+		@media (max-width: 640px) {
+			.work-grid--ads { grid-template-columns: 1fr 1fr; }
+			.work-grid--design { grid-template-columns: 1fr 1fr; }
+		}
+	</style>
+</Layout>

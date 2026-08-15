@@ -1,4 +1,4 @@
-# Orbitlee — Creative & Marketing Agency
+# Orbitlee - Creative & Marketing Agency
 # https://www.orbitlee.com
 
 User-agent: *

@@ -18,6 +18,7 @@ const pathname = Astro.url.pathname;
 const isHome = pathname === "/" || pathname === "";
 const isAbout = pathname.startsWith("/about");
 const isServices = pathname.startsWith("/services");
+const isWork = pathname.startsWith("/work");
 const isContact = pathname.startsWith("/contact");
 
 const serviceLinks = [
@@ -45,7 +46,7 @@ const jsonLd = {
 				contentUrl: `${siteUrl}/Orbitlee-logo-transparent.png`,
 				width: 512,
 				height: 512,
-				caption: "Orbitlee — Creative & Marketing Agency",
+				caption: "Orbitlee - Creative & Marketing Agency",
 			},
 			image: `${siteUrl}/Orbitlee-logo-transparent.png`,
 			description: "Orbitlee is a creative and marketing agency that unites branding, design, AI-generated content, paid ads and web development under one accountable team. 15+ brands scaled.",
@@ -132,7 +133,7 @@ const jsonLd = {
 			url: siteUrl,
 			name: "Orbitlee",
 			alternateName: ["Orbitly", "Orbitli", "Orbit Lee"],
-			description: "Orbitlee — Creative & Marketing Agency. Strategy. Design. Grow.",
+			description: "Orbitlee - Creative & Marketing Agency. Strategy. Design. Grow.",
 			publisher: { "@id": `${siteUrl}/#organization` },
 			inLanguage: "en",
 			potentialAction: {
@@ -185,7 +186,7 @@ const jsonLd = {
 		<meta name="author" content="Sachin Verma, Orbitlee" />
 		<link rel="canonical" href={`${siteUrl}${pathname}`} />
 
-		<!-- Brand + all keyword variants — indexed by Bing, Yahoo, DuckDuckGo -->
+		<!-- Brand + all keyword variants - indexed by Bing, Yahoo, DuckDuckGo -->
 		<meta name="keywords" content="orbitlee, orbitly, orbitli, orbit lee, orbitlee agency, orbitlee creative, orbitlee marketing, orbitlee digital, orbitlee india, orbitlee sachin verma, sachin verma agency, creative agency india, marketing agency india, branding agency india, digital marketing agency india, ai ugc agency india, performance marketing agency, meta ads agency, google ads agency, facebook ads agency, web development agency india, mobile app development india, brand identity agency india, social media agency india, content marketing agency, growth consulting agency, ai content agency, seo agency india, startup marketing agency india, ecommerce marketing agency india, full service marketing agency india" />
 
 		<!-- Geo targeting -->
@@ -193,7 +194,7 @@ const jsonLd = {
 		<meta name="geo.placename" content="India" />
 		<meta name="ICBM" content="20.5937, 78.9629" />
 
-		<!-- Dublin Core — read by Bing, Yahoo, and academic/enterprise crawlers -->
+		<!-- Dublin Core - read by Bing, Yahoo, and academic/enterprise crawlers -->
 		<meta name="DC.title" content={title} />
 		<meta name="DC.description" content={description} />
 		<meta name="DC.creator" content="Sachin Verma" />
@@ -215,7 +216,7 @@ const jsonLd = {
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Orbitlee — Creative & Marketing Agency" />
+		<meta property="og:image:alt" content="Orbitlee - Creative & Marketing Agency" />
 		<meta property="og:locale" content="en_IN" />
 
 		<!-- Business Open Graph -->
@@ -230,7 +231,7 @@ const jsonLd = {
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
-		<meta name="twitter:image:alt" content="Orbitlee — Creative & Marketing Agency" />
+		<meta name="twitter:image:alt" content="Orbitlee - Creative & Marketing Agency" />
 
 		<!-- Favicons -->
 		<link rel="icon" type="image/png" sizes="32x32" href="/Orbitlee-fav-icon.png" />
@@ -274,6 +275,7 @@ const jsonLd = {
 						))}
 					</div>
 				</div>
+				<a href="/work" class={isWork ? "active" : ""}>Work</a>
 				<a href="/about" class={isAbout ? "active" : ""}>About</a>
 				<a href="/contact" class={isContact ? "active" : ""}>Contact</a>
 			</nav>
@@ -303,6 +305,7 @@ const jsonLd = {
 						))}
 					</div>
 				</div>
+				<a href="/work" class="mobile-link">Work</a>
 				<a href="/about" class="mobile-link">About</a>
 				<a href="/contact" class="mobile-link">Contact</a>
 				<a href="/contact" class="btn btn--primary btn--lg mobile-cta">Book a free audit</a>
@@ -321,6 +324,7 @@ const jsonLd = {
 				<nav class="footer__nav">
 					<a href="/">Home</a>
 					<a href="/services">Services</a>
+					<a href="/work">Work</a>
 					<a href="/about">About</a>
 					<a href="/contact">Contact</a>
 				</nav>
@@ -350,7 +354,7 @@ const jsonLd = {
 				<p class="footer__copy">© {year} Orbitlee. All rights reserved.</p>
 			</div>
 			<p class="footer__variants">
-				Searching for <em>Orbitly</em>, <em>Orbitli</em>, or <em>Orbit Lee</em>? You've found us —
+				Searching for <em>Orbitly</em>, <em>Orbitli</em>, or <em>Orbit Lee</em>? You've found us -
 				<strong>Orbitlee</strong>, India's creative &amp; marketing agency. Strategy. Design. Grow.
 			</p>
 		</footer>
@@ -388,6 +392,24 @@ const jsonLd = {
 						mobToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 					});
 				}
+
+				// Desktop dropdown - mouseenter/leave with delay so cursor can travel to items
+				var dropWrap = document.querySelector('.nav__drop-wrap');
+				if (dropWrap) {
+					var closeTimer = null;
+					dropWrap.addEventListener('mouseenter', function () {
+						clearTimeout(closeTimer);
+						dropWrap.classList.add('is-open');
+					});
+					dropWrap.addEventListener('mouseleave', function () {
+						closeTimer = setTimeout(function () {
+							dropWrap.classList.remove('is-open');
+						}, 150);
+					});
+					document.addEventListener('click', function (e) {
+						if (!dropWrap.contains(e.target)) dropWrap.classList.remove('is-open');
+					});
+				}
 			})();
 		</script>
 
@@ -415,7 +437,12 @@ const jsonLd = {
 			}
 
 			*, *::before, *::after { box-sizing: border-box; }
-			html { scroll-behavior: smooth; overflow-x: hidden; }
+			html {
+				scroll-behavior: smooth;
+				overflow-x: hidden;
+				-webkit-text-size-adjust: 100%;
+				text-size-adjust: 100%;
+			}
 			body {
 				margin: 0;
 				background: var(--bg);
@@ -428,6 +455,12 @@ const jsonLd = {
 				overflow-x: hidden;
 				max-width: 100vw;
 			}
+			.service-overview-card,
+			.svc-item,
+			.why-card,
+			.tm,
+			.work-card,
+			.stat { min-width: 0; }
 			img { display: block; max-width: 100%; }
 			a { color: inherit; text-decoration: none; }
 			button { font-family: inherit; }
@@ -504,10 +537,10 @@ const jsonLd = {
 			/* DROPDOWN */
 			.nav__drop-wrap { position: relative; display: inline-flex; align-items: center; }
 			.nav__chevron { transition: transform 0.2s; flex-shrink: 0; opacity: 0.6; }
-			.nav__drop-wrap:hover .nav__chevron { transform: rotate(180deg); }
+			.nav__drop-wrap.is-open .nav__chevron { transform: rotate(180deg); }
 			.nav__dropdown {
 				position: absolute;
-				top: calc(100% + 10px);
+				top: 100%;
 				left: 50%;
 				transform: translateX(-50%);
 				min-width: 230px;
@@ -516,13 +549,14 @@ const jsonLd = {
 				border: 1px solid rgba(255, 255, 255, 0.1);
 				border-radius: 16px;
 				padding: 8px;
+				padding-top: 16px; /* transparent top padding bridges the visual gap without breaking hover */
 				display: none;
 				flex-direction: column;
 				gap: 2px;
 				z-index: 200;
 				box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.06);
 			}
-			.nav__drop-wrap:hover .nav__dropdown,
+			.nav__drop-wrap.is-open .nav__dropdown,
 			.nav__drop-wrap:focus-within .nav__dropdown { display: flex; }
 			.nav__dropdown a {
 				padding: 10px 14px;
@@ -542,13 +576,13 @@ const jsonLd = {
 				flex-direction: column;
 				justify-content: center;
 				gap: 5px;
-				width: 36px;
-				height: 36px;
+				width: 42px;
+				height: 42px;
 				background: rgba(255, 255, 255, 0.05);
 				border: 1px solid var(--line);
 				border-radius: 50%;
 				cursor: pointer;
-				padding: 0 9px;
+				padding: 0 11px;
 				transition: background 0.2s;
 				flex-shrink: 0;
 			}
@@ -733,6 +767,7 @@ const jsonLd = {
 				line-height: 1.1;
 				margin: 28px auto 22px;
 				white-space: nowrap;
+				text-wrap: balance;
 			}
 			.hero__gradient {
 				background: var(--gradient);
@@ -784,6 +819,7 @@ const jsonLd = {
 				letter-spacing: -0.025em;
 				line-height: 1.1;
 				margin: 0 0 20px;
+				text-wrap: balance;
 			}
 			.page-hero__sub {
 				max-width: 600px;
@@ -867,6 +903,7 @@ const jsonLd = {
 				line-height: 1.1;
 				margin: 20px 0;
 				white-space: nowrap;
+				text-wrap: balance;
 			}
 			.section__title--left { text-align: left; }
 			.section__sub {
@@ -1239,7 +1276,15 @@ const jsonLd = {
 				transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 			}
 			.work-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6); }
-			.work-card__media { display: block; width: 100%; object-fit: cover; background: #0a0912; }
+			.work-card__media {
+				display: block;
+				width: 100%;
+				object-fit: cover;
+				background:
+					radial-gradient(circle at 30% 30%, rgba(163,230,53,0.08), transparent 55%),
+					radial-gradient(circle at 70% 70%, rgba(167,139,250,0.14), transparent 55%),
+					#0a0912;
+			}
 			.work-card--video .work-card__media { aspect-ratio: 9 / 16; }
 			.work-card--image .work-card__media { aspect-ratio: 4 / 5; }
 			.work-card__play {
@@ -1405,9 +1450,9 @@ const jsonLd = {
 				padding-top: 32px;
 				border-top: 1px solid var(--line);
 			}
-			.contact__meta-item { display: flex; flex-direction: column; gap: 4px; }
+			.contact__meta-item { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 			.contact__meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-2); }
-			.contact__meta-item a { font-size: 18px; font-weight: 500; }
+			.contact__meta-item a { font-size: 18px; font-weight: 500; overflow-wrap: anywhere; }
 			.contact__meta-item a:hover { color: var(--green); }
 
 			/* FORM */
@@ -1595,7 +1640,11 @@ const jsonLd = {
 				.hero { padding: 80px 32px 32px; }
 				.services-grid { grid-template-columns: 1fr 1fr; }
 				.svc-detail-grid { grid-template-columns: 1fr 1fr; }
-				.section__title { font-size: clamp(30px, 4.8vw, 54px); }
+				.section__title { font-size: clamp(30px, 4.8vw, 54px); white-space: normal; }
+				.hero__title { white-space: normal; }
+				.hero__sub { width: auto; max-width: 640px; }
+				.work-grid--design { grid-template-columns: repeat(3, 1fr); }
+				.about, .contact { gap: 48px; }
 			}
 
 			@media (max-width: 900px) {
