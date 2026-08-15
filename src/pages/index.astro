@@ -192,8 +192,8 @@ const testimonials = [
 ];
 
 const workVideos = [
-	{ src: "/ADVC UGC 1.mp4", label: "ADVC UGC — Spot 1", category: "AI UGC" },
-	{ src: "/ADVC UGC 2.mp4", label: "ADVC UGC — Spot 2", category: "AI UGC" },
+	{ src: "/ADVC UGC 1.mp4", label: "ADVC UGC - Spot 1", category: "AI UGC" },
+	{ src: "/ADVC UGC 2.mp4", label: "ADVC UGC - Spot 2", category: "AI UGC" },
 	{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial" },
 	{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel" },
 	{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC" },
@@ -201,15 +201,15 @@ const workVideos = [
 ];
 
 const workImages = [
-	{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix — Social Banner", category: "Branding" },
+	{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix - Social Banner", category: "Branding" },
 	{ src: "/Post 1.png", label: "Social Post 01", category: "Social" },
 	{ src: "/Post 2.png", label: "Social Post 02", category: "Social" },
 	{ src: "/Post 3.png", label: "Social Post 03", category: "Social" },
 	{ src: "/Post 4.png", label: "Social Post 04", category: "Social" },
 	{ src: "/Post-5.png", label: "Social Post 05", category: "Social" },
-	{ src: "/Ads-try-1-F.jpg", label: "Ad Creative — Concept 1", category: "Ads" },
-	{ src: "/Ads-try-2-F.jpg", label: "Ad Creative — Concept 2", category: "Ads" },
-	{ src: "/Ads-try-3&4.jpg", label: "Ad Creative — Concepts 3 & 4", category: "Ads" },
+	{ src: "/Ads-try-1-F.jpg", label: "Ad Creative - Concept 1", category: "Ads" },
+	{ src: "/Ads-try-2-F.jpg", label: "Ad Creative - Concept 2", category: "Ads" },
+	{ src: "/Ads-try-3&4.jpg", label: "Ad Creative - Concepts 3 & 4", category: "Ads" },
 	{ src: "/1.jpg", label: "Portfolio 01", category: "Design" },
 	{ src: "/2.jpg", label: "Portfolio 02", category: "Design" },
 	{ src: "/3.jpg", label: "Portfolio 03", category: "Design" },
@@ -245,7 +245,7 @@ const workImages = [
 		<meta property="og:title" content={siteTitle} />
 		<meta property="og:description" content={siteDescription} />
 		<meta property="og:image" content={ogImage} />
-		<meta property="og:image:alt" content="Orbitlee — Creative & Marketing Agency" />
+		<meta property="og:image:alt" content="Orbitlee - Creative & Marketing Agency" />
 		<meta property="og:locale" content="en_IN" />
 
 		<!-- Twitter -->
@@ -254,11 +254,13 @@ const workImages = [
 		<meta name="twitter:description" content={siteDescription} />
 		<meta name="twitter:image" content={ogImage} />
 
-		<!-- Favicons -->
-		<link rel="icon" type="image/png" sizes="32x32" href="/Orbitlee-fav-icon.png" />
-		<link rel="icon" type="image/png" sizes="192x192" href="/Orbitlee-fav-icon.png" />
-		<link rel="shortcut icon" type="image/png" href="/Orbitlee-fav-icon.png" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/Orbitlee-fav-icon.png" />
+		<!-- Favicons - Orbitlee logo (cache-busted so Google refetches) -->
+		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/Orbitlee-fav-icon.png?v=2" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/Orbitlee-fav-icon.png?v=2" />
+		<link rel="shortcut icon" type="image/png" href="/Orbitlee-fav-icon.png?v=2" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/Orbitlee-fav-icon.png?v=2" />
 
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -2335,7 +2337,7 @@ const workImages = [
 				.footer__brand img { height: 40px; }
 			}
 
-			/* Very small phone (up to 500px) — stack the hero CTAs */
+			/* Very small phone (up to 500px) - stack the hero CTAs */
 			@media (max-width: 500px) {
 				.hero__actions {
 					flex-direction: column;
