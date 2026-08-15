@@ -2,52 +2,232 @@
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
+  <!-- Home -->
   <url>
     <loc>https://www.orbitlee.com/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/" />
     <image:image>
       <image:loc>https://www.orbitlee.com/Orbitlee-logo-transparent.png</image:loc>
-      <image:title>Orbitlee - Creative &amp; Marketing Agency</image:title>
+      <image:title>Orbitlee - Creative &amp; Marketing Agency India</image:title>
+      <image:caption>Orbitlee logo - creative and marketing agency by Sachin Verma</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/AURIX-SM-BANNER.jpg</image:loc>
-      <image:title>Aurix Social Banner</image:title>
-      <image:caption>Branding &amp; social banner design for Aurix</image:caption>
+      <image:title>Aurix Social Media Banner - Branding by Orbitlee</image:title>
+      <image:caption>Social media banner design for Aurix by Orbitlee creative agency</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Post%201.png</image:loc>
-      <image:title>Social Post 01</image:title>
+      <image:title>Social Media Post Design 01 - Orbitlee Portfolio</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Post%202.png</image:loc>
-      <image:title>Social Post 02</image:title>
+      <image:title>Social Media Post Design 02 - Orbitlee Portfolio</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Post%203.png</image:loc>
-      <image:title>Social Post 03</image:title>
+      <image:title>Social Media Post Design 03 - Orbitlee Portfolio</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Post%204.png</image:loc>
-      <image:title>Social Post 04</image:title>
+      <image:title>Social Media Post Design 04 - Orbitlee Portfolio</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Post-5.png</image:loc>
-      <image:title>Social Post 05</image:title>
+      <image:title>Social Media Post Design 05 - Orbitlee Portfolio</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Ads-try-1-F.jpg</image:loc>
-      <image:title>Ad Creative - Concept 1</image:title>
+      <image:title>Ad Creative Concept 1 - Performance Marketing by Orbitlee</image:title>
+      <image:caption>Ad creative concept 1 - performance marketing and paid advertising by Orbitlee</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Ads-try-2-F.jpg</image:loc>
-      <image:title>Ad Creative - Concept 2</image:title>
+      <image:title>Ad Creative Concept 2 - Meta Ads by Orbitlee</image:title>
+      <image:caption>Ad creative concept 2 - Meta and Google Ads creative by Orbitlee agency India</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitlee.com/Ads-try-3%264.jpg</image:loc>
-      <image:title>Ad Creative - Concepts 3 &amp; 4</image:title>
+      <image:title>Ad Creative Concepts 3 &amp; 4 - Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/1.jpg</image:loc>
+      <image:title>Portfolio 01 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/2.jpg</image:loc>
+      <image:title>Portfolio 02 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/3.jpg</image:loc>
+      <image:title>Portfolio 03 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/4.jpg</image:loc>
+      <image:title>Portfolio 04 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/5.jpg</image:loc>
+      <image:title>Portfolio 05 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/6.jpg</image:loc>
+      <image:title>Portfolio 06 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/7.jpg</image:loc>
+      <image:title>Portfolio 07 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/8.jpg</image:loc>
+      <image:title>Portfolio 08 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/9.jpg</image:loc>
+      <image:title>Portfolio 09 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/10.jpg</image:loc>
+      <image:title>Portfolio 10 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/11.jpg</image:loc>
+      <image:title>Portfolio 11 - Design Work by Orbitlee</image:title>
+    </image:image>
+  </url>
+
+  <!-- Services Hub -->
+  <url>
+    <loc>https://www.orbitlee.com/services/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/services/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Orbitlee-logo-transparent.png</image:loc>
+      <image:title>Orbitlee Services - Marketing, Branding, Web Development, Consulting</image:title>
+    </image:image>
+  </url>
+
+  <!-- Work / Portfolio -->
+  <url>
+    <loc>https://www.orbitlee.com/work/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/work/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/AURIX-SM-BANNER.jpg</image:loc>
+      <image:title>Aurix Social Banner - Client Work by Orbitlee</image:title>
+      <image:caption>Selected client work from Orbitlee's portfolio</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/1.jpg</image:loc>
+      <image:title>Portfolio 01 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/2.jpg</image:loc>
+      <image:title>Portfolio 02 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/3.jpg</image:loc>
+      <image:title>Portfolio 03 - Design Work by Orbitlee</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Ads-try-1-F.jpg</image:loc>
+      <image:title>Ad Creative Concept 1 - Orbitlee Client Work</image:title>
+    </image:image>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://www.orbitlee.com/contact/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/contact/" />
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://www.orbitlee.com/about/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/about/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Orbitlee-logo-transparent.png</image:loc>
+      <image:title>About Orbitlee - Sachin Verma, Founder &amp; Creative Head</image:title>
+      <image:caption>Orbitlee founded by Sachin Verma - creative and marketing agency India</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Service: Marketing & Advertising -->
+  <url>
+    <loc>https://www.orbitlee.com/services/marketing-advertising/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/services/marketing-advertising/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Ads-try-1-F.jpg</image:loc>
+      <image:title>Marketing &amp; Advertising Services - Meta Ads, Google Ads by Orbitlee</image:title>
+      <image:caption>Orbitlee marketing and advertising - Meta Ads, Google Ads, social media management India</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Ads-try-2-F.jpg</image:loc>
+      <image:title>Ad Creative by Orbitlee - Performance Marketing Agency India</image:title>
+    </image:image>
+  </url>
+
+  <!-- Service: Web & App Development -->
+  <url>
+    <loc>https://www.orbitlee.com/services/web-app-development/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/services/web-app-development/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Orbitlee-logo-transparent.png</image:loc>
+      <image:title>Web &amp; App Development Services - Orbitlee India</image:title>
+      <image:caption>Orbitlee web and app development - websites, mobile apps, SaaS, UI/UX India</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Service: Branding & Creative -->
+  <url>
+    <loc>https://www.orbitlee.com/services/branding-creative/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/services/branding-creative/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/AURIX-SM-BANNER.jpg</image:loc>
+      <image:title>Branding &amp; Creative Services - Logo, Identity, AI UGC by Orbitlee</image:title>
+      <image:caption>Orbitlee branding and creative production - logo design, visual identity, AI UGC, commercial ads India</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Post%201.png</image:loc>
+      <image:title>Social Media Creative by Orbitlee</image:title>
+    </image:image>
+  </url>
+
+  <!-- Service: Growth Consulting -->
+  <url>
+    <loc>https://www.orbitlee.com/services/growth-consulting/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://www.orbitlee.com/services/growth-consulting/" />
+    <image:image>
+      <image:loc>https://www.orbitlee.com/Orbitlee-logo-transparent.png</image:loc>
+      <image:title>Growth Consulting Services - Business Audit, GTM Strategy by Orbitlee</image:title>
+      <image:caption>Orbitlee growth consulting - business audit, marketing strategy, go-to-market planning India</image:caption>
     </image:image>
   </url>
 </urlset>
