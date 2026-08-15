@@ -1,140 +1,44 @@
 ---
-const year = new Date().getFullYear();
-const siteUrl = "https://www.orbitlee.com";
-const siteTitle = "Orbitlee - Creative & Marketing Agency | Branding, AI Content, Ads & Web";
-const siteDescription = "Orbitlee is a creative and marketing agency that unites branding, design, AI-generated content, paid ads and web under one accountable team. 15+ brands scaled. Strategy. Design. Grow.";
-const ogImage = `${siteUrl}/Orbitlee-logo-transparent.png`;
+import Layout from '../layouts/Layout.astro';
 
-const jsonLd = {
-	"@context": "https://schema.org",
-	"@graph": [
-		{
-			"@type": "Organization",
-			"@id": `${siteUrl}/#organization`,
-			name: "Orbitlee",
-			alternateName: "Orbitlee Creative & Marketing Agency",
-			url: siteUrl,
-			logo: {
-				"@type": "ImageObject",
-				url: `${siteUrl}/Orbitlee-logo-transparent.png`,
-				width: 512,
-				height: 512,
-			},
-			image: ogImage,
-			description: siteDescription,
-			slogan: "Strategy. Design. Grow.",
-			foundingDate: "2024",
-			founder: { "@id": `${siteUrl}/#founder` },
-			sameAs: ["https://www.instagram.com/orbitlee_"],
-			contactPoint: [
-				{
-					"@type": "ContactPoint",
-					telephone: "+91-98106-92028",
-					email: "orbitleeee@gmail.com",
-					contactType: "sales",
-					areaServed: "IN",
-					availableLanguage: ["English", "Hindi"],
-				},
-			],
-			areaServed: { "@type": "Country", name: "India" },
-		},
-		{
-			"@type": "ProfessionalService",
-			"@id": `${siteUrl}/#business`,
-			name: "Orbitlee",
-			url: siteUrl,
-			description: siteDescription,
-			image: ogImage,
-			priceRange: "₹₹",
-			areaServed: { "@type": "Country", name: "India" },
-			serviceType: [
-				"Branding & Strategy",
-				"Social Media & Content",
-				"AI Generated Content",
-				"Graphic Design",
-				"UI/UX & Landing Pages",
-				"Web & App Development",
-				"AI Automation",
-				"LinkedIn Sales Outreach",
-			],
-			hasOfferCatalog: {
-				"@type": "OfferCatalog",
-				name: "Orbitlee Services",
-				itemListElement: [
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Branding & Strategy" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media & Content" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Generated Content (UGC)" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Graphic Design" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX & Landing Pages" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Web & App Development" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation" } },
-					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Sales Outreach on LinkedIn" } },
-				],
-			},
-		},
-		{
-			"@type": "Person",
-			"@id": `${siteUrl}/#founder`,
-			name: "Sachin Verma",
-			jobTitle: "Founder & Creative Head",
-			worksFor: { "@id": `${siteUrl}/#organization` },
-			url: siteUrl,
-		},
-		{
-			"@type": "WebSite",
-			"@id": `${siteUrl}/#website`,
-			url: siteUrl,
-			name: "Orbitlee",
-			description: siteDescription,
-			publisher: { "@id": `${siteUrl}/#organization` },
-			inLanguage: "en",
-		},
-	],
-};
-const services = [
-	{
-		num: "01",
-		title: "Branding",
-		blurb: "Positioning, marks and identity systems built to last and compound over time.",
-		items: ["Brand Strategy", "Logo Design", "Visual Identity", "Packaging"],
-	},
-	{
-		num: "02",
-		title: "Creative Production",
-		blurb: "High-craft content engineered to stop the scroll and move the metric.",
-		items: ["AI UGC", "Commercial Ads", "Product Photography", "Motion Graphics"],
-	},
-	{
-		num: "03",
-		title: "Marketing",
-		blurb: "Full-funnel performance, from cold reach to qualified pipeline.",
-		items: ["Meta Ads", "Google Ads", "Social Media Management", "Lead Generation"],
-	},
-	{
-		num: "04",
-		title: "Technology",
-		blurb: "Websites, products and automations that feel effortless and convert.",
-		items: ["Website Development", "Landing Pages", "UI/UX", "AI Automation"],
-	},
-	{
-		num: "05",
-		title: "Engineering",
-		blurb: "Custom-built software, from MVPs to full-scale platforms engineered to grow with you.",
-		items: ["Web Applications", "Mobile Apps", "SaaS Platforms", "API & Integrations"],
-	},
-	{
-		num: "06",
-		title: "Consulting",
-		blurb: "Sharp diagnostics and clear roadmaps before your next big investment.",
-		items: ["Business Growth Audit", "Marketing Strategy", "Brand Audit", "Go-to-Market Strategy"],
-	},
-];
+const siteUrl = "https://www.orbitlee.com";
 
 const stats = [
 	{ num: "25+", label: "Projects delivered" },
 	{ num: "$100K+", label: "Ad spend managed" },
 	{ num: "8", label: "Brands scaled" },
 	{ num: "5★", label: "Avg. client rating" },
+];
+
+const serviceOverview = [
+	{
+		href: "/services/marketing-advertising",
+		title: "Marketing & Advertising",
+		desc: "Full-funnel campaigns from cold reach to qualified pipeline. Meta, Google, social media management and AI-native content built to compound.",
+		items: ["Meta Ads", "Google Ads", "Social Media", "AI UGC", "Lead Generation"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+	},
+	{
+		href: "/services/web-app-development",
+		title: "Web & App Development",
+		desc: "Sites, products and automations that feel effortless, load fast and convert visitors into paying customers.",
+		items: ["Websites", "Landing Pages", "Mobile Apps", "SaaS", "AI Automation"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+	},
+	{
+		href: "/services/branding-creative",
+		title: "Branding & Creative",
+		desc: "Positioning, identity and high-craft production that stops the scroll and makes your brand impossible to ignore.",
+		items: ["Brand Strategy", "Logo & Identity", "AI UGC", "Commercial Ads"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+	},
+	{
+		href: "/services/growth-consulting",
+		title: "Growth Consulting",
+		desc: "Sharp diagnostics and clear roadmaps before your next big investment. Audits, strategy, go-to-market.",
+		items: ["Growth Audit", "Brand Audit", "GTM Strategy", "Marketing Strategy"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
+	},
 ];
 
 const differentiators = [
@@ -144,7 +48,7 @@ const differentiators = [
 	},
 	{
 		title: "AI-native production",
-		body: "AI UGC, generative creative and automated post-production, 10× the ad variants, without 10× the cost.",
+		body: "AI UGC, generative creative and automated post-production - 10× the ad variants, without 10× the cost.",
 	},
 	{
 		title: "Speed to launch",
@@ -191,2175 +95,538 @@ const testimonials = [
 	},
 ];
 
-const workVideos = [
-	{ src: "/ADVC UGC 1.mp4", label: "ADVC UGC — Spot 1", category: "AI UGC" },
-	{ src: "/ADVC UGC 2.mp4", label: "ADVC UGC — Spot 2", category: "AI UGC" },
-	{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial" },
-	{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel" },
-	{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC" },
-	{ src: "/BA .mp4", label: "BA Campaign", category: "Commercial" },
+const clientWork = {
+	videos: [
+		{ src: "/ADVC UGC 1.mp4", label: "ADVC - AI UGC Spot 1", category: "AI UGC", client: "ADVC" },
+		{ src: "/ADVC UGC 2.mp4", label: "ADVC - AI UGC Spot 2", category: "AI UGC", client: "ADVC" },
+		{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial", client: "Horizon RE" },
+		{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel", client: "Gaurya Farms" },
+		{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC", client: "Green Elixir" },
+		{ src: "/BA .mp4", label: "BA Campaign", category: "Commercial", client: "BA" },
+	],
+	branding: [
+		{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix - Social Banner", category: "Branding", client: "Aurix" },
+		{ src: "/Post 1.png", label: "Social Creative 01", category: "Social", client: "" },
+		{ src: "/Post 2.png", label: "Social Creative 02", category: "Social", client: "" },
+		{ src: "/Post 3.png", label: "Social Creative 03", category: "Social", client: "" },
+		{ src: "/Post 4.png", label: "Social Creative 04", category: "Social", client: "" },
+		{ src: "/Post-5.png", label: "Social Creative 05", category: "Social", client: "" },
+	],
+	ads: [
+		{ src: "/Ads-try-1-F.jpg", label: "Ad Creative - Concept 1", category: "Paid Ads", client: "" },
+		{ src: "/Ads-try-2-F.jpg", label: "Ad Creative - Concept 2", category: "Paid Ads", client: "" },
+		{ src: "/Ads-try-3&4.jpg", label: "Ad Creative - Concepts 3 & 4", category: "Paid Ads", client: "" },
+	],
+	design: [
+		{ src: "/1.jpg", label: "Design Portfolio 01", category: "Design", client: "" },
+		{ src: "/2.jpg", label: "Design Portfolio 02", category: "Design", client: "" },
+		{ src: "/3.jpg", label: "Design Portfolio 03", category: "Design", client: "" },
+		{ src: "/4.jpg", label: "Design Portfolio 04", category: "Design", client: "" },
+		{ src: "/5.jpg", label: "Design Portfolio 05", category: "Design", client: "" },
+		{ src: "/6.jpg", label: "Design Portfolio 06", category: "Design", client: "" },
+		{ src: "/7.jpg", label: "Design Portfolio 07", category: "Design", client: "" },
+		{ src: "/8.jpg", label: "Design Portfolio 08", category: "Design", client: "" },
+		{ src: "/9.jpg", label: "Design Portfolio 09", category: "Design", client: "" },
+		{ src: "/10.jpg", label: "Design Portfolio 10", category: "Design", client: "" },
+		{ src: "/11.jpg", label: "Design Portfolio 11", category: "Design", client: "" },
+	],
+};
+
+const allImages = [...clientWork.branding, ...clientWork.ads, ...clientWork.design];
+
+const faqs = [
+	{
+		q: "What is Orbitlee?",
+		a: "Orbitlee (also searched as Orbitly, Orbitli, or Orbit Lee) is a full-service creative and marketing agency based in India, founded by Sachin Verma. We combine branding, design, AI-generated content, paid advertising and web development under one team - so everything ships faster and compounds harder.",
+	},
+	{
+		q: "Is Orbitlee the same as Orbitly or Orbitli?",
+		a: "Yes - if you've been searching for Orbitly, Orbitli, Orbit Lee, Orbitlee Creative, or any similar spelling, you've found the right place. We're Orbitlee, India's creative and marketing agency. Strategy. Design. Grow.",
+	},
+	{
+		q: "What services does Orbitlee offer?",
+		a: "Orbitlee offers four core service areas: Marketing & Advertising (Meta Ads, Google Ads, social media, AI UGC, lead generation), Web & App Development (websites, landing pages, mobile apps, SaaS, AI automation), Branding & Creative (brand strategy, logo design, visual identity, commercial production), and Growth Consulting (business audits, go-to-market strategy, marketing roadmaps).",
+	},
+	{
+		q: "How much does Orbitlee charge?",
+		a: "Our pricing depends on the scope and services required - ranging from focused sprints to full-retainer engagements. We offer a free 30-minute brand audit where we assess your needs and provide transparent pricing. No slide decks, no pressure - just actionable next steps.",
+	},
+	{
+		q: "Where is Orbitlee located?",
+		a: "Orbitlee is based in India and serves clients across the country and internationally. We work remotely with a distributed team, delivering weekly sprint reviews so you're always in the loop regardless of location.",
+	},
+	{
+		q: "How do I contact Orbitlee?",
+		a: "You can reach Orbitlee at orbitleeee@gmail.com, call us at +91 98106 92028, or fill out the contact form on our website at orbitlee.com/contact. We respond to all briefs within one business day.",
+	},
 ];
 
-const workImages = [
-	{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix — Social Banner", category: "Branding" },
-	{ src: "/Post 1.png", label: "Social Post 01", category: "Social" },
-	{ src: "/Post 2.png", label: "Social Post 02", category: "Social" },
-	{ src: "/Post 3.png", label: "Social Post 03", category: "Social" },
-	{ src: "/Post 4.png", label: "Social Post 04", category: "Social" },
-	{ src: "/Post-5.png", label: "Social Post 05", category: "Social" },
-	{ src: "/Ads-try-1-F.jpg", label: "Ad Creative — Concept 1", category: "Ads" },
-	{ src: "/Ads-try-2-F.jpg", label: "Ad Creative — Concept 2", category: "Ads" },
-	{ src: "/Ads-try-3&4.jpg", label: "Ad Creative — Concepts 3 & 4", category: "Ads" },
-	{ src: "/1.jpg", label: "Portfolio 01", category: "Design" },
-	{ src: "/2.jpg", label: "Portfolio 02", category: "Design" },
-	{ src: "/3.jpg", label: "Portfolio 03", category: "Design" },
-	{ src: "/4.jpg", label: "Portfolio 04", category: "Design" },
-	{ src: "/5.jpg", label: "Portfolio 05", category: "Design" },
-	{ src: "/6.jpg", label: "Portfolio 06", category: "Design" },
-	{ src: "/7.jpg", label: "Portfolio 07", category: "Design" },
-	{ src: "/8.jpg", label: "Portfolio 08", category: "Design" },
-	{ src: "/9.jpg", label: "Portfolio 09", category: "Design" },
-	{ src: "/10.jpg", label: "Portfolio 10", category: "Design" },
-	{ src: "/11.jpg", label: "Portfolio 11", category: "Design" },
-];
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map((f) => ({
+		"@type": "Question",
+		name: f.q,
+		acceptedAnswer: { "@type": "Answer", text: f.a },
+	})),
+};
+
+const homePageSchema = {
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	name: "Orbitlee Services",
+	description: "Creative and marketing agency services offered by Orbitlee India",
+	numberOfItems: 4,
+	itemListElement: [
+		{ "@type": "ListItem", position: 1, name: "Marketing & Advertising", url: `${siteUrl}/services/marketing-advertising/` },
+		{ "@type": "ListItem", position: 2, name: "Web & App Development", url: `${siteUrl}/services/web-app-development/` },
+		{ "@type": "ListItem", position: 3, name: "Branding & Creative", url: `${siteUrl}/services/branding-creative/` },
+		{ "@type": "ListItem", position: 4, name: "Growth Consulting", url: `${siteUrl}/services/growth-consulting/` },
+	],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
+<Layout
+	title="Orbitlee - Creative & Marketing Agency India | Branding, AI Content, Ads & Web"
+	description="Orbitlee (also known as Orbitly, Orbitli) is India's creative & marketing agency. Branding, AI UGC, Meta Ads, Google Ads, web development & growth consulting. 25+ brands scaled. Book a free audit."
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(homePageSchema)} />
+	</Fragment>
 
-		<title>{siteTitle}</title>
-		<meta name="description" content={siteDescription} />
-		<meta name="keywords" content="creative agency India, marketing agency, branding agency, AI UGC, AI generated content, social media marketing, Meta ads, Google ads, landing page design, web development, Orbitlee, Sachin Verma" />
-		<meta name="author" content="Sachin Verma" />
-		<meta name="robots" content="index, follow, max-image-preview:large" />
-		<meta name="theme-color" content="#0a0912" />
-		<link rel="canonical" href={siteUrl} />
+	<!-- HERO -->
+	<section class="hero" itemscope itemtype="https://schema.org/WPHeader">
+		<span class="eyebrow">
+			<span class="eyebrow__dot"></span>
+			We Circle, You Grow.
+		</span>
+		<h1 class="hero__title" itemprop="headline">
+			Brands that <span class="hero__gradient">ship, sell and scale.</span>
+		</h1>
+		<p class="hero__sub" itemprop="description">
+			Strategy, design, marketing and technology - under one team, in one weekly sprint. Fewer handoffs, faster growth, one clear line of sight.
+		</p>
+		<div class="hero__actions">
+			<a href="/contact" class="btn btn--primary btn--lg">Book a free brand audit</a>
+			<a href="#client-work" class="btn btn--ghost btn--lg">See our work →</a>
+		</div>
+		<p class="hero__micro">Free 30-minute audit · No slide deck · Actionable next steps</p>
+	</section>
 
-		<!-- Open Graph -->
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Orbitlee" />
-		<meta property="og:url" content={siteUrl} />
-		<meta property="og:title" content={siteTitle} />
-		<meta property="og:description" content={siteDescription} />
-		<meta property="og:image" content={ogImage} />
-		<meta property="og:image:alt" content="Orbitlee — Creative & Marketing Agency" />
-		<meta property="og:locale" content="en_IN" />
+	<!-- STATS -->
+	<section class="trust" aria-label="Agency stats">
+		<ul class="stats">
+			{stats.map((s) => (
+				<li class="stat">
+					<span class="stat__num">{s.num}</span>
+					<span class="stat__label">{s.label}</span>
+				</li>
+			))}
+		</ul>
+	</section>
 
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={siteTitle} />
-		<meta name="twitter:description" content={siteDescription} />
-		<meta name="twitter:image" content={ogImage} />
-
-		<!-- Favicons -->
-		<link rel="icon" type="image/png" sizes="32x32" href="/Orbitlee-fav-icon.png" />
-		<link rel="icon" type="image/png" sizes="192x192" href="/Orbitlee-fav-icon.png" />
-		<link rel="shortcut icon" type="image/png" href="/Orbitlee-fav-icon.png" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/Orbitlee-fav-icon.png" />
-
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-
-		<!-- Preconnect for form submissions -->
-		<link rel="dns-prefetch" href="https://formspree.io" />
-
-		<!-- Structured data -->
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</head>
-	<body>
-		<div class="ambient"></div>
-
-		<header class="header">
-			<a href="#top" class="brand" aria-label="Orbitlee home">
-				<img src="/Orbitlee-logo-transparent.png" alt="Orbitlee" width="138" height="40" fetchpriority="high" decoding="async" />
-			</a>
-			<nav class="nav">
-				<a href="#home" data-nav="home">Home</a>
-				<a href="#services" data-nav="services">Services</a>
-				<a href="#projects" data-nav="projects">Projects</a>
-				<a href="#about" data-nav="about">About</a>
-				<a href="#contact" data-nav="contact">Contact</a>
-			</nav>
-			<a href="#contact" class="btn btn--primary btn--sm">Book a free audit</a>
-		</header>
-
-		<main id="top">
-			<!-- HERO -->
-			<section id="home" class="hero">
-				<span class="eyebrow">
-					<span class="eyebrow__dot"></span>
-					We Circle, You Grow.
-				</span>
-				<h1 class="hero__title">
-					Brands that <span class="hero__gradient">ship, sell and scale.</span>
-				</h1>
-				<p class="hero__sub">
-					Strategy, design, marketing and technology, under one team, in one weekly
-					sprint. Fewer handoffs, faster growth, one clear line of sight.
-				</p>
-				<div class="hero__actions">
-					<a href="#contact" class="btn btn--primary btn--lg">Book a free brand audit</a>
-					<a href="#projects" class="btn btn--ghost btn--lg">See our work →</a>
-				</div>
-				<p class="hero__micro">
-					Free 30-minute audit · No slide deck · Actionable next steps
-				</p>
-			</section>
-
-			<!-- STAT STRIP -->
-			<section class="trust">
-				<ul class="stats">
-					{stats.map((s) => (
-						<li class="stat">
-							<span class="stat__num">{s.num}</span>
-							<span class="stat__label">{s.label}</span>
-						</li>
-					))}
-				</ul>
-			</section>
-
-			<!-- SERVICES -->
-			<section id="services" class="section">
-				<div class="section__head">
-					<span class="eyebrow eyebrow--plain">Services</span>
-					<h2 class="section__title">Everything you need to <span class="hero__gradient">grow.</span></h2>
-					<p class="section__sub">
-						No stitching agencies together. Every discipline under one roof, briefed
-						once, moving in sync.
-					</p>
-				</div>
-
-				<div class="services-grid">
-					{services.map((s) => (
-						<article class="service">
-							<div class="service__head">
-								<span class="service__num">{s.num}</span>
-								<h3 class="service__title">{s.title}</h3>
-							</div>
-							<p class="service__blurb">{s.blurb}</p>
-							<ul class="service__list">
-								{s.items.map((it) => (
-									<li>
-										<span class="service__tick" aria-hidden="true">
-											<svg viewBox="0 0 12 12" fill="none">
-												<path d="M2.5 6.5 5 9l4.5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-											</svg>
-										</span>
-										{it}
-									</li>
-								))}
-							</ul>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<!-- WHY US -->
-			<section id="why" class="section section--why">
-				<div class="section__head">
-					<span class="eyebrow eyebrow--plain">Why Orbitlee</span>
-					<h2 class="section__title">Full-service, <span class="hero__gradient">actually delivered.</span></h2>
-				</div>
-
-				<div class="why-grid">
-					{differentiators.map((d, i) => (
-						<article class="why-card">
-							<span class="why-card__num">0{i + 1}</span>
-							<h3 class="why-card__title">{d.title}</h3>
-							<p class="why-card__body">{d.body}</p>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<!-- PROCESS -->
-			<section id="process" class="section">
-				<div class="section__head">
-					<span class="eyebrow eyebrow--plain">Process</span>
-					<h2 class="section__title">A process built to <span class="hero__gradient">compound.</span></h2>
-				</div>
-
-				<ol class="steps">
-					<li class="step">
-						<div class="step__marker">
-							<span class="step__num">01</span>
-							<div class="step__icon">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-									<circle cx="11" cy="11" r="7" />
-									<path d="m20 20-3.5-3.5" />
-								</svg>
-							</div>
-						</div>
-						<h3>Audit</h3>
-						<p>A hard look at brand, funnel and product. Where you're leaking growth and the biggest wins hide.</p>
-					</li>
-					<li class="step">
-						<div class="step__marker">
-							<span class="step__num">02</span>
-							<div class="step__icon">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-									<circle cx="12" cy="12" r="9" />
-									<circle cx="12" cy="12" r="5" />
-									<circle cx="12" cy="12" r="1.5" fill="currentColor" />
-								</svg>
-							</div>
-						</div>
-						<h3>Strategy</h3>
-						<p>A crisp, prioritised roadmap tied to business outcomes, not a 60-slide deck no one opens twice.</p>
-					</li>
-					<li class="step">
-						<div class="step__marker">
-							<span class="step__num">03</span>
-							<div class="step__icon">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M4 20h16" />
-									<path d="M6 16 15.5 6.5a2.121 2.121 0 0 1 3 3L9 19l-5 1 1-5Z" />
-								</svg>
-							</div>
-						</div>
-						<h3>Design / Build</h3>
-						<p>Identity, product, site, campaign creative, shipped as one system, in weekly review cycles.</p>
-					</li>
-					<li class="step">
-						<div class="step__marker">
-							<span class="step__num">04</span>
-							<div class="step__icon">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z" />
-									<path d="M12 15 9 12a11 11 0 0 1 7-8 11 11 0 0 1 4 4 11 11 0 0 1-8 7Z" />
-									<path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-									<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-								</svg>
-							</div>
-						</div>
-						<h3>Launch</h3>
-						<p>Go-live with real testing, analytics and ads. No soft launches that quietly die.</p>
-					</li>
-					<li class="step">
-						<div class="step__marker">
-							<span class="step__num">05</span>
-							<div class="step__icon">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M3 17 9 11l4 4 8-8" />
-									<path d="M14 7h7v7" />
-								</svg>
-							</div>
-						</div>
-						<h3>Scale</h3>
-						<p>Measure, iterate, compound. The loop that turns launch energy into a permanent orbit.</p>
-					</li>
-				</ol>
-			</section>
-
-			<!-- PROJECTS / WORK -->
-			<section id="projects" class="section section--projects">
-				<div class="section__head section__head--split">
-					<div>
-						<span class="eyebrow eyebrow--plain">Our Work</span>
-						<h2 class="section__title section__title--left">Recent orbits <span class="hero__gradient">we've flown.</span></h2>
-					</div>
-					<a href="#contact" class="btn btn--ghost btn--sm">Start yours →</a>
-				</div>
-
-				<div class="work-tabs" role="tablist" aria-label="Portfolio filter">
-					<button class="work-tab is-active" role="tab" aria-selected="true" data-tab="videos">
-						<span class="work-tab__dot"></span>
-						Videos
-						<span class="work-tab__count">{workVideos.length}</span>
-					</button>
-					<button class="work-tab" role="tab" aria-selected="false" data-tab="images">
-						<span class="work-tab__dot"></span>
-						Images
-						<span class="work-tab__count">{workImages.length}</span>
-					</button>
-				</div>
-
-				<div class="work-panel is-active" data-panel="videos">
-					<div class="work-grid work-grid--videos">
-						{workVideos.map((v) => (
-							<button class="work-card work-card--video" data-video-src={v.src} data-video-label={v.label} aria-label={`Play ${v.label}`}>
-								<video
-									class="work-card__media"
-									data-src={v.src}
-									muted
-									loop
-									playsinline
-									preload="none"
-								></video>
-								<span class="work-card__play" aria-hidden="true">
-									<svg viewBox="0 0 24 24" fill="currentColor">
-										<path d="M8 5v14l11-7z" />
-									</svg>
-								</span>
-								<span class="work-card__foot">
-									<span class="work-card__cat">{v.category}</span>
-									<span class="work-card__label">{v.label}</span>
-								</span>
-							</button>
-						))}
-					</div>
-				</div>
-
-				<div class="work-panel" data-panel="images">
-					<div class="work-grid work-grid--images">
-						{workImages.map((img) => (
-							<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
-								<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
-								<span class="work-card__foot">
-									<span class="work-card__cat">{img.category}</span>
-									<span class="work-card__label">{img.label}</span>
-								</span>
-							</button>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<!-- LIGHTBOX / VIDEO MODAL -->
-			<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-				<button class="lightbox__close" type="button" aria-label="Close">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-						<path d="M6 6l12 12M18 6L6 18" />
-					</svg>
-				</button>
-				<div class="lightbox__stage" id="lightbox-stage"></div>
-				<p class="lightbox__caption" id="lightbox-caption"></p>
-			</div>
-
-			<!-- TESTIMONIALS -->
-			<section id="testimonials" class="section section--testimonials">
-				<div class="section__head">
-					<span class="eyebrow eyebrow--plain">Testimonials</span>
-					<h2 class="section__title">Founders who <span class="hero__gradient">kept coming back.</span></h2>
-				</div>
-
-				<div class="tm-grid">
-					{testimonials.map((t) => (
-						<figure class="tm">
-							<svg class="tm__mark" viewBox="0 0 32 24" aria-hidden="true">
-								<path d="M0 24V14C0 6.3 4.9 1 12 0v5c-3.7 1-6 3.7-6 7h6v12H0Zm20 0V14c0-7.7 4.9-13 12-14v5c-3.7 1-6 3.7-6 7h6v12H20Z" fill="currentColor" />
-							</svg>
-							<blockquote class="tm__quote">"{t.quote}"</blockquote>
-							<figcaption class="tm__foot">
-								<span class="tm__avatar" style={`background: ${t.accent}`}>{t.initials}</span>
-								<span class="tm__id">
-									<span class="tm__name">{t.name}</span>
-									<span class="tm__role">{t.role} · {t.company}</span>
-								</span>
-							</figcaption>
-						</figure>
-					))}
-				</div>
-			</section>
-
-			<!-- ABOUT -->
-			<section id="about" class="about">
-				<div class="about__copy">
-					<span class="eyebrow eyebrow--plain">Why Orbitlee</span>
-					<h2 class="section__title section__title--left">We circle <span class="hero__gradient">until it opens.</span></h2>
-					<p class="about__lead">
-						Most agencies work in silos, a strategy deck here, a design file there,
-						an ad account somewhere else. Nothing compounds.
-					</p>
-					<p class="about__lead">
-						We work as one team on one brief, in one weekly cadence. Fewer handoffs.
-						Sharper decisions. Faster growth.
-					</p>
-					<ul class="about__points">
-						<li><span class="about__check">✓</span> Senior team on every engagement</li>
-						<li><span class="about__check">✓</span> Weekly sprints with transparent progress</li>
-						<li><span class="about__check">✓</span> Measured on outcomes, not deliverables</li>
+	<!-- SERVICES -->
+	<section class="section" aria-labelledby="services-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">What we do</span>
+			<h2 class="section__title" id="services-heading">Everything you need to <span class="hero__gradient">grow.</span></h2>
+			<p class="section__sub">No stitching agencies together. Every discipline under one roof, briefed once, moving in sync.</p>
+		</div>
+		<div class="service-overview-grid">
+			{serviceOverview.map((s) => (
+				<a href={s.href} class="service-overview-card" aria-label={`Learn about ${s.title}`}>
+					<div class="service-overview-card__icon" set:html={s.icon} aria-hidden="true"></div>
+					<h3 class="service-overview-card__title">{s.title}</h3>
+					<p class="service-overview-card__desc">{s.desc}</p>
+					<ul class="service-overview-card__items" aria-label={`${s.title} services`}>
+						{s.items.map((item) => <li>{item}</li>)}
 					</ul>
-				</div>
-				<div class="about__logo">
-					<img src="/Orbitlee-logo-transparent.png" alt="" width="320" height="93" loading="lazy" decoding="async" />
-				</div>
-			</section>
-
-			<!-- CONTACT -->
-			<section id="contact" class="contact">
-				<div class="contact__intro">
-					<span class="eyebrow eyebrow--plain">Contact</span>
-					<h2 class="section__title section__title--left">Let's put your brand <span class="hero__gradient">into orbit.</span></h2>
-					<p class="about__lead">
-						Tell us where you want to go, we'll draw the trajectory and fly it with you.
-						Most briefs get a response within one working day.
-					</p>
-					<div class="contact__meta">
-						<div class="contact__meta-item">
-							<span class="contact__meta-label">Email</span>
-							<a href="mailto:orbitleeee@gmail.com">orbitleeee@gmail.com</a>
-						</div>
-						<div class="contact__meta-item">
-							<span class="contact__meta-label">Phone</span>
-							<a href="tel:+919810692028">+91 98106 92028</a>
-						</div>
-						<div class="contact__meta-item">
-							<span class="contact__meta-label">Instagram</span>
-							<a href="https://www.instagram.com/orbitlee_" target="_blank" rel="noopener">@orbitlee_</a>
-						</div>
-						<div class="contact__meta-item">
-							<span class="contact__meta-label">Response time</span>
-							<span>Within 1 business day</span>
-						</div>
-					</div>
-				</div>
-
-				<form class="form" id="contact-form" action="https://formspree.io/f/moeajqjw" method="POST" novalidate>
-					<div class="form__row form__row--two">
-						<label class="field">
-							<span class="field__label">Full name <span class="req">*</span></span>
-							<input type="text" name="name" required placeholder="Jane Doe" />
-						</label>
-						<label class="field">
-							<span class="field__label">Email <span class="req">*</span></span>
-							<input type="email" name="email" required placeholder="jane@company.com" />
-						</label>
-					</div>
-					<div class="form__row form__row--two">
-						<label class="field">
-							<span class="field__label">Company</span>
-							<input type="text" name="company" placeholder="Acme Inc." />
-						</label>
-						<label class="field">
-							<span class="field__label">Budget</span>
-							<select name="budget">
-								<option value="">Select a range</option>
-								<option value="< ₹1L">Under ₹1L</option>
-								<option value="₹1L – ₹5L">₹1L – ₹5L</option>
-								<option value="₹5L – ₹15L">₹5L – ₹15L</option>
-								<option value="₹15L +">₹15L +</option>
-								<option value="Not sure yet">Not sure yet</option>
-							</select>
-						</label>
-					</div>
-					<fieldset class="field field--chips">
-						<legend class="field__label">What do you need help with? <span class="hint">(pick any)</span></legend>
-						<div class="chips">
-							{services.map((s) => (
-								<label class="chip">
-									<input type="checkbox" name="services" value={s.title} />
-									<span>{s.title}</span>
-								</label>
-							))}
-						</div>
-					</fieldset>
-					<label class="field">
-						<span class="field__label">Tell us about your project <span class="req">*</span></span>
-						<textarea name="message" rows="5" required placeholder="A few lines about your business, what you're trying to solve, and your timeline."></textarea>
-					</label>
-					<div class="form__foot">
-						<button type="submit" class="btn btn--primary btn--lg">
-							Send the brief
-						</button>
-						<p class="form__note" id="form-note" role="status"></p>
-					</div>
-				</form>
-			</section>
-		</main>
-
-		<footer class="footer">
-			<div class="footer__top">
-				<a href="#top" class="footer__brand">
-					<img src="/Orbitlee-logo-transparent.png" alt="Orbitlee" width="179" height="52" loading="lazy" decoding="async" />
+					<span class="service-overview-card__link">Explore {s.title} →</span>
 				</a>
-				<nav class="footer__nav">
-					<a href="#services">Services</a>
-					<a href="#projects">Projects</a>
-					<a href="#about">About</a>
-					<a href="#contact">Contact</a>
-				</nav>
+			))}
+		</div>
+	</section>
+
+	<!-- WHY US -->
+	<section class="section" aria-labelledby="why-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">Why Orbitlee</span>
+			<h2 class="section__title" id="why-heading">Full-service, <span class="hero__gradient">actually delivered.</span></h2>
+		</div>
+		<div class="why-grid">
+			{differentiators.map((d, i) => (
+				<article class="why-card">
+					<span class="why-card__num">0{i + 1}</span>
+					<h3 class="why-card__title">{d.title}</h3>
+					<p class="why-card__body">{d.body}</p>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<!-- CLIENT WORK GALLERY -->
+	<section id="client-work" class="section section--projects" aria-labelledby="work-heading">
+		<div class="section__head section__head--split">
+			<div>
+				<span class="eyebrow eyebrow--plain">Client Work</span>
+				<h2 class="section__title section__title--left" id="work-heading">
+					Real orbits <span class="hero__gradient">we've flown.</span>
+				</h2>
+				<p style="color:var(--muted);font-size:15px;margin:0;">
+					Ad films, AI content, brand identity and design - delivered for real clients across India.
+				</p>
 			</div>
-			<div class="footer__bar">
-				<p class="footer__tag">We Circle, You Grow.</p>
-				<div class="footer__social">
-					<a href="https://www.instagram.com/orbitlee_" target="_blank" rel="noopener" aria-label="Orbitlee on Instagram">
-						<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-							<rect x="3" y="3" width="18" height="18" rx="5" />
-							<circle cx="12" cy="12" r="4" />
-							<circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-						</svg>
-					</a>
-					<a href="mailto:orbitleeee@gmail.com" aria-label="Email Orbitlee">
-						<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-							<rect x="3" y="5" width="18" height="14" rx="2" />
-							<path d="m3 7 9 6 9-6" />
-						</svg>
-					</a>
-					<a href="tel:+919810692028" aria-label="Call Orbitlee">
-						<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-						</svg>
-					</a>
-				</div>
-				<p class="footer__copy">© {year} Orbitlee. All rights reserved.</p>
+			<a href="/contact" class="btn btn--ghost btn--sm">Start yours →</a>
+		</div>
+
+		<div class="work-tabs" role="tablist" aria-label="Portfolio categories">
+			<button class="work-tab is-active" role="tab" aria-selected="true" data-tab="videos">
+				<span class="work-tab__dot"></span>
+				Ad Films & UGC
+				<span class="work-tab__count">{clientWork.videos.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="branding">
+				<span class="work-tab__dot"></span>
+				Branding & Social
+				<span class="work-tab__count">{clientWork.branding.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="ads">
+				<span class="work-tab__dot"></span>
+				Ad Creatives
+				<span class="work-tab__count">{clientWork.ads.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="design">
+				<span class="work-tab__dot"></span>
+				Design
+				<span class="work-tab__count">{clientWork.design.length}</span>
+			</button>
+		</div>
+
+		<div class="work-panel is-active" data-panel="videos" role="tabpanel">
+			<div class="work-grid work-grid--videos">
+				{clientWork.videos.slice(0, 3).map((v) => (
+					<button class="work-card work-card--video" data-video-src={v.src} data-video-label={v.label} aria-label={`Play ${v.label}`}>
+						<video class="work-card__media" data-src={v.src} muted loop playsinline preload="metadata"></video>
+						<span class="work-card__play" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+						</span>
+						<span class="work-card__foot">
+							<span class="work-card__cat">{v.category}</span>
+							<span class="work-card__label">{v.label}</span>
+							{v.client && <span class="work-card__client">{v.client}</span>}
+						</span>
+					</button>
+				))}
 			</div>
-		</footer>
+			<div class="work-viewall">
+				<a href="/work" class="btn btn--ghost btn--lg">View all ad films & UGC →</a>
+			</div>
+		</div>
 
-		<script is:inline>
-			// Highlight nav item for the section currently in view
-			(function () {
-				const navLinks = document.querySelectorAll('.nav a[data-nav]');
-				const sections = Array.from(navLinks)
-					.map((link) => ({ link, el: document.getElementById(link.getAttribute('data-nav')) }))
-					.filter((s) => s.el);
+		<div class="work-panel" data-panel="branding" role="tabpanel">
+			<div class="work-grid work-grid--images">
+				{clientWork.branding.slice(0, 3).map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+							{img.client && <span class="work-card__client">{img.client}</span>}
+						</span>
+					</button>
+				))}
+			</div>
+			<div class="work-viewall">
+				<a href="/work" class="btn btn--ghost btn--lg">View all branding & social →</a>
+			</div>
+		</div>
 
-				function updateActive() {
-					const trigger = window.scrollY + window.innerHeight * 0.32;
-					let active = sections[0];
-					for (const s of sections) {
-						if (s.el.offsetTop <= trigger) active = s;
-					}
-					sections.forEach((s) => s.link.classList.remove('active'));
-					if (active) active.link.classList.add('active');
-				}
+		<div class="work-panel" data-panel="ads" role="tabpanel">
+			<div class="work-grid work-grid--images work-grid--ads">
+				{clientWork.ads.slice(0, 3).map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media work-card__media--wide" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+						</span>
+					</button>
+				))}
+			</div>
+			<div class="work-viewall">
+				<a href="/work" class="btn btn--ghost btn--lg">View all ad creatives →</a>
+			</div>
+		</div>
 
-				window.addEventListener('scroll', updateActive, { passive: true });
-				window.addEventListener('resize', updateActive);
-				updateActive();
-			})();
+		<div class="work-panel" data-panel="design" role="tabpanel">
+			<div class="work-grid work-grid--images work-grid--design">
+				{clientWork.design.slice(0, 4).map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+						</span>
+					</button>
+				))}
+			</div>
+			<div class="work-viewall">
+				<a href="/work" class="btn btn--ghost btn--lg">View all design work →</a>
+			</div>
+		</div>
+	</section>
 
-			// Work section: tabs, hover-preview, lightbox
-			(function () {
-				const tabs = document.querySelectorAll('.work-tab');
-				const panels = document.querySelectorAll('.work-panel');
-				tabs.forEach((tab) => {
-					tab.addEventListener('click', () => {
-						const target = tab.getAttribute('data-tab');
-						tabs.forEach((t) => {
-							const active = t === tab;
-							t.classList.toggle('is-active', active);
-							t.setAttribute('aria-selected', active ? 'true' : 'false');
-						});
-						panels.forEach((p) => {
-							p.classList.toggle('is-active', p.getAttribute('data-panel') === target);
-						});
-						// Pause any playing video previews
-						document.querySelectorAll('.work-card--video video').forEach((v) => {
-							v.pause();
-							v.currentTime = 0;
-						});
+	<!-- LIGHTBOX -->
+	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Media viewer">
+		<button class="lightbox__close" type="button" aria-label="Close viewer">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+				<path d="M6 6l12 12M18 6L6 18"/>
+			</svg>
+		</button>
+		<div class="lightbox__stage" id="lightbox-stage"></div>
+		<p class="lightbox__caption" id="lightbox-caption"></p>
+	</div>
+
+	<!-- TESTIMONIALS -->
+	<section class="section section--testimonials" aria-labelledby="testimonials-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">Client Testimonials</span>
+			<h2 class="section__title" id="testimonials-heading">Founders who <span class="hero__gradient">kept coming back.</span></h2>
+		</div>
+		<div class="tm-grid">
+			{testimonials.map((t) => (
+				<figure class="tm" itemscope itemtype="https://schema.org/Review">
+					<svg class="tm__mark" viewBox="0 0 32 24" aria-hidden="true">
+						<path d="M0 24V14C0 6.3 4.9 1 12 0v5c-3.7 1-6 3.7-6 7h6v12H0Zm20 0V14c0-7.7 4.9-13 12-14v5c-3.7 1-6 3.7-6 7h6v12H20Z" fill="currentColor"/>
+					</svg>
+					<blockquote class="tm__quote" itemprop="reviewBody">"{t.quote}"</blockquote>
+					<figcaption class="tm__foot">
+						<span class="tm__avatar" style={`background: ${t.accent}`} aria-hidden="true">{t.initials}</span>
+						<span class="tm__id" itemprop="author" itemscope itemtype="https://schema.org/Person">
+							<span class="tm__name" itemprop="name">{t.name}</span>
+							<span class="tm__role">{t.role} · {t.company}</span>
+						</span>
+					</figcaption>
+				</figure>
+			))}
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="section" aria-labelledby="faq-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">FAQ</span>
+			<h2 class="section__title" id="faq-heading">Common <span class="hero__gradient">questions.</span></h2>
+		</div>
+		<div class="faq-list">
+			{faqs.map((f) => (
+				<details class="faq-item">
+					<summary class="faq-question">{f.q}</summary>
+					<p class="faq-answer">{f.a}</p>
+				</details>
+			))}
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<div class="cta-strip">
+		<div class="cta-strip__inner">
+			<div class="cta-strip__copy">
+				<h2 class="cta-strip__title">Ready to put your brand <span class="hero__gradient">into orbit?</span></h2>
+				<p class="cta-strip__sub">Most briefs get a response within one working day. No pushy sales calls.</p>
+			</div>
+			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
+		</div>
+	</div>
+
+	<script is:inline>
+		(function () {
+			// Work tabs
+			const tabs = document.querySelectorAll('.work-tab');
+			const panels = document.querySelectorAll('.work-panel');
+			tabs.forEach((tab) => {
+				tab.addEventListener('click', () => {
+					const target = tab.getAttribute('data-tab');
+					tabs.forEach((t) => {
+						const active = t === tab;
+						t.classList.toggle('is-active', active);
+						t.setAttribute('aria-selected', active ? 'true' : 'false');
 					});
+					panels.forEach((p) => {
+						p.classList.toggle('is-active', p.getAttribute('data-panel') === target);
+					});
+					document.querySelectorAll('.work-card--video video').forEach((v) => { v.pause(); v.currentTime = 0; });
 				});
+			});
 
-				// Lazy-attach video sources when cards scroll into view
-				const videoCards = document.querySelectorAll('.work-card--video');
-				const attachVideoSrc = (card) => {
+			// Lazy video src attachment
+			const videoCards = document.querySelectorAll('.work-card--video');
+			const attachVideoSrc = (card) => {
+				const video = card.querySelector('video');
+				if (!video || video.src) return;
+				const src = video.getAttribute('data-src');
+				if (!src) return;
+				// #t=0.1 hints browsers to seek to first frame (iOS Safari fix for black thumbnail)
+				video.src = src + '#t=0.1';
+				video.preload = 'metadata';
+				video.addEventListener('loadedmetadata', function () {
+					try { video.currentTime = 0.1; } catch (_) {}
+				}, { once: true });
+			};
+			if ('IntersectionObserver' in window) {
+				const io = new IntersectionObserver((entries) => {
+					entries.forEach((e) => { if (e.isIntersecting) { attachVideoSrc(e.target); io.unobserve(e.target); } });
+				}, { rootMargin: '200px' });
+				videoCards.forEach((c) => io.observe(c));
+			} else {
+				videoCards.forEach(attachVideoSrc);
+			}
+
+			// Hover preview (desktop)
+			const isTouch = window.matchMedia('(hover: none)').matches;
+			if (!isTouch) {
+				videoCards.forEach((card) => {
 					const video = card.querySelector('video');
-					if (!video || video.src) return;
-					const src = video.getAttribute('data-src');
-					if (src) {
-						video.src = src;
-						video.preload = 'metadata';
-					}
-				};
-				if ('IntersectionObserver' in window) {
-					const io = new IntersectionObserver((entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								attachVideoSrc(entry.target);
-								io.unobserve(entry.target);
-							}
-						});
-					}, { rootMargin: '200px' });
-					videoCards.forEach((card) => io.observe(card));
-				} else {
-					videoCards.forEach(attachVideoSrc);
-				}
-
-				// Hover to preview video (desktop only)
-				const isTouch = window.matchMedia('(hover: none)').matches;
-				if (!isTouch) {
-					videoCards.forEach((card) => {
-						const video = card.querySelector('video');
-						if (!video) return;
-						card.addEventListener('mouseenter', () => {
-							attachVideoSrc(card);
-							video.play().catch(() => {});
-						});
-						card.addEventListener('mouseleave', () => {
-							video.pause();
-							if (video.currentTime) video.currentTime = 0;
-						});
-					});
-				}
-
-				// Lightbox
-				const lightbox = document.getElementById('lightbox');
-				const stage = document.getElementById('lightbox-stage');
-				const caption = document.getElementById('lightbox-caption');
-				const closeBtn = lightbox ? lightbox.querySelector('.lightbox__close') : null;
-
-				function openLightbox(node, label) {
-					if (!lightbox || !stage) return;
-					stage.innerHTML = '';
-					stage.appendChild(node);
-					caption.textContent = label || '';
-					lightbox.classList.add('is-open');
-					lightbox.setAttribute('aria-hidden', 'false');
-					document.body.style.overflow = 'hidden';
-				}
-
-				function closeLightbox() {
-					if (!lightbox || !stage) return;
-					const v = stage.querySelector('video');
-					if (v) { v.pause(); v.src = ''; }
-					stage.innerHTML = '';
-					caption.textContent = '';
-					lightbox.classList.remove('is-open');
-					lightbox.setAttribute('aria-hidden', 'true');
-					document.body.style.overflow = '';
-				}
-
-				document.querySelectorAll('.work-card--video').forEach((card) => {
-					card.addEventListener('click', () => {
-						const src = card.getAttribute('data-video-src');
-						const label = card.getAttribute('data-video-label');
-						const v = document.createElement('video');
-						v.src = src;
-						v.controls = true;
-						v.autoplay = true;
-						v.playsInline = true;
-						openLightbox(v, label);
-					});
-				});
-
-				document.querySelectorAll('.work-card--image').forEach((card) => {
-					card.addEventListener('click', () => {
-						const src = card.getAttribute('data-image-src');
-						const label = card.getAttribute('data-image-label');
-						const img = document.createElement('img');
-						img.src = src;
-						img.alt = label || '';
-						openLightbox(img, label);
-					});
-				});
-
-				if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-				if (lightbox) {
-					lightbox.addEventListener('click', (e) => {
-						if (e.target === lightbox) closeLightbox();
-					});
-				}
-				document.addEventListener('keydown', (e) => {
-					if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) closeLightbox();
-				});
-			})();
-
-			const form = document.getElementById('contact-form');
-			const note = document.getElementById('form-note');
-			if (form) {
-				const submitBtn = form.querySelector('button[type="submit"]');
-				const defaultLabel = submitBtn ? submitBtn.textContent : 'Send';
-
-				form.addEventListener('submit', async (e) => {
-					e.preventDefault();
-					const data = new FormData(form);
-					const name = (data.get('name') || '').toString().trim();
-					const email = (data.get('email') || '').toString().trim();
-					const message = (data.get('message') || '').toString().trim();
-
-					if (!name || !email || !message) {
-						note.textContent = 'Please fill in name, email and a short message.';
-						note.classList.add('form__note--error');
-						return;
-					}
-
-					note.textContent = '';
-					note.classList.remove('form__note--error');
-					if (submitBtn) {
-						submitBtn.disabled = true;
-						submitBtn.textContent = 'Sending...';
-					}
-
-					try {
-						const res = await fetch(form.action, {
-							method: 'POST',
-							body: data,
-							headers: { Accept: 'application/json' },
-						});
-
-						if (res.ok) {
-							note.textContent = "Thanks! Your brief is in. We'll be in touch within one business day.";
-							form.reset();
-						} else {
-							let msg = 'Something went wrong. Please try again or email hello@orbitlee.com';
-							try {
-								const body = await res.json();
-								if (body && body.errors && body.errors.length) {
-									msg = body.errors.map((er) => er.message).join(', ');
-								}
-							} catch (_) {}
-							note.textContent = msg;
-							note.classList.add('form__note--error');
-						}
-					} catch (err) {
-						note.textContent = 'Network error. Please try again or email hello@orbitlee.com';
-						note.classList.add('form__note--error');
-					} finally {
-						if (submitBtn) {
-							submitBtn.disabled = false;
-							submitBtn.textContent = defaultLabel;
-						}
-					}
+					if (!video) return;
+					card.addEventListener('mouseenter', () => { attachVideoSrc(card); video.play().catch(() => {}); });
+					card.addEventListener('mouseleave', () => { video.pause(); if (video.currentTime) video.currentTime = 0; });
 				});
 			}
-		</script>
 
-		<style is:global>
-			:root {
-				--bg: #0a0912;
-				--bg-2: #10101c;
-				--panel: rgba(255, 255, 255, 0.03);
-				--panel-2: rgba(255, 255, 255, 0.045);
-				--line: rgba(255, 255, 255, 0.09);
-				--line-strong: rgba(255, 255, 255, 0.16);
-				--text: #f5f4fa;
-				--muted: #9694a3;
-				--muted-2: #6f6d7a;
-				--green: #a3e635;
-				--violet: #a78bfa;
-				--violet-2: #8b5cf6;
-				--violet-3: #7c3aed;
-				--purple: #a78bfa;
-				--gradient: linear-gradient(90deg, #a3e635 0%, #f5f4fa 50%, #a78bfa 100%);
-				--gradient-btn: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 100%);
-				--gradient-btn-hover: linear-gradient(180deg, #a78bfa 0%, #8b5cf6 100%);
-				--font: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-				--radius: 20px;
-			}
-
-			*, *::before, *::after { box-sizing: border-box; }
-			html {
-				scroll-behavior: smooth;
-				overflow-x: hidden;
-			}
-			body {
-				margin: 0;
-				background: var(--bg);
-				color: var(--text);
-				font-family: var(--font);
-				font-size: 16px;
-				line-height: 1.6;
-				-webkit-font-smoothing: antialiased;
-				text-rendering: optimizeLegibility;
-				overflow-x: hidden;
-				max-width: 100vw;
-			}
-			img { display: block; max-width: 100%; }
-			a { color: inherit; text-decoration: none; }
-			button { font-family: inherit; }
-
-			.ambient {
-				position: fixed;
-				inset: 0;
-				z-index: 0;
-				pointer-events: none;
-				background:
-					radial-gradient(900px 700px at 10% -10%, rgba(163, 230, 53, 0.085), transparent 60%),
-					radial-gradient(900px 700px at 100% 0%, rgba(124, 58, 237, 0.12), transparent 60%),
-					radial-gradient(900px 700px at 50% 100%, rgba(167, 139, 250, 0.06), transparent 60%);
-			}
-
-			/* HEADER */
-			.header {
-				position: sticky;
-				top: 16px;
-				z-index: 50;
-				max-width: 1280px;
-				margin: 16px auto 0;
-				padding: 10px 12px 10px 20px;
-				display: grid;
-				grid-template-columns: auto 1fr auto;
-				align-items: center;
-				gap: 20px;
-				background: rgba(15, 14, 24, 0.72);
-				backdrop-filter: blur(20px) saturate(1.4);
-				-webkit-backdrop-filter: blur(20px) saturate(1.4);
-				border: 1px solid rgba(255, 255, 255, 0.08);
-				border-radius: 999px;
-				box-shadow:
-					0 12px 40px -12px rgba(0, 0, 0, 0.6),
-					inset 0 1px 0 rgba(255, 255, 255, 0.05);
-			}
-			.brand { display: inline-flex; align-items: center; padding: 0 6px; }
-			.brand img { height: 40px; width: auto; }
-
-			.nav {
-				display: flex;
-				gap: 4px;
-				justify-self: center;
-				padding: 4px;
-				background: rgba(255, 255, 255, 0.03);
-				border: 1px solid var(--line);
-				border-radius: 999px;
-			}
-			.nav a {
-				padding: 8px 16px;
-				border-radius: 999px;
-				font-size: 14px;
-				font-weight: 500;
-				color: var(--muted);
-				transition: color 0.2s, background 0.2s;
-			}
-			.nav a:hover {
-				color: var(--text);
-				background: rgba(255, 255, 255, 0.06);
-			}
-			.nav a.active {
-				color: #fff;
-				background: rgba(255, 255, 255, 0.05);
-				text-shadow:
-					0 0 10px rgba(163, 230, 53, 0.55),
-					0 0 22px rgba(167, 139, 250, 0.45);
-			}
-
-			.header__right {
-				display: flex;
-				align-items: center;
-				gap: 10px;
-			}
-			.header__status {
-				display: inline-flex;
-				align-items: center;
-				gap: 8px;
-				padding: 8px 14px;
-				background: rgba(255, 255, 255, 0.03);
-				border: 1px solid var(--line);
-				border-radius: 999px;
-				font-size: 13px;
-				font-weight: 500;
-				color: var(--muted);
-				white-space: nowrap;
-			}
-			.status-dot {
-				width: 7px;
-				height: 7px;
-				background: var(--green);
-				border-radius: 50%;
-				box-shadow: 0 0 10px var(--green);
-				animation: pulse 2.4s ease-in-out infinite;
-			}
-
-			/* BUTTONS */
-			.btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				gap: 8px;
-				padding: 12px 22px;
-				border-radius: 999px;
-				font-size: 15px;
-				font-weight: 600;
-				border: 1px solid transparent;
-				cursor: pointer;
-				transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-				white-space: nowrap;
-			}
-			.btn--sm { padding: 10px 18px; font-size: 14px; }
-			.btn--lg { padding: 16px 28px; font-size: 16px; }
-
-			.btn--primary {
-				background: var(--gradient-btn);
-				color: #fff;
-				border-color: rgba(255, 255, 255, 0.08);
-				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
-				box-shadow:
-					inset 0 1px 0 rgba(255, 255, 255, 0.28),
-					inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-					0 10px 28px -10px rgba(168, 85, 247, 0.55),
-					0 6px 16px -6px rgba(217, 70, 239, 0.35);
-			}
-			.btn--primary:hover {
-				background: var(--gradient-btn-hover);
-				transform: translateY(-2px);
-				box-shadow:
-					inset 0 1px 0 rgba(255, 255, 255, 0.34),
-					inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-					0 18px 40px -10px rgba(168, 85, 247, 0.75),
-					0 10px 22px -6px rgba(217, 70, 239, 0.5);
-			}
-			.btn--ghost {
-				background: transparent;
-				color: var(--text);
-				border-color: var(--line-strong);
-			}
-			.btn--ghost:hover {
-				background: rgba(255, 255, 255, 0.05);
-				transform: translateY(-2px);
-			}
-
-			main { position: relative; z-index: 1; }
-
-			/* HERO */
-			.hero {
-				max-width: 1280px;
-				margin: 0 auto;
-				padding: 80px 40px 40px;
-				text-align: center;
-			}
-			.eyebrow {
-				display: inline-flex;
-				align-items: center;
-				gap: 10px;
-				padding: 8px 16px;
-				border: 1px solid var(--line-strong);
-				border-radius: 999px;
-				font-size: 13px;
-				font-weight: 500;
-				color: var(--muted);
-				background: var(--panel);
-			}
-			.eyebrow--plain {
-				background: transparent;
-				border-color: var(--line);
-				color: var(--muted);
-				text-transform: uppercase;
-				letter-spacing: 0.12em;
-				font-size: 12px;
-				padding: 6px 14px;
-			}
-			.eyebrow__dot {
-				width: 8px; height: 8px;
-				background: var(--green);
-				border-radius: 50%;
-				box-shadow: 0 0 12px var(--green);
-				animation: pulse 2.4s ease-in-out infinite;
-			}
-			@keyframes pulse {
-				0%, 100% { opacity: 1; transform: scale(1); }
-				50% { opacity: 0.4; transform: scale(0.85); }
-			}
-
-			.hero__title {
-				font-size: clamp(32px, 5.5vw, 72px);
-				font-weight: 700;
-				letter-spacing: -0.025em;
-				line-height: 1.1;
-				margin: 28px auto 22px;
-				max-width: none;
-				white-space: nowrap;
-			}
-			.hero__gradient {
-				background: var(--gradient);
-				background-size: 180% 100%;
-				background-position: 0% 50%;
-				-webkit-background-clip: text;
-				background-clip: text;
-				-webkit-text-fill-color: transparent;
-				color: transparent;
-				animation: breathe 7s ease-in-out infinite;
-				will-change: background-position, filter;
-			}
-			@keyframes breathe {
-				0%, 100% {
-					background-position: 0% 50%;
-					filter: brightness(1) saturate(1);
-				}
-				50% {
-					background-position: 100% 50%;
-					filter: brightness(1.12) saturate(1.15);
-				}
-			}
-			@media (prefers-reduced-motion: reduce) {
-				.hero__gradient { animation: none; }
-			}
-			.hero__sub {
-				width: 75vw;
-				max-width: 75vw;
-				margin-top: 0;
-				margin-bottom: 40px;
-				margin-left: calc((100% - 75vw) / 2);
-				margin-right: calc((100% - 75vw) / 2);
-				font-size: 19px;
-				color: var(--muted);
-			}
-			.hero__actions {
-				display: flex;
-				gap: 12px;
-				justify-content: center;
-				flex-wrap: wrap;
-			}
-
-			/* HERO EXTRAS */
-			.hero__micro {
-				margin: 20px 0 0;
-				font-size: 13px;
-				color: var(--muted-2);
-				letter-spacing: 0.02em;
-			}
-
-			/* TRUST / STATS */
-			.trust {
-				max-width: 1200px;
-				margin: 20px auto 0;
-				padding: 0 40px;
-			}
-			.stats {
-				list-style: none;
-				padding: 32px 24px;
-				margin: 0;
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 16px;
-				border-top: 1px solid var(--line);
-				border-bottom: 1px solid var(--line);
-			}
-			.stat {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 6px;
-				text-align: center;
-				position: relative;
-			}
-			.stat:not(:last-child)::after {
-				content: '';
-				position: absolute;
-				right: 0;
-				top: 20%;
-				bottom: 20%;
-				width: 1px;
-				background: var(--line);
-			}
-			.stat__num {
-				font-size: clamp(28px, 3.4vw, 44px);
-				font-weight: 800;
-				letter-spacing: -0.02em;
-				background: var(--gradient);
-				-webkit-background-clip: text;
-				background-clip: text;
-				-webkit-text-fill-color: transparent;
-				line-height: 1.05;
-			}
-			.stat__label {
-				font-size: 13px;
-				color: var(--muted);
-				letter-spacing: 0.02em;
-			}
-
-			/* SECTION */
-			.section {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 40px 40px;
-			}
-			.section__head {
-				text-align: center;
-				margin: 0 auto 48px;
-			}
-			.section__title {
-				font-size: clamp(32px, 5.2vw, 62px);
-				font-weight: 800;
-				letter-spacing: -0.025em;
-				line-height: 1.1;
-				margin: 20px 0;
-				white-space: nowrap;
-			}
-			.section__title--left { text-align: left; }
-			.section__sub {
-				margin: 0 auto;
-				max-width: 640px;
-				font-size: 18px;
-				color: var(--muted);
-			}
-
-			/* SERVICES */
-			.services-grid {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 20px;
-			}
-			.service {
-				display: flex;
-				flex-direction: column;
-				padding: 32px;
-				background: var(--panel);
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				transition: transform 0.3s, border-color 0.3s, background 0.3s;
-			}
-			.service:hover {
-				transform: translateY(-4px);
-				border-color: var(--line-strong);
-				background: var(--panel-2);
-			}
-			.service__head {
-				display: flex;
-				align-items: baseline;
-				gap: 16px;
-				margin-bottom: 12px;
-			}
-			.service__num {
-				font-size: 13px;
-				font-weight: 600;
-				color: var(--muted-2);
-				letter-spacing: 0.08em;
-			}
-			.service__title {
-				font-size: 26px;
-				font-weight: 700;
-				margin: 0;
-				letter-spacing: -0.015em;
-			}
-			.service__blurb {
-				color: var(--muted);
-				font-size: 15px;
-				margin: 0 0 24px;
-				flex: 1;
-			}
-			.service__list {
-				list-style: none;
-				margin: 0;
-				padding: 20px 0 0;
-				border-top: 1px solid var(--line);
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-			}
-			.service__list li {
-				display: flex;
-				align-items: center;
-				gap: 12px;
-				font-size: 15px;
-				color: var(--text);
-			}
-			.service__tick {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				width: 20px;
-				height: 20px;
-				border-radius: 50%;
-				background: rgba(163, 230, 53, 0.12);
-				color: var(--green);
-				flex-shrink: 0;
-			}
-			.service__tick svg { width: 12px; height: 12px; }
-
-			/* WHY US */
-			.section--why { padding-top: 40px; }
-			#services.section { padding-top: 80px; }
-			.why-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 20px;
-			}
-			.why-card {
-				position: relative;
-				padding: 36px;
-				background: var(--panel);
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				overflow: hidden;
-				transition: transform 0.3s, border-color 0.3s;
-			}
-			.why-card::before {
-				content: '';
-				position: absolute;
-				inset: 0 0 auto 0;
-				height: 1px;
-				background: var(--gradient);
-				opacity: 0.6;
-			}
-			.why-card:hover {
-				transform: translateY(-4px);
-				border-color: var(--line-strong);
-			}
-			.why-card__num {
-				display: inline-block;
-				font-size: 12px;
-				font-weight: 600;
-				color: var(--muted-2);
-				letter-spacing: 0.14em;
-				margin-bottom: 12px;
-			}
-			.why-card__title {
-				font-size: 24px;
-				font-weight: 700;
-				margin: 0 0 10px;
-				letter-spacing: -0.015em;
-			}
-			.why-card__body {
-				margin: 0;
-				color: var(--muted);
-				font-size: 15px;
-			}
-
-			/* TESTIMONIALS */
-			.section--testimonials { padding-top: 40px; padding-bottom: 40px; }
-			.tm-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 20px;
-			}
-			.tm {
-				margin: 0;
-				padding: 36px;
-				background: var(--panel);
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				display: flex;
-				flex-direction: column;
-				gap: 20px;
-				transition: transform 0.3s, border-color 0.3s;
-			}
-			.tm:hover {
-				transform: translateY(-4px);
-				border-color: var(--line-strong);
-			}
-			.tm__mark {
-				width: 32px;
-				height: 24px;
-				color: var(--purple);
-				opacity: 0.7;
-			}
-			.tm__quote {
-				margin: 0;
-				font-size: 18px;
-				line-height: 1.5;
-				color: var(--text);
-				font-weight: 500;
-				letter-spacing: -0.005em;
-				flex: 1;
-			}
-			.tm__foot {
-				display: flex;
-				align-items: center;
-				gap: 14px;
-				padding-top: 20px;
-				border-top: 1px solid var(--line);
-			}
-			.tm__avatar {
-				width: 44px;
-				height: 44px;
-				border-radius: 50%;
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				color: #0a0912;
-				font-weight: 700;
-				font-size: 14px;
-				letter-spacing: 0.02em;
-				flex-shrink: 0;
-			}
-			.tm__id { display: flex; flex-direction: column; }
-			.tm__name { font-size: 15px; font-weight: 600; color: var(--text); }
-			.tm__role { font-size: 13px; color: var(--muted); }
-
-			/* PROJECTS */
-			.section--projects { padding-top: 40px; padding-bottom: 40px; }
-			.section__head--split {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 24px;
-				max-width: none;
-				text-align: left;
-				margin-bottom: 48px;
-			}
-			.section__head--split > div { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
-			.projects-grid {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 24px;
-			}
-			.project {
-				display: flex;
-				flex-direction: column;
-				background: var(--panel);
-				border: 1px solid var(--line);
-				border-radius: var(--radius);
-				overflow: hidden;
-				transition: transform 0.35s, border-color 0.35s;
-			}
-			.project:hover {
-				transform: translateY(-6px);
-				border-color: var(--line-strong);
-			}
-			.project__cover {
-				position: relative;
-				aspect-ratio: 4 / 3;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background: linear-gradient(135deg, var(--p-a), var(--p-b));
-				overflow: hidden;
-			}
-			.project__cover::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background:
-					radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 45%),
-					radial-gradient(circle at 70% 80%, rgba(0,0,0,0.35), transparent 55%);
-			}
-			.project__cover::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background-image:
-					linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-				background-size: 32px 32px;
-				opacity: 0.6;
-			}
-			.project__mono {
-				position: relative;
-				font-size: clamp(80px, 12vw, 140px);
-				font-weight: 800;
-				color: rgba(10, 9, 18, 0.85);
-				line-height: 1;
-				letter-spacing: -0.05em;
-				text-shadow: 0 6px 20px rgba(0,0,0,0.2);
-			}
-			.project__cat {
-				position: absolute;
-				left: 20px;
-				bottom: 16px;
-				font-size: 12px;
-				font-weight: 600;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				color: rgba(10, 9, 18, 0.75);
-				background: rgba(255, 255, 255, 0.55);
-				padding: 6px 12px;
-				border-radius: 999px;
-				backdrop-filter: blur(6px);
-			}
-			.project__body { padding: 24px 28px 28px; }
-			.project__title {
-				font-size: 22px;
-				font-weight: 700;
-				margin: 0 0 8px;
-				letter-spacing: -0.015em;
-			}
-			.project__blurb {
-				margin: 0 0 16px;
-				color: var(--muted);
-				font-size: 14px;
-				line-height: 1.55;
-			}
-			.project__tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 6px;
-			}
-			.project__tag {
-				font-size: 11px;
-				font-weight: 500;
-				letter-spacing: 0.06em;
-				text-transform: uppercase;
-				color: var(--muted);
-				border: 1px solid var(--line);
-				border-radius: 999px;
-				padding: 4px 10px;
-			}
-
-			/* WORK TABS + GALLERY */
-			.work-tabs {
-				display: inline-flex;
-				gap: 4px;
-				padding: 4px;
-				margin: 0 auto 32px;
-				background: rgba(255, 255, 255, 0.03);
-				border: 1px solid var(--line);
-				border-radius: 999px;
-			}
-			.work-tab {
-				display: inline-flex;
-				align-items: center;
-				gap: 10px;
-				padding: 10px 22px;
-				border-radius: 999px;
-				border: none;
-				background: transparent;
-				color: var(--muted);
-				font-size: 14px;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				cursor: pointer;
-				transition: color 0.2s, background 0.2s;
-			}
-			.work-tab__dot {
-				width: 6px;
-				height: 6px;
-				border-radius: 50%;
-				background: var(--muted-2);
-				transition: background 0.2s, box-shadow 0.2s;
-			}
-			.work-tab__count {
-				font-size: 12px;
-				font-weight: 600;
-				color: var(--muted-2);
-				padding: 2px 8px;
-				border-radius: 999px;
-				background: rgba(255, 255, 255, 0.04);
-				transition: color 0.2s, background 0.2s;
-			}
-			.work-tab:hover {
-				color: var(--text);
-			}
-			.work-tab.is-active {
-				background: rgba(255, 255, 255, 0.06);
-				color: #fff;
-			}
-			.work-tab.is-active .work-tab__dot {
-				background: var(--green);
-				box-shadow: 0 0 10px var(--green);
-			}
-			.work-tab.is-active .work-tab__count {
-				color: #0a0912;
-				background: var(--gradient);
-			}
-
-			.work-panel { display: none; }
-			.work-panel.is-active { display: block; animation: workFade 0.4s ease-out; }
-			@keyframes workFade {
-				from { opacity: 0; transform: translateY(6px); }
-				to { opacity: 1; transform: translateY(0); }
-			}
-
-			.work-grid {
-				display: grid;
-				gap: 20px;
-			}
-			.work-grid--videos { grid-template-columns: repeat(3, 1fr); }
-			.work-grid--images { grid-template-columns: repeat(3, 1fr); }
-
-			.work-card {
-				position: relative;
-				display: block;
-				padding: 0;
-				margin: 0;
-				border: 1px solid var(--line);
-				background: var(--panel);
-				border-radius: var(--radius);
-				overflow: hidden;
-				cursor: pointer;
-				text-align: left;
-				font: inherit;
-				color: inherit;
-				transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-			}
-			.work-card:hover {
-				transform: translateY(-4px);
-				border-color: var(--line-strong);
-				box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-			}
-			.work-card__media {
-				display: block;
-				width: 100%;
-				aspect-ratio: 4 / 5;
-				object-fit: cover;
-				background: #0a0912;
-			}
-			.work-card--video .work-card__media { aspect-ratio: 9 / 16; }
-			.work-card--image .work-card__media { aspect-ratio: 4 / 5; }
-
-			.work-card__play {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 64px;
-				height: 64px;
-				border-radius: 50%;
-				background: rgba(10, 9, 18, 0.55);
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				color: #fff;
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-				transition: transform 0.3s ease, background 0.3s ease;
-				pointer-events: none;
-			}
-			.work-card__play svg { width: 26px; height: 26px; margin-left: 3px; }
-			.work-card:hover .work-card__play {
-				transform: translate(-50%, -50%) scale(1.08);
-				background: rgba(168, 85, 247, 0.55);
-			}
-
-			.work-card__foot {
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				padding: 16px 18px 14px;
-				display: flex;
-				flex-direction: column;
-				gap: 4px;
-				background: linear-gradient(180deg, transparent 0%, rgba(10, 9, 18, 0.85) 55%, rgba(10, 9, 18, 0.95) 100%);
-			}
-			.work-card__cat {
-				font-size: 11px;
-				font-weight: 600;
-				letter-spacing: 0.1em;
-				text-transform: uppercase;
-				color: var(--green);
-			}
-			.work-card__label {
-				font-size: 15px;
-				font-weight: 600;
-				color: #fff;
-				letter-spacing: -0.005em;
-			}
-
-			/* LIGHTBOX */
-			.lightbox {
-				position: fixed;
-				inset: 0;
-				z-index: 100;
-				background: rgba(6, 5, 12, 0.92);
-				backdrop-filter: blur(14px);
-				display: none;
-				align-items: center;
-				justify-content: center;
-				padding: 40px;
-				opacity: 0;
-				transition: opacity 0.25s ease;
-			}
-			.lightbox.is-open {
-				display: flex;
-				opacity: 1;
-			}
-			.lightbox__stage {
-				max-width: min(1100px, 92vw);
-				max-height: 82vh;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-			.lightbox__stage img,
-			.lightbox__stage video {
-				max-width: 100%;
-				max-height: 82vh;
-				border-radius: 16px;
-				box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
-				background: #0a0912;
-			}
-			.lightbox__caption {
-				position: absolute;
-				bottom: 24px;
-				left: 50%;
-				transform: translateX(-50%);
-				margin: 0;
-				font-size: 14px;
-				color: var(--muted);
-				letter-spacing: 0.02em;
-			}
-			.lightbox__close {
-				position: absolute;
-				top: 20px;
-				right: 20px;
-				width: 44px;
-				height: 44px;
-				border-radius: 50%;
-				border: 1px solid var(--line-strong);
-				background: rgba(255, 255, 255, 0.05);
-				color: #fff;
-				cursor: pointer;
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				transition: background 0.2s, transform 0.2s;
-			}
-			.lightbox__close:hover {
-				background: rgba(255, 255, 255, 0.12);
-				transform: rotate(90deg);
-			}
-			.lightbox__close svg { width: 20px; height: 20px; }
-
-			/* PROCESS */
-			.steps {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-				display: grid;
-				grid-template-columns: repeat(5, 1fr);
-				gap: 24px;
-				position: relative;
-			}
-			/* Connecting timeline line running through the icons */
-			.steps::before {
-				content: '';
-				position: absolute;
-				top: 34px;
-				left: 8%;
-				right: 8%;
-				height: 1px;
-				background: linear-gradient(
-					90deg,
-					transparent 0%,
-					rgba(163, 230, 53, 0.28) 15%,
-					rgba(167, 139, 250, 0.28) 50%,
-					rgba(163, 230, 53, 0.28) 85%,
-					transparent 100%
-				);
-				z-index: 0;
-			}
-			.step {
-				position: relative;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
-				gap: 14px;
-				z-index: 1;
-			}
-			.step__marker {
-				position: relative;
-				display: inline-flex;
-			}
-			.step__icon {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				width: 68px;
-				height: 68px;
-				border-radius: 50%;
-				background: var(--bg);
-				border: 1px solid var(--line-strong);
-				color: var(--green);
-				box-shadow: 0 0 0 6px rgba(10, 9, 18, 1), 0 8px 24px -12px rgba(163, 230, 53, 0.4);
-				transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-			}
-			.step__icon svg { width: 26px; height: 26px; }
-			.step:hover .step__icon {
-				transform: translateY(-3px);
-				border-color: rgba(163, 230, 53, 0.5);
-				box-shadow: 0 0 0 6px rgba(10, 9, 18, 1), 0 12px 32px -8px rgba(163, 230, 53, 0.55);
-			}
-			.step__num {
-				position: absolute;
-				top: -6px;
-				right: -8px;
-				font-family: inherit;
-				font-size: 10px;
-				font-weight: 700;
-				letter-spacing: 0.06em;
-				padding: 3px 8px;
-				border-radius: 999px;
-				background: var(--bg);
-				border: 1px solid var(--line-strong);
-				color: var(--muted);
-				z-index: 2;
-			}
-			.step h3 {
-				font-size: 20px;
-				font-weight: 700;
-				margin: 4px 0 0;
-				letter-spacing: -0.015em;
-				color: var(--text);
-			}
-			.step p {
-				margin: 0;
-				color: var(--muted);
-				font-size: 14px;
-				line-height: 1.55;
-				max-width: 22ch;
-			}
-
-			/* ABOUT */
-			.about {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 40px 40px;
-				display: grid;
-				grid-template-columns: 1.2fr 1fr;
-				gap: 80px;
-				align-items: center;
-			}
-			.about__lead {
-				color: var(--muted);
-				font-size: 17px;
-				margin: 0 0 20px;
-			}
-			.about__points {
-				list-style: none;
-				padding: 0;
-				margin: 32px 0 0;
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-			}
-			.about__points li {
-				display: flex;
-				align-items: center;
-				gap: 14px;
-				font-size: 16px;
-			}
-			.about__check {
-				width: 28px;
-				height: 28px;
-				border-radius: 50%;
-				background: var(--gradient);
-				color: #0a0912;
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: 800;
-				font-size: 14px;
-			}
-			.about__logo {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding: 40px;
-				background: var(--panel);
-				border: 1px solid var(--line);
-				border-radius: 32px;
-				position: relative;
-				overflow: hidden;
-			}
-			.about__logo::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background:
-					radial-gradient(circle at 30% 30%, rgba(163, 230, 53, 0.15), transparent 55%),
-					radial-gradient(circle at 70% 70%, rgba(217, 70, 239, 0.18), transparent 55%);
-			}
-			.about__logo img {
-				position: relative;
-				width: 100%;
-				max-width: 320px;
-				filter: drop-shadow(0 0 32px rgba(168, 85, 247, 0.35));
-			}
-
-			/* CONTACT */
-			.contact {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 40px 40px;
-				display: grid;
-				grid-template-columns: 1fr 1.15fr;
-				gap: 64px;
-				align-items: start;
-			}
-			.contact__intro { padding-top: 8px; }
-			.contact .section__title { white-space: normal; }
-			.contact__meta {
-				margin-top: 32px;
-				display: flex;
-				flex-direction: column;
-				gap: 20px;
-				padding-top: 32px;
-				border-top: 1px solid var(--line);
-			}
-			.contact__meta-item {
-				display: flex;
-				flex-direction: column;
-				gap: 4px;
-			}
-			.contact__meta-label {
-				font-size: 12px;
-				text-transform: uppercase;
-				letter-spacing: 0.12em;
-				color: var(--muted-2);
-			}
-			.contact__meta-item a { font-size: 18px; font-weight: 500; }
-			.contact__meta-item a:hover { color: var(--green); }
-
-			/* FORM */
-			.form {
-				display: flex;
-				flex-direction: column;
-				gap: 20px;
-				padding: 40px;
-				background: var(--panel);
-				border: 1px solid var(--line);
-				border-radius: 24px;
-				backdrop-filter: blur(12px);
-			}
-			.form__row { display: grid; gap: 20px; }
-			.form__row--two { grid-template-columns: 1fr 1fr; }
-			.field {
-				display: flex;
-				flex-direction: column;
-				gap: 8px;
-			}
-			.field--chips { border: none; padding: 0; margin: 0; }
-			.field__label {
-				font-size: 13px;
-				font-weight: 600;
-				color: var(--text);
-				letter-spacing: 0.02em;
-			}
-			.req { color: var(--pink); }
-			.hint {
-				font-weight: 400;
-				color: var(--muted-2);
-				margin-left: 4px;
-			}
-			.field input,
-			.field select,
-			.field textarea {
-				width: 100%;
-				padding: 14px 16px;
-				background: rgba(0, 0, 0, 0.25);
-				border: 1px solid var(--line);
-				border-radius: 12px;
-				color: var(--text);
-				font-family: inherit;
-				font-size: 15px;
-				transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-			}
-			.field textarea { resize: vertical; min-height: 120px; }
-			.field select {
-				appearance: none;
-				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%239694a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-				background-repeat: no-repeat;
-				background-position: right 16px center;
-				padding-right: 40px;
-			}
-			.field select option { background: var(--bg-2); color: var(--text); }
-			.field input::placeholder,
-			.field textarea::placeholder { color: var(--muted-2); }
-			.field input:focus,
-			.field select:focus,
-			.field textarea:focus {
-				outline: none;
-				border-color: var(--purple);
-				background: rgba(0, 0, 0, 0.35);
-				box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15);
-			}
-
-			.chips {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-				margin-top: 4px;
-			}
-			.chip {
-				display: inline-flex;
-				align-items: center;
-				cursor: pointer;
-				user-select: none;
-			}
-			.chip input {
-				position: absolute;
-				opacity: 0;
-				pointer-events: none;
-			}
-			.chip span {
-				display: inline-block;
-				padding: 10px 16px;
-				background: rgba(0, 0, 0, 0.25);
-				border: 1px solid var(--line);
-				border-radius: 999px;
-				font-size: 14px;
-				color: var(--muted);
-				transition: color 0.2s, border-color 0.2s, background 0.2s;
-			}
-			.chip:hover span { color: var(--text); border-color: var(--line-strong); }
-			.chip input:checked + span {
-				color: #0a0912;
-				background: var(--gradient);
-				border-color: transparent;
-				font-weight: 600;
-			}
-
-			.form__foot {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 16px;
-				flex-wrap: wrap;
-				margin-top: 4px;
-			}
-			.form__note {
-				margin: 0;
-				font-size: 13px;
-				color: var(--muted);
-			}
-			.form__note--error { color: var(--pink); }
-
-			/* FOOTER */
-			.footer {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 48px 40px;
-				border-top: 1px solid var(--line);
-			}
-			.footer__top {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 32px;
-				padding-bottom: 32px;
-				flex-wrap: wrap;
-			}
-			.footer__brand img { height: 52px; }
-			.footer__nav {
-				display: flex;
-				gap: 28px;
-				font-size: 15px;
-				color: var(--muted);
-			}
-			.footer__nav a:hover { color: var(--text); }
-			.footer__bar {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 16px;
-				padding-top: 24px;
-				border-top: 1px solid var(--line);
-				flex-wrap: wrap;
-			}
-			.footer__tag {
-				margin: 0;
-				font-size: 17px;
-				font-weight: 600;
-				background: var(--gradient);
-				-webkit-background-clip: text;
-				background-clip: text;
-				-webkit-text-fill-color: transparent;
-			}
-			.footer__copy {
-				margin: 0;
-				font-size: 13px;
-				color: var(--muted-2);
-			}
-			.footer__social {
-				display: inline-flex;
-				gap: 8px;
-			}
-			.footer__social a {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				width: 36px;
-				height: 36px;
-				border-radius: 50%;
-				border: 1px solid var(--line);
-				color: var(--muted);
-				transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
-			}
-			.footer__social a:hover {
-				color: var(--text);
-				border-color: var(--line-strong);
-				background: rgba(255, 255, 255, 0.04);
-				transform: translateY(-2px);
-			}
-
-			/* RESPONSIVE */
-
-			/* Tablet landscape / iPad Pro (up to 1100px) */
-			@media (max-width: 1100px) {
-				.header { max-width: none; margin: 12px 20px 0; }
-				.section { padding: 40px 32px; }
-				#services.section { padding-top: 60px; }
-				.hero { padding: 80px 32px 32px; }
-
-				.services-grid { grid-template-columns: 1fr 1fr; }
-				.projects-grid { grid-template-columns: 1fr 1fr; }
-				.work-grid--videos,
-				.work-grid--images { grid-template-columns: 1fr 1fr 1fr; }
-
-				.section__title { font-size: clamp(30px, 4.8vw, 54px); }
-			}
-
-			/* iPad portrait / small tablet (up to 900px) */
-			@media (max-width: 900px) {
-				.header {
-					top: 12px;
-					margin: 12px 16px 0;
-					padding: 8px 8px 8px 16px;
-					gap: 12px;
-					grid-template-columns: auto 1fr auto;
-				}
-				.nav { display: none; }
-				.header__status { display: none; }
-				.brand img { height: 36px; }
-
-				.hero { padding: 60px 24px 32px; }
-				.hero__title { white-space: normal; font-size: clamp(32px, 6.5vw, 52px); line-height: 1.1; }
-				.hero__sub {
-					width: auto;
-					max-width: 100%;
-					margin-left: 0;
-					margin-right: 0;
-					font-size: 17px;
-				}
-
-				.trust { padding: 0 24px; }
-				.stats {
-					grid-template-columns: 1fr 1fr;
-					padding: 24px 16px;
-					gap: 24px;
-				}
-				.stat:nth-child(2)::after { display: none; }
-
-				.section { padding: 40px 24px; }
-				#services.section { padding-top: 60px; }
-				.section__head { margin-bottom: 36px; }
-				.section__title { white-space: normal; font-size: clamp(28px, 6vw, 44px); }
-				.section__head--split { flex-direction: column; align-items: flex-start; }
-
-				.steps {
-					grid-template-columns: 1fr;
-					gap: 32px;
-					max-width: 460px;
-					margin: 0 auto;
-				}
-				.steps::before {
-					top: 0;
-					bottom: 0;
-					left: 34px;
-					right: auto;
-					width: 1px;
-					height: auto;
-					background: linear-gradient(
-						180deg,
-						transparent 0%,
-						rgba(163, 230, 53, 0.28) 15%,
-						rgba(167, 139, 250, 0.28) 50%,
-						rgba(163, 230, 53, 0.28) 85%,
-						transparent 100%
-					);
-				}
-				.step {
-					flex-direction: row;
-					align-items: flex-start;
-					text-align: left;
-					gap: 20px;
-				}
-				.step__marker { flex-shrink: 0; }
-				.step p { max-width: none; }
-
-				.why-grid { grid-template-columns: 1fr; }
-
-				.about,
-				.contact {
-					grid-template-columns: 1fr;
-					gap: 40px;
-					padding: 40px 24px;
-				}
-				.about__logo { padding: 32px; }
-				.about__logo img { max-width: 240px; }
-
-				.tm-grid { grid-template-columns: 1fr; }
-
-				.work-grid--videos,
-				.work-grid--images { grid-template-columns: 1fr 1fr; gap: 14px; }
-				.work-tab { padding: 9px 16px; font-size: 13px; }
-				.work-card__play { width: 54px; height: 54px; }
-				.work-card__play svg { width: 22px; height: 22px; }
-				.lightbox { padding: 24px; }
-				.lightbox__caption { bottom: 16px; font-size: 13px; }
-
-				.form { padding: 28px; }
-				.form__row--two { grid-template-columns: 1fr; }
-
-				.footer { padding: 36px 24px; }
-				.footer__brand img { height: 44px; }
-			}
-
-			/* Phone (up to 640px) */
-			@media (max-width: 640px) {
-				.header {
-					top: 10px;
-					margin: 10px 12px 0;
-					padding: 6px 6px 6px 14px;
-					gap: 8px;
-				}
-				.brand img { height: 32px; }
-				.header .btn--sm { padding: 8px 14px; font-size: 13px; }
-
-				.hero { padding: 48px 20px 24px; }
-				.hero__title { font-size: clamp(30px, 8vw, 42px); }
-				.hero__sub { font-size: 16px; margin-bottom: 32px; }
-				.hero__actions { gap: 10px; }
-				.hero__actions .btn { flex: 1; padding: 14px 18px; font-size: 14px; }
-				.hero__micro { font-size: 12px; }
-
-				.section { padding: 32px 20px; }
-				#services.section { padding-top: 48px; }
-				.section__title { font-size: clamp(28px, 8vw, 40px); }
-				.section__sub { font-size: 16px; }
-
-				.services-grid { grid-template-columns: 1fr; gap: 14px; }
-				.service { padding: 24px; }
-				.service__title { font-size: 22px; }
-
-				.steps { gap: 28px; }
-				.step h3 { font-size: 19px; }
-
-				.projects-grid { grid-template-columns: 1fr; gap: 16px; }
-				.project__body { padding: 20px 22px 22px; }
-
-				.work-grid--videos { grid-template-columns: 1fr 1fr; gap: 12px; }
-				.work-grid--images { grid-template-columns: 1fr 1fr; gap: 12px; }
-				.work-tabs { width: 100%; justify-content: center; }
-				.work-card__foot { padding: 12px 14px 12px; }
-				.work-card__label { font-size: 13px; }
-				.work-card__cat { font-size: 10px; }
-
-				.stats {
-					grid-template-columns: 1fr 1fr;
-					padding: 20px 12px;
-					gap: 20px;
-				}
-				.stat__num { font-size: clamp(26px, 8vw, 34px); }
-				.stat__label { font-size: 12px; }
-
-				.tm, .why-card { padding: 24px; }
-				.tm__quote { font-size: 16px; }
-
-				.about { padding: 32px 20px; gap: 32px; }
-				.about__logo { padding: 24px; }
-				.about__logo img { max-width: 200px; }
-
-				.contact { padding: 32px 20px; gap: 32px; }
-				.contact__meta-item a { font-size: 16px; }
-
-				.form { padding: 20px; gap: 16px; }
-				.field input, .field select, .field textarea { padding: 12px 14px; font-size: 15px; }
-				.chip span { padding: 8px 14px; font-size: 13px; }
-
-				.footer { padding: 28px 20px; }
-				.footer__top { flex-direction: column; align-items: flex-start; gap: 20px; padding-bottom: 24px; }
-				.footer__nav { flex-wrap: wrap; gap: 16px 20px; }
-				.footer__bar { flex-direction: column; align-items: flex-start; gap: 8px; }
-				.footer__brand img { height: 40px; }
-			}
-
-			/* Very small phone (up to 500px) — stack the hero CTAs */
-			@media (max-width: 500px) {
-				.hero__actions {
-					flex-direction: column;
-					align-items: stretch;
-				}
-				.hero__actions .btn {
-					width: 100%;
-					flex: none;
-				}
-			}
-
-			/* Small phone (up to 400px) */
-			@media (max-width: 400px) {
-				.header .btn--sm { padding: 8px 12px; font-size: 12px; }
-				.brand img { height: 28px; }
-
-				.hero__title { font-size: 30px; line-height: 1.15; }
-				.hero__sub { font-size: 15px; }
-				.hero__actions .btn { font-size: 13px; padding: 12px 14px; }
-
-				.section__title { font-size: 26px; }
-				.stats { grid-template-columns: 1fr; }
-				.stat::after { display: none; }
-			}
-		</style>
-	</body>
-</html>
+			// Lightbox
+			const lightbox = document.getElementById('lightbox');
+			const stage = document.getElementById('lightbox-stage');
+			const caption = document.getElementById('lightbox-caption');
+			const closeBtn = lightbox ? lightbox.querySelector('.lightbox__close') : null;
+
+			function openLightbox(node, label) {
+				if (!lightbox || !stage) return;
+				stage.innerHTML = '';
+				stage.appendChild(node);
+				caption.textContent = label || '';
+				lightbox.classList.add('is-open');
+				lightbox.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			}
+			function closeLightbox() {
+				if (!lightbox || !stage) return;
+				const v = stage.querySelector('video');
+				if (v) { v.pause(); v.src = ''; }
+				stage.innerHTML = '';
+				caption.textContent = '';
+				lightbox.classList.remove('is-open');
+				lightbox.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+			}
+
+			document.querySelectorAll('.work-card--video').forEach((card) => {
+				card.addEventListener('click', () => {
+					const src = card.getAttribute('data-video-src');
+					const label = card.getAttribute('data-video-label');
+					const v = document.createElement('video');
+					v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
+					openLightbox(v, label);
+				});
+			});
+			document.querySelectorAll('.work-card--image').forEach((card) => {
+				card.addEventListener('click', () => {
+					const src = card.getAttribute('data-image-src');
+					const label = card.getAttribute('data-image-label');
+					const img = document.createElement('img');
+					img.src = src; img.alt = label || '';
+					openLightbox(img, label);
+				});
+			});
+
+			if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+			if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+			document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) closeLightbox(); });
+		})();
+	</script>
+
+	<style is:global>
+		/* Extended work tab for 4 tabs */
+		@media (max-width: 640px) {
+			.work-tabs { flex-wrap: wrap; border-radius: 16px; }
+			.work-tab { flex: 1 1 auto; justify-content: center; min-width: 0; }
+			.work-tab__count { display: none; }
+		}
+		.work-grid--ads { grid-template-columns: repeat(3, 1fr); }
+		.work-grid--design { grid-template-columns: repeat(4, 1fr); }
+		.work-card__media--wide { aspect-ratio: 4 / 3 !important; }
+		.work-card__client {
+			font-size: 11px;
+			color: var(--violet);
+			font-weight: 500;
+			letter-spacing: 0.04em;
+		}
+		.work-viewall {
+			display: flex;
+			justify-content: center;
+			margin-top: 32px;
+		}
+
+		/* FAQ */
+		.faq-list {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			max-width: 860px;
+			margin: 0 auto;
+		}
+		.faq-item {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			overflow: hidden;
+			transition: border-color 0.2s;
+		}
+		.faq-item[open] { border-color: var(--line-strong); }
+		.faq-question {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			padding: 20px 24px;
+			font-size: 16px;
+			font-weight: 600;
+			cursor: pointer;
+			list-style: none;
+			color: var(--text);
+			user-select: none;
+			transition: color 0.2s;
+		}
+		.faq-question::-webkit-details-marker { display: none; }
+		.faq-question::after {
+			content: '+';
+			font-size: 22px;
+			font-weight: 300;
+			color: var(--muted);
+			flex-shrink: 0;
+			transition: transform 0.2s, color 0.2s;
+		}
+		.faq-item[open] .faq-question::after { transform: rotate(45deg); color: var(--violet); }
+		.faq-item[open] .faq-question { color: var(--text); }
+		.faq-answer {
+			padding: 0 24px 20px;
+			margin: 0;
+			font-size: 15px;
+			color: var(--muted);
+			line-height: 1.7;
+			border-top: 1px solid var(--line);
+			padding-top: 16px;
+		}
+
+		@media (max-width: 900px) {
+			.work-grid--ads { grid-template-columns: 1fr 1fr; }
+			.work-grid--design { grid-template-columns: repeat(3, 1fr); }
+		}
+		@media (max-width: 640px) {
+			.work-grid--ads { grid-template-columns: 1fr 1fr; }
+			.work-grid--design { grid-template-columns: 1fr 1fr; }
+			.faq-question { padding: 16px 18px; font-size: 15px; }
+			.faq-answer { padding: 0 18px 16px; padding-top: 14px; }
+		}
+	</style>
+</Layout>

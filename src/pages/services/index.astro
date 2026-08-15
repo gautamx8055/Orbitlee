@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const siteUrl = "https://www.orbitlee.com";
+const servicesSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "CollectionPage",
+			"@id": `${siteUrl}/services/#webpage`,
+			url: `${siteUrl}/services/`,
+			name: "Services - Orbitlee Creative & Marketing Agency India",
+			description: "Marketing & Advertising, Web & App Development, Branding & Creative, Growth Consulting - all under one roof.",
+			isPartOf: { "@id": `${siteUrl}/#website` },
+			about: { "@id": `${siteUrl}/#organization` },
+			inLanguage: "en",
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			name: "Orbitlee Services",
+			description: "Full-service creative and marketing agency services by Orbitlee India",
+			numberOfItems: 4,
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Marketing & Advertising", url: `${siteUrl}/services/marketing-advertising/`, description: "Meta Ads, Google Ads, social media management, AI UGC, lead generation" },
+				{ "@type": "ListItem", position: 2, name: "Web & App Development", url: `${siteUrl}/services/web-app-development/`, description: "Website development, mobile apps, SaaS platforms, UI/UX, AI automation" },
+				{ "@type": "ListItem", position: 3, name: "Branding & Creative", url: `${siteUrl}/services/branding-creative/`, description: "Brand strategy, logo design, visual identity, AI UGC, commercial production" },
+				{ "@type": "ListItem", position: 4, name: "Growth Consulting", url: `${siteUrl}/services/growth-consulting/`, description: "Business growth audit, brand audit, marketing strategy, go-to-market planning" },
+			],
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services/` },
+			],
+		},
+	],
+};
+
+const categories = [
+	{
+		href: "/services/marketing-advertising",
+		num: "01",
+		title: "Marketing & Advertising",
+		blurb: "Full-funnel performance from cold reach to qualified pipeline. We run Meta, Google, social and AI-native campaigns that compound.",
+		items: ["Meta Ads", "Google Ads", "Social Media Management", "Lead Generation", "AI UGC", "Email Marketing"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+	},
+	{
+		href: "/services/web-app-development",
+		num: "02",
+		title: "Web & App Development",
+		blurb: "Sites, products and automations built to feel effortless, load instantly and convert. From landing pages to full-scale SaaS platforms.",
+		items: ["Website Development", "Landing Pages", "UI/UX Design", "Web Applications", "Mobile Apps", "AI Automation"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+	},
+	{
+		href: "/services/branding-creative",
+		num: "03",
+		title: "Branding & Creative",
+		blurb: "Positioning, identity systems and high-craft production engineered to stop the scroll, command attention and make brands stick.",
+		items: ["Brand Strategy", "Logo Design", "Visual Identity", "AI UGC Production", "Commercial Ads", "Product Photography"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+	},
+	{
+		href: "/services/growth-consulting",
+		num: "04",
+		title: "Growth Consulting",
+		blurb: "Sharp diagnostics and clear roadmaps before your next big investment. We find where you're leaking growth and map the fastest path forward.",
+		items: ["Business Growth Audit", "Brand Audit", "Marketing Strategy", "Go-to-Market Strategy", "Competitive Analysis"],
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
+	},
+];
+---
+
+<Layout
+	title="Services - Orbitlee Creative & Marketing Agency India | All Services"
+	description="Orbitlee services: Marketing & Advertising, Web & App Development, Branding & Creative, Growth Consulting. Full-service creative agency India - one team, one brief, one sprint."
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+	</Fragment>
+	<!-- PAGE HERO -->
+	<section class="page-hero">
+		<div class="page-hero__eyebrow">
+			<span class="eyebrow eyebrow--plain">Services</span>
+		</div>
+		<h1 class="page-hero__title">Everything you need <span class="hero__gradient">to grow.</span></h1>
+		<p class="page-hero__sub">
+			No stitching agencies together. Every discipline under one roof, briefed once, moving in sync - from brand identity to live campaign to shipped product.
+		</p>
+	</section>
+
+	<!-- SERVICE CATEGORIES -->
+	<section class="section">
+		<div class="svc-cat-list">
+			{categories.map((cat) => (
+				<article class="svc-cat">
+					<div class="svc-cat__head">
+						<div class="svc-cat__meta">
+							<span class="service__num">{cat.num}</span>
+							<div class="svc-cat__icon" set:html={cat.icon}></div>
+						</div>
+						<div class="svc-cat__info">
+							<h2 class="svc-cat__title">{cat.title}</h2>
+							<p class="svc-cat__blurb">{cat.blurb}</p>
+						</div>
+					</div>
+					<div class="svc-cat__foot">
+						<ul class="svc-cat__items">
+							{cat.items.map((item) => (
+								<li>
+									<span class="service__tick" aria-hidden="true">
+										<svg viewBox="0 0 12 12" fill="none">
+											<path d="M2.5 6.5 5 9l4.5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
+									</span>
+									{item}
+								</li>
+							))}
+						</ul>
+						<a href={cat.href} class="btn btn--ghost btn--sm">Explore {cat.title} →</a>
+					</div>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<div class="cta-strip">
+		<div class="cta-strip__inner">
+			<div class="cta-strip__copy">
+				<h2 class="cta-strip__title">Not sure where to <span class="hero__gradient">start?</span></h2>
+				<p class="cta-strip__sub">Book a free audit and we'll tell you exactly where the biggest wins are hiding.</p>
+			</div>
+			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
+		</div>
+	</div>
+
+	<style is:global>
+		.svc-cat-list {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+		.svc-cat {
+			padding: 36px;
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			display: flex;
+			flex-direction: column;
+			gap: 28px;
+			transition: border-color 0.3s;
+		}
+		.svc-cat:hover { border-color: var(--line-strong); }
+		.svc-cat__head {
+			display: flex;
+			gap: 24px;
+			align-items: flex-start;
+		}
+		.svc-cat__meta {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 8px;
+			flex-shrink: 0;
+			padding-top: 4px;
+		}
+		.svc-cat__icon {
+			width: 48px; height: 48px;
+			border-radius: 12px;
+			background: rgba(163, 230, 53, 0.1);
+			color: var(--green);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.svc-cat__icon svg { width: 24px; height: 24px; }
+		.svc-cat__info { flex: 1; }
+		.svc-cat__title { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; margin: 0 0 10px; letter-spacing: -0.02em; }
+		.svc-cat__blurb { color: var(--muted); font-size: 16px; margin: 0; line-height: 1.65; }
+		.svc-cat__foot {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 24px;
+			padding-top: 24px;
+			border-top: 1px solid var(--line);
+			flex-wrap: wrap;
+		}
+		.svc-cat__items {
+			list-style: none;
+			padding: 0; margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px 24px;
+		}
+		.svc-cat__items li {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 14px;
+			color: var(--text);
+		}
+
+		@media (max-width: 640px) {
+			.svc-cat { padding: 24px; }
+			.svc-cat__head { flex-direction: column; gap: 16px; }
+			.svc-cat__meta { flex-direction: row; }
+			.svc-cat__foot { flex-direction: column; align-items: flex-start; }
+		}
+	</style>
+</Layout>
