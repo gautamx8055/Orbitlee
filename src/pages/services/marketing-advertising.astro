@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const offerings = [
+	{
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+		title: "Meta Ads",
+		desc: "Facebook and Instagram campaigns built to convert — from creative strategy to pixel setup, audience architecture and ongoing optimisation.",
+	},
+	{
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`,
+		title: "Google Ads",
+		desc: "Search, display and YouTube campaigns targeting high-intent buyers at the exact moment they're looking for what you offer.",
+	},
+	{
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+		title: "Social Media Management",
+		desc: "Content calendars, community management and growth strategy across Instagram, LinkedIn and beyond — consistent, on-brand, and built to compound.",
+	},
+	{
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+		title: "Lead Generation",
+		desc: "End-to-end pipeline building — from landing pages and lead magnets to nurture sequences that warm leads and hand them off sales-ready.",
+	},
+	{
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>`,
+		title: "AI UGC Production",
+		desc: "AI-generated user content that looks authentic and performs like organic. 10× the ad variants at a fraction of traditional production cost.",
+	},
+	{
+		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>`,
+		title: "Email Marketing",
+		desc: "Sequences, broadcasts and automation flows that keep your audience engaged, nurture intent and drive repeat revenue.",
+	},
+];
+
+const approach = [
+	{
+		title: "Strategy before spend",
+		body: "We map your funnel, audience segments and creative angles before a single rupee goes live. Bad targeting wastes budgets; good strategy compounds them.",
+	},
+	{
+		title: "Creative and media together",
+		body: "Our ads team and creative team share the same brief. The creative is built for the placement, not repurposed from a static graphic.",
+	},
+	{
+		title: "Data that drives decisions",
+		body: "Weekly performance reviews with clear attribution. No vanity metrics — we report on CAC, ROAS and pipeline, and adjust accordingly.",
+	},
+];
+---
+
+<Layout
+	title="Marketing & Advertising — Orbitlee"
+	description="Full-funnel marketing and advertising services — Meta Ads, Google Ads, social media management, lead generation and AI UGC. One team, one brief, compounding results."
+>
+	<!-- BREADCRUMB + HERO -->
+	<section class="page-hero">
+		<div class="breadcrumb">
+			<a href="/services">Services</a>
+			<span class="breadcrumb__sep">›</span>
+			<span>Marketing & Advertising</span>
+		</div>
+		<div class="page-hero__eyebrow">
+			<span class="eyebrow eyebrow--plain">Marketing & Advertising</span>
+		</div>
+		<h1 class="page-hero__title">Performance that <span class="hero__gradient">compounds.</span></h1>
+		<p class="page-hero__sub">
+			Full-funnel campaigns from cold reach to qualified pipeline. We handle Meta, Google, social and AI-native content — so the only metric you watch is growth.
+		</p>
+		<div class="hero__actions" style="margin-top: 32px;">
+			<a href="/contact" class="btn btn--primary btn--lg">Start a campaign</a>
+			<a href="/services" class="btn btn--ghost btn--lg">All services</a>
+		</div>
+	</section>
+
+	<!-- WHAT'S INCLUDED -->
+	<section class="section">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">What's included</span>
+			<h2 class="section__title">Every channel, <span class="hero__gradient">one team.</span></h2>
+			<p class="section__sub">We run the full marketing stack so nothing falls through the gaps between vendors.</p>
+		</div>
+		<div class="svc-detail-grid">
+			{offerings.map((o) => (
+				<article class="svc-item">
+					<div class="svc-item__icon" set:html={o.icon}></div>
+					<h3 class="svc-item__title">{o.title}</h3>
+					<p class="svc-item__desc">{o.desc}</p>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<!-- OUR APPROACH -->
+	<section class="section section--why">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">Our approach</span>
+			<h2 class="section__title">Spend less, <span class="hero__gradient">earn more.</span></h2>
+		</div>
+		<div class="why-grid">
+			{approach.map((a, i) => (
+				<article class="why-card">
+					<span class="why-card__num">0{i + 1}</span>
+					<h3 class="why-card__title">{a.title}</h3>
+					<p class="why-card__body">{a.body}</p>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<div class="cta-strip">
+		<div class="cta-strip__inner">
+			<div class="cta-strip__copy">
+				<h2 class="cta-strip__title">Ready to run <span class="hero__gradient">campaigns that convert?</span></h2>
+				<p class="cta-strip__sub">Free audit. We'll show you exactly where your budget should go.</p>
+			</div>
+			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
+		</div>
+	</div>
+</Layout>

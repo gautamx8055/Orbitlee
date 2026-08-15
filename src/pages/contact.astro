@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+	"Marketing & Advertising",
+	"Web & App Development",
+	"Branding & Creative",
+	"Growth Consulting",
+];
+---
+
+<Layout
+	title="Contact Orbitlee — Book a Free Brand Audit"
+	description="Tell us where you want to go — we'll draw the trajectory and fly it with you. Book a free 30-minute brand audit with Orbitlee."
+>
+	<!-- PAGE HERO -->
+	<section class="page-hero">
+		<div class="page-hero__eyebrow">
+			<span class="eyebrow eyebrow--plain">Contact</span>
+		</div>
+		<h1 class="page-hero__title">Let's put your brand <span class="hero__gradient">into orbit.</span></h1>
+		<p class="page-hero__sub">
+			Tell us where you want to go — we'll draw the trajectory and fly it with you. Most briefs get a response within one working day.
+		</p>
+	</section>
+
+	<!-- CONTACT LAYOUT -->
+	<section class="contact">
+		<div class="contact__intro">
+			<span class="eyebrow eyebrow--plain">Get in touch</span>
+			<h2 class="section__title section__title--left">We'd love to <span class="hero__gradient">hear from you.</span></h2>
+			<p class="about__lead">
+				Drop us a brief below or reach out directly. We respond within one business day and don't do pushy sales calls.
+			</p>
+			<div class="contact__meta">
+				<div class="contact__meta-item">
+					<span class="contact__meta-label">Email</span>
+					<a href="mailto:orbitleeee@gmail.com">orbitleeee@gmail.com</a>
+				</div>
+				<div class="contact__meta-item">
+					<span class="contact__meta-label">Phone</span>
+					<a href="tel:+919810692028">+91 98106 92028</a>
+				</div>
+				<div class="contact__meta-item">
+					<span class="contact__meta-label">Instagram</span>
+					<a href="https://www.instagram.com/orbitlee_" target="_blank" rel="noopener">@orbitlee_</a>
+				</div>
+				<div class="contact__meta-item">
+					<span class="contact__meta-label">Response time</span>
+					<span>Within 1 business day</span>
+				</div>
+			</div>
+		</div>
+
+		<form class="form" id="contact-form" action="https://formspree.io/f/moeajqjw" method="POST" novalidate>
+			<div class="form__row form__row--two">
+				<label class="field">
+					<span class="field__label">Full name <span class="req">*</span></span>
+					<input type="text" name="name" required placeholder="Jane Doe" />
+				</label>
+				<label class="field">
+					<span class="field__label">Email <span class="req">*</span></span>
+					<input type="email" name="email" required placeholder="jane@company.com" />
+				</label>
+			</div>
+			<div class="form__row form__row--two">
+				<label class="field">
+					<span class="field__label">Company</span>
+					<input type="text" name="company" placeholder="Acme Inc." />
+				</label>
+				<label class="field">
+					<span class="field__label">Budget</span>
+					<select name="budget">
+						<option value="">Select a range</option>
+						<option value="< ₹1L">Under ₹1L</option>
+						<option value="₹1L – ₹5L">₹1L – ₹5L</option>
+						<option value="₹5L – ₹15L">₹5L – ₹15L</option>
+						<option value="₹15L +">₹15L +</option>
+						<option value="Not sure yet">Not sure yet</option>
+					</select>
+				</label>
+			</div>
+			<fieldset class="field field--chips">
+				<legend class="field__label">What do you need help with? <span class="hint">(pick any)</span></legend>
+				<div class="chips">
+					{services.map((s) => (
+						<label class="chip">
+							<input type="checkbox" name="services" value={s} />
+							<span>{s}</span>
+						</label>
+					))}
+				</div>
+			</fieldset>
+			<label class="field">
+				<span class="field__label">Tell us about your project <span class="req">*</span></span>
+				<textarea name="message" rows="5" required placeholder="A few lines about your business, what you're trying to solve, and your timeline."></textarea>
+			</label>
+			<div class="form__foot">
+				<button type="submit" class="btn btn--primary btn--lg">Send the brief</button>
+				<p class="form__note" id="form-note" role="status"></p>
+			</div>
+		</form>
+	</section>
+
+	<script is:inline>
+		const form = document.getElementById('contact-form');
+		const note = document.getElementById('form-note');
+		if (form) {
+			const submitBtn = form.querySelector('button[type="submit"]');
+			const defaultLabel = submitBtn ? submitBtn.textContent : 'Send';
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				const data = new FormData(form);
+				const name = (data.get('name') || '').toString().trim();
+				const email = (data.get('email') || '').toString().trim();
+				const message = (data.get('message') || '').toString().trim();
+				if (!name || !email || !message) {
+					note.textContent = 'Please fill in name, email and a short message.';
+					note.classList.add('form__note--error');
+					return;
+				}
+				note.textContent = '';
+				note.classList.remove('form__note--error');
+				if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+				try {
+					const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+					if (res.ok) {
+						note.textContent = "Thanks! Your brief is in. We'll be in touch within one business day.";
+						form.reset();
+					} else {
+						let msg = 'Something went wrong. Please try again or email orbitleeee@gmail.com';
+						try { const body = await res.json(); if (body && body.errors && body.errors.length) msg = body.errors.map((er) => er.message).join(', '); } catch (_) {}
+						note.textContent = msg;
+						note.classList.add('form__note--error');
+					}
+				} catch (err) {
+					note.textContent = 'Network error. Please try again or email orbitleeee@gmail.com';
+					note.classList.add('form__note--error');
+				} finally {
+					if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = defaultLabel; }
+				}
+			});
+		}
+	</script>
+</Layout>
