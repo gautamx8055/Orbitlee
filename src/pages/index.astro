@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+
 const stats = [
 	{ num: "25+", label: "Projects delivered" },
 	{ num: "$100K+", label: "Ad spend managed" },
@@ -12,21 +14,21 @@ const serviceOverview = [
 	{
 		href: "/services/marketing-advertising",
 		title: "Marketing & Advertising",
-		desc: "Full-funnel performance from cold reach to qualified pipeline. Meta, Google, social and AI-native content.",
-		items: ["Meta Ads", "Google Ads", "Social Media", "AI UGC"],
+		desc: "Full-funnel campaigns from cold reach to qualified pipeline. Meta, Google, social media management and AI-native content built to compound.",
+		items: ["Meta Ads", "Google Ads", "Social Media", "AI UGC", "Lead Generation"],
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
 	},
 	{
 		href: "/services/web-app-development",
 		title: "Web & App Development",
-		desc: "Sites, products and automations that feel effortless, load fast and convert visitors into customers.",
-		items: ["Websites", "Landing Pages", "Mobile Apps", "AI Automation"],
+		desc: "Sites, products and automations that feel effortless, load fast and convert visitors into paying customers.",
+		items: ["Websites", "Landing Pages", "Mobile Apps", "SaaS", "AI Automation"],
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
 	},
 	{
 		href: "/services/branding-creative",
 		title: "Branding & Creative",
-		desc: "Positioning, identity and high-craft production that stops the scroll and makes your brand stick.",
+		desc: "Positioning, identity and high-craft production that stops the scroll and makes your brand impossible to ignore.",
 		items: ["Brand Strategy", "Logo & Identity", "AI UGC", "Commercial Ads"],
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
 	},
@@ -36,6 +38,25 @@ const serviceOverview = [
 		desc: "Sharp diagnostics and clear roadmaps before your next big investment. Audits, strategy, go-to-market.",
 		items: ["Growth Audit", "Brand Audit", "GTM Strategy", "Marketing Strategy"],
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
+	},
+];
+
+const differentiators = [
+	{
+		title: "One team, not five vendors",
+		body: "Stop stitching an agency, a dev shop and a media consultant together. Everything ships from the same weekly sprint.",
+	},
+	{
+		title: "AI-native production",
+		body: "AI UGC, generative creative and automated post-production — 10× the ad variants, without 10× the cost.",
+	},
+	{
+		title: "Speed to launch",
+		body: "Brand new to live site, campaign or product in weeks, not quarters. Momentum is a growth channel.",
+	},
+	{
+		title: "In-house dev + marketing",
+		body: "Landing pages ship the same day a campaign does. Site and ad account share a nervous system.",
 	},
 ];
 
@@ -56,63 +77,145 @@ const testimonials = [
 		initials: "RK",
 		accent: "linear-gradient(135deg, #a855f7, #4f46e5)",
 	},
+	{
+		quote: "The audit alone was worth twice what we paid. Then they executed on the roadmap. Rare to find both in the same room.",
+		name: "Anaya Sharma",
+		role: "CMO",
+		company: "Ember & Oak",
+		initials: "AS",
+		accent: "linear-gradient(135deg, #d946ef, #a855f7)",
+	},
+	{
+		quote: "Their AI UGC pipeline now produces more ad variants in a week than our old agency did in a quarter, at a fraction of the cost.",
+		name: "Vikram Reddy",
+		role: "Marketing Director",
+		company: "Northwind & Co.",
+		initials: "VR",
+		accent: "linear-gradient(135deg, #f59e0b, #d946ef)",
+	},
 ];
 
-const workVideos = [
-	{ src: "/ADVC UGC 1.mp4", label: "ADVC UGC — Spot 1", category: "AI UGC" },
-	{ src: "/ADVC UGC 2.mp4", label: "ADVC UGC — Spot 2", category: "AI UGC" },
-	{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial" },
-	{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel" },
-	{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC" },
-	{ src: "/BA .mp4", label: "BA Campaign", category: "Commercial" },
+const clientWork = {
+	videos: [
+		{ src: "/ADVC UGC 1.mp4", label: "ADVC — AI UGC Spot 1", category: "AI UGC", client: "ADVC" },
+		{ src: "/ADVC UGC 2.mp4", label: "ADVC — AI UGC Spot 2", category: "AI UGC", client: "ADVC" },
+		{ src: "/Horizon RE NEW SAMPLE.mp4", label: "Horizon Real Estate", category: "Commercial", client: "Horizon RE" },
+		{ src: "/Gaurya Farms Ghee reel .mp4", label: "Gaurya Farms Ghee", category: "Product Reel", client: "Gaurya Farms" },
+		{ src: "/Green Exlir Lip Balm UGC.mp4", label: "Green Elixir Lip Balm", category: "UGC", client: "Green Elixir" },
+		{ src: "/BA .mp4", label: "BA Campaign", category: "Commercial", client: "BA" },
+	],
+	branding: [
+		{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix — Social Banner", category: "Branding", client: "Aurix" },
+		{ src: "/Post 1.png", label: "Social Creative 01", category: "Social", client: "" },
+		{ src: "/Post 2.png", label: "Social Creative 02", category: "Social", client: "" },
+		{ src: "/Post 3.png", label: "Social Creative 03", category: "Social", client: "" },
+		{ src: "/Post 4.png", label: "Social Creative 04", category: "Social", client: "" },
+		{ src: "/Post-5.png", label: "Social Creative 05", category: "Social", client: "" },
+	],
+	ads: [
+		{ src: "/Ads-try-1-F.jpg", label: "Ad Creative — Concept 1", category: "Paid Ads", client: "" },
+		{ src: "/Ads-try-2-F.jpg", label: "Ad Creative — Concept 2", category: "Paid Ads", client: "" },
+		{ src: "/Ads-try-3&4.jpg", label: "Ad Creative — Concepts 3 & 4", category: "Paid Ads", client: "" },
+	],
+	design: [
+		{ src: "/1.jpg", label: "Design Portfolio 01", category: "Design", client: "" },
+		{ src: "/2.jpg", label: "Design Portfolio 02", category: "Design", client: "" },
+		{ src: "/3.jpg", label: "Design Portfolio 03", category: "Design", client: "" },
+		{ src: "/4.jpg", label: "Design Portfolio 04", category: "Design", client: "" },
+		{ src: "/5.jpg", label: "Design Portfolio 05", category: "Design", client: "" },
+		{ src: "/6.jpg", label: "Design Portfolio 06", category: "Design", client: "" },
+		{ src: "/7.jpg", label: "Design Portfolio 07", category: "Design", client: "" },
+		{ src: "/8.jpg", label: "Design Portfolio 08", category: "Design", client: "" },
+		{ src: "/9.jpg", label: "Design Portfolio 09", category: "Design", client: "" },
+		{ src: "/10.jpg", label: "Design Portfolio 10", category: "Design", client: "" },
+		{ src: "/11.jpg", label: "Design Portfolio 11", category: "Design", client: "" },
+	],
+};
+
+const allImages = [...clientWork.branding, ...clientWork.ads, ...clientWork.design];
+
+const faqs = [
+	{
+		q: "What is Orbitlee?",
+		a: "Orbitlee (also searched as Orbitly, Orbitli, or Orbit Lee) is a full-service creative and marketing agency based in India, founded by Sachin Verma. We combine branding, design, AI-generated content, paid advertising and web development under one team — so everything ships faster and compounds harder.",
+	},
+	{
+		q: "Is Orbitlee the same as Orbitly or Orbitli?",
+		a: "Yes — if you've been searching for Orbitly, Orbitli, Orbit Lee, Orbitlee Creative, or any similar spelling, you've found the right place. We're Orbitlee, India's creative and marketing agency. Strategy. Design. Grow.",
+	},
+	{
+		q: "What services does Orbitlee offer?",
+		a: "Orbitlee offers four core service areas: Marketing & Advertising (Meta Ads, Google Ads, social media, AI UGC, lead generation), Web & App Development (websites, landing pages, mobile apps, SaaS, AI automation), Branding & Creative (brand strategy, logo design, visual identity, commercial production), and Growth Consulting (business audits, go-to-market strategy, marketing roadmaps).",
+	},
+	{
+		q: "How much does Orbitlee charge?",
+		a: "Our pricing depends on the scope and services required — ranging from focused sprints to full-retainer engagements. We offer a free 30-minute brand audit where we assess your needs and provide transparent pricing. No slide decks, no pressure — just actionable next steps.",
+	},
+	{
+		q: "Where is Orbitlee located?",
+		a: "Orbitlee is based in India and serves clients across the country and internationally. We work remotely with a distributed team, delivering weekly sprint reviews so you're always in the loop regardless of location.",
+	},
+	{
+		q: "How do I contact Orbitlee?",
+		a: "You can reach Orbitlee at orbitleeee@gmail.com, call us at +91 98106 92028, or fill out the contact form on our website at orbitlee.com/contact. We respond to all briefs within one business day.",
+	},
 ];
 
-const workImages = [
-	{ src: "/AURIX-SM-BANNER.jpg", label: "Aurix — Social Banner", category: "Branding" },
-	{ src: "/Post 1.png", label: "Social Post 01", category: "Social" },
-	{ src: "/Post 2.png", label: "Social Post 02", category: "Social" },
-	{ src: "/Post 3.png", label: "Social Post 03", category: "Social" },
-	{ src: "/Post 4.png", label: "Social Post 04", category: "Social" },
-	{ src: "/Post-5.png", label: "Social Post 05", category: "Social" },
-	{ src: "/Ads-try-1-F.jpg", label: "Ad Creative — Concept 1", category: "Ads" },
-	{ src: "/Ads-try-2-F.jpg", label: "Ad Creative — Concept 2", category: "Ads" },
-	{ src: "/Ads-try-3&4.jpg", label: "Ad Creative — Concepts 3 & 4", category: "Ads" },
-	{ src: "/1.jpg", label: "Portfolio 01", category: "Design" },
-	{ src: "/2.jpg", label: "Portfolio 02", category: "Design" },
-	{ src: "/3.jpg", label: "Portfolio 03", category: "Design" },
-	{ src: "/4.jpg", label: "Portfolio 04", category: "Design" },
-	{ src: "/5.jpg", label: "Portfolio 05", category: "Design" },
-	{ src: "/6.jpg", label: "Portfolio 06", category: "Design" },
-	{ src: "/7.jpg", label: "Portfolio 07", category: "Design" },
-	{ src: "/8.jpg", label: "Portfolio 08", category: "Design" },
-	{ src: "/9.jpg", label: "Portfolio 09", category: "Design" },
-	{ src: "/10.jpg", label: "Portfolio 10", category: "Design" },
-	{ src: "/11.jpg", label: "Portfolio 11", category: "Design" },
-];
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map((f) => ({
+		"@type": "Question",
+		name: f.q,
+		acceptedAnswer: { "@type": "Answer", text: f.a },
+	})),
+};
+
+const homePageSchema = {
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	name: "Orbitlee Services",
+	description: "Creative and marketing agency services offered by Orbitlee India",
+	numberOfItems: 4,
+	itemListElement: [
+		{ "@type": "ListItem", position: 1, name: "Marketing & Advertising", url: `${siteUrl}/services/marketing-advertising/` },
+		{ "@type": "ListItem", position: 2, name: "Web & App Development", url: `${siteUrl}/services/web-app-development/` },
+		{ "@type": "ListItem", position: 3, name: "Branding & Creative", url: `${siteUrl}/services/branding-creative/` },
+		{ "@type": "ListItem", position: 4, name: "Growth Consulting", url: `${siteUrl}/services/growth-consulting/` },
+	],
+};
 ---
 
-<Layout>
+<Layout
+	title="Orbitlee - Creative & Marketing Agency India | Branding, AI Content, Ads & Web"
+	description="Orbitlee (also known as Orbitly, Orbitli) is India's creative & marketing agency. Branding, AI UGC, Meta Ads, Google Ads, web development & growth consulting. 25+ brands scaled. Book a free audit."
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(homePageSchema)} />
+	</Fragment>
+
 	<!-- HERO -->
-	<section class="hero">
+	<section class="hero" itemscope itemtype="https://schema.org/WPHeader">
 		<span class="eyebrow">
 			<span class="eyebrow__dot"></span>
 			We Circle, You Grow.
 		</span>
-		<h1 class="hero__title">
+		<h1 class="hero__title" itemprop="headline">
 			Brands that <span class="hero__gradient">ship, sell and scale.</span>
 		</h1>
-		<p class="hero__sub">
+		<p class="hero__sub" itemprop="description">
 			Strategy, design, marketing and technology — under one team, in one weekly sprint. Fewer handoffs, faster growth, one clear line of sight.
 		</p>
 		<div class="hero__actions">
 			<a href="/contact" class="btn btn--primary btn--lg">Book a free brand audit</a>
-			<a href="#projects" class="btn btn--ghost btn--lg">See our work →</a>
+			<a href="#client-work" class="btn btn--ghost btn--lg">See our work →</a>
 		</div>
 		<p class="hero__micro">Free 30-minute audit · No slide deck · Actionable next steps</p>
 	</section>
 
 	<!-- STATS -->
-	<section class="trust">
+	<section class="trust" aria-label="Agency stats">
 		<ul class="stats">
 			{stats.map((s) => (
 				<li class="stat">
@@ -123,20 +226,20 @@ const workImages = [
 		</ul>
 	</section>
 
-	<!-- WHAT WE DO -->
-	<section class="section">
+	<!-- SERVICES -->
+	<section class="section" aria-labelledby="services-heading">
 		<div class="section__head">
 			<span class="eyebrow eyebrow--plain">What we do</span>
-			<h2 class="section__title">Everything you need to <span class="hero__gradient">grow.</span></h2>
+			<h2 class="section__title" id="services-heading">Everything you need to <span class="hero__gradient">grow.</span></h2>
 			<p class="section__sub">No stitching agencies together. Every discipline under one roof, briefed once, moving in sync.</p>
 		</div>
 		<div class="service-overview-grid">
 			{serviceOverview.map((s) => (
-				<a href={s.href} class="service-overview-card">
-					<div class="service-overview-card__icon" set:html={s.icon}></div>
+				<a href={s.href} class="service-overview-card" aria-label={`Learn about ${s.title}`}>
+					<div class="service-overview-card__icon" set:html={s.icon} aria-hidden="true"></div>
 					<h3 class="service-overview-card__title">{s.title}</h3>
 					<p class="service-overview-card__desc">{s.desc}</p>
-					<ul class="service-overview-card__items">
+					<ul class="service-overview-card__items" aria-label={`${s.title} services`}>
 						{s.items.map((item) => <li>{item}</li>)}
 					</ul>
 					<span class="service-overview-card__link">Explore {s.title} →</span>
@@ -145,32 +248,64 @@ const workImages = [
 		</div>
 	</section>
 
-	<!-- PROJECTS / WORK -->
-	<section id="projects" class="section section--projects">
+	<!-- WHY US -->
+	<section class="section" aria-labelledby="why-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">Why Orbitlee</span>
+			<h2 class="section__title" id="why-heading">Full-service, <span class="hero__gradient">actually delivered.</span></h2>
+		</div>
+		<div class="why-grid">
+			{differentiators.map((d, i) => (
+				<article class="why-card">
+					<span class="why-card__num">0{i + 1}</span>
+					<h3 class="why-card__title">{d.title}</h3>
+					<p class="why-card__body">{d.body}</p>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<!-- CLIENT WORK GALLERY -->
+	<section id="client-work" class="section section--projects" aria-labelledby="work-heading">
 		<div class="section__head section__head--split">
 			<div>
-				<span class="eyebrow eyebrow--plain">Our Work</span>
-				<h2 class="section__title section__title--left">Recent orbits <span class="hero__gradient">we've flown.</span></h2>
+				<span class="eyebrow eyebrow--plain">Client Work</span>
+				<h2 class="section__title section__title--left" id="work-heading">
+					Real orbits <span class="hero__gradient">we've flown.</span>
+				</h2>
+				<p style="color:var(--muted);font-size:15px;margin:0;">
+					Ad films, AI content, brand identity and design — delivered for real clients across India.
+				</p>
 			</div>
 			<a href="/contact" class="btn btn--ghost btn--sm">Start yours →</a>
 		</div>
 
-		<div class="work-tabs" role="tablist" aria-label="Portfolio filter">
+		<div class="work-tabs" role="tablist" aria-label="Portfolio categories">
 			<button class="work-tab is-active" role="tab" aria-selected="true" data-tab="videos">
 				<span class="work-tab__dot"></span>
-				Videos
-				<span class="work-tab__count">{workVideos.length}</span>
+				Ad Films & UGC
+				<span class="work-tab__count">{clientWork.videos.length}</span>
 			</button>
-			<button class="work-tab" role="tab" aria-selected="false" data-tab="images">
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="branding">
 				<span class="work-tab__dot"></span>
-				Images
-				<span class="work-tab__count">{workImages.length}</span>
+				Branding & Social
+				<span class="work-tab__count">{clientWork.branding.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="ads">
+				<span class="work-tab__dot"></span>
+				Ad Creatives
+				<span class="work-tab__count">{clientWork.ads.length}</span>
+			</button>
+			<button class="work-tab" role="tab" aria-selected="false" data-tab="design">
+				<span class="work-tab__dot"></span>
+				Design
+				<span class="work-tab__count">{clientWork.design.length}</span>
 			</button>
 		</div>
 
-		<div class="work-panel is-active" data-panel="videos">
+		<div class="work-panel is-active" data-panel="videos" role="tabpanel">
 			<div class="work-grid work-grid--videos">
-				{workVideos.map((v) => (
+				{clientWork.videos.map((v) => (
 					<button class="work-card work-card--video" data-video-src={v.src} data-video-label={v.label} aria-label={`Play ${v.label}`}>
 						<video class="work-card__media" data-src={v.src} muted loop playsinline preload="none"></video>
 						<span class="work-card__play" aria-hidden="true">
@@ -179,15 +314,45 @@ const workImages = [
 						<span class="work-card__foot">
 							<span class="work-card__cat">{v.category}</span>
 							<span class="work-card__label">{v.label}</span>
+							{v.client && <span class="work-card__client">{v.client}</span>}
 						</span>
 					</button>
 				))}
 			</div>
 		</div>
 
-		<div class="work-panel" data-panel="images">
+		<div class="work-panel" data-panel="branding" role="tabpanel">
 			<div class="work-grid work-grid--images">
-				{workImages.map((img) => (
+				{clientWork.branding.map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+							{img.client && <span class="work-card__client">{img.client}</span>}
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<div class="work-panel" data-panel="ads" role="tabpanel">
+			<div class="work-grid work-grid--images work-grid--ads">
+				{clientWork.ads.map((img) => (
+					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
+						<img class="work-card__media work-card__media--wide" src={img.src} alt={img.label} loading="lazy" />
+						<span class="work-card__foot">
+							<span class="work-card__cat">{img.category}</span>
+							<span class="work-card__label">{img.label}</span>
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<div class="work-panel" data-panel="design" role="tabpanel">
+			<div class="work-grid work-grid--images work-grid--design">
+				{clientWork.design.map((img) => (
 					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
 						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
 						<span class="work-card__foot">
@@ -201,8 +366,8 @@ const workImages = [
 	</section>
 
 	<!-- LIGHTBOX -->
-	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-		<button class="lightbox__close" type="button" aria-label="Close">
+	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Media viewer">
+		<button class="lightbox__close" type="button" aria-label="Close viewer">
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
 				<path d="M6 6l12 12M18 6L6 18"/>
 			</svg>
@@ -212,22 +377,22 @@ const workImages = [
 	</div>
 
 	<!-- TESTIMONIALS -->
-	<section class="section section--testimonials">
+	<section class="section section--testimonials" aria-labelledby="testimonials-heading">
 		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Testimonials</span>
-			<h2 class="section__title">Founders who <span class="hero__gradient">kept coming back.</span></h2>
+			<span class="eyebrow eyebrow--plain">Client Testimonials</span>
+			<h2 class="section__title" id="testimonials-heading">Founders who <span class="hero__gradient">kept coming back.</span></h2>
 		</div>
 		<div class="tm-grid">
 			{testimonials.map((t) => (
-				<figure class="tm">
+				<figure class="tm" itemscope itemtype="https://schema.org/Review">
 					<svg class="tm__mark" viewBox="0 0 32 24" aria-hidden="true">
 						<path d="M0 24V14C0 6.3 4.9 1 12 0v5c-3.7 1-6 3.7-6 7h6v12H0Zm20 0V14c0-7.7 4.9-13 12-14v5c-3.7 1-6 3.7-6 7h6v12H20Z" fill="currentColor"/>
 					</svg>
-					<blockquote class="tm__quote">"{t.quote}"</blockquote>
+					<blockquote class="tm__quote" itemprop="reviewBody">"{t.quote}"</blockquote>
 					<figcaption class="tm__foot">
-						<span class="tm__avatar" style={`background: ${t.accent}`}>{t.initials}</span>
-						<span class="tm__id">
-							<span class="tm__name">{t.name}</span>
+						<span class="tm__avatar" style={`background: ${t.accent}`} aria-hidden="true">{t.initials}</span>
+						<span class="tm__id" itemprop="author" itemscope itemtype="https://schema.org/Person">
+							<span class="tm__name" itemprop="name">{t.name}</span>
 							<span class="tm__role">{t.role} · {t.company}</span>
 						</span>
 					</figcaption>
@@ -236,12 +401,28 @@ const workImages = [
 		</div>
 	</section>
 
-	<!-- CTA STRIP -->
+	<!-- FAQ -->
+	<section class="section" aria-labelledby="faq-heading">
+		<div class="section__head">
+			<span class="eyebrow eyebrow--plain">FAQ</span>
+			<h2 class="section__title" id="faq-heading">Common <span class="hero__gradient">questions.</span></h2>
+		</div>
+		<div class="faq-list">
+			{faqs.map((f) => (
+				<details class="faq-item">
+					<summary class="faq-question">{f.q}</summary>
+					<p class="faq-answer">{f.a}</p>
+				</details>
+			))}
+		</div>
+	</section>
+
+	<!-- CTA -->
 	<div class="cta-strip">
 		<div class="cta-strip__inner">
 			<div class="cta-strip__copy">
 				<h2 class="cta-strip__title">Ready to put your brand <span class="hero__gradient">into orbit?</span></h2>
-				<p class="cta-strip__sub">Most briefs get a response within one working day.</p>
+				<p class="cta-strip__sub">Most briefs get a response within one working day. No pushy sales calls.</p>
 			</div>
 			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
 		</div>
@@ -249,6 +430,7 @@ const workImages = [
 
 	<script is:inline>
 		(function () {
+			// Work tabs
 			const tabs = document.querySelectorAll('.work-tab');
 			const panels = document.querySelectorAll('.work-panel');
 			tabs.forEach((tab) => {
@@ -266,6 +448,7 @@ const workImages = [
 				});
 			});
 
+			// Lazy video src attachment
 			const videoCards = document.querySelectorAll('.work-card--video');
 			const attachVideoSrc = (card) => {
 				const video = card.querySelector('video');
@@ -275,13 +458,14 @@ const workImages = [
 			};
 			if ('IntersectionObserver' in window) {
 				const io = new IntersectionObserver((entries) => {
-					entries.forEach((entry) => { if (entry.isIntersecting) { attachVideoSrc(entry.target); io.unobserve(entry.target); } });
+					entries.forEach((e) => { if (e.isIntersecting) { attachVideoSrc(e.target); io.unobserve(e.target); } });
 				}, { rootMargin: '200px' });
-				videoCards.forEach((card) => io.observe(card));
+				videoCards.forEach((c) => io.observe(c));
 			} else {
 				videoCards.forEach(attachVideoSrc);
 			}
 
+			// Hover preview (desktop)
 			const isTouch = window.matchMedia('(hover: none)').matches;
 			if (!isTouch) {
 				videoCards.forEach((card) => {
@@ -292,6 +476,7 @@ const workImages = [
 				});
 			}
 
+			// Lightbox
 			const lightbox = document.getElementById('lightbox');
 			const stage = document.getElementById('lightbox-stage');
 			const caption = document.getElementById('lightbox-caption');
@@ -341,4 +526,84 @@ const workImages = [
 			document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) closeLightbox(); });
 		})();
 	</script>
+
+	<style is:global>
+		/* Extended work tab for 4 tabs */
+		@media (max-width: 640px) {
+			.work-tabs { flex-wrap: wrap; border-radius: 16px; }
+			.work-tab { flex: 1 1 auto; justify-content: center; min-width: 0; }
+			.work-tab__count { display: none; }
+		}
+		.work-grid--ads { grid-template-columns: repeat(3, 1fr); }
+		.work-grid--design { grid-template-columns: repeat(4, 1fr); }
+		.work-card__media--wide { aspect-ratio: 4 / 3 !important; }
+		.work-card__client {
+			font-size: 11px;
+			color: var(--violet);
+			font-weight: 500;
+			letter-spacing: 0.04em;
+		}
+
+		/* FAQ */
+		.faq-list {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			max-width: 860px;
+			margin: 0 auto;
+		}
+		.faq-item {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			overflow: hidden;
+			transition: border-color 0.2s;
+		}
+		.faq-item[open] { border-color: var(--line-strong); }
+		.faq-question {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			padding: 20px 24px;
+			font-size: 16px;
+			font-weight: 600;
+			cursor: pointer;
+			list-style: none;
+			color: var(--text);
+			user-select: none;
+			transition: color 0.2s;
+		}
+		.faq-question::-webkit-details-marker { display: none; }
+		.faq-question::after {
+			content: '+';
+			font-size: 22px;
+			font-weight: 300;
+			color: var(--muted);
+			flex-shrink: 0;
+			transition: transform 0.2s, color 0.2s;
+		}
+		.faq-item[open] .faq-question::after { transform: rotate(45deg); color: var(--violet); }
+		.faq-item[open] .faq-question { color: var(--text); }
+		.faq-answer {
+			padding: 0 24px 20px;
+			margin: 0;
+			font-size: 15px;
+			color: var(--muted);
+			line-height: 1.7;
+			border-top: 1px solid var(--line);
+			padding-top: 16px;
+		}
+
+		@media (max-width: 900px) {
+			.work-grid--ads { grid-template-columns: 1fr 1fr; }
+			.work-grid--design { grid-template-columns: repeat(3, 1fr); }
+		}
+		@media (max-width: 640px) {
+			.work-grid--ads { grid-template-columns: 1fr 1fr; }
+			.work-grid--design { grid-template-columns: 1fr 1fr; }
+			.faq-question { padding: 16px 18px; font-size: 15px; }
+			.faq-answer { padding: 0 18px 16px; padding-top: 14px; }
+		}
+	</style>
 </Layout>

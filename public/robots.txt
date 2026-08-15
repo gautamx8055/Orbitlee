@@ -1,4 +1,63 @@
+# Orbitlee — Creative & Marketing Agency
+# https://www.orbitlee.com
+
 User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /_astro/
+Crawl-delay: 1
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /dist/
+
+User-agent: Googlebot-Video
+Allow: /
+Disallow: /dist/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot-media
+Allow: /
+Disallow: /dist/
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexImages
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Archive
+User-agent: ia_archiver
 Allow: /
 
 Sitemap: https://www.orbitlee.com/sitemap.xml

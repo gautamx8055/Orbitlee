@@ -1,6 +1,43 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+const servicesSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "CollectionPage",
+			"@id": `${siteUrl}/services/#webpage`,
+			url: `${siteUrl}/services/`,
+			name: "Services — Orbitlee Creative & Marketing Agency India",
+			description: "Marketing & Advertising, Web & App Development, Branding & Creative, Growth Consulting — all under one roof.",
+			isPartOf: { "@id": `${siteUrl}/#website` },
+			about: { "@id": `${siteUrl}/#organization` },
+			inLanguage: "en",
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			name: "Orbitlee Services",
+			description: "Full-service creative and marketing agency services by Orbitlee India",
+			numberOfItems: 4,
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Marketing & Advertising", url: `${siteUrl}/services/marketing-advertising/`, description: "Meta Ads, Google Ads, social media management, AI UGC, lead generation" },
+				{ "@type": "ListItem", position: 2, name: "Web & App Development", url: `${siteUrl}/services/web-app-development/`, description: "Website development, mobile apps, SaaS platforms, UI/UX, AI automation" },
+				{ "@type": "ListItem", position: 3, name: "Branding & Creative", url: `${siteUrl}/services/branding-creative/`, description: "Brand strategy, logo design, visual identity, AI UGC, commercial production" },
+				{ "@type": "ListItem", position: 4, name: "Growth Consulting", url: `${siteUrl}/services/growth-consulting/`, description: "Business growth audit, brand audit, marketing strategy, go-to-market planning" },
+			],
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services/` },
+			],
+		},
+	],
+};
+
 const categories = [
 	{
 		href: "/services/marketing-advertising",
@@ -38,9 +75,12 @@ const categories = [
 ---
 
 <Layout
-	title="Services — Orbitlee Creative & Marketing Agency"
-	description="Marketing & Advertising, Web & App Development, Branding & Creative, and Growth Consulting — all under one roof, briefed once, moving in sync."
+	title="Services — Orbitlee Creative & Marketing Agency India | All Services"
+	description="Orbitlee services: Marketing & Advertising, Web & App Development, Branding & Creative, Growth Consulting. Full-service creative agency India — one team, one brief, one sprint."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+	</Fragment>
 	<!-- PAGE HERO -->
 	<section class="page-hero">
 		<div class="page-hero__eyebrow">

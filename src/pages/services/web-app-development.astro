@@ -1,6 +1,50 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+const pageSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Service",
+			"@id": `${siteUrl}/services/web-app-development/#service`,
+			name: "Web & App Development",
+			serviceType: "Website and Mobile App Development",
+			provider: { "@id": `${siteUrl}/#organization` },
+			areaServed: { "@type": "Country", name: "India" },
+			description: "Website development, landing pages, mobile apps, SaaS platforms, UI/UX design and AI automation built for performance and scale.",
+			url: `${siteUrl}/services/web-app-development/`,
+			hasOfferCatalog: {
+				"@type": "OfferCatalog",
+				name: "Web & App Development Services",
+				itemListElement: [
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Page Design & Development" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development (iOS & Android)" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS Platform Development" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & Workflows" } },
+				],
+			},
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services/` },
+				{ "@type": "ListItem", position: 3, name: "Web & App Development", item: `${siteUrl}/services/web-app-development/` },
+			],
+		},
+		{
+			"@type": "FAQPage",
+			mainEntity: [
+				{ "@type": "Question", name: "Does Orbitlee build websites and apps?", acceptedAnswer: { "@type": "Answer", text: "Yes — Orbitlee is a full-service web and app development agency. We build websites, landing pages, mobile apps (iOS & Android), SaaS platforms and AI-powered automation workflows, all optimised for performance and conversions." } },
+				{ "@type": "Question", name: "How long does it take Orbitlee to build a website?", acceptedAnswer: { "@type": "Answer", text: "Most landing pages and simple websites ship in 1–2 weeks. More complex web applications or SaaS products take 4–12 weeks depending on scope. We work in weekly sprints so you see progress from week one." } },
+			],
+		},
+	],
+};
+
 const offerings = [
 	{
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
@@ -51,9 +95,12 @@ const approach = [
 ---
 
 <Layout
-	title="Web & App Development — Orbitlee"
-	description="Website development, mobile apps, SaaS platforms, landing pages, UI/UX design and AI automation — built fast, optimised for growth."
+	title="Web & App Development Agency India — Websites, Apps, SaaS | Orbitlee"
+	description="Website development, mobile apps, SaaS platforms, landing pages, UI/UX design and AI automation by Orbitlee India. Built fast, optimised for performance and growth."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
 	<!-- BREADCRUMB + HERO -->
 	<section class="page-hero">
 		<div class="breadcrumb">

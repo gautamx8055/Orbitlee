@@ -1,6 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+const aboutSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "AboutPage",
+			"@id": `${siteUrl}/about/#webpage`,
+			url: `${siteUrl}/about/`,
+			name: "About Orbitlee — Creative & Marketing Agency India",
+			description: "Learn about Orbitlee, India's creative and marketing agency founded by Sachin Verma. One team, one brief, one weekly sprint.",
+			isPartOf: { "@id": `${siteUrl}/#website` },
+			about: { "@id": `${siteUrl}/#organization` },
+			inLanguage: "en",
+		},
+		{
+			"@type": "Person",
+			"@id": `${siteUrl}/#founder`,
+			name: "Sachin Verma",
+			givenName: "Sachin",
+			familyName: "Verma",
+			jobTitle: "Founder & Creative Head",
+			description: "Sachin Verma is the founder and creative head of Orbitlee, a creative and marketing agency based in India.",
+			worksFor: { "@id": `${siteUrl}/#organization` },
+			url: siteUrl,
+			knowsAbout: ["Branding", "Marketing Strategy", "Creative Direction", "Performance Marketing", "AI Content", "Business Growth"],
+		},
+	],
+};
+
 const differentiators = [
 	{
 		title: "One team, not five vendors",
@@ -29,9 +58,12 @@ const stats = [
 ---
 
 <Layout
-	title="About Orbitlee — Creative & Marketing Agency"
-	description="We're Orbitlee — a creative and marketing agency built to move fast and ship everything from one brief. Strategy, design, marketing and technology under one roof."
+	title="About Orbitlee — Creative & Marketing Agency India | Sachin Verma"
+	description="We're Orbitlee — India's creative and marketing agency founded by Sachin Verma. One team, one brief, one sprint. Branding, marketing, web and AI content that compounds."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+	</Fragment>
 	<!-- PAGE HERO -->
 	<section class="page-hero">
 		<div class="page-hero__eyebrow">

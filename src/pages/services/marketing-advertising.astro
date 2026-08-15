@@ -1,6 +1,51 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+const pageSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Service",
+			"@id": `${siteUrl}/services/marketing-advertising/#service`,
+			name: "Marketing & Advertising",
+			serviceType: "Digital Marketing & Advertising",
+			provider: { "@id": `${siteUrl}/#organization` },
+			areaServed: { "@type": "Country", name: "India" },
+			description: "Full-funnel marketing and advertising — Meta Ads, Google Ads, social media management, AI UGC, lead generation and email marketing.",
+			url: `${siteUrl}/services/marketing-advertising/`,
+			hasOfferCatalog: {
+				"@type": "OfferCatalog",
+				name: "Marketing & Advertising Services",
+				itemListElement: [
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Meta Ads (Facebook & Instagram Ads)" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Google Ads (Search, Display, YouTube)" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Management" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Lead Generation" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "AI UGC Production" } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Email Marketing" } },
+				],
+			},
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services/` },
+				{ "@type": "ListItem", position: 3, name: "Marketing & Advertising", item: `${siteUrl}/services/marketing-advertising/` },
+			],
+		},
+		{
+			"@type": "FAQPage",
+			mainEntity: [
+				{ "@type": "Question", name: "What marketing services does Orbitlee offer?", acceptedAnswer: { "@type": "Answer", text: "Orbitlee offers full-funnel marketing services including Meta Ads (Facebook & Instagram), Google Ads (Search, Display, YouTube), social media management, lead generation, AI UGC production and email marketing campaigns." } },
+				{ "@type": "Question", name: "Does Orbitlee run Meta and Google Ads?", acceptedAnswer: { "@type": "Answer", text: "Yes — Orbitlee manages Meta Ads (Facebook and Instagram) and Google Ads (Search, Display, YouTube) campaigns. We handle strategy, creative, targeting, optimisation and weekly performance reporting." } },
+				{ "@type": "Question", name: "What is AI UGC and does Orbitlee produce it?", acceptedAnswer: { "@type": "Answer", text: "AI UGC (AI User-Generated Content) is high-performing ad content that looks authentic and organic, produced using AI tools at a fraction of traditional shoot costs. Orbitlee is an AI UGC agency that produces these at scale for paid campaigns." } },
+			],
+		},
+	],
+};
+
 const offerings = [
 	{
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
@@ -51,9 +96,12 @@ const approach = [
 ---
 
 <Layout
-	title="Marketing & Advertising — Orbitlee"
-	description="Full-funnel marketing and advertising services — Meta Ads, Google Ads, social media management, lead generation and AI UGC. One team, one brief, compounding results."
+	title="Marketing & Advertising Agency India — Meta Ads, Google Ads, AI UGC | Orbitlee"
+	description="Full-funnel marketing & advertising by Orbitlee India — Meta Ads, Google Ads, social media management, AI UGC production, lead generation. Compounding results from one team."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
 	<!-- BREADCRUMB + HERO -->
 	<section class="page-hero">
 		<div class="breadcrumb">

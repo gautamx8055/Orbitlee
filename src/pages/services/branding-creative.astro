@@ -1,6 +1,38 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+const pageSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Service",
+			"@id": `${siteUrl}/services/branding-creative/#service`,
+			name: "Branding & Creative",
+			serviceType: "Branding, Design and Creative Production",
+			provider: { "@id": `${siteUrl}/#organization` },
+			areaServed: { "@type": "Country", name: "India" },
+			description: "Brand strategy, logo design, visual identity, AI UGC production, commercial ads, product photography and motion graphics.",
+			url: `${siteUrl}/services/branding-creative/`,
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services/` },
+				{ "@type": "ListItem", position: 3, name: "Branding & Creative", item: `${siteUrl}/services/branding-creative/` },
+			],
+		},
+		{
+			"@type": "FAQPage",
+			mainEntity: [
+				{ "@type": "Question", name: "Does Orbitlee do logo and brand identity design?", acceptedAnswer: { "@type": "Answer", text: "Yes — Orbitlee provides complete branding services including brand strategy, logo design, visual identity systems, brand guidelines, packaging design and all brand collateral." } },
+				{ "@type": "Question", name: "What is AI UGC production?", acceptedAnswer: { "@type": "Answer", text: "AI UGC (Artificial Intelligence User-Generated Content) is authentic-looking ad content created with AI tools. Orbitlee produces AI UGC at scale — 10x more ad variants at a fraction of traditional production cost, built specifically for paid advertising performance." } },
+			],
+		},
+	],
+};
+
 const offerings = [
 	{
 		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
@@ -61,9 +93,12 @@ const approach = [
 ---
 
 <Layout
-	title="Branding & Creative — Orbitlee"
-	description="Brand strategy, logo design, visual identity, AI UGC, commercial ads, product photography and motion graphics — high-craft creative production built to convert."
+	title="Branding & Creative Agency India — Logo, Identity, AI UGC, Ads | Orbitlee"
+	description="Brand strategy, logo design, visual identity, AI UGC production, commercial ads and product photography by Orbitlee India. High-craft creative built to stop the scroll and convert."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
 	<!-- BREADCRUMB + HERO -->
 	<section class="page-hero">
 		<div class="breadcrumb">

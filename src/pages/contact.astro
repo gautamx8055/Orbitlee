@@ -1,6 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const siteUrl = "https://www.orbitlee.com";
+const contactSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "ContactPage",
+			"@id": `${siteUrl}/contact/#webpage`,
+			url: `${siteUrl}/contact/`,
+			name: "Contact Orbitlee — Book a Free Brand Audit",
+			description: "Contact Orbitlee for a free 30-minute brand audit. Email, phone, or fill out the brief form.",
+			isPartOf: { "@id": `${siteUrl}/#website` },
+			about: { "@id": `${siteUrl}/#organization` },
+			inLanguage: "en",
+		},
+		{
+			"@type": "LocalBusiness",
+			"@id": `${siteUrl}/#business`,
+			name: "Orbitlee",
+			alternateName: ["Orbitly", "Orbitli", "Orbit Lee"],
+			telephone: "+91-98106-92028",
+			email: "orbitleeee@gmail.com",
+			url: siteUrl,
+			sameAs: ["https://www.instagram.com/orbitlee_"],
+			areaServed: { "@type": "Country", name: "India" },
+			contactPoint: {
+				"@type": "ContactPoint",
+				telephone: "+91-98106-92028",
+				email: "orbitleeee@gmail.com",
+				contactType: "sales",
+				availableLanguage: ["English", "Hindi"],
+			},
+		},
+	],
+};
+
 const services = [
 	"Marketing & Advertising",
 	"Web & App Development",
@@ -10,9 +45,12 @@ const services = [
 ---
 
 <Layout
-	title="Contact Orbitlee — Book a Free Brand Audit"
-	description="Tell us where you want to go — we'll draw the trajectory and fly it with you. Book a free 30-minute brand audit with Orbitlee."
+	title="Contact Orbitlee — Book a Free Brand Audit | +91 98106 92028"
+	description="Contact Orbitlee (also searched as Orbitly, Orbitli) for a free 30-minute brand audit. Email orbitleeee@gmail.com or call +91 98106 92028. Response within 1 business day."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
+	</Fragment>
 	<!-- PAGE HERO -->
 	<section class="page-hero">
 		<div class="page-hero__eyebrow">

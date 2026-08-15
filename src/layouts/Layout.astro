@@ -27,20 +27,139 @@ const serviceLinks = [
 	{ href: "/services/growth-consulting", label: "Growth Consulting" },
 ];
 
+const brandVariants = ["Orbitly", "Orbitli", "Orbit Lee", "Orbitlee Agency", "Orbitlee Creative", "Orbitlee Marketing", "Orbitlee Digital", "Orbitlee Creative & Marketing Agency", "Orbitlee India"];
+
 const jsonLd = {
 	"@context": "https://schema.org",
-	"@type": "Organization",
-	name: "Orbitlee",
-	url: siteUrl,
-	logo: `${siteUrl}/Orbitlee-logo-transparent.png`,
-	description,
-	contactPoint: {
-		"@type": "ContactPoint",
-		telephone: "+91-98106-92028",
-		email: "orbitleeee@gmail.com",
-		contactType: "sales",
-	},
-	sameAs: ["https://www.instagram.com/orbitlee_"],
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${siteUrl}/#organization`,
+			name: "Orbitlee",
+			alternateName: brandVariants,
+			url: siteUrl,
+			logo: {
+				"@type": "ImageObject",
+				"@id": `${siteUrl}/#logo`,
+				url: `${siteUrl}/Orbitlee-logo-transparent.png`,
+				contentUrl: `${siteUrl}/Orbitlee-logo-transparent.png`,
+				width: 512,
+				height: 512,
+				caption: "Orbitlee — Creative & Marketing Agency",
+			},
+			image: `${siteUrl}/Orbitlee-logo-transparent.png`,
+			description: "Orbitlee is a creative and marketing agency that unites branding, design, AI-generated content, paid ads and web development under one accountable team. 15+ brands scaled.",
+			slogan: "We Circle, You Grow.",
+			foundingDate: "2024",
+			founder: { "@id": `${siteUrl}/#founder` },
+			numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5, maxValue: 20 },
+			sameAs: [
+				"https://www.instagram.com/orbitlee_",
+				"https://www.orbitlee.com",
+			],
+			contactPoint: [
+				{
+					"@type": "ContactPoint",
+					telephone: "+91-98106-92028",
+					email: "orbitleeee@gmail.com",
+					contactType: "sales",
+					areaServed: "IN",
+					availableLanguage: ["English", "Hindi"],
+				},
+				{
+					"@type": "ContactPoint",
+					telephone: "+91-98106-92028",
+					contactType: "customer support",
+					areaServed: "IN",
+				},
+			],
+			areaServed: { "@type": "Country", name: "India" },
+			knowsAbout: [
+				"Brand Strategy", "Logo Design", "Visual Identity", "Packaging Design",
+				"Social Media Marketing", "Meta Ads", "Facebook Ads", "Instagram Ads",
+				"Google Ads", "Search Engine Marketing", "AI Generated Content", "AI UGC",
+				"Website Development", "Landing Page Design", "Mobile App Development",
+				"SaaS Development", "UI/UX Design", "AI Automation", "Lead Generation",
+				"Performance Marketing", "Content Marketing", "Growth Consulting",
+				"Go-to-Market Strategy", "Business Growth Audit", "Competitive Analysis",
+			],
+			hasOfferCatalog: {
+				"@type": "OfferCatalog",
+				name: "Orbitlee Services",
+				itemListElement: [
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Marketing & Advertising", url: `${siteUrl}/services/marketing-advertising` } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Web & App Development", url: `${siteUrl}/services/web-app-development` } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Branding & Creative", url: `${siteUrl}/services/branding-creative` } },
+					{ "@type": "Offer", itemOffered: { "@type": "Service", name: "Growth Consulting", url: `${siteUrl}/services/growth-consulting` } },
+				],
+			},
+		},
+		{
+			"@type": ["LocalBusiness", "ProfessionalService"],
+			"@id": `${siteUrl}/#business`,
+			name: "Orbitlee",
+			alternateName: brandVariants,
+			url: siteUrl,
+			image: `${siteUrl}/Orbitlee-logo-transparent.png`,
+			description: "Creative and marketing agency offering branding, AI content, paid advertising, web development and consulting services across India.",
+			priceRange: "₹₹",
+			currenciesAccepted: "INR",
+			paymentAccepted: "Bank Transfer, UPI, Credit Card",
+			telephone: "+91-98106-92028",
+			email: "orbitleeee@gmail.com",
+			areaServed: { "@type": "Country", name: "India" },
+			openingHoursSpecification: {
+				"@type": "OpeningHoursSpecification",
+				dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+				opens: "09:00",
+				closes: "19:00",
+			},
+		},
+		{
+			"@type": "Person",
+			"@id": `${siteUrl}/#founder`,
+			name: "Sachin Verma",
+			givenName: "Sachin",
+			familyName: "Verma",
+			jobTitle: "Founder & Creative Head",
+			worksFor: { "@id": `${siteUrl}/#organization` },
+			url: siteUrl,
+			knowsAbout: ["Branding", "Marketing Strategy", "Creative Direction", "Performance Marketing", "Business Growth"],
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}/#website`,
+			url: siteUrl,
+			name: "Orbitlee",
+			alternateName: ["Orbitly", "Orbitli", "Orbit Lee"],
+			description: "Orbitlee — Creative & Marketing Agency. Strategy. Design. Grow.",
+			publisher: { "@id": `${siteUrl}/#organization` },
+			inLanguage: "en",
+			potentialAction: {
+				"@type": "SearchAction",
+				target: {
+					"@type": "EntryPoint",
+					urlTemplate: `${siteUrl}/contact?q={search_term_string}`,
+				},
+				"query-input": "required name=search_term_string",
+			},
+		},
+		{
+			"@type": "WebPage",
+			"@id": `${siteUrl}${pathname}#webpage`,
+			url: `${siteUrl}${pathname}`,
+			name: title,
+			description,
+			isPartOf: { "@id": `${siteUrl}/#website` },
+			about: { "@id": `${siteUrl}/#organization` },
+			primaryImageOfPage: { "@type": "ImageObject", url: ogImage },
+			datePublished: "2024-01-01",
+			dateModified: new Date().toISOString().split("T")[0],
+			author: { "@id": `${siteUrl}/#founder` },
+			publisher: { "@id": `${siteUrl}/#organization` },
+			inLanguage: "en",
+		},
+	],
 };
 ---
 
@@ -49,35 +168,88 @@ const jsonLd = {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="robots" content="index, follow, max-image-preview:large" />
+
+		<!-- Core SEO -->
+		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<meta name="bingbot" content="index, follow" />
+		<meta name="msnbot" content="index, follow" />
 		<meta name="theme-color" content="#0a0912" />
+		<meta name="application-name" content="Orbitlee" />
+		<meta name="apple-mobile-web-app-title" content="Orbitlee" />
+		<meta name="rating" content="general" />
+		<meta name="revisit-after" content="7 days" />
+		<meta name="author" content="Sachin Verma, Orbitlee" />
 		<link rel="canonical" href={`${siteUrl}${pathname}`} />
 
+		<!-- Brand + all keyword variants — indexed by Bing, Yahoo, DuckDuckGo -->
+		<meta name="keywords" content="orbitlee, orbitly, orbitli, orbit lee, orbitlee agency, orbitlee creative, orbitlee marketing, orbitlee digital, orbitlee india, orbitlee sachin verma, sachin verma agency, creative agency india, marketing agency india, branding agency india, digital marketing agency india, ai ugc agency india, performance marketing agency, meta ads agency, google ads agency, facebook ads agency, web development agency india, mobile app development india, brand identity agency india, social media agency india, content marketing agency, growth consulting agency, ai content agency, seo agency india, startup marketing agency india, ecommerce marketing agency india, full service marketing agency india" />
+
+		<!-- Geo targeting -->
+		<meta name="geo.region" content="IN" />
+		<meta name="geo.placename" content="India" />
+		<meta name="ICBM" content="20.5937, 78.9629" />
+
+		<!-- Dublin Core — read by Bing, Yahoo, and academic/enterprise crawlers -->
+		<meta name="DC.title" content={title} />
+		<meta name="DC.description" content={description} />
+		<meta name="DC.creator" content="Sachin Verma" />
+		<meta name="DC.publisher" content="Orbitlee" />
+		<meta name="DC.subject" content="Creative Agency, Marketing Agency, Branding, Web Development, AI Content" />
+		<meta name="DC.language" content="en" />
+		<meta name="DC.coverage" content="India" />
+		<meta name="DC.rights" content="Copyright 2024 Orbitlee. All rights reserved." />
+		<meta name="DC.type" content="Service" />
+		<meta name="DC.format" content="text/html" />
+		<meta name="DC.identifier" content={`${siteUrl}${pathname}`} />
+
+		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Orbitlee" />
 		<meta property="og:url" content={`${siteUrl}${pathname}`} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Orbitlee — Creative & Marketing Agency" />
 		<meta property="og:locale" content="en_IN" />
+
+		<!-- Business Open Graph -->
+		<meta property="business:contact_data:country_name" content="India" />
+		<meta property="business:contact_data:email" content="orbitleeee@gmail.com" />
+		<meta property="business:contact_data:phone_number" content="+91-98106-92028" />
+
+		<!-- Twitter / X Card -->
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@orbitlee_" />
+		<meta name="twitter:creator" content="@orbitlee_" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content="Orbitlee — Creative & Marketing Agency" />
 
+		<!-- Favicons -->
 		<link rel="icon" type="image/png" sizes="32x32" href="/Orbitlee-fav-icon.png" />
 		<link rel="icon" type="image/png" sizes="192x192" href="/Orbitlee-fav-icon.png" />
 		<link rel="shortcut icon" type="image/png" href="/Orbitlee-fav-icon.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/Orbitlee-fav-icon.png" />
 
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 		<link rel="dns-prefetch" href="https://formspree.io" />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
+		<!-- Comprehensive entity graph JSON-LD -->
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+		<!-- Per-page schema injected from child pages -->
+		<slot name="head" />
 	</head>
 	<body>
 		<div class="ambient"></div>
@@ -177,6 +349,10 @@ const jsonLd = {
 				</div>
 				<p class="footer__copy">© {year} Orbitlee. All rights reserved.</p>
 			</div>
+			<p class="footer__variants">
+				Searching for <em>Orbitly</em>, <em>Orbitli</em>, or <em>Orbit Lee</em>? You've found us —
+				<strong>Orbitlee</strong>, India's creative &amp; marketing agency. Strategy. Design. Grow.
+			</p>
 		</footer>
 
 		<script is:inline>
@@ -1383,6 +1559,17 @@ const jsonLd = {
 				-webkit-text-fill-color: transparent;
 			}
 			.footer__copy { margin: 0; font-size: 13px; color: var(--muted-2); }
+			.footer__variants {
+				margin: 20px 0 0;
+				font-size: 12px;
+				color: var(--muted-2);
+				border-top: 1px solid var(--line);
+				padding-top: 16px;
+				text-align: center;
+				line-height: 1.6;
+			}
+			.footer__variants em { font-style: normal; color: var(--muted); }
+			.footer__variants strong { color: var(--muted); font-weight: 600; }
 			.footer__social { display: inline-flex; gap: 8px; }
 			.footer__social a {
 				display: inline-flex;
