@@ -499,7 +499,7 @@ const jsonLd = {
 			}
 			.brand { display: inline-flex; align-items: center; padding: 0 6px; }
 			.brand img { height: 40px; width: auto; }
-			.header__right { display: flex; align-items: center; gap: 10px; }
+			.header__right { display: flex; align-items: center; gap: 10px; justify-self: end; }
 
 			/* DESKTOP NAV */
 			.nav {
@@ -1647,7 +1647,7 @@ const jsonLd = {
 			}
 
 			@media (max-width: 900px) {
-				.header { top: 12px; margin: 12px 16px 0; padding: 8px 8px 8px 16px; gap: 12px; }
+				.header { top: 12px; margin: 12px 16px 0; padding: 8px 8px 8px 16px; gap: 12px; grid-template-columns: 1fr auto; }
 				.nav { display: none; }
 				.hamburger { display: flex; }
 				.brand img { height: 36px; }
