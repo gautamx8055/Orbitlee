@@ -305,7 +305,7 @@ const homePageSchema = {
 
 		<div class="work-panel is-active" data-panel="videos" role="tabpanel">
 			<div class="work-grid work-grid--videos">
-				{clientWork.videos.slice(0, 3).map((v) => (
+				{clientWork.videos.map((v) => (
 					<button class="work-card work-card--video" data-video-src={v.src} data-video-label={v.label} aria-label={`Play ${v.label}`}>
 						<video class="work-card__media" data-src={v.src} muted loop playsinline preload="metadata"></video>
 						<span class="work-card__play" aria-hidden="true">
@@ -326,7 +326,7 @@ const homePageSchema = {
 
 		<div class="work-panel" data-panel="branding" role="tabpanel">
 			<div class="work-grid work-grid--images">
-				{clientWork.branding.slice(0, 3).map((img) => (
+				{clientWork.branding.map((img) => (
 					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
 						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
 						<span class="work-card__foot">
@@ -344,7 +344,7 @@ const homePageSchema = {
 
 		<div class="work-panel" data-panel="ads" role="tabpanel">
 			<div class="work-grid work-grid--images work-grid--ads">
-				{clientWork.ads.slice(0, 3).map((img) => (
+				{clientWork.ads.map((img) => (
 					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
 						<img class="work-card__media work-card__media--wide" src={img.src} alt={img.label} loading="lazy" />
 						<span class="work-card__foot">
@@ -361,7 +361,7 @@ const homePageSchema = {
 
 		<div class="work-panel" data-panel="design" role="tabpanel">
 			<div class="work-grid work-grid--images work-grid--design">
-				{clientWork.design.slice(0, 4).map((img) => (
+				{clientWork.design.map((img) => (
 					<button class="work-card work-card--image" data-image-src={img.src} data-image-label={img.label} aria-label={`View ${img.label}`}>
 						<img class="work-card__media" src={img.src} alt={img.label} loading="lazy" />
 						<span class="work-card__foot">
@@ -552,9 +552,31 @@ const homePageSchema = {
 			.work-tab { flex: 1 1 auto; justify-content: center; min-width: 0; }
 			.work-tab__count { display: none; }
 		}
-		.work-grid--ads { grid-template-columns: repeat(3, 1fr); }
-		.work-grid--design { grid-template-columns: repeat(4, 1fr); }
 		.work-card__media--wide { aspect-ratio: 4 / 3 !important; }
+
+		/* Homepage: horizontal 2-up carousel that overrides the base work-grid layout */
+		.section--projects .work-grid {
+			display: grid;
+			grid-auto-flow: column;
+			grid-auto-columns: calc((100% - 20px) / 2);
+			grid-template-columns: none;
+			gap: 20px;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			padding: 4px 4px 18px;
+			margin: 0 -4px;
+			scrollbar-width: thin;
+			scrollbar-color: rgba(255,255,255,0.2) transparent;
+		}
+		.section--projects .work-grid::-webkit-scrollbar { height: 6px; }
+		.section--projects .work-grid::-webkit-scrollbar-track { background: transparent; }
+		.section--projects .work-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 999px; }
+		.section--projects .work-grid::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.32); }
+		.section--projects .work-card { scroll-snap-align: start; }
+		@media (max-width: 640px) {
+			.section--projects .work-grid { grid-auto-columns: calc((100% - 14px) / 2); gap: 14px; }
+		}
 		.work-card__client {
 			font-size: 11px;
 			color: var(--violet);
