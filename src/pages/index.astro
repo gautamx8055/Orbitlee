@@ -546,11 +546,11 @@ const homePageSchema = {
 		}
 		.work-card__media--wide { aspect-ratio: 4 / 3 !important; }
 
-		/* Homepage: horizontal 2-up carousel that overrides the base work-grid layout */
+		/* Homepage: horizontal carousel (4-up on desktop, 2-up on mobile) overriding the base work-grid layout */
 		.section--projects .work-grid {
 			display: grid;
 			grid-auto-flow: column;
-			grid-auto-columns: calc((100% - 20px) / 2);
+			grid-auto-columns: calc((100% - 60px) / 4);
 			grid-template-columns: none;
 			gap: 20px;
 			overflow-x: auto;
@@ -566,6 +566,9 @@ const homePageSchema = {
 		.section--projects .work-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 999px; }
 		.section--projects .work-grid::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.32); }
 		.section--projects .work-card { scroll-snap-align: start; }
+		@media (max-width: 900px) {
+			.section--projects .work-grid { grid-auto-columns: calc((100% - 20px) / 2); }
+		}
 		@media (max-width: 640px) {
 			.section--projects .work-grid { grid-auto-columns: calc((100% - 14px) / 2); gap: 14px; }
 		}
