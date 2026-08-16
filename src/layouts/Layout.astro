@@ -286,7 +286,6 @@ const jsonLd = {
 				<button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
 					<span></span><span></span><span></span>
 				</button>
-				<a href="/contact" class="btn btn--primary btn--sm">Book a free audit</a>
 			</div>
 		</header>
 
@@ -310,7 +309,6 @@ const jsonLd = {
 				<a href="/work" class="mobile-link">Work</a>
 				<a href="/about" class="mobile-link">About</a>
 				<a href="/contact" class="mobile-link">Contact</a>
-				<a href="/contact" class="btn btn--primary btn--lg mobile-cta">Book a free audit</a>
 			</div>
 		</div>
 
@@ -670,7 +668,6 @@ const jsonLd = {
 				transition: color 0.2s, background 0.2s;
 			}
 			.mobile-drop__sub a:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
-			.mobile-cta { margin-top: 20px; text-align: center; }
 
 			/* BUTTONS */
 			.btn {
@@ -1776,8 +1773,9 @@ const jsonLd = {
 				.brand img { height: 28px; }
 				.hero__title { font-size: 30px; line-height: 1.15; }
 				.section__title { font-size: 26px; }
-				.stats { grid-template-columns: 1fr; }
-				.stat::after { display: none; }
+				.stats { padding: 20px 12px 24px; gap: 16px 12px; }
+				.stat__num { font-size: 24px; }
+				.stat__label { font-size: 11px; }
 			}
 		</style>
 	</body>
