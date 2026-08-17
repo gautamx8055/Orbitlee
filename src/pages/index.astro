@@ -613,14 +613,30 @@ const homePageSchema = {
 				var summary = item.querySelector('.faq-question');
 				var body = item.querySelector('.faq-body');
 				if (!summary || !body) return;
+				function closeItem(it) {
+					var b = it.querySelector('.faq-body');
+					it.classList.remove('is-open');
+					b.style.maxHeight = '0';
+					var done = function () { it.open = false; b.removeEventListener('transitionend', done); };
+					b.addEventListener('transitionend', done);
+				}
+				function openItem(it) {
+					var b = it.querySelector('.faq-body');
+					it.open = true;
+					it.classList.add('is-open');
+					b.style.maxHeight = '0';
+					requestAnimationFrame(function () {
+						b.style.maxHeight = b.scrollHeight + 'px';
+					});
+				}
 				summary.addEventListener('click', function (e) {
 					e.preventDefault();
 					var isOpen = item.classList.contains('is-open');
 					document.querySelectorAll('.faq-item.is-open').forEach(function (open) {
-						if (open !== item) { open.classList.remove('is-open'); open.querySelector('.faq-body').style.maxHeight = '0'; }
+						if (open !== item) closeItem(open);
 					});
-					if (isOpen) { item.classList.remove('is-open'); body.style.maxHeight = '0'; }
-					else { item.classList.add('is-open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+					if (isOpen) closeItem(item);
+					else openItem(item);
 				});
 			});
 
