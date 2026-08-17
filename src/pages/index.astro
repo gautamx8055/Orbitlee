@@ -3,95 +3,106 @@ import Layout from '../layouts/Layout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 
-const stats = [
-	{ num: "25+", label: "Projects delivered" },
-	{ num: "$100K+", label: "Ad spend managed" },
-	{ num: "8", label: "Brands scaled" },
-	{ num: "5★", label: "Avg. client rating" },
-];
-
-const serviceOverview = [
+const serviceRows = [
 	{
+		num: "01",
 		href: "/services/marketing-advertising",
 		title: "Marketing & Advertising",
 		desc: "Full-funnel campaigns from cold reach to qualified pipeline. Meta, Google, social media management and AI-native content built to compound.",
-		items: ["Meta Ads", "Google Ads", "Social Media", "AI UGC", "Lead Generation"],
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+		tags: ["Meta Ads", "Google Ads", "Social Media", "AI UGC", "Lead Generation"],
 	},
 	{
+		num: "02",
 		href: "/services/web-app-development",
 		title: "Web & App Development",
 		desc: "Sites, products and automations that feel effortless, load fast and convert visitors into paying customers.",
-		items: ["Websites", "Landing Pages", "Mobile Apps", "SaaS", "AI Automation"],
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+		tags: ["Websites", "Landing Pages", "Mobile Apps", "SaaS", "AI Automation"],
 	},
 	{
+		num: "03",
 		href: "/services/branding-creative",
 		title: "Branding & Creative",
 		desc: "Positioning, identity and high-craft production that stops the scroll and makes your brand impossible to ignore.",
-		items: ["Brand Strategy", "Logo & Identity", "AI UGC", "Commercial Ads"],
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+		tags: ["Brand Strategy", "Logo & Identity", "AI UGC", "Commercial Ads"],
 	},
 	{
+		num: "04",
 		href: "/services/growth-consulting",
 		title: "Growth Consulting",
 		desc: "Sharp diagnostics and clear roadmaps before your next big investment. Audits, strategy, go-to-market.",
-		items: ["Growth Audit", "Brand Audit", "GTM Strategy", "Marketing Strategy"],
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
+		tags: ["Growth Audit", "Brand Audit", "GTM Strategy", "Marketing Strategy"],
 	},
 ];
 
-const differentiators = [
+const whyItems = [
 	{
-		title: "One team, not five vendors",
-		body: "Stop stitching an agency, a dev shop and a media consultant together. Everything ships from the same weekly sprint.",
+		num: "01",
+		title: "One team. One brief. Zero handoffs.",
+		body: "Stop stitching an agency, a dev shop and a media consultant together. Strategy, design, dev and ads move together in one weekly sprint - so nothing falls through the cracks.",
+		label: "Unified delivery",
 	},
 	{
-		title: "AI-native production",
-		body: "AI UGC, generative creative and automated post-production - 10× the ad variants, without 10× the cost.",
+		num: "02",
+		title: "AI-native production at scale.",
+		body: "AI UGC, generative creative and automated post-production means 10x the ad variants without 10x the cost. You get volume and quality.",
+		label: "AI advantage",
 	},
 	{
-		title: "Speed to launch",
-		body: "Brand new to live site, campaign or product in weeks, not quarters. Momentum is a growth channel.",
+		num: "03",
+		title: "Live in weeks, not quarters.",
+		body: "Brand new to live site, campaign or product in 2-6 weeks. Momentum is a growth channel - we ship fast so you can learn faster.",
+		label: "Speed to market",
 	},
 	{
-		title: "In-house dev + marketing",
-		body: "Landing pages ship the same day a campaign does. Site and ad account share a nervous system.",
+		num: "04",
+		title: "Dev and marketing share a brain.",
+		body: "Landing pages ship the same day a campaign does. Your site and ad account share a nervous system - no more waiting on the 'other team'.",
+		label: "In-house full stack",
 	},
 ];
 
 const testimonials = [
 	{
-		quote: "Orbitlee rebuilt our brand from the identity up and had a new site plus paid campaigns live inside six weeks. Revenue is up 3× since launch.",
+		quote: "Orbitlee rebuilt our brand from the identity up and had a new site plus paid campaigns live inside six weeks. Revenue is up 3x since launch.",
 		name: "Priya Menon",
-		role: "Founder",
-		company: "Aurora Labs",
+		role: "Founder, Aurora Labs",
 		initials: "PM",
-		accent: "linear-gradient(135deg, #a3e635, #65a30d)",
+		accent: "#16a34a",
 	},
 	{
 		quote: "One team for creative, ads and dev meant we finally stopped losing weeks to handoffs. Things just ship, and keep shipping.",
 		name: "Rohan Kapoor",
-		role: "Head of Growth",
-		company: "Halo Studio",
+		role: "Head of Growth, Halo Studio",
 		initials: "RK",
-		accent: "linear-gradient(135deg, #a855f7, #4f46e5)",
+		accent: "#7c3aed",
 	},
 	{
 		quote: "The audit alone was worth twice what we paid. Then they executed on the roadmap. Rare to find both in the same room.",
 		name: "Anaya Sharma",
-		role: "CMO",
-		company: "Ember & Oak",
+		role: "CMO, Ember & Oak",
 		initials: "AS",
-		accent: "linear-gradient(135deg, #d946ef, #a855f7)",
+		accent: "#9333ea",
 	},
 	{
 		quote: "Their AI UGC pipeline now produces more ad variants in a week than our old agency did in a quarter, at a fraction of the cost.",
 		name: "Vikram Reddy",
-		role: "Marketing Director",
-		company: "Northwind & Co.",
+		role: "Marketing Director, Northwind & Co.",
 		initials: "VR",
-		accent: "linear-gradient(135deg, #f59e0b, #d946ef)",
+		accent: "#d97706",
+	},
+	{
+		quote: "The team understood our brand vision on day one and delivered a site that actually converts. We saw a 40% lift in inquiries.",
+		name: "Meera Joshi",
+		role: "Co-founder, Luminos",
+		initials: "MJ",
+		accent: "#0891b2",
+	},
+	{
+		quote: "Working with Orbitlee felt like having an in-house team - responsive, fast and always one step ahead.",
+		name: "Arjun Das",
+		role: "CEO, Stackr",
+		initials: "AD",
+		accent: "#7c3aed",
 	},
 ];
 
@@ -132,8 +143,6 @@ const clientWork = {
 	],
 };
 
-const allImages = [...clientWork.branding, ...clientWork.ads, ...clientWork.design];
-
 const faqs = [
 	{
 		q: "What services does Orbitlee offer?",
@@ -167,7 +176,6 @@ const homePageSchema = {
 	"@context": "https://schema.org",
 	"@type": "ItemList",
 	name: "Orbitlee Services",
-	description: "Creative and marketing agency services offered by Orbitlee India",
 	numberOfItems: 4,
 	itemListElement: [
 		{ "@type": "ListItem", position: 1, name: "Marketing & Advertising", url: `${siteUrl}/services/marketing-advertising/` },
@@ -187,89 +195,176 @@ const homePageSchema = {
 		<script type="application/ld+json" set:html={JSON.stringify(homePageSchema)} />
 	</Fragment>
 
-	<!-- HERO -->
-	<section class="hero" itemscope itemtype="https://schema.org/WPHeader">
-		<span class="eyebrow">
-			<span class="eyebrow__dot"></span>
-			We Circle, You Grow.
-		</span>
-		<h1 class="hero__title" itemprop="headline">
-			Brands that <span class="hero__gradient">ship, sell and scale.</span>
-		</h1>
-		<p class="hero__sub" itemprop="description">
-			Strategy, design, marketing and technology - under one team, in one weekly sprint. Fewer handoffs, faster growth, one clear line of sight.
-		</p>
-		<div class="hero__actions">
-			<a href="/contact" class="btn btn--primary btn--lg">Book a free brand audit</a>
-			<a href="#client-work" class="btn btn--ghost btn--lg">See our work →</a>
+	<!-- ═══════════════════ HERO ═══════════════════ -->
+	<section class="hp-hero" itemscope itemtype="https://schema.org/WPHeader">
+		<div class="hp-hero__left">
+			<span class="hp-badge" data-reveal>
+				<span class="hp-badge__dot"></span>
+				India's Creative & Marketing Agency
+			</span>
+
+			<h1 class="hp-hero__h1" itemprop="headline" data-reveal>
+				Brands that<br />
+				<em class="hp-hero__em">ship, sell</em><br />
+				and&nbsp;<em class="hp-hero__em">scale.</em>
+			</h1>
+
+			<p class="hp-hero__sub" itemprop="description" data-reveal>
+				Strategy, design, marketing and technology under one team.
+				One brief. One weekly sprint. Zero handoffs.
+			</p>
+
+			<div class="hp-hero__actions" data-reveal>
+				<a href="/contact" class="btn btn--primary btn--lg magnetic-btn">
+					Book a free brand audit
+					<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+				</a>
+				<a href="#work" class="btn btn--ghost btn--lg">See our work</a>
+			</div>
+
+			<div class="hp-hero__trust" data-reveal>
+				<div class="hp-hero__trust-items">
+					<span>
+						<strong>25+</strong> projects
+					</span>
+					<span class="hp-hero__trust-dot"></span>
+					<span>
+						<strong>$100K+</strong> ad spend
+					</span>
+					<span class="hp-hero__trust-dot"></span>
+					<span>
+						<strong>5★</strong> rated
+					</span>
+					<span class="hp-hero__trust-dot"></span>
+					<span>Free 30-min audit</span>
+				</div>
+			</div>
 		</div>
-		<p class="hero__micro">Free 30-minute audit · No slide deck · Actionable next steps</p>
+
+		<div class="hp-hero__right" aria-hidden="true">
+			<div class="orbit-scene">
+				<!-- Static rings -->
+				<div class="orbit-ring orbit-ring--1"></div>
+				<div class="orbit-ring orbit-ring--2"></div>
+				<div class="orbit-ring orbit-ring--3"></div>
+				<!-- Orbiting dots -->
+				<div class="orbit-planet orbit-planet--1">
+					<span class="orbit-planet__dot"></span>
+				</div>
+				<div class="orbit-planet orbit-planet--2">
+					<span class="orbit-planet__dot orbit-planet__dot--green"></span>
+				</div>
+				<div class="orbit-planet orbit-planet--3">
+					<span class="orbit-planet__dot orbit-planet__dot--amber"></span>
+				</div>
+				<!-- Center -->
+				<div class="orbit-center">
+					<img src="/Orbitlee-logo-transparent.png" alt="" class="brand__img orbit-center__logo" width="64" height="64" />
+				</div>
+				<!-- Floating stat chips -->
+				<div class="orbit-chip orbit-chip--1">
+					<span class="orbit-chip__num">25+</span>
+					<span class="orbit-chip__label">Projects</span>
+				</div>
+				<div class="orbit-chip orbit-chip--2">
+					<span class="orbit-chip__num">5★</span>
+					<span class="orbit-chip__label">Rating</span>
+				</div>
+				<div class="orbit-chip orbit-chip--3">
+					<span class="orbit-chip__num">8</span>
+					<span class="orbit-chip__label">Brands scaled</span>
+				</div>
+			</div>
+		</div>
 	</section>
 
-	<!-- STATS -->
-	<section class="trust" aria-label="Agency stats">
-		<ul class="stats">
-			{stats.map((s) => (
-				<li class="stat">
-					<span class="stat__num">{s.num}</span>
-					<span class="stat__label">{s.label}</span>
-				</li>
-			))}
-		</ul>
-	</section>
-
-	<!-- SERVICES -->
-	<section class="section" aria-labelledby="services-heading">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">What we do</span>
-			<h2 class="section__title" id="services-heading">Everything you need to <span class="hero__gradient">grow.</span></h2>
-			<p class="section__sub">No stitching agencies together. Every discipline under one roof, briefed once, moving in sync.</p>
+	<!-- ═══════════════════ TICKER ═══════════════════ -->
+	<div class="ticker-wrap" aria-hidden="true">
+		<div class="ticker">
+			<div class="ticker__track">
+				{Array.from({length: 3}).map(() => (
+					<span class="ticker__item">Strategy</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">Brand Identity</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">Paid Ads</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">AI UGC</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">Web Development</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">Growth Consulting</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">Social Media</span>
+					<span class="ticker__sep">·</span>
+					<span class="ticker__item">Mobile Apps</span>
+					<span class="ticker__sep">·</span>
+				))}
+			</div>
 		</div>
-		<div class="service-overview-grid">
-			{serviceOverview.map((s) => (
-				<a href={s.href} class="service-overview-card" aria-label={`Learn about ${s.title}`}>
-					<div class="service-overview-card__icon" set:html={s.icon} aria-hidden="true"></div>
-					<h3 class="service-overview-card__title">{s.title}</h3>
-					<p class="service-overview-card__desc">{s.desc}</p>
-					<ul class="service-overview-card__items" aria-label={`${s.title} services`}>
-						{s.items.map((item) => <li>{item}</li>)}
+	</div>
+
+	<!-- ═══════════════════ SERVICES ═══════════════════ -->
+	<section class="hp-section" id="services" aria-labelledby="services-h">
+		<div class="hp-section__intro" data-reveal>
+			<div class="hp-section__label">What we do</div>
+			<h2 class="hp-section__h2" id="services-h">
+				Everything under<br /><span class="gradient-text">one roof.</span>
+			</h2>
+		</div>
+
+		<div class="svc-rows">
+			{serviceRows.map((s, i) => (
+				<a href={s.href} class="svc-row" data-reveal style={`transition-delay:${i*0.07}s`}>
+					<span class="svc-row__num">{s.num}</span>
+					<div class="svc-row__body">
+						<h3 class="svc-row__title">{s.title}</h3>
+						<p class="svc-row__desc">{s.desc}</p>
+					</div>
+					<ul class="svc-row__tags" aria-label="Includes">
+						{s.tags.map(t => <li>{t}</li>)}
 					</ul>
-					<span class="service-overview-card__link">Explore {s.title} →</span>
+					<span class="svc-row__arrow" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+					</span>
 				</a>
 			))}
 		</div>
 	</section>
 
-	<!-- WHY US -->
-	<section class="section" aria-labelledby="why-heading">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Why Orbitlee</span>
-			<h2 class="section__title" id="why-heading">Full-service, <span class="hero__gradient">actually delivered.</span></h2>
+	<!-- ═══════════════════ WHY ORBITLEE ═══════════════════ -->
+	<section class="hp-why" aria-labelledby="why-h">
+		<div class="hp-why__head" data-reveal>
+			<div class="hp-section__label">Why Orbitlee</div>
+			<h2 class="hp-section__h2" id="why-h">
+				Full-service,<br /><span class="gradient-text">actually delivered.</span>
+			</h2>
 		</div>
-		<div class="why-grid">
-			{differentiators.map((d, i) => (
-				<article class="why-card">
-					<span class="why-card__num">0{i + 1}</span>
-					<h3 class="why-card__title">{d.title}</h3>
-					<p class="why-card__body">{d.body}</p>
-				</article>
+		<div class="hp-why__grid">
+			{whyItems.map((w, i) => (
+				<div class="why-feat" data-reveal style={`transition-delay:${(i%2)*0.1}s`}>
+					<div class="why-feat__num">{w.num}</div>
+					<div class="why-feat__content">
+						<span class="why-feat__label">{w.label}</span>
+						<h3 class="why-feat__title">{w.title}</h3>
+						<p class="why-feat__body">{w.body}</p>
+					</div>
+				</div>
 			))}
 		</div>
 	</section>
 
-	<!-- CLIENT WORK GALLERY -->
-	<section id="client-work" class="section section--projects" aria-labelledby="work-heading">
-		<div class="section__head section__head--split">
+	<!-- ═══════════════════ WORK ═══════════════════ -->
+	<section class="hp-section" id="work" aria-labelledby="work-h">
+		<div class="hp-section__intro hp-section__intro--split" data-reveal>
 			<div>
-				<span class="eyebrow eyebrow--plain">Client Work</span>
-				<h2 class="section__title section__title--left" id="work-heading">
-					Real orbits <span class="hero__gradient">we've flown.</span>
+				<div class="hp-section__label">Client Work</div>
+				<h2 class="hp-section__h2" id="work-h">
+					Real orbits <span class="gradient-text">we've flown.</span>
 				</h2>
-				<p style="color:var(--muted);font-size:15px;margin:0;">
-					Ad films, AI content, brand identity and design - delivered for real clients across India.
-				</p>
+				<p class="hp-section__sub">Ad films, AI content, brand identity and design for real brands across India.</p>
 			</div>
-			<a href="/contact" class="btn btn--ghost btn--sm">Start yours →</a>
+			<a href="/contact" class="btn btn--ghost">Start yours &rarr;</a>
 		</div>
 
 		<div class="work-tabs" role="tablist" aria-label="Portfolio categories">
@@ -311,9 +406,7 @@ const homePageSchema = {
 					</button>
 				))}
 			</div>
-			<div class="work-viewall">
-				<a href="/work" class="btn btn--ghost btn--lg">View all ad films & UGC →</a>
-			</div>
+			<div class="work-viewall"><a href="/work" class="btn btn--ghost btn--lg">View all &rarr;</a></div>
 		</div>
 
 		<div class="work-panel" data-panel="branding" role="tabpanel">
@@ -329,9 +422,7 @@ const homePageSchema = {
 					</button>
 				))}
 			</div>
-			<div class="work-viewall">
-				<a href="/work" class="btn btn--ghost btn--lg">View all branding & social →</a>
-			</div>
+			<div class="work-viewall"><a href="/work" class="btn btn--ghost btn--lg">View all &rarr;</a></div>
 		</div>
 
 		<div class="work-panel" data-panel="ads" role="tabpanel">
@@ -346,9 +437,7 @@ const homePageSchema = {
 					</button>
 				))}
 			</div>
-			<div class="work-viewall">
-				<a href="/work" class="btn btn--ghost btn--lg">View all ad creatives →</a>
-			</div>
+			<div class="work-viewall"><a href="/work" class="btn btn--ghost btn--lg">View all &rarr;</a></div>
 		</div>
 
 		<div class="work-panel" data-panel="design" role="tabpanel">
@@ -363,287 +452,204 @@ const homePageSchema = {
 					</button>
 				))}
 			</div>
-			<div class="work-viewall">
-				<a href="/work" class="btn btn--ghost btn--lg">View all design work →</a>
-			</div>
+			<div class="work-viewall"><a href="/work" class="btn btn--ghost btn--lg">View all &rarr;</a></div>
 		</div>
 	</section>
 
 	<!-- LIGHTBOX -->
 	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Media viewer">
 		<button class="lightbox__close" type="button" aria-label="Close viewer">
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-				<path d="M6 6l12 12M18 6L6 18"/>
-			</svg>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 		</button>
 		<div class="lightbox__stage" id="lightbox-stage"></div>
 		<p class="lightbox__caption" id="lightbox-caption"></p>
 	</div>
 
-	<!-- TESTIMONIALS -->
-	<section class="section section--testimonials" aria-labelledby="testimonials-heading">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Client Testimonials</span>
-			<h2 class="section__title" id="testimonials-heading">Founders who <span class="hero__gradient">kept coming back.</span></h2>
+	<!-- ═══════════════════ TESTIMONIALS MARQUEE ═══════════════════ -->
+	<section class="hp-tm" aria-labelledby="tm-h">
+		<div class="hp-tm__head" data-reveal>
+			<div class="hp-section__label">Client Testimonials</div>
+			<h2 class="hp-section__h2" id="tm-h">Founders who <span class="gradient-text">kept coming back.</span></h2>
 		</div>
-		<div class="tm-grid">
-			{testimonials.map((t) => (
-				<figure class="tm" itemscope itemtype="https://schema.org/Review">
-					<svg class="tm__mark" viewBox="0 0 32 24" aria-hidden="true">
-						<path d="M0 24V14C0 6.3 4.9 1 12 0v5c-3.7 1-6 3.7-6 7h6v12H0Zm20 0V14c0-7.7 4.9-13 12-14v5c-3.7 1-6 3.7-6 7h6v12H20Z" fill="currentColor"/>
-					</svg>
-					<blockquote class="tm__quote" itemprop="reviewBody">"{t.quote}"</blockquote>
-					<figcaption class="tm__foot">
-						<span class="tm__avatar" style={`background: ${t.accent}`} aria-hidden="true">{t.initials}</span>
-						<span class="tm__id" itemprop="author" itemscope itemtype="https://schema.org/Person">
-							<span class="tm__name" itemprop="name">{t.name}</span>
-							<span class="tm__role">{t.role} · {t.company}</span>
-						</span>
-					</figcaption>
-				</figure>
-			))}
+		<div class="tm-marquee" aria-label="Testimonials" role="list">
+			<div class="tm-marquee__track">
+				{[...testimonials, ...testimonials].map((t, i) => (
+					<figure class="tm-card" role="listitem" itemscope itemtype="https://schema.org/Review">
+						<blockquote class="tm-card__quote" itemprop="reviewBody">"{t.quote}"</blockquote>
+						<figcaption class="tm-card__foot">
+							<span class="tm-card__avatar" style={`background:${t.accent}`} aria-hidden="true">{t.initials}</span>
+							<span class="tm-card__id" itemprop="author" itemscope itemtype="https://schema.org/Person">
+								<span class="tm-card__name" itemprop="name">{t.name}</span>
+								<span class="tm-card__role">{t.role}</span>
+							</span>
+						</figcaption>
+					</figure>
+				))}
+			</div>
 		</div>
 	</section>
 
-	<!-- FAQ -->
-	<section class="section" aria-labelledby="faq-heading">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">FAQ</span>
-			<h2 class="section__title" id="faq-heading">Common <span class="hero__gradient">questions.</span></h2>
+	<!-- ═══════════════════ FAQ ═══════════════════ -->
+	<section class="hp-faq" aria-labelledby="faq-h">
+		<div class="hp-faq__left" data-reveal>
+			<div class="hp-section__label">FAQ</div>
+			<h2 class="hp-section__h2" id="faq-h">Common<br /><span class="gradient-text">questions.</span></h2>
+			<p class="hp-faq__sub">Can't find what you're looking for? <a href="/contact" class="hp-faq__link">Reach out directly.</a></p>
 		</div>
-		<div class="faq-list">
+		<div class="hp-faq__list" data-reveal>
 			{faqs.map((f) => (
 				<details class="faq-item">
 					<summary class="faq-question">{f.q}</summary>
-					<p class="faq-answer">{f.a}</p>
+					<div class="faq-body">
+						<p class="faq-answer">{f.a}</p>
+					</div>
 				</details>
 			))}
 		</div>
 	</section>
 
-	<!-- CTA -->
-	<div class="cta-strip">
-		<div class="cta-strip__inner">
-			<div class="cta-strip__copy">
-				<h2 class="cta-strip__title">Ready to put your brand <span class="hero__gradient">into orbit?</span></h2>
-				<p class="cta-strip__sub">Most briefs get a response within one working day. No pushy sales calls.</p>
+	<!-- ═══════════════════ CTA ═══════════════════ -->
+	<section class="hp-cta" data-reveal>
+		<div class="hp-cta__inner">
+			<div class="hp-cta__orb hp-cta__orb--1" aria-hidden="true"></div>
+			<div class="hp-cta__orb hp-cta__orb--2" aria-hidden="true"></div>
+			<div class="hp-cta__content">
+				<span class="hp-cta__tag">Let's work together</span>
+				<h2 class="hp-cta__h2">Ready to put your brand<br /><em>into orbit?</em></h2>
+				<p class="hp-cta__sub">Most briefs get a response within one working day. No slide decks, no pushy sales calls.</p>
+				<div class="hp-cta__actions">
+					<a href="/contact" class="btn hp-cta__btn-primary magnetic-btn">Book a free audit</a>
+					<a href="/work" class="btn hp-cta__btn-ghost">See our work</a>
+				</div>
 			</div>
-			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
 		</div>
-	</div>
+	</section>
 
 	<script is:inline>
 		(function () {
-			// Work tabs
-			const tabs = document.querySelectorAll('.work-tab');
-			const panels = document.querySelectorAll('.work-panel');
-			tabs.forEach((tab) => {
-				tab.addEventListener('click', () => {
-					const target = tab.getAttribute('data-tab');
-					tabs.forEach((t) => {
-						const active = t === tab;
-						t.classList.toggle('is-active', active);
-						t.setAttribute('aria-selected', active ? 'true' : 'false');
+			/* Work tabs */
+			document.querySelectorAll('.work-tab').forEach(function (tab) {
+				tab.addEventListener('click', function () {
+					var target = tab.dataset.tab;
+					document.querySelectorAll('.work-tab').forEach(function (t) {
+						t.classList.toggle('is-active', t === tab);
+						t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
 					});
-					panels.forEach((p) => {
-						p.classList.toggle('is-active', p.getAttribute('data-panel') === target);
+					document.querySelectorAll('.work-panel').forEach(function (p) {
+						p.classList.toggle('is-active', p.dataset.panel === target);
 					});
-					document.querySelectorAll('.work-card--video video').forEach((v) => { v.pause(); v.currentTime = 0; });
+					document.querySelectorAll('.work-card--video video').forEach(function (v) { v.pause(); v.currentTime = 0; });
 				});
 			});
 
-			// Lazy video src attachment
-			const videoCards = document.querySelectorAll('.work-card--video');
-			const attachVideoSrc = (card) => {
-				const video = card.querySelector('video');
+			/* Lazy video */
+			function attachVideoSrc(card) {
+				var video = card.querySelector('video');
 				if (!video || video.src) return;
-				const src = video.getAttribute('data-src');
+				var src = video.dataset.src;
 				if (!src) return;
-				// #t=0.1 hints browsers to seek to first frame (iOS Safari fix for black thumbnail)
 				video.src = src + '#t=0.1';
 				video.preload = 'metadata';
-				video.addEventListener('loadedmetadata', function () {
-					try { video.currentTime = 0.1; } catch (_) {}
-				}, { once: true });
-			};
-			if ('IntersectionObserver' in window) {
-				const io = new IntersectionObserver((entries) => {
-					entries.forEach((e) => { if (e.isIntersecting) { attachVideoSrc(e.target); io.unobserve(e.target); } });
-				}, { rootMargin: '200px' });
-				videoCards.forEach((c) => io.observe(c));
-			} else {
-				videoCards.forEach(attachVideoSrc);
+				video.addEventListener('loadedmetadata', function () { try { video.currentTime = 0.1; } catch (_) {} }, { once: true });
 			}
+			var videoCards = document.querySelectorAll('.work-card--video');
+			if ('IntersectionObserver' in window) {
+				var vio = new IntersectionObserver(function (entries) {
+					entries.forEach(function (e) { if (e.isIntersecting) { attachVideoSrc(e.target); vio.unobserve(e.target); } });
+				}, { rootMargin: '200px' });
+				videoCards.forEach(function (c) { vio.observe(c); });
+			} else { videoCards.forEach(attachVideoSrc); }
 
-			// Hover preview (desktop)
-			const isTouch = window.matchMedia('(hover: none)').matches;
-			if (!isTouch) {
-				videoCards.forEach((card) => {
-					const video = card.querySelector('video');
-					if (!video) return;
-					card.addEventListener('mouseenter', () => { attachVideoSrc(card); video.play().catch(() => {}); });
-					card.addEventListener('mouseleave', () => { video.pause(); if (video.currentTime) video.currentTime = 0; });
+			/* Hover video preview */
+			if (!window.matchMedia('(hover: none)').matches) {
+				videoCards.forEach(function (card) {
+					var v = card.querySelector('video');
+					if (!v) return;
+					card.addEventListener('mouseenter', function () { attachVideoSrc(card); v.play().catch(function(){}); });
+					card.addEventListener('mouseleave', function () { v.pause(); if (v.currentTime) v.currentTime = 0; });
 				});
 			}
 
-			// Lightbox
-			const lightbox = document.getElementById('lightbox');
-			const stage = document.getElementById('lightbox-stage');
-			const caption = document.getElementById('lightbox-caption');
-			const closeBtn = lightbox ? lightbox.querySelector('.lightbox__close') : null;
-
-			function openLightbox(node, label) {
-				if (!lightbox || !stage) return;
-				stage.innerHTML = '';
-				stage.appendChild(node);
-				caption.textContent = label || '';
-				lightbox.classList.add('is-open');
-				lightbox.setAttribute('aria-hidden', 'false');
+			/* Lightbox */
+			var lb = document.getElementById('lightbox');
+			var lbStage = document.getElementById('lightbox-stage');
+			var lbCaption = document.getElementById('lightbox-caption');
+			function openLB(node, label) {
+				if (!lb) return;
+				lbStage.innerHTML = ''; lbStage.appendChild(node);
+				lbCaption.textContent = label || '';
+				lb.classList.add('is-open'); lb.setAttribute('aria-hidden', 'false');
 				document.body.style.overflow = 'hidden';
 			}
-			function closeLightbox() {
-				if (!lightbox || !stage) return;
-				const v = stage.querySelector('video');
+			function closeLB() {
+				if (!lb) return;
+				var v = lbStage.querySelector('video');
 				if (v) { v.pause(); v.src = ''; }
-				stage.innerHTML = '';
-				caption.textContent = '';
-				lightbox.classList.remove('is-open');
-				lightbox.setAttribute('aria-hidden', 'true');
+				lbStage.innerHTML = ''; lbCaption.textContent = '';
+				lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true');
 				document.body.style.overflow = '';
 			}
-
-			document.querySelectorAll('.work-card--video').forEach((card) => {
-				card.addEventListener('click', () => {
-					const src = card.getAttribute('data-video-src');
-					const label = card.getAttribute('data-video-label');
-					const v = document.createElement('video');
-					v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
-					openLightbox(v, label);
+			document.querySelectorAll('.work-card--video').forEach(function (c) {
+				c.addEventListener('click', function () {
+					var v = document.createElement('video');
+					v.src = c.dataset.videoSrc; v.controls = true; v.autoplay = true; v.playsInline = true;
+					openLB(v, c.dataset.videoLabel);
 				});
 			});
-			document.querySelectorAll('.work-card--image').forEach((card) => {
-				card.addEventListener('click', () => {
-					const src = card.getAttribute('data-image-src');
-					const label = card.getAttribute('data-image-label');
-					const img = document.createElement('img');
-					img.src = src; img.alt = label || '';
-					openLightbox(img, label);
+			document.querySelectorAll('.work-card--image').forEach(function (c) {
+				c.addEventListener('click', function () {
+					var img = document.createElement('img');
+					img.src = c.dataset.imageSrc; img.alt = c.dataset.imageLabel || '';
+					openLB(img, c.dataset.imageLabel);
+				});
+			});
+			var lbClose = lb && lb.querySelector('.lightbox__close');
+			if (lbClose) lbClose.addEventListener('click', closeLB);
+			if (lb) lb.addEventListener('click', function (e) { if (e.target === lb) closeLB(); });
+			document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb && lb.classList.contains('is-open')) closeLB(); });
+
+			/* FAQ smooth accordion */
+			document.querySelectorAll('.faq-item').forEach(function (item) {
+				var summary = item.querySelector('.faq-question');
+				var body = item.querySelector('.faq-body');
+				if (!summary || !body) return;
+				summary.addEventListener('click', function (e) {
+					e.preventDefault();
+					var isOpen = item.classList.contains('is-open');
+					document.querySelectorAll('.faq-item.is-open').forEach(function (open) {
+						if (open !== item) { open.classList.remove('is-open'); open.querySelector('.faq-body').style.maxHeight = '0'; }
+					});
+					if (isOpen) { item.classList.remove('is-open'); body.style.maxHeight = '0'; }
+					else { item.classList.add('is-open'); body.style.maxHeight = body.scrollHeight + 'px'; }
 				});
 			});
 
-			if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-			if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-			document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) closeLightbox(); });
+			/* Magnetic buttons */
+			if (!window.matchMedia('(hover: none)').matches) {
+				document.querySelectorAll('.magnetic-btn').forEach(function (btn) {
+					btn.addEventListener('mousemove', function (e) {
+						var r = btn.getBoundingClientRect();
+						var x = (e.clientX - r.left - r.width / 2) * 0.2;
+						var y = (e.clientY - r.top - r.height / 2) * 0.2;
+						btn.style.transform = 'translate(' + x + 'px,' + (y - 2) + 'px)';
+					});
+					btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+				});
+			}
+
+			/* Pause marquee on hover */
+			var tmTrack = document.querySelector('.tm-marquee__track');
+			if (tmTrack) {
+				tmTrack.addEventListener('mouseenter', function () { tmTrack.style.animationPlayState = 'paused'; });
+				tmTrack.addEventListener('mouseleave', function () { tmTrack.style.animationPlayState = 'running'; });
+			}
+
+			/* Service row hover line */
+			document.querySelectorAll('.svc-row').forEach(function(row) {
+				row.addEventListener('mouseenter', function() { row.classList.add('is-hovered'); });
+				row.addEventListener('mouseleave', function() { row.classList.remove('is-hovered'); });
+			});
 		})();
 	</script>
 
-	<style is:global>
-		/* Extended work tab for 4 tabs */
-		@media (max-width: 640px) {
-			.work-tabs { flex-wrap: wrap; border-radius: 16px; }
-			.work-tab { flex: 1 1 auto; justify-content: center; min-width: 0; }
-			.work-tab__count { display: none; }
-		}
-		.work-card__media--wide { aspect-ratio: 4 / 3 !important; }
-
-		/* Homepage: horizontal carousel (4-up on desktop, 2-up on mobile) overriding the base work-grid layout */
-		.section--projects .work-grid {
-			display: grid;
-			grid-auto-flow: column;
-			grid-auto-columns: calc((100% - 60px) / 4);
-			grid-template-columns: none;
-			gap: 20px;
-			overflow-x: auto;
-			scroll-snap-type: x mandatory;
-			-webkit-overflow-scrolling: touch;
-			padding: 4px 4px 18px;
-			margin: 0 -4px;
-			scrollbar-width: thin;
-			scrollbar-color: rgba(255,255,255,0.2) transparent;
-		}
-		.section--projects .work-grid::-webkit-scrollbar { height: 6px; }
-		.section--projects .work-grid::-webkit-scrollbar-track { background: transparent; }
-		.section--projects .work-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 999px; }
-		.section--projects .work-grid::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.32); }
-		.section--projects .work-card { scroll-snap-align: start; }
-		@media (max-width: 900px) {
-			.section--projects .work-grid { grid-auto-columns: calc((100% - 20px) / 2); }
-		}
-		@media (max-width: 640px) {
-			.section--projects .work-grid { grid-auto-columns: calc((100% - 14px) / 2); gap: 14px; }
-		}
-		.work-card__client {
-			font-size: 11px;
-			color: var(--violet);
-			font-weight: 500;
-			letter-spacing: 0.04em;
-		}
-		.work-viewall {
-			display: flex;
-			justify-content: center;
-			margin-top: 32px;
-		}
-
-		/* FAQ */
-		.faq-list {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			max-width: 860px;
-			margin: 0 auto;
-		}
-		.faq-item {
-			background: var(--panel);
-			border: 1px solid var(--line);
-			border-radius: 16px;
-			overflow: hidden;
-			transition: border-color 0.2s;
-		}
-		.faq-item[open] { border-color: var(--line-strong); }
-		.faq-question {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 16px;
-			padding: 20px 24px;
-			font-size: 16px;
-			font-weight: 600;
-			cursor: pointer;
-			list-style: none;
-			color: var(--text);
-			user-select: none;
-			transition: color 0.2s;
-		}
-		.faq-question::-webkit-details-marker { display: none; }
-		.faq-question::after {
-			content: '+';
-			font-size: 22px;
-			font-weight: 300;
-			color: var(--muted);
-			flex-shrink: 0;
-			transition: transform 0.2s, color 0.2s;
-		}
-		.faq-item[open] .faq-question::after { transform: rotate(45deg); color: var(--violet); }
-		.faq-item[open] .faq-question { color: var(--text); }
-		.faq-answer {
-			padding: 0 24px 20px;
-			margin: 0;
-			font-size: 15px;
-			color: var(--muted);
-			line-height: 1.7;
-			border-top: 1px solid var(--line);
-			padding-top: 16px;
-		}
-
-		@media (max-width: 900px) {
-			.work-grid--ads { grid-template-columns: 1fr 1fr; }
-			.work-grid--design { grid-template-columns: repeat(3, 1fr); }
-		}
-		@media (max-width: 640px) {
-			.work-grid--ads { grid-template-columns: 1fr 1fr; }
-			.work-grid--design { grid-template-columns: 1fr 1fr; }
-			.faq-question { padding: 16px 18px; font-size: 15px; }
-			.faq-answer { padding: 0 18px 16px; padding-top: 14px; }
-		}
-	</style>
 </Layout>
