@@ -42,3 +42,20 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 # Orbitlee
+
+## Runway Lab (internal)
+
+`/lab/generate` is an internal, unlinked page for generating images/video with the
+[Runway Dev API](https://docs.dev.runwayml.com) via the official `@runwayml/sdk`. It posts to
+`src/pages/api/runway/generate.ts`, the only route in this project rendered on-demand
+(`export const prerender = false`) — everything else still builds fully static.
+
+Setup: copy `.env.example` to `.env` and set `RUNWAYML_API_SECRET` from the
+[Developer Portal](https://dev.runwayml.com).
+
+**Deployment note:** because one route is on-demand, `npm run build` now emits both
+`dist/client` (static assets) and `dist/server/entry.mjs` (a Node server, via `@astrojs/node`
+in standalone mode). Serving only `dist/client` as static files — the old deploy path — will
+404 on `/api/runway/generate` and break `/lab/generate`'s "Generate" button. Run
+`node ./dist/server/entry.mjs` (it serves the static assets too) or otherwise carry the request
+through to that adapter, whichever fits the current host.

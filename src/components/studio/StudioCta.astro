@@ -1,0 +1,47 @@
+---
+interface Props {
+	eyebrow?: string;
+	title?: string;
+	lead?: string;
+	cta?: string;
+	ctaHref?: string;
+}
+const {
+	eyebrow = 'Free 30-min audit · No decks, real answers',
+	title = "Let's build something worth circling.",
+	lead,
+	cta = 'Book a discovery call',
+	ctaHref = '/contact',
+} = Astro.props;
+---
+
+<section class="cta">
+	<div class="cta__limb" aria-hidden="true"></div>
+	<div class="container cta__inner">
+		<span class="eyebrow">
+			<span class="eyebrow__dot"></span>
+			{eyebrow}
+		</span>
+		<h2 class="cta__title" data-scrub-words set:html={title.replace('circling', '<span class="italic">circling</span>')} />
+		{lead && <p class="lead" style="margin-bottom: 8px; color: var(--mute);">{lead}</p>}
+		<div class="cta__grid">
+			<div class="cta__actions">
+				<a href={ctaHref} class="btn btn--solid" data-magnetic>
+					{cta}
+					<span class="btn__arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10 10 2M4 2h6v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+				</a>
+				<a href="mailto:orbitleeee@gmail.com" class="btn btn--dark" data-magnetic>orbitleeee@gmail.com</a>
+			</div>
+			<div>
+				<div class="cta__side" style="margin-bottom: 20px;">
+					<span class="cta__side__lbl">Direct line</span>
+					<a class="cta__side__val" href="tel:+919810692028">+91 98106 92028</a>
+				</div>
+				<div class="cta__side">
+					<span class="cta__side__lbl">Say hi</span>
+					<a class="cta__side__val" href="https://www.instagram.com/orbitlee_" target="_blank" rel="noopener">@orbitlee_ →</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

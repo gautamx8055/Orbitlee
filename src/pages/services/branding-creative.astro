@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import StudioLayout from '../../layouts/StudioLayout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -92,76 +92,58 @@ const approach = [
 ];
 ---
 
-<Layout
+<StudioLayout
 	title="Branding & Creative Agency India - Logo, Identity, AI UGC, Ads | Orbitlee"
 	description="Brand strategy, logo design, visual identity, AI UGC production, commercial ads and product photography by Orbitlee India. High-craft creative built to stop the scroll and convert."
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
-	<!-- BREADCRUMB + HERO -->
-	<section class="page-hero">
-		<div class="breadcrumb">
-			<a href="/services">Services</a>
-			<span class="breadcrumb__sep">›</span>
-			<span>Branding & Creative</span>
-		</div>
-		<div class="page-hero__eyebrow">
-			<span class="eyebrow eyebrow--plain">Branding & Creative</span>
-		</div>
-		<h1 class="page-hero__title">Identity that <span class="hero__gradient">commands attention.</span></h1>
-		<p class="page-hero__sub">
-			Positioning, identity systems and high-craft production built to stop the scroll, make your brand stick and turn browsers into buyers.
-		</p>
-		<div class="hero__actions" style="margin-top: 32px;">
-			<a href="/contact" class="btn btn--primary btn--lg">Build my brand</a>
-			<a href="/services" class="btn btn--ghost btn--lg">All services</a>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/services">Services</a> <span>/</span> Branding & Creative</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Identity · Production · UGC</p>
+		<h1>Identity that commands <em>attention</em>.</h1>
+		<p class="lead">Positioning, systems and production built to stop the scroll and stay consistent everywhere.</p>
+		<div class="pg__actions">
+			<a href="/contact" class="btn btn--solid">Build my brand</a>
+			<a href="/services" class="btn btn--ghost">All services</a>
 		</div>
 	</section>
 
-	<!-- WHAT'S INCLUDED -->
-	<section class="section">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">What's included</span>
-			<h2 class="section__title">Strategy to <span class="hero__gradient">screen-ready.</span></h2>
-			<p class="section__sub">From the first positioning brief to the final production asset - we cover the full creative stack.</p>
-		</div>
-		<div class="svc-detail-grid">
-			{offerings.map((o) => (
-				<article class="svc-item">
-					<div class="svc-item__icon" set:html={o.icon}></div>
-					<h3 class="svc-item__title">{o.title}</h3>
-					<p class="svc-item__desc">{o.desc}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- OUR APPROACH -->
-	<section class="section section--why">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Our approach</span>
-			<h2 class="section__title">Creative built <span class="hero__gradient">to perform.</span></h2>
-		</div>
-		<div class="why-grid">
-			{approach.map((a, i) => (
-				<article class="why-card">
-					<span class="why-card__num">0{i + 1}</span>
-					<h3 class="why-card__title">{a.title}</h3>
-					<p class="why-card__body">{a.body}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<div class="cta-strip">
-		<div class="cta-strip__inner">
-			<div class="cta-strip__copy">
-				<h2 class="cta-strip__title">Want a brand that <span class="hero__gradient">actually stands out?</span></h2>
-				<p class="cta-strip__sub">Let's audit what you have and map what it should become.</p>
+	<section class="section" style="padding-top: 0;">
+		<div class="container split">
+			<div>
+				<p class="kicker">Approach</p>
+				<h2 class="h2">Creative built to perform.</h2>
+				{approach.map((a) => (
+					<p><strong style="color: var(--ink);">{a.title}.</strong> {a.body}</p>
+				))}
 			</div>
-			<a href="/contact" class="btn btn--primary btn--lg">Book a brand audit</a>
+			<img src="/5.jpg" alt="Brand and thumbnail work by Orbitlee" />
 		</div>
-	</div>
-</Layout>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<p class="kicker">What’s included</p>
+			<h2 class="h2">The full creative stack.</h2>
+			<div class="offer" style="margin-top: 28px;">
+				{offerings.map((o) => (
+					<article>
+						<h3>{o.title}</h3>
+						<p>{o.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-block">
+		<div>
+			<h2>Want a brand that stands out?</h2>
+			<p>We’ll audit what you have and map what it should become.</p>
+		</div>
+		<a href="/contact" class="btn btn--solid">Book a brand audit</a>
+	</section>
+</StudioLayout>

@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import StudioLayout from '../layouts/StudioLayout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const contactSchema = {
@@ -15,61 +15,41 @@ const contactSchema = {
 			about: { "@id": `${siteUrl}/#organization` },
 			inLanguage: "en",
 		},
-		{
-			"@type": "LocalBusiness",
-			"@id": `${siteUrl}/#business`,
-			name: "Orbitlee",
-			alternateName: ["Orbitly", "Orbitli", "Orbit Lee"],
-			telephone: "+91-98106-92028",
-			email: "orbitleeee@gmail.com",
-			url: siteUrl,
-			sameAs: ["https://www.instagram.com/orbitlee_"],
-			areaServed: { "@type": "Country", name: "India" },
-			contactPoint: {
-				"@type": "ContactPoint",
-				telephone: "+91-98106-92028",
-				email: "orbitleeee@gmail.com",
-				contactType: "sales",
-				availableLanguage: ["English", "Hindi"],
-			},
-		},
 	],
 };
 
 const services = [
-	"Marketing & Advertising",
-	"Web & App Development",
-	"Branding & Creative",
-	"Growth Consulting",
+	'Digital marketing',
+	'Performance marketing',
+	'Social media',
+	'Software & app development',
+	'Web development',
+	'Branding & creative',
+	'Growth consulting',
 ];
 ---
 
-<Layout
+<StudioLayout
 	title="Contact Orbitlee - Book a Free Brand Audit | +91 98106 92028"
 	description="Contact Orbitlee (also searched as Orbitly, Orbitli) for a free 30-minute brand audit. Email orbitleeee@gmail.com or call +91 98106 92028. Response within 1 business day."
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
 	</Fragment>
-	<!-- PAGE HERO -->
-	<section class="page-hero">
-		<div class="page-hero__eyebrow">
-			<span class="eyebrow eyebrow--plain">Contact</span>
-		</div>
-		<h1 class="page-hero__title">Let's put your brand <span class="hero__gradient">into orbit.</span></h1>
-		<p class="page-hero__sub">
-			Tell us where you want to go - we'll draw the trajectory and fly it with you. Most briefs get a response within one working day.
-		</p>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/">Home</a> <span>/</span> Contact</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Contact · Delhi</p>
+		<h1>Let’s put your brand into <em>orbit</em>.</h1>
+		<p class="lead">Tell us where you want to go — we’ll draw the trajectory. Most briefs get a response within one working day.</p>
 	</section>
 
-	<!-- CONTACT LAYOUT -->
-	<section class="contact">
-		<div class="contact__intro">
-			<span class="eyebrow eyebrow--plain">Get in touch</span>
-			<h2 class="section__title section__title--left">We'd love to <span class="hero__gradient">hear from you.</span></h2>
-			<p class="about__lead">
-				Drop us a brief below or reach out directly. We respond within one business day and don't do pushy sales calls.
-			</p>
+	<section class="container contact">
+		<div>
+			<span class="eyebrow">Get in touch</span>
+			<h2 class="h2" style="margin-top: 12px;">We’d love to hear from you.</h2>
+			<p class="lead">Drop a brief or reach out directly. We don’t do pushy sales calls.</p>
+			<img src="/AURIX-SM-BANNER.jpg" alt="Aurix social banner by Orbitlee" style="margin-top: 24px; border-radius: 16px; width: 100%; object-fit: cover; max-height: 220px;" />
 			<div class="contact__meta">
 				<div class="contact__meta-item">
 					<span class="contact__meta-label">Email</span>
@@ -131,10 +111,10 @@ const services = [
 			</fieldset>
 			<label class="field">
 				<span class="field__label">Tell us about your project <span class="req">*</span></span>
-				<textarea name="message" rows="5" required placeholder="A few lines about your business, what you're trying to solve, and your timeline."></textarea>
+				<textarea name="message" rows="5" required placeholder="A few lines about your business, what you’re trying to solve, and your timeline."></textarea>
 			</label>
 			<div class="form__foot">
-				<button type="submit" class="btn btn--primary btn--lg">Send the brief</button>
+				<button type="submit" class="btn btn--solid">Send the brief</button>
 				<p class="form__note" id="form-note" role="status"></p>
 			</div>
 		</form>
@@ -163,7 +143,7 @@ const services = [
 				try {
 					const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
 					if (res.ok) {
-						note.textContent = "Thanks! Your brief is in. We'll be in touch within one business day.";
+						note.textContent = "Thanks. Your brief is in. We'll be in touch within one business day.";
 						form.reset();
 					} else {
 						let msg = 'Something went wrong. Please try again or email orbitleeee@gmail.com';
@@ -180,4 +160,4 @@ const services = [
 			});
 		}
 	</script>
-</Layout>
+</StudioLayout>

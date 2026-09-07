@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import StudioLayout from '../../layouts/StudioLayout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -94,76 +94,58 @@ const approach = [
 ];
 ---
 
-<Layout
+<StudioLayout
 	title="Web & App Development Agency India - Websites, Apps, SaaS | Orbitlee"
 	description="Website development, mobile apps, SaaS platforms, landing pages, UI/UX design and AI automation by Orbitlee India. Built fast, optimised for performance and growth."
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
-	<!-- BREADCRUMB + HERO -->
-	<section class="page-hero">
-		<div class="breadcrumb">
-			<a href="/services">Services</a>
-			<span class="breadcrumb__sep">›</span>
-			<span>Web & App Development</span>
-		</div>
-		<div class="page-hero__eyebrow">
-			<span class="eyebrow eyebrow--plain">Web & App Development</span>
-		</div>
-		<h1 class="page-hero__title">Built to <span class="hero__gradient">convert and scale.</span></h1>
-		<p class="page-hero__sub">
-			Sites, products and automations that feel effortless, load instantly and grow with your business - from landing pages to full SaaS platforms.
-		</p>
-		<div class="hero__actions" style="margin-top: 32px;">
-			<a href="/contact" class="btn btn--primary btn--lg">Start a project</a>
-			<a href="/services" class="btn btn--ghost btn--lg">All services</a>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/services">Services</a> <span>/</span> Web & App Development</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Sites · Apps · SaaS</p>
+		<h1>Built to convert and <em>scale</em>.</h1>
+		<p class="lead">Landing pages to SaaS — designed and shipped at marketing speed, not a quarter later. Split into <a href="/services/web-development">web development</a> and <a href="/services/software-app-development">software &amp; app development</a> if you want a tighter brief.</p>
+		<div class="pg__actions">
+			<a href="/contact" class="btn btn--solid">Start a project</a>
+			<a href="/services" class="btn btn--ghost">All services</a>
 		</div>
 	</section>
 
-	<!-- WHAT'S INCLUDED -->
-	<section class="section">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">What's included</span>
-			<h2 class="section__title">From idea to <span class="hero__gradient">live product.</span></h2>
-			<p class="section__sub">We cover the full stack - design, development, QA and deployment - under one brief.</p>
-		</div>
-		<div class="svc-detail-grid">
-			{offerings.map((o) => (
-				<article class="svc-item">
-					<div class="svc-item__icon" set:html={o.icon}></div>
-					<h3 class="svc-item__title">{o.title}</h3>
-					<p class="svc-item__desc">{o.desc}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- OUR APPROACH -->
-	<section class="section section--why">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Our approach</span>
-			<h2 class="section__title">Dev that moves at <span class="hero__gradient">marketing speed.</span></h2>
-		</div>
-		<div class="why-grid">
-			{approach.map((a, i) => (
-				<article class="why-card">
-					<span class="why-card__num">0{i + 1}</span>
-					<h3 class="why-card__title">{a.title}</h3>
-					<p class="why-card__body">{a.body}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<div class="cta-strip">
-		<div class="cta-strip__inner">
-			<div class="cta-strip__copy">
-				<h2 class="cta-strip__title">Have a product <span class="hero__gradient">you want to build?</span></h2>
-				<p class="cta-strip__sub">Tell us about it - we'll scope the fastest path to live.</p>
+	<section class="section" style="padding-top: 0;">
+		<div class="container split">
+			<img src="/1.jpg" alt="Design and product work by Orbitlee" />
+			<div>
+				<p class="kicker">Approach</p>
+				<h2 class="h2">Dev that moves at marketing speed.</h2>
+				{approach.map((a) => (
+					<p><strong style="color: var(--ink);">{a.title}.</strong> {a.body}</p>
+				))}
 			</div>
-			<a href="/contact" class="btn btn--primary btn--lg">Start a project</a>
 		</div>
-	</div>
-</Layout>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<p class="kicker">What’s included</p>
+			<h2 class="h2">The full product stack.</h2>
+			<div class="offer" style="margin-top: 28px;">
+				{offerings.map((o) => (
+					<article>
+						<h3>{o.title}</h3>
+						<p>{o.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-block">
+		<div>
+			<h2>Have a product to ship?</h2>
+			<p>We’ll scope the fastest path to live.</p>
+		</div>
+		<a href="/contact" class="btn btn--solid">Start a project</a>
+	</section>
+</StudioLayout>

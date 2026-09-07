@@ -1,0 +1,6 @@
+---
+import ServiceDetail from '../../components/studio/ServiceDetail.astro';
+import { getServicePillar } from '../../lib/content';
+const service = getServicePillar('performance-marketing');
+---
+<ServiceDetail service={service} />

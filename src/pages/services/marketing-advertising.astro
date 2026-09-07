@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import StudioLayout from '../../layouts/StudioLayout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -90,81 +90,73 @@ const approach = [
 	},
 	{
 		title: "Data that drives decisions",
-		body: "Weekly performance reviews with clear attribution. No vanity metrics - we report on CAC, ROAS and pipeline, and adjust accordingly.",
+		body: "Weekly performance reviews with clear attribution. No vanity metrics — we report on CAC, ROAS and pipeline, and adjust accordingly.",
+	},
+	{
+		title: "Never off. Never behind.",
+		body: "Trends move fast. We ship weekly so your brand stays present — organic, paid and creative in the same cadence.",
 	},
 ];
 ---
 
-<Layout
+<StudioLayout
 	title="Marketing & Advertising Agency India - Meta Ads, Google Ads, AI UGC | Orbitlee"
 	description="Full-funnel marketing & advertising by Orbitlee India - Meta Ads, Google Ads, social media management, AI UGC production, lead generation. Compounding results from one team."
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
-	<!-- BREADCRUMB + HERO -->
-	<section class="page-hero">
-		<div class="breadcrumb">
-			<a href="/services">Services</a>
-			<span class="breadcrumb__sep">›</span>
-			<span>Marketing & Advertising</span>
-		</div>
-		<div class="page-hero__eyebrow">
-			<span class="eyebrow eyebrow--plain">Marketing & Advertising</span>
-		</div>
-		<h1 class="page-hero__title">Performance that <span class="hero__gradient">compounds.</span></h1>
-		<p class="page-hero__sub">
-			Full-funnel campaigns from cold reach to qualified pipeline. We handle Meta, Google, social and AI-native content - so the only metric you watch is growth.
-		</p>
-		<div class="hero__actions" style="margin-top: 32px;">
-			<a href="/contact" class="btn btn--primary btn--lg">Start a campaign</a>
-			<a href="/services" class="btn btn--ghost btn--lg">All services</a>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/services">Services</a> <span>/</span> Marketing & Advertising</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Social · Ads · AI UGC</p>
+		<h1>Anyone can post. We build growth you can <em>measure</em>.</h1>
+		<p class="lead">Meta, Google, social and AI UGC from one pod — so the metric you watch is growth, not vanity. For the deeper practices see <a href="/services/digital-marketing">digital marketing</a>, <a href="/services/performance-marketing">performance marketing</a> and <a href="/services/social-media">social media</a>.</p>
+		<div class="pg__actions">
+			<a href="/contact" class="btn btn--solid">Start a campaign</a>
+			<a href="/services" class="btn btn--ghost">All services</a>
 		</div>
 	</section>
 
-	<!-- WHAT'S INCLUDED -->
-	<section class="section">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">What's included</span>
-			<h2 class="section__title">Every channel, <span class="hero__gradient">one team.</span></h2>
-			<p class="section__sub">We run the full marketing stack so nothing falls through the gaps between vendors.</p>
-		</div>
-		<div class="svc-detail-grid">
-			{offerings.map((o) => (
-				<article class="svc-item">
-					<div class="svc-item__icon" set:html={o.icon}></div>
-					<h3 class="svc-item__title">{o.title}</h3>
-					<p class="svc-item__desc">{o.desc}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- OUR APPROACH -->
-	<section class="section section--why">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Our approach</span>
-			<h2 class="section__title">Spend less, <span class="hero__gradient">earn more.</span></h2>
-		</div>
-		<div class="why-grid">
-			{approach.map((a, i) => (
-				<article class="why-card">
-					<span class="why-card__num">0{i + 1}</span>
-					<h3 class="why-card__title">{a.title}</h3>
-					<p class="why-card__body">{a.body}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<div class="cta-strip">
-		<div class="cta-strip__inner">
-			<div class="cta-strip__copy">
-				<h2 class="cta-strip__title">Ready to run <span class="hero__gradient">campaigns that convert?</span></h2>
-				<p class="cta-strip__sub">Free audit. We'll show you exactly where your budget should go.</p>
+	<section class="section" style="padding-top: 0;">
+		<div class="container split">
+			<div>
+				<p class="kicker">How we run it</p>
+				<h2 class="h2">Social and ads that actually connect.</h2>
+				<p>We start with your audience — what stops the scroll, what earns a follow, what converts. Reels, AI UGC and paid social share one brief.</p>
+				<div class="offer" style="grid-template-columns: 1fr 1fr; margin-top: 24px;">
+					{approach.map((a) => (
+						<article>
+							<h3>{a.title}</h3>
+							<p>{a.body}</p>
+						</article>
+					))}
+				</div>
 			</div>
-			<a href="/contact" class="btn btn--primary btn--lg">Book a free audit</a>
+			<img src="/Ads-try-1-F.jpg" alt="Paid social ad creative by Orbitlee" />
 		</div>
-	</div>
-</Layout>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<p class="kicker">What’s included</p>
+			<h2 class="h2">The full marketing stack.</h2>
+			<div class="offer" style="margin-top: 28px;">
+				{offerings.map((o) => (
+					<article>
+						<h3>{o.title}</h3>
+						<p>{o.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-block">
+		<div>
+			<h2>Ready to spend smarter?</h2>
+			<p>Free audit. We’ll show you where the budget should go.</p>
+		</div>
+		<a href="/contact" class="btn btn--solid">Book a free audit</a>
+	</section>
+</StudioLayout>
