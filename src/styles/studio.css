@@ -112,12 +112,8 @@ html[data-theme='light'] .kicker--m { color: var(--accent); }
 }
 .nav.is-scrolled { box-shadow: var(--shadow); }
 .nav__brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
-.nav__logo { height: 28px; width: auto; max-width: 148px; object-fit: contain; }
 .nav__mark { width: 28px; height: 28px; object-fit: contain; }
-.nav__word { font-family: var(--ff-display); font-weight: 800; font-size: 22px; letter-spacing: 0.02em; }
-html[data-theme='dark'] .nav__mark,
-html[data-theme='dark'] .nav__word { display: none; }
-html[data-theme='light'] .nav__logo { display: none; }
+.nav__word { font-family: var(--ff-display); font-weight: 800; font-size: 22px; letter-spacing: 0.02em; color: var(--ink); }
 .nav__list { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
 .nav__list a {
 	display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px;
@@ -627,7 +623,6 @@ html[data-theme='light'] .pg h1 em { color: var(--accent-2); }
 .split p { color: var(--mute); font-size: 17px; line-height: 1.65; }
 .split img { width: 100%; border-radius: var(--r); object-fit: cover; max-height: 480px; }
 .about-logo { max-width: 280px; height: auto; margin-bottom: 16px; border-radius: 0; max-height: none; }
-html[data-theme='light'] .about-logo { display: none; }
 
 .offer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .offer article {
@@ -735,10 +730,9 @@ html[data-theme='light'] .about-logo { display: none; }
 
 .foot { border-top: 1px solid var(--line); padding: 48px 0 28px; }
 .foot__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 28px; }
-.foot__logo { height: 44px; width: auto; max-width: 220px; object-fit: contain; }
-html[data-theme='light'] .foot__logo { display: none; }
-.foot__word { font-family: var(--ff-display); font-weight: 800; font-size: 32px; margin: 0; letter-spacing: 0.02em; }
-html[data-theme='dark'] .foot__word { display: none; }
+.foot__brand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.foot__mark { width: 36px; height: 36px; object-fit: contain; }
+.foot__word { font-family: var(--ff-display); font-weight: 800; font-size: 32px; margin: 0; letter-spacing: 0.02em; color: var(--ink); }
 .foot__tag { color: var(--mute); max-width: 36ch; }
 .foot__col { display: grid; gap: 8px; align-content: start; }
 .foot__col__head { font-family: var(--ff-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); margin: 0 0 8px; }
