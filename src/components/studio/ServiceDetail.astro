@@ -19,7 +19,7 @@ const pageSchema = {
 			name: s.title,
 			serviceType: s.title,
 			provider: { '@id': `${siteUrl}/#organization` },
-			areaServed: { '@type': 'Country', name: 'India' },
+			areaServed: { '@type': 'Place', name: 'Worldwide' },
 			description: s.lead,
 			url: `${siteUrl}${s.href}/`,
 			hasOfferCatalog: {
@@ -51,7 +51,7 @@ const pageSchema = {
 };
 ---
 
-<StudioLayout title={`${s.title} — Orbitlee | Delhi creative & marketing studio`} description={s.lead}>
+<StudioLayout title={s.seoTitle} description={s.seoDescription} keywords={s.seoKeywords}>
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
@@ -70,27 +70,18 @@ const pageSchema = {
 	<section class="section" style="padding-top: 0;">
 		<div class="container split">
 			<div>
-				<p class="kicker">How we think about it</p>
-				<h2 class="h2">What this actually <em>covers</em>.</h2>
+				<p class="kicker">In short</p>
+				<h2 class="h2">How we can <em>help</em>.</h2>
 				<p>{s.story}</p>
-				<div class="offer offer--approach" style="margin-top: 24px;">
-					{s.approach.map((a) => (
-						<article>
-							<h3>{a.title}</h3>
-							<p>{a.body}</p>
-						</article>
-					))}
-				</div>
 			</div>
-			<img src={s.img} alt={s.imgAlt} />
+			<img src={s.img} alt={s.imgAlt} loading="lazy" width="640" height="480" />
 		</div>
 	</section>
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container">
-			<p class="kicker">Subservices</p>
-			<h2 class="h2">Inside {s.navLabel.toLowerCase()}.</h2>
-			<p class="lede">Each block is a real engagement we run — pick one, or brief the lot as a single retainer.</p>
+			<p class="kicker">Includes</p>
+			<h2 class="h2">What you can book.</h2>
 			<div class="offer" style="margin-top: 28px;">
 				{s.offerings.map((o) => (
 					<article id={o.id}>
@@ -104,8 +95,8 @@ const pageSchema = {
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container faq">
-			<p class="kicker">Questions</p>
-			<h2 class="h2">Before you brief us.</h2>
+			<p class="kicker">FAQ</p>
+			<h2 class="h2">Quick answers.</h2>
 			{s.faqs.map((f) => (
 				<details>
 					<summary>{f.q}</summary>
@@ -117,7 +108,7 @@ const pageSchema = {
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container">
-			<p class="kicker">Also in the studio</p>
+			<p class="kicker">Also</p>
 			<div class="svc-mini">
 				{others.map((p) => (
 					<a href={p.href}>

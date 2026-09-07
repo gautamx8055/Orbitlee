@@ -9,7 +9,7 @@ function applyTheme(theme: 'light' | 'dark') {
 	document.documentElement.setAttribute('data-theme', theme);
 	localStorage.setItem('orbitlee-theme', theme);
 	const meta = document.getElementById('theme-color-meta');
-	if (meta) meta.setAttribute('content', theme === 'light' ? '#F3F6EE' : '#07080A');
+	if (meta) meta.setAttribute('content', theme === 'light' ? '#F4F1FB' : '#0C0814');
 	const btn = document.getElementById('theme-toggle');
 	if (btn) btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
 }
@@ -94,34 +94,57 @@ if (dropItem && dropTrigger) {
 
 if (document.fonts?.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
 
-if (!prefersReducedMotion) {
-	const heroCopy = document.querySelectorAll('.hero .eyebrow, .hero h1, .hero__lead, .hero__actions');
-	if (heroCopy.length) {
-		gsap.from(heroCopy, { y: 28, opacity: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', delay: 0.08 });
+const mixRoot = document.querySelector<HTMLElement>('[data-mix-root]');
+const mixLive = document.querySelector('.billboard__live');
+const mixLabels: Record<string, string> = {
+	all: 'Live mix · ads + product',
+	growth: 'Live mix · ads & social',
+	build: 'Live mix · sites & apps',
+};
+function applyMix(mix: string, buttons: NodeListOf<HTMLButtonElement>) {
+	mixRoot?.setAttribute('data-mix-active', mix);
+	if (mixLive) {
+		const label = mixLabels[mix] ?? mixLabels.all;
+		mixLive.innerHTML = `<span></span> ${label}`;
 	}
-	const heroVisual = document.querySelector('.hero__visual');
-	if (heroVisual) {
-		gsap.from(heroVisual, { y: 48, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.15 });
-		const heroImg = heroVisual.querySelector('img');
-		if (heroImg) {
-			gsap.to(heroImg, {
-				yPercent: 14,
-				ease: 'none',
-				scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 },
-			});
-		}
+	buttons.forEach((b) => {
+		const on = b.getAttribute('data-mix') === mix;
+		b.classList.toggle('is-on', on);
+		b.setAttribute('aria-selected', String(on));
+	});
+}
+if (mixRoot) {
+	const buttons = mixRoot.querySelectorAll<HTMLButtonElement>('[data-mix]');
+	buttons.forEach((btn) => {
+		btn.addEventListener('click', () => applyMix(btn.getAttribute('data-mix') || 'all', buttons));
+	});
+}
+
+if (!prefersReducedMotion) {
+	const mWord = document.querySelector('.word--m');
+	const tWord = document.querySelector('.word--t');
+	const xWord = document.querySelector('.word--x');
+	if (mWord && tWord) {
+		gsap.from(mWord, { x: -80, opacity: 0, duration: 1, ease: 'power3.out' });
+		gsap.from(tWord, { x: 80, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.08 });
+		if (xWord) gsap.from(xWord, { scale: 0.6, opacity: 0, duration: 0.6, ease: 'back.out(1.6)', delay: 0.2 });
+	}
+	const billboardBits = document.querySelectorAll('.billboard__title, .billboard__lead, .billboard .hero__actions, .billboard__live');
+	if (billboardBits.length) {
+		gsap.from(billboardBits, {
+			y: 20, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', delay: 0.25,
+		});
 	}
 
 	const reveal = document.querySelectorAll(
-		'.h2, .lede, .kicker, .case, .svc-card, .step, .mosaic a, .cta-block, .pg h1, .pg .lead, .offer article, .stats li, .split > *, .form, .svc-mini a'
+		'.h2, .lede, .kicker, .case, .svc-card, .step, .path__step, .mix-row, .reel__card, .mosaic a, .cta-block, .pg h1, .pg .lead, .offer article, .stats li, .split > *, .form, .svc-mini a, .board__item, .dept-list a'
 	);
-	reveal.forEach((el, i) => {
+	reveal.forEach((el) => {
 		gsap.from(el, {
-			y: 32,
 			opacity: 0,
-			duration: 0.75,
+			y: 24,
+			duration: 0.7,
 			ease: 'power3.out',
-			delay: (i % 4) * 0.04,
 			scrollTrigger: { trigger: el, start: 'top 88%', once: true },
 		});
 	});

@@ -2,61 +2,96 @@
 import '../styles/studio.css';
 import StudioNav from '../components/studio/StudioNav.astro';
 import StudioFooter from '../components/studio/StudioFooter.astro';
+import { extraServices, servicePillars } from '../lib/content';
 
 interface Props {
 	title?: string;
 	description?: string;
+	keywords?: string;
 	ogImage?: string;
+	ogImageAlt?: string;
 	noindex?: boolean;
 }
 
 const {
-	title = 'Orbitlee — Creative & Marketing Studio | We Circle, You Grow',
-	description = 'Orbitlee is a Delhi creative and marketing studio for brand, AI UGC, social, ads, web and growth. 15+ brands scaled. Free 30-minute audit.',
+	title = 'Tech & Marketing Agency | Ads + Software | Orbitlee',
+	description = 'Orbitlee is a tech and marketing agency. We run ads and social, and we ship websites and apps. One team. Free 30-minute chat.',
+	keywords = 'tech and marketing agency, performance marketing, web development, app development, Orbitlee',
 	ogImage = 'https://www.orbitlee.com/Orbitlee-logo-transparent.png',
+	ogImageAlt = 'Orbitlee, international tech and marketing agency',
 	noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://www.orbitlee.com';
 const pathname = Astro.url.pathname;
+const slashPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+const canonicalUrl = `${siteUrl}${slashPath}`;
 const year = new Date().getFullYear();
-const brandVariants = ['Orbitly', 'Orbitli', 'Orbit Lee', 'Orbitlee Agency', 'Orbitlee Creative', 'Orbitlee Marketing', 'Orbitlee Digital', 'Orbitlee India'];
+const brandVariants = ['Orbitly', 'Orbitli', 'Orbit Lee', 'Orbitlee Agency', 'Orbitlee Creative', 'Orbitlee Marketing', 'Orbitlee Digital'];
+const offerItems = [
+	...servicePillars.map((s) => ({
+		'@type': 'Offer',
+		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}/` },
+	})),
+	...extraServices.map((s) => ({
+		'@type': 'Offer',
+		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}/` },
+	})),
+];
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@graph': [
 		{
-			'@type': 'Organization',
+			'@type': ['Organization', 'ProfessionalService'],
 			'@id': `${siteUrl}/#organization`,
 			name: 'Orbitlee',
 			alternateName: brandVariants,
 			url: siteUrl,
+			image: `${siteUrl}/Orbitlee-logo-transparent.png`,
 			logo: {
 				'@type': 'ImageObject',
 				url: `${siteUrl}/Orbitlee-logo-transparent.png`,
 				width: 512,
 				height: 512,
 			},
-			description: 'Creative and marketing studio uniting branding, AI content, paid ads and web development. 15+ brands scaled.',
+			description: 'International tech and marketing agency for digital marketing, performance ads, social media, web development, apps and software.',
 			slogan: 'We Circle, You Grow.',
 			foundingDate: '2024',
 			founder: { '@id': `${siteUrl}/#founder` },
 			sameAs: ['https://www.instagram.com/orbitlee_'],
+			telephone: '+91-98106-92028',
+			email: 'orbitleeee@gmail.com',
+			areaServed: { '@type': 'Place', name: 'Worldwide' },
+			knowsAbout: [
+				'Tech agency',
+				'Marketing agency',
+				'Digital marketing',
+				'Performance marketing',
+				'Social media marketing',
+				'Web development',
+				'App development',
+				'Software development',
+			],
 			contactPoint: {
 				'@type': 'ContactPoint',
 				telephone: '+91-98106-92028',
 				email: 'orbitleeee@gmail.com',
 				contactType: 'sales',
-				areaServed: 'IN',
-				availableLanguage: ['English', 'Hindi'],
+				areaServed: 'Worldwide',
+				availableLanguage: ['English'],
 			},
-			areaServed: { '@type': 'Country', name: 'India' },
+			hasOfferCatalog: {
+				'@type': 'OfferCatalog',
+				name: 'Orbitlee tech and marketing services',
+				itemListElement: offerItems,
+			},
 		},
 		{
 			'@type': 'Person',
 			'@id': `${siteUrl}/#founder`,
 			name: 'Sachin Verma',
-			jobTitle: 'Founder & Creative Head',
+			jobTitle: 'Founder',
 			worksFor: { '@id': `${siteUrl}/#organization` },
 		},
 		{
@@ -64,15 +99,19 @@ const jsonLd = {
 			'@id': `${siteUrl}/#website`,
 			url: siteUrl,
 			name: 'Orbitlee',
+			inLanguage: 'en',
 			publisher: { '@id': `${siteUrl}/#organization` },
 		},
 		{
 			'@type': 'WebPage',
-			'@id': `${siteUrl}${pathname}#webpage`,
-			url: `${siteUrl}${pathname}`,
+			'@id': `${canonicalUrl}#webpage`,
+			url: canonicalUrl,
 			name: title,
 			description,
+			inLanguage: 'en',
 			isPartOf: { '@id': `${siteUrl}/#website` },
+			about: { '@id': `${siteUrl}/#organization` },
+			dateModified: '2026-09-08',
 		},
 	],
 };
@@ -95,29 +134,35 @@ const jsonLd = {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
-		<meta name="theme-color" content="#07080A" id="theme-color-meta" />
+		<meta name="theme-color" content="#0C0814" id="theme-color-meta" />
 		<meta name="color-scheme" content="dark light" />
 		<meta name="author" content="Sachin Verma, Orbitlee" />
-		<link rel="canonical" href={`${siteUrl}${pathname}`} />
-		<meta name="keywords" content="orbitlee, creative agency india, marketing agency delhi, branding studio, ai ugc, meta ads, web development india, sachin verma" />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="alternate" hreflang="en" href={canonicalUrl} />
+		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+		<meta name="keywords" content={keywords} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Orbitlee" />
-		<meta property="og:url" content={`${siteUrl}${pathname}`} />
+		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImage} />
-		<meta property="og:locale" content="en_IN" />
+		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="en_US" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
 		<link rel="icon" type="image/png" href="/Orbitlee-fav-icon.png?v=6" />
 		<link rel="shortcut icon" href="/favicon.ico?v=6" />
 		<link rel="apple-touch-icon" href="/Orbitlee-fav-icon.png?v=6" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 		<slot name="head" />
 	</head>

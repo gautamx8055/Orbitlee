@@ -1,115 +1,152 @@
 ---
 import StudioLayout from '../layouts/StudioLayout.astro';
+import HeroCast from '../components/studio/HeroCast.astro';
 import { featuredWork, servicePillars } from '../lib/content';
 
-const process = [
-	{ n: '01', t: 'Orbit', d: 'Free 30-minute call. We audit brand, product and channels.' },
-	{ n: '02', t: 'Chart', d: 'A 12-week roadmap: message, funnel, media, what ships first.' },
-	{ n: '03', t: 'Launch', d: 'Design, UGC, ads and site — one in-house pod, not five vendors.' },
-	{ n: '04', t: 'Compound', d: 'Weekly reporting. Cut what fails. Scale what works.' },
+const marketing = servicePillars.filter((s) => s.lane === 'growth');
+const technology = servicePillars.filter((s) => s.lane === 'build');
+
+const reel = [
+	{ ...featuredWork[1], lane: 'growth' },
+	{ client: 'Product UI', tag: 'App & web', img: '/1.jpg', href: '/work', lane: 'build' },
+	{ ...featuredWork[2], lane: 'growth' },
+	{ client: 'Interface system', tag: 'Design', img: '/3.jpg', href: '/work', lane: 'build' },
+	{ ...featuredWork[5], lane: 'growth' },
+	{ ...featuredWork[0], lane: 'growth' },
+	{ client: 'Web surfaces', tag: 'Sites', img: '/2.jpg', href: '/work', lane: 'build' },
+	{ ...featuredWork[6], lane: 'growth' },
 ];
+
+const path = [
+	{ t: 'Listen', d: 'You bring the messy brief. Ads, a site, an app, or all of it.' },
+	{ t: 'Mix', d: 'We decide what to spend, what to build, and in what order.' },
+	{ t: 'Ship', d: 'Creative and product leave the same week. No handoff graveyard.' },
+	{ t: 'Tune', d: 'Monday numbers. Friday changes. We stay on it.' },
+];
+
+const faqs = [
+	{ q: 'Is Orbitlee a tech agency or a marketing agency?', a: 'Both. We run digital marketing, performance ads and social, and we build websites and apps. One brief, one team.' },
+	{ q: 'Can I hire only ads or only a website?', a: 'Yes. Hire performance marketing, social, web development or app work on its own, or keep them in one weekly sprint.' },
+	{ q: 'How do we start?', a: 'Book a free 30-minute chat. Bring the ads account, the site, or the product idea. We will say what to spend, what to build, and what to leave alone.' },
+];
+
+const homeSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((f) => ({
+				'@type': 'Question',
+				name: f.q,
+				acceptedAnswer: { '@type': 'Answer', text: f.a },
+			})),
+		},
+	],
+};
 ---
 
-<StudioLayout>
-	<section class="hero container">
-		<div class="hero__grid">
-			<div>
-				<p class="eyebrow"><span class="eyebrow__dot"></span> Delhi studio · Strategy. Design. Grow.</p>
-				<h1>A creative agency that puts your brand in <em>orbit</em>.</h1>
-				<p class="hero__lead">
-					Identity, AI UGC, social, paid ads and websites — briefed once, shipped by the same team. 15+ brands. 3.8× average ROAS.
-				</p>
+<StudioLayout
+	title="Tech & Marketing Agency | Ads + Software | Orbitlee"
+	description="Orbitlee is a tech and marketing agency. We run performance ads and social, and we ship websites and apps. One team. Free 30-minute chat."
+	keywords="tech and marketing agency, performance marketing agency, web development agency, app development, Orbitlee"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
+	</Fragment>
+	<section class="billboard">
+		<div class="billboard__main">
+			<p class="billboard__live"><span></span> Live mix · ads + product</p>
+			<div class="billboard__words" aria-hidden="true">
+				<span class="word word--m">MARKETING</span>
+				<span class="word word--x">×</span>
+				<span class="word word--t">SOFTWARE</span>
+			</div>
+			<div class="billboard__copy">
+				<h1 class="billboard__title">A tech and marketing agency that runs the ads and writes the software.</h1>
+				<p class="billboard__lead">Hi, we’re Orbitlee. Campaigns that get clicks, and the site or app those clicks deserve. One brief. One week. One team.</p>
 				<div class="hero__actions">
-					<a href="/work" class="btn btn--solid">See client work</a>
-					<a href="/contact" class="btn btn--ghost">Book a free audit</a>
+					<a href="/work" class="btn btn--solid">See the mix</a>
+					<a href="/contact" class="btn btn--ghost">Start a project</a>
 				</div>
 			</div>
-			<div class="hero__visual">
-				<img src="/Post 3.png" alt="Wildcraft campaign creative produced by Orbitlee" />
-				<img class="hero__mark" src="/Orbitlee-fav-icon.png" alt="" width="72" height="67" />
-			</div>
 		</div>
+		<HeroCast />
+		<p class="billboard__scroll" aria-hidden="true">Scroll</p>
 	</section>
 
-	<div class="band-wrap">
+	<div class="band-wrap" aria-hidden="true">
 		<div class="band">
-			{['Ortholite', 'JK Junglee Honey', 'Green Elixir', 'Windsouls Goa', 'Gaurya Farms', 'Budweiser', 'Aurix', 'WeCredit', 'Prime Figurzz'].concat(['Ortholite', 'JK Junglee Honey', 'Green Elixir', 'Windsouls Goa', 'Gaurya Farms', 'Budweiser', 'Aurix', 'WeCredit', 'Prime Figurzz']).map((name) => (
-				<span>{name}</span>
-			))}
+			<span>Meta ads</span><span>Instagram</span><span>Web apps</span><span>Landing pages</span><span>Performance</span><span>iOS &amp; Android</span><span>Creative</span><span>APIs</span><span>Social</span><span>Dashboards</span>
+			<span>Meta ads</span><span>Instagram</span><span>Web apps</span><span>Landing pages</span><span>Performance</span><span>iOS &amp; Android</span><span>Creative</span><span>APIs</span><span>Social</span><span>Dashboards</span>
 		</div>
 	</div>
 
-	<section class="section">
+	<div data-mix-root data-mix-active="all">
 		<div class="container">
-			<p class="kicker">Selected work</p>
-			<h2 class="h2">Real campaigns. Real <em>clients</em>.</h2>
-			<p class="lede">Every still below shipped for a brand — Amazon creatives, social, UGC, OOH and print. Open the full archive for films.</p>
-			<div class="cases">
-				<a class="case" href="/work">
-					<img src={featuredWork[0].img} alt={`${featuredWork[0].client} — ${featuredWork[0].tag}`} />
-					<span class="case__meta">
-						<small>{featuredWork[0].tag}</small>
-						<strong>{featuredWork[0].client}</strong>
-					</span>
-				</a>
-				<div class="cases--stack">
-					{featuredWork.slice(1, 3).map((w) => (
-						<a class="case" href="/work">
-							<img src={w.img} alt={`${w.client} — ${w.tag}`} loading="lazy" />
-							<span class="case__meta">
-								<small>{w.tag}</small>
-								<strong>{w.client}</strong>
+			<div class="mixer" role="tablist" aria-label="Show marketing, technology, or both">
+				<button type="button" class="mixer__btn is-on" data-mix="all" role="tab" aria-selected="true">The mix</button>
+				<button type="button" class="mixer__btn mixer__btn--m" data-mix="growth" role="tab" aria-selected="false">Ads &amp; social</button>
+				<button type="button" class="mixer__btn mixer__btn--t" data-mix="build" role="tab" aria-selected="false">Sites &amp; apps</button>
+			</div>
+		</div>
+
+		<section class="reel-wrap">
+			<div class="reel">
+				{reel.map((w, i) => (
+					<a class="reel__card mix" data-lane={w.lane} href="/work">
+						<img src={w.img} alt={`${w.client}: ${w.tag} by Orbitlee`} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} width="640" height="800" />
+						<span>
+							<small>{w.lane === 'growth' ? 'Marketing' : 'Technology'}</small>
+							<strong>{w.client}</strong>
+							<em>{w.tag}</em>
+						</span>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<p class="kicker">What you can hire</p>
+				<h2 class="h2">Flip between <em>ads</em> and <em class="h2__t">product</em>. Or keep both.</h2>
+				<div class="mix-board">
+					{marketing.map((s) => (
+						<a class="mix-row mix mix--m" data-lane="growth" href={s.href}>
+							<b>Mkt</b>
+							<span>
+								<strong>{s.title}</strong>
+								{s.blurb}
+							</span>
+						</a>
+					))}
+					{technology.map((s) => (
+						<a class="mix-row mix mix--t" data-lane="build" href={s.href}>
+							<b>Tec</b>
+							<span>
+								<strong>{s.title}</strong>
+								{s.blurb}
 							</span>
 						</a>
 					))}
 				</div>
 			</div>
-			<div class="mosaic" style="margin-top: 12px;">
-				{featuredWork.slice(3).map((w) => (
-					<a href="/work">
-						<img src={w.img} alt={`${w.client} — ${w.tag}`} loading="lazy" />
-					</a>
-				))}
-			</div>
-			<p style="margin-top: 24px;"><a href="/work" class="btn btn--ghost">View full portfolio</a></p>
-		</div>
-	</section>
+		</section>
+	</div>
 
-	<ul class="stats container" aria-label="Studio results">
-		<li><strong>15+</strong><span>Brands scaled</span></li>
-		<li><strong>3.8×</strong><span>Average ROAS</span></li>
-		<li><strong>−42%</strong><span>CPL reduction</span></li>
-		<li><strong>₹12Cr+</strong><span>Media spend managed</span></li>
+	<ul class="stats container" aria-label="Agency results">
+		<li><strong>15+</strong><span>Brands</span></li>
+		<li><strong>3.8×</strong><span>ROAS</span></li>
+		<li><strong>₹12Cr+</strong><span>Media</span></li>
+		<li><strong>94%</strong><span>Stay</span></li>
 	</ul>
 
 	<section class="section">
 		<div class="container">
-			<p class="kicker">Services</p>
-			<h2 class="h2">One brief. The whole <em>stack</em>.</h2>
-			<p class="lede">Digital, performance, social, software and web — briefed once, moving in the same weekly sprint. Branding and growth sit alongside when you need them.</p>
-			<div class="svc-cards">
-				{servicePillars.map((s) => (
-					<a class="svc-card" href={s.href}>
-						<img src={s.img} alt="" loading="lazy" />
-						<div>
-							<h3>{s.title}</h3>
-							<p>{s.blurb}</p>
-							<ul>{s.items.map((i) => <li>{i}</li>)}</ul>
-						</div>
-					</a>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section" style="padding-top: 0;">
-		<div class="container">
-			<p class="kicker">How we work</p>
-			<h2 class="h2">Four moves. Twelve weeks.</h2>
-			<div class="steps" style="margin-top: 36px;">
-				{process.map((p) => (
-					<article class="step">
-						<span class="step__n">{p.n}</span>
+			<p class="kicker">How a week feels</p>
+			<h2 class="h2">Four moves. Zero extra <em>noise</em>.</h2>
+			<div class="path">
+				{path.map((p) => (
+					<article class="path__step">
 						<h3>{p.t}</h3>
 						<p>{p.d}</p>
 					</article>
@@ -118,12 +155,25 @@ const process = [
 		</div>
 	</section>
 
+	<section class="section">
+		<div class="container faq">
+			<p class="kicker">FAQ</p>
+			<h2 class="h2">Quick answers about the <em>mix</em>.</h2>
+			{faqs.map((f) => (
+				<details>
+					<summary>{f.q}</summary>
+					<p class="faq__a">{f.a}</p>
+				</details>
+			))}
+		</div>
+	</section>
+
 	<section class="cta-block">
 		<div>
-			<p class="kicker">Free 30-minute audit</p>
-			<h2>Tell us where it leaks. We’ll map the orbit.</h2>
-			<p>No 60-slide deck. Actionable next steps within a working day.</p>
+			<p class="kicker">Free 30 minutes</p>
+			<h2>Bring the ads account or the repo.</h2>
+			<p>We’ll tell you what to spend, what to build, and what to leave alone.</p>
 		</div>
-		<a href="/contact" class="btn btn--solid">Start a project</a>
+		<a href="/contact" class="btn btn--solid">Let’s mix it</a>
 	</section>
 </StudioLayout>

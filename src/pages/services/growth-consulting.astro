@@ -11,7 +11,7 @@ const pageSchema = {
 			name: "Growth Consulting",
 			serviceType: "Business Growth Consulting and Marketing Strategy",
 			provider: { "@id": `${siteUrl}/#organization` },
-			areaServed: { "@type": "Country", name: "India" },
+			areaServed: { "@type": "Place", name: "Worldwide" },
 			description: "Business growth audits, brand audits, marketing strategy, go-to-market planning and competitive analysis for brands ready to scale.",
 			url: `${siteUrl}/services/growth-consulting/`,
 		},
@@ -83,8 +83,9 @@ const approach = [
 ---
 
 <StudioLayout
-	title="Growth Consulting Agency India - Business Audit, GTM Strategy | Orbitlee"
-	description="Business growth audits, brand audits, marketing strategy and go-to-market planning by Orbitlee India. Sharp diagnostics, clear roadmaps — and we execute on them too."
+	title="Growth Consulting | Audits & GTM | Orbitlee"
+	description="Growth consulting from Orbitlee: a clear audit, then the same team can run the ads and build the site. Book a free chat."
+	keywords="growth consulting, marketing audit, go to market strategy, brand audit, Orbitlee"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
@@ -93,8 +94,8 @@ const approach = [
 	<section class="pg container">
 		<p class="crumb"><a href="/services">Services</a> <span>/</span> Growth Consulting</p>
 		<p class="eyebrow"><span class="eyebrow__dot"></span> Audit · GTM · Roadmaps</p>
-		<h1>Find the leaks, map the <em>wins</em>.</h1>
-		<p class="lead">Diagnostics before spend. Then the same team can execute — no re-briefing a new vendor.</p>
+		<h1>Growth consulting: see what’s leaking. Then <em>fix</em> it.</h1>
+		<p class="lead">A short audit before you spend. If you want, we do the work too.</p>
 		<div class="pg__actions">
 			<a href="/contact" class="btn btn--solid">Book a growth audit</a>
 			<a href="/services" class="btn btn--ghost">All services</a>
@@ -103,7 +104,7 @@ const approach = [
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container split">
-			<img src="/9.jpg" alt="Strategy and print system work by Orbitlee" />
+			<img src="/9.jpg" alt="Strategy and print system work by Orbitlee" loading="lazy" width="800" height="600" />
 			<div>
 				<p class="kicker">Approach</p>
 				<h2 class="h2">Consulting that actually ships.</h2>

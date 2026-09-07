@@ -11,7 +11,7 @@ const pageSchema = {
 			name: "Branding & Creative",
 			serviceType: "Branding, Design and Creative Production",
 			provider: { "@id": `${siteUrl}/#organization` },
-			areaServed: { "@type": "Country", name: "India" },
+			areaServed: { "@type": "Place", name: "Worldwide" },
 			description: "Brand strategy, logo design, visual identity, AI UGC production, commercial ads, product photography and motion graphics.",
 			url: `${siteUrl}/services/branding-creative/`,
 		},
@@ -93,8 +93,9 @@ const approach = [
 ---
 
 <StudioLayout
-	title="Branding & Creative Agency India - Logo, Identity, AI UGC, Ads | Orbitlee"
-	description="Brand strategy, logo design, visual identity, AI UGC production, commercial ads and product photography by Orbitlee India. High-craft creative built to stop the scroll and convert."
+	title="Branding Agency | Identity & Ad Creative | Orbitlee"
+	description="Brand strategy, logo, identity and ad creative from Orbitlee. Consistent systems your team can use. Free 30-minute brand chat."
+	keywords="branding agency, brand identity, logo design, ad creative, AI UGC production, Orbitlee"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
@@ -103,8 +104,8 @@ const approach = [
 	<section class="pg container">
 		<p class="crumb"><a href="/services">Services</a> <span>/</span> Branding & Creative</p>
 		<p class="eyebrow"><span class="eyebrow__dot"></span> Identity · Production · UGC</p>
-		<h1>Identity that commands <em>attention</em>.</h1>
-		<p class="lead">Positioning, systems and production built to stop the scroll and stay consistent everywhere.</p>
+		<h1>Branding and creative people <em>notice</em>.</h1>
+		<p class="lead">Logo, look and ads that stay consistent, from an international tech and marketing agency.</p>
 		<div class="pg__actions">
 			<a href="/contact" class="btn btn--solid">Build my brand</a>
 			<a href="/services" class="btn btn--ghost">All services</a>
@@ -120,7 +121,7 @@ const approach = [
 					<p><strong style="color: var(--ink);">{a.title}.</strong> {a.body}</p>
 				))}
 			</div>
-			<img src="/5.jpg" alt="Brand and thumbnail work by Orbitlee" />
+			<img src="/5.jpg" alt="Brand and thumbnail work by Orbitlee" loading="lazy" width="800" height="600" />
 		</div>
 	</section>
 

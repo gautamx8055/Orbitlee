@@ -57,7 +57,7 @@ const pageSchema = {
 			"@type": "CollectionPage",
 			"@id": `${siteUrl}/work/#collection`,
 			name: "Orbitlee Client Work & Portfolio",
-			description: "Full portfolio of client work by Orbitlee - AI UGC, ad films, brand identity, social creative and design for brands across India.",
+			description: "Full portfolio of client work by Orbitlee - AI UGC, ad films, brand identity, social creative and design.",
 			url: `${siteUrl}/work/`,
 			isPartOf: { "@id": `${siteUrl}/#website` },
 			about: { "@id": `${siteUrl}/#organization` },
@@ -106,8 +106,9 @@ const pageSchema = {
 ---
 
 <StudioLayout
-	title="Our Work - Client Portfolio | Orbitlee Creative & Marketing Agency India"
-	description="Explore Orbitlee's client portfolio - AI UGC, ad films, brand identity, social creative and design work for D2C, real estate, F&B and beauty brands across India."
+	title="Marketing & Product Work | Portfolio | Orbitlee"
+	description="Orbitlee work: ads, UGC films, social, brand and product design. Proof from a tech and marketing agency. See the mix."
+	keywords="Orbitlee portfolio, marketing campaign work, ad films, social creative, product design"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
@@ -116,8 +117,8 @@ const pageSchema = {
 	<section class="pg container">
 		<p class="crumb"><a href="/">Home</a> <span>/</span> Work</p>
 		<p class="eyebrow"><span class="eyebrow__dot"></span> Selected work</p>
-		<h1>Real orbits we’ve <em>flown</em>.</h1>
-		<p class="lead">Every film, banner, ad and identity below shipped for a real client. Pick a category — films, social, ads or design.</p>
+		<h1>Marketing and product work. Campaigns. Apps. <em>Proof</em>.</h1>
+		<p class="lead">Ads, films, social, and the sites those campaigns land on.</p>
 		<div class="pg__actions">
 			<a href="#gallery" class="btn btn--solid">See the work</a>
 			<a href="/contact" class="btn btn--ghost">Start a project</a>
@@ -136,7 +137,7 @@ const pageSchema = {
 	<section id="gallery" class="section">
 		<div class="container">
 			<p class="kicker">Client work</p>
-			<h2 class="h2">From concept to live campaign.</h2>
+			<h2 class="h2">Browse by type.</h2>
 
 			<div class="work-tabs" role="tablist" aria-label="Portfolio categories">
 				<button class="work-tab is-active" role="tab" aria-selected="true" data-tab="videos">
@@ -233,7 +234,7 @@ const pageSchema = {
 	<section class="section" style="padding-top: 0;">
 		<div class="container">
 			<p class="kicker">Featured clients</p>
-			<h2 class="h2">Brands we’ve put into orbit.</h2>
+			<h2 class="h2">Brands we’ve worked with.</h2>
 			<div class="client-strip">
 				{featuredClients.map((c) => (
 					<span class="client-chip">{c}</span>
@@ -244,8 +245,8 @@ const pageSchema = {
 
 	<section class="cta-block">
 		<div>
-			<h2>Want work like this for your brand?</h2>
-			<p>Free 30-minute audit. Actionable next steps.</p>
+			<h2>Like what you see?</h2>
+			<p>Free 30 minutes. We’ll keep it practical.</p>
 		</div>
 		<a href="/contact" class="btn btn--solid">Book a free audit</a>
 	</section>

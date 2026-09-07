@@ -12,46 +12,53 @@ const aboutSchema = {
 			about: { '@id': `${siteUrl}/#organization` },
 		},
 		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'About', item: `${siteUrl}/about/` },
+			],
+		},
+		{
 			'@type': 'Person',
 			'@id': `${siteUrl}/#founder`,
 			name: 'Sachin Verma',
-			jobTitle: 'Founder & Creative Head',
+			jobTitle: 'Founder',
 			worksFor: { '@id': `${siteUrl}/#organization` },
 		},
 	],
 };
 
 const why = [
-	{ t: 'One team, not five vendors', d: 'Brand, ads, UGC and product share a weekly sprint. Nothing dies in a handoff.' },
-	{ t: 'AI-native production', d: 'AI UGC and generative creative — more ad variants without 10× the shoot cost.' },
-	{ t: 'Speed to launch', d: 'Site, campaign or identity in weeks. Momentum is a channel.' },
-	{ t: 'Dev + media aligned', d: 'Landing pages ship the same day a campaign does.' },
+	{ t: 'One team', d: 'Ads, social, web and apps in the same week. No vendor ping-pong.' },
+	{ t: 'Honest numbers', d: 'We report Mondays. We change Fridays. Outcomes over slide decks.' },
+	{ t: 'Build + grow', d: 'The page goes live when the ads do. Same calendar, same people.' },
 ];
 ---
 
 <StudioLayout
-	title="About Orbitlee — Creative & Marketing Studio | Sachin Verma"
-	description="Orbitlee is a Delhi creative studio founded by Sachin Verma. One team, one brief, one weekly sprint for brand, ads, UGC and product."
+	title="About Orbitlee | Tech & Marketing Agency"
+	description="Orbitlee is Sachin Verma’s tech and marketing agency. Ads, social, websites and apps from one crew. We Circle, You Grow."
+	keywords="about Orbitlee, Sachin Verma, tech and marketing agency, ads and software"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
 	</Fragment>
 
 	<section class="pg container">
-		<p class="crumb"><a href="/">Home</a> <span>/</span> Studio</p>
-		<p class="eyebrow"><span class="eyebrow__dot"></span> About · Founded 2024</p>
-		<h1>We circle until it <em>opens</em>.</h1>
-		<p class="lead">Sachin Verma built Orbitlee for founders who are tired of a strategy deck, a design file and an ad account that never meet.</p>
+		<p class="crumb"><a href="/">Home</a> <span>/</span> About</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Tech &amp; marketing agency</p>
+		<h1>A tech and marketing crew. Two crafts. One <em>team</em>.</h1>
+		<p class="lead">Sachin Verma built Orbitlee so brands stop bouncing between a media shop and a software shop.</p>
 	</section>
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container split">
 			<div>
-				<p>Most agencies sell fragments. We work as one pod: branding, performance, web and production in the same cadence — because growth only compounds when those pieces share a nervous system.</p>
-				<p>₹12Cr+ in media spend managed. 94% client retention. We report Mondays. We iterate Fridays. Measured on outcomes, not deliverable count.</p>
+				<p>Sachin Verma started Orbitlee so you don’t have to hire a media buyer and a software shop and hope they talk.</p>
+				<p>We manage ads, social, websites and apps as one team. Mondays for numbers. Fridays for changes.</p>
 			</div>
 			<div>
-				<img src="/Orbitlee-logo-transparent.png" alt="Orbitlee — Strategy. Design. Grow." class="about-logo" width="420" height="122" />
+				<img src="/Orbitlee-logo-transparent.png" alt="Orbitlee tech and marketing agency logo" class="about-logo" width="420" height="122" />
 				<img src="/9.jpg" alt="Windsouls Goa brochure work by Orbitlee" loading="lazy" />
 			</div>
 		</div>
@@ -66,8 +73,8 @@ const why = [
 
 	<section class="section">
 		<div class="container">
-			<p class="kicker">Why Orbitlee</p>
-			<h2 class="h2">Full-service, actually delivered.</h2>
+			<p class="kicker">Why us</p>
+			<h2 class="h2">Simple, on <em>purpose</em>.</h2>
 			<div class="offer" style="grid-template-columns: 1fr 1fr; margin-top: 32px;">
 				{why.map((w) => (
 					<article>
@@ -81,8 +88,8 @@ const why = [
 
 	<section class="cta-block">
 		<div>
-			<h2>Ready to orbit together?</h2>
-			<p>Free 30-minute audit. No slide deck.</p>
+			<h2>Want to say hi?</h2>
+			<p>Free 30 minutes. No slide deck.</p>
 		</div>
 		<a href="/contact" class="btn btn--solid">Book a free audit</a>
 	</section>

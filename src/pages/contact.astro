@@ -9,11 +9,18 @@ const contactSchema = {
 			"@type": "ContactPage",
 			"@id": `${siteUrl}/contact/#webpage`,
 			url: `${siteUrl}/contact/`,
-			name: "Contact Orbitlee - Book a Free Brand Audit",
-			description: "Contact Orbitlee for a free 30-minute brand audit. Email, phone, or fill out the brief form.",
+			name: "Contact Orbitlee",
+			description: "Contact Orbitlee for a free 30-minute tech and marketing chat. Email, phone, or fill out the brief form.",
 			isPartOf: { "@id": `${siteUrl}/#website` },
 			about: { "@id": `${siteUrl}/#organization` },
 			inLanguage: "en",
+		},
+		{
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Contact", item: `${siteUrl}/contact/` },
+			],
 		},
 	],
 };
@@ -30,8 +37,9 @@ const services = [
 ---
 
 <StudioLayout
-	title="Contact Orbitlee - Book a Free Brand Audit | +91 98106 92028"
-	description="Contact Orbitlee (also searched as Orbitly, Orbitli) for a free 30-minute brand audit. Email orbitleeee@gmail.com or call +91 98106 92028. Response within 1 business day."
+	title="Contact Orbitlee | Book a Tech & Marketing Chat"
+	description="Talk to Orbitlee about ads, a website or an app. Email orbitleeee@gmail.com or call +91 98106 92028. Reply within one working day."
+	keywords="contact Orbitlee, hire tech marketing agency, book brand audit, Orbitlee email"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
@@ -39,16 +47,16 @@ const services = [
 
 	<section class="pg container">
 		<p class="crumb"><a href="/">Home</a> <span>/</span> Contact</p>
-		<p class="eyebrow"><span class="eyebrow__dot"></span> Contact · Delhi</p>
-		<h1>Let’s put your brand into <em>orbit</em>.</h1>
-		<p class="lead">Tell us where you want to go — we’ll draw the trajectory. Most briefs get a response within one working day.</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Tech &amp; marketing</p>
+		<h1>Contact Orbitlee. Let’s <em>mix</em> it.</h1>
+		<p class="lead">Ads, a website, an app, or all three. We reply within a working day.</p>
 	</section>
 
 	<section class="container contact">
 		<div>
 			<span class="eyebrow">Get in touch</span>
-			<h2 class="h2" style="margin-top: 12px;">We’d love to hear from you.</h2>
-			<p class="lead">Drop a brief or reach out directly. We don’t do pushy sales calls.</p>
+			<h2 class="h2" style="margin-top: 12px;">Drop us a note.</h2>
+			<p class="lead">No pushy sales call. Just a clear next step.</p>
 			<img src="/AURIX-SM-BANNER.jpg" alt="Aurix social banner by Orbitlee" style="margin-top: 24px; border-radius: 16px; width: 100%; object-fit: cover; max-height: 220px;" />
 			<div class="contact__meta">
 				<div class="contact__meta-item">

@@ -32,22 +32,31 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 				<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
 			</a>
 			<div class="nav__drop" id="nav-services-panel">
-				<div class="nav__drop-panel">
-					<p class="nav__drop-kicker">What we run</p>
-					<div class="nav__drop-grid">
-						{servicePillars.map((p) => (
+				<div class="nav__drop-panel nav__drop-panel--depts">
+					<div>
+						<p class="nav__drop-kicker">Marketing</p>
+						{servicePillars.filter((p) => p.lane === 'growth').map((p) => (
 							<a href={p.href} class={path === p.href ? 'is-active' : undefined}>
 								<strong>{p.navLabel}</strong>
 								<span>{p.items.slice(0, 3).join(' · ')}</span>
 							</a>
 						))}
 					</div>
-					<a class="nav__drop-all" href="/services">All services, including branding & growth</a>
+					<div>
+						<p class="nav__drop-kicker nav__drop-kicker--t">Technology</p>
+						{servicePillars.filter((p) => p.lane === 'build').map((p) => (
+							<a href={p.href} class={path === p.href ? 'is-active' : undefined}>
+								<strong>{p.navLabel}</strong>
+								<span>{p.items.slice(0, 3).join(' · ')}</span>
+							</a>
+						))}
+					</div>
+					<a class="nav__drop-all" href="/services">All services</a>
 				</div>
 			</div>
 		</li>
 		<li>
-			<a href="/about" class={path === '/about' ? 'is-active' : undefined}>Studio</a>
+			<a href="/about" class={path === '/about' ? 'is-active' : undefined}>About</a>
 		</li>
 		<li>
 			<a href="/contact" class={path === '/contact' ? 'is-active' : undefined}>Contact</a>
@@ -75,16 +84,21 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 	<a href="/work">Work</a>
 	<a href="/services">Services</a>
 	<div class="mnav__subs">
-		{servicePillars.map((p) => (
+		<p class="mnav__kicker">Marketing</p>
+		{servicePillars.filter((p) => p.lane === 'growth').map((p) => (
+			<a href={p.href}>{p.navLabel}</a>
+		))}
+		<p class="mnav__kicker mnav__kicker--t">Technology</p>
+		{servicePillars.filter((p) => p.lane === 'build').map((p) => (
 			<a href={p.href}>{p.navLabel}</a>
 		))}
 	</div>
-	<a href="/about">Studio</a>
+	<a href="/about">About</a>
 	<a href="/contact">Contact</a>
 	<a href="/contact">Let’s talk</a>
 	<div class="mnav__foot">
 		<span>orbitleeee@gmail.com</span>
 		<span>+91 98106 92028</span>
-		<span>New Delhi · IN</span>
+		<span>Remote · Worldwide</span>
 	</div>
 </nav>
