@@ -1,0 +1,62 @@
+---
+interface Block {
+	t: string;
+	d: string;
+}
+
+interface Props {
+	week: Block[];
+	fit: Block[];
+	weekly: Block[];
+	lane?: 'growth' | 'build';
+}
+
+const { week, fit, weekly, lane = 'growth' } = Astro.props;
+---
+
+<section class="section" style="padding-top: 0;">
+	<div class="container">
+		<p class="kicker">A typical week</p>
+		<h2 class="h2">How this <em>runs</em>.</h2>
+		<div class="path">
+			{week.map((p) => (
+				<article class="path__step">
+					<h3>{p.t}</h3>
+					<p>{p.d}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+	<div class="container">
+		<p class="kicker">Fit</p>
+		<h2 class="h2">This is for you <em>if</em>.</h2>
+		<ol class:list={['if-list', { 'if-list--t': lane === 'build' }]}>
+			{fit.map((p) => (
+				<li>
+					<strong>{p.t}</strong>
+					<span>{p.d}</span>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+	<div class="container">
+		<p class="kicker">Each week</p>
+		<h2 class="h2">What you actually <em>get</em>.</h2>
+		<div class:list={['log', { 'log--t': lane === 'build' }]}>
+			<p class="log__head">week.log</p>
+			{weekly.map((p, i) => (
+				<p class="log__row">
+					<span class="log__n">0{i + 1}</span>
+					<strong>{p.t}</strong>
+					<span>{p.d}</span>
+				</p>
+			))}
+		</div>
+	</div>
+</section>

@@ -1,5 +1,7 @@
 ---
 import StudioLayout from '../../layouts/StudioLayout.astro';
+import ServiceDepth from '../../components/studio/ServiceDepth.astro';
+import OfferIcon from '../../components/studio/OfferIcon.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -34,46 +36,12 @@ const pageSchema = {
 };
 
 const offerings = [
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
-		title: "Brand Strategy",
-		desc: "Positioning, messaging hierarchy and a clear point of view. We define what your brand stands for and who it's built to serve.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>`,
-		title: "Logo Design",
-		desc: "Marks built to last - distinctive, scalable across every surface and rooted in your brand's actual positioning.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
-		title: "Visual Identity",
-		desc: "Colour systems, typography, iconography and brand guidelines that give your team the tools to stay consistent everywhere.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
-		title: "Packaging Design",
-		desc: "Shelf-presence and unboxing experiences designed to convert at point of purchase and generate organic shares.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>`,
-		title: "AI UGC Production",
-		desc: "Authentic-looking AI user content at scale - 10× the ad variants at a fraction of traditional shoot costs. Built for performance.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 10-4 4 6 6-4-16-6 6 4-4"/></svg>`,
-		title: "Commercial Ads",
-		desc: "High-production video and photo content engineered to stop the scroll and move product - from concept to final deliverable.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
-		title: "Product Photography",
-		desc: "Clean, scroll-stopping product imagery styled for e-commerce, social and paid campaigns.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>`,
-		title: "Motion Graphics",
-		desc: "Animated content for social, ads and product demos - from short-form reels to full explainer sequences.",
-	},
+	{ icon: 'star', title: 'Brand strategy', desc: 'Positioning and a point of view. What you stand for, who it’s for.' },
+	{ icon: 'mark', title: 'Logo', desc: 'A mark that scales. Distinctive, not a trend clip.' },
+	{ icon: 'grid', title: 'Visual identity', desc: 'Type, colour, rules your team can use without us on every post.' },
+	{ icon: 'spark', title: 'AI UGC', desc: 'More ad variants, less shoot cost. Built for paid.' },
+	{ icon: 'play', title: 'Commercial ads', desc: 'Film and stills from one brief, made to stop the scroll.' },
+	{ icon: 'motion', title: 'Motion', desc: 'Short motion for social, ads and product demos.' },
 ];
 
 const approach = [
@@ -89,6 +57,23 @@ const approach = [
 		title: "Systems, not one-offs",
 		body: "A logo isn't a brand. We build identity systems your team can actually execute at scale without hiring a designer for every post.",
 	},
+];
+
+const week = [
+	{ t: 'Truth', d: 'Audience, competitors, what you actually sell.' },
+	{ t: 'Look', d: 'Mark, type, colour. Built to scale.' },
+	{ t: 'System', d: 'Rules your team can use without us on every post.' },
+	{ t: 'Ads', d: 'First creatives that match the identity.' },
+];
+const fit = [
+	{ t: 'A logo isn’t a brand', d: 'You need a system, not one mark.' },
+	{ t: 'Ads look off-brand', d: 'Creative and identity should share a brief.' },
+	{ t: 'You need volume', d: 'UGC and ads without a new shoot every week.' },
+];
+const weekly = [
+	{ t: 'Refs', d: 'What we’re aiming at. What’s out.' },
+	{ t: 'Assets', d: 'Files you can ship. Not a moodboard only.' },
+	{ t: 'Usage', d: 'How the team applies it on Monday.' },
 ];
 ---
 
@@ -129,9 +114,10 @@ const approach = [
 		<div class="container">
 			<p class="kicker">What’s included</p>
 			<h2 class="h2">The full creative stack.</h2>
-			<div class="offer" style="margin-top: 28px;">
+			<div class="offer offer--book" style="margin-top: 28px;">
 				{offerings.map((o) => (
 					<article>
+						<OfferIcon name={o.icon} />
 						<h3>{o.title}</h3>
 						<p>{o.desc}</p>
 					</article>
@@ -139,6 +125,8 @@ const approach = [
 			</div>
 		</div>
 	</section>
+
+	<ServiceDepth week={week} fit={fit} weekly={weekly} lane="growth" />
 
 	<section class="cta-block">
 		<div>

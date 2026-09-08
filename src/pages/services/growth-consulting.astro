@@ -1,5 +1,7 @@
 ---
 import StudioLayout from '../../layouts/StudioLayout.astro';
+import ServiceDepth from '../../components/studio/ServiceDepth.astro';
+import OfferIcon from '../../components/studio/OfferIcon.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -34,36 +36,12 @@ const pageSchema = {
 };
 
 const offerings = [
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`,
-		title: "Business Growth Audit",
-		desc: "A deep diagnostic of your funnel, brand, channels and operations. We find where you're leaking growth and rank the highest-leverage fixes.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
-		title: "Brand Audit",
-		desc: "An honest look at your brand's current perception, positioning gaps and how you stack up against competitors - with clear recommendations.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>`,
-		title: "Marketing Strategy",
-		desc: "A channel-by-channel plan tied to your specific growth targets - budget allocation, content cadence, audience strategy and 90-day milestones.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="M12 15 9 12a11 11 0 0 1 7-8 11 11 0 0 1 4 4 11 11 0 0 1-8 7Z"/></svg>`,
-		title: "Go-to-Market Strategy",
-		desc: "Launching a product or entering a new market? We build the full GTM playbook - positioning, launch sequence, channel mix and metrics.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
-		title: "Competitive Analysis",
-		desc: "A structured look at who you're actually competing with, how they're winning and where the gaps in the market are sitting unclaimed.",
-	},
-	{
-		icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
-		title: "Growth Roadmap",
-		desc: "A prioritised 90-day action plan with clear owners, dependencies and expected outcomes - not a deck, a working document.",
-	},
+	{ icon: 'audit', title: 'Growth audit', desc: 'Funnel, brand, channels. Where it leaks. What to fix first.' },
+	{ icon: 'star', title: 'Brand audit', desc: 'How you show up vs who you compete with. Gaps, not fluff.' },
+	{ icon: 'grid', title: 'Marketing strategy', desc: 'Channels, budget, cadence. Tied to a number, not a vibe.' },
+	{ icon: 'rocket', title: 'Go-to-market', desc: 'New product or market. Sequence, mix, metrics.' },
+	{ icon: 'users', title: 'Competitive look', desc: 'Who actually wins, and what’s still open.' },
+	{ icon: 'trend', title: '90-day map', desc: 'Owners and next Monday. Not a shelf deck.' },
 ];
 
 const approach = [
@@ -79,6 +57,23 @@ const approach = [
 		title: "We can execute too",
 		body: "Unlike standalone consultants, we can take the strategy all the way to implementation. Same team, same brief, no re-briefing a new vendor.",
 	},
+];
+
+const week = [
+	{ t: 'Audit', d: 'Funnel, brand, spend. Where it leaks.' },
+	{ t: 'Rank', d: 'Highest-leverage fixes first. The rest waits.' },
+	{ t: 'Map', d: 'A 90-day plan with owners, not a shelf deck.' },
+	{ t: 'Do', d: 'Same team can run ads and build the site.' },
+];
+const fit = [
+	{ t: 'You’re spending blind', d: 'Channels exist. No one ranked them.' },
+	{ t: 'New market or product', d: 'You need a GTM, not a slogan.' },
+	{ t: 'You want one team', d: 'Strategy that can also ship.' },
+];
+const weekly = [
+	{ t: 'Findings', d: 'What we saw. What’s noise.' },
+	{ t: 'Priorities', d: 'Three moves. Not thirty.' },
+	{ t: 'Next Monday', d: 'Who does what when we leave the call.' },
 ];
 ---
 
@@ -119,9 +114,10 @@ const approach = [
 		<div class="container">
 			<p class="kicker">What’s included</p>
 			<h2 class="h2">Roadmaps you can act on Monday.</h2>
-			<div class="offer" style="margin-top: 28px;">
+			<div class="offer offer--book" style="margin-top: 28px;">
 				{offerings.map((o) => (
 					<article>
+						<OfferIcon name={o.icon} />
 						<h3>{o.title}</h3>
 						<p>{o.desc}</p>
 					</article>
@@ -129,6 +125,8 @@ const approach = [
 			</div>
 		</div>
 	</section>
+
+	<ServiceDepth week={week} fit={fit} weekly={weekly} lane="growth" />
 
 	<section class="cta-block">
 		<div>

@@ -2,6 +2,8 @@
 import StudioLayout from '../../layouts/StudioLayout.astro';
 import CodeTerminal from './CodeTerminal.astro';
 import SiteBrowser from './SiteBrowser.astro';
+import ServiceDepth from './ServiceDepth.astro';
+import OfferIcon from './OfferIcon.astro';
 import { servicePillars, type ServicePillar } from '../../lib/content';
 
 interface Props {
@@ -98,9 +100,10 @@ const pageSchema = {
 		<div class="container">
 			<p class="kicker">Includes</p>
 			<h2 class="h2">What you can book.</h2>
-			<div class="offer" style="margin-top: 28px;">
+			<div class:list={['offer', 'offer--book', { 'offer--t': s.lane === 'build' }]} style="margin-top: 28px;">
 				{s.offerings.map((o) => (
 					<article id={o.id}>
+						<OfferIcon name={o.icon} />
 						<h3>{o.title}</h3>
 						<p>{o.desc}</p>
 					</article>
@@ -108,6 +111,8 @@ const pageSchema = {
 			</div>
 		</div>
 	</section>
+
+	<ServiceDepth week={s.week} fit={s.fit} weekly={s.weekly} lane={s.lane} />
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container faq">
