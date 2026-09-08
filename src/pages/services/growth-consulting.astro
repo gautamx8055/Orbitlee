@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import StudioLayout from '../../layouts/StudioLayout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -11,7 +11,7 @@ const pageSchema = {
 			name: "Growth Consulting",
 			serviceType: "Business Growth Consulting and Marketing Strategy",
 			provider: { "@id": `${siteUrl}/#organization` },
-			areaServed: { "@type": "Country", name: "India" },
+			areaServed: { "@type": "Place", name: "Worldwide" },
 			description: "Business growth audits, brand audits, marketing strategy, go-to-market planning and competitive analysis for brands ready to scale.",
 			url: `${siteUrl}/services/growth-consulting/`,
 		},
@@ -82,76 +82,59 @@ const approach = [
 ];
 ---
 
-<Layout
-	title="Growth Consulting Agency India - Business Audit, GTM Strategy | Orbitlee"
-	description="Business growth audits, brand audits, marketing strategy and go-to-market planning by Orbitlee India. Sharp diagnostics, clear roadmaps - and we execute on them too."
+<StudioLayout
+	title="Growth Consulting | Audits & GTM | Orbitlee"
+	description="Growth consulting from Orbitlee: a clear audit, then the same team can run the ads and build the site. Book a free chat."
+	keywords="growth consulting, marketing audit, go to market strategy, brand audit, Orbitlee"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
-	<!-- BREADCRUMB + HERO -->
-	<section class="page-hero">
-		<div class="breadcrumb">
-			<a href="/services">Services</a>
-			<span class="breadcrumb__sep">›</span>
-			<span>Growth Consulting</span>
-		</div>
-		<div class="page-hero__eyebrow">
-			<span class="eyebrow eyebrow--plain">Growth Consulting</span>
-		</div>
-		<h1 class="page-hero__title">Find the leaks, <span class="hero__gradient">map the wins.</span></h1>
-		<p class="page-hero__sub">
-			Sharp diagnostics and clear roadmaps before your next big investment. We tell you exactly where you're leaving growth on the table - then help you pick it up.
-		</p>
-		<div class="hero__actions" style="margin-top: 32px;">
-			<a href="/contact" class="btn btn--primary btn--lg">Book a growth audit</a>
-			<a href="/services" class="btn btn--ghost btn--lg">All services</a>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/services/">Services</a> <span>/</span> Growth Consulting</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Audit · GTM · Roadmaps</p>
+		<h1>Growth consulting: see what’s leaking. Then <em>fix</em> it.</h1>
+		<p class="lead">A short audit before you spend. If you want, we do the work too.</p>
+		<div class="pg__actions">
+			<a href="/contact/" class="btn btn--solid">Book a growth audit</a>
+			<a href="/services/" class="btn btn--ghost">All services</a>
 		</div>
 	</section>
 
-	<!-- WHAT'S INCLUDED -->
-	<section class="section">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">What's included</span>
-			<h2 class="section__title">Strategy that <span class="hero__gradient">gets executed.</span></h2>
-			<p class="section__sub">We build roadmaps you can act on - not decks that gather dust.</p>
-		</div>
-		<div class="svc-detail-grid">
-			{offerings.map((o) => (
-				<article class="svc-item">
-					<div class="svc-item__icon" set:html={o.icon}></div>
-					<h3 class="svc-item__title">{o.title}</h3>
-					<p class="svc-item__desc">{o.desc}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- OUR APPROACH -->
-	<section class="section section--why">
-		<div class="section__head">
-			<span class="eyebrow eyebrow--plain">Our approach</span>
-			<h2 class="section__title">Consulting that <span class="hero__gradient">actually ships.</span></h2>
-		</div>
-		<div class="why-grid">
-			{approach.map((a, i) => (
-				<article class="why-card">
-					<span class="why-card__num">0{i + 1}</span>
-					<h3 class="why-card__title">{a.title}</h3>
-					<p class="why-card__body">{a.body}</p>
-				</article>
-			))}
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<div class="cta-strip">
-		<div class="cta-strip__inner">
-			<div class="cta-strip__copy">
-				<h2 class="cta-strip__title">Not sure where your <span class="hero__gradient">biggest wins are?</span></h2>
-				<p class="cta-strip__sub">The audit alone is worth the conversation. Most clients act on it within a week.</p>
+	<section class="section" style="padding-top: 0;">
+		<div class="container split">
+			<img src="/9.jpg" alt="Strategy and print system work by Orbitlee" loading="lazy" width="800" height="600" />
+			<div>
+				<p class="kicker">Approach</p>
+				<h2 class="h2">Consulting that actually ships.</h2>
+				{approach.map((a) => (
+					<p><strong style="color: var(--ink);">{a.title}.</strong> {a.body}</p>
+				))}
 			</div>
-			<a href="/contact" class="btn btn--primary btn--lg">Book a growth audit</a>
 		</div>
-	</div>
-</Layout>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<p class="kicker">What’s included</p>
+			<h2 class="h2">Roadmaps you can act on Monday.</h2>
+			<div class="offer" style="margin-top: 28px;">
+				{offerings.map((o) => (
+					<article>
+						<h3>{o.title}</h3>
+						<p>{o.desc}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-block">
+		<div>
+			<h2>Not sure where the biggest wins are?</h2>
+			<p>The audit alone is worth the conversation.</p>
+		</div>
+		<a href="/contact/" class="btn btn--solid">Book a growth audit</a>
+	</section>
+</StudioLayout>

@@ -1,0 +1,60 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+
+const siteUrl = 'https://www.orbitlee.com';
+const updated = '8 September 2026';
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'WebPage',
+			url: `${siteUrl}/terms/`,
+			name: 'Terms of Use',
+			dateModified: '2026-09-08',
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'Terms', item: `${siteUrl}/terms/` },
+			],
+		},
+	],
+};
+---
+
+<StudioLayout
+	title="Terms of Use | Orbitlee"
+	description="Terms for using the Orbitlee website and booking work. Short, practical, in plain language."
+	keywords="Orbitlee terms of use"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/">Home</a> <span>/</span> Terms</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Legal</p>
+		<h1>Terms of <em>use</em>.</h1>
+		<p class="lead">Last updated {updated}. Using this site or sending a brief means you agree to these notes.</p>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container prose">
+			<h2>The site</h2>
+			<p>This website is for information and to start a conversation with Orbitlee. Work we do for you is scoped in a separate brief or agreement. Nothing here is a guaranteed result, legal advice, or a public offer at a fixed price.</p>
+			<h2>Your brief</h2>
+			<p>Send us true details. Do not send secrets you are not allowed to share. If you upload brand files, you confirm you can let us use them for the project.</p>
+			<h2>Our work</h2>
+			<p>Paid work starts when we agree scope, timing and fees in writing. Ads spend, app store fees and third-party tools are usually billed separately unless we say otherwise.</p>
+			<h2>Results</h2>
+			<p>We work for outcomes. Markets, platforms and your product still move. Past ROAS or case work is not a promise of the same number for you.</p>
+			<h2>Content on this site</h2>
+			<p>Copy, layout and the Orbitlee name are ours. Client work shown is used with permission. Do not copy it as your own.</p>
+			<h2>Liability</h2>
+			<p>The site is provided as is. We are not liable for losses from using the site, a broken link, or a form that fails to send. For paid projects, the signed scope sets the limit.</p>
+			<h2>Contact</h2>
+			<p>Orbitlee, founded by Sachin Verma. Email orbitleeee@gmail.com. Phone +91 98106 92028. See also the <a href="/privacy/">privacy policy</a>.</p>
+		</div>
+	</section>
+</StudioLayout>

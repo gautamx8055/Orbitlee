@@ -1,0 +1,181 @@
+---
+import '../styles/studio.css';
+import StudioNav from '../components/studio/StudioNav.astro';
+import StudioFooter from '../components/studio/StudioFooter.astro';
+import { extraServices, servicePillars } from '../lib/content';
+
+interface Props {
+	title?: string;
+	description?: string;
+	keywords?: string;
+	ogImage?: string;
+	ogImageAlt?: string;
+	noindex?: boolean;
+}
+
+const {
+	title = 'Tech & Marketing Agency | Ads + Software | Orbitlee',
+	description = 'Orbitlee is a tech and marketing agency. We run ads and social, and we ship websites and apps. One team. Free 30-minute chat.',
+	keywords = 'tech and marketing agency, performance marketing, web development, app development, Orbitlee',
+	ogImage = 'https://www.orbitlee.com/Orbitlee-logo-transparent.png',
+	ogImageAlt = 'Orbitlee, international tech and marketing agency',
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://www.orbitlee.com';
+const pathname = Astro.url.pathname;
+const slashPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+const canonicalUrl = `${siteUrl}${slashPath}`;
+const year = new Date().getFullYear();
+const brandVariants = ['Orbitly', 'Orbitli', 'Orbit Lee', 'Orbitlee Agency', 'Orbitlee Creative', 'Orbitlee Marketing', 'Orbitlee Digital'];
+const offerItems = [
+	...servicePillars.map((s) => ({
+		'@type': 'Offer',
+		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}` },
+	})),
+	...extraServices.map((s) => ({
+		'@type': 'Offer',
+		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}` },
+	})),
+];
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': ['Organization', 'ProfessionalService'],
+			'@id': `${siteUrl}/#organization`,
+			name: 'Orbitlee',
+			alternateName: brandVariants,
+			url: siteUrl,
+			image: `${siteUrl}/Orbitlee-logo-transparent.png`,
+			logo: {
+				'@type': 'ImageObject',
+				url: `${siteUrl}/Orbitlee-logo-transparent.png`,
+				width: 512,
+				height: 512,
+			},
+			description: 'International tech and marketing agency for digital marketing, performance ads, social media, web development, apps and software.',
+			slogan: 'We Circle, You Grow.',
+			foundingDate: '2024',
+			founder: { '@id': `${siteUrl}/#founder` },
+			sameAs: ['https://www.instagram.com/orbitlee_'],
+			telephone: '+91-98106-92028',
+			email: 'orbitleeee@gmail.com',
+			areaServed: { '@type': 'Place', name: 'Worldwide' },
+			knowsAbout: [
+				'Tech agency',
+				'Marketing agency',
+				'Digital marketing',
+				'Performance marketing',
+				'Social media marketing',
+				'Web development',
+				'App development',
+				'Software development',
+			],
+			contactPoint: {
+				'@type': 'ContactPoint',
+				telephone: '+91-98106-92028',
+				email: 'orbitleeee@gmail.com',
+				contactType: 'sales',
+				areaServed: 'Worldwide',
+				availableLanguage: ['English'],
+			},
+			hasOfferCatalog: {
+				'@type': 'OfferCatalog',
+				name: 'Orbitlee tech and marketing services',
+				itemListElement: offerItems,
+			},
+		},
+		{
+			'@type': 'Person',
+			'@id': `${siteUrl}/#founder`,
+			name: 'Sachin Verma',
+			jobTitle: 'Founder',
+			worksFor: { '@id': `${siteUrl}/#organization` },
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${siteUrl}/#website`,
+			url: siteUrl,
+			name: 'Orbitlee',
+			inLanguage: 'en',
+			publisher: { '@id': `${siteUrl}/#organization` },
+		},
+		{
+			'@type': 'WebPage',
+			'@id': `${canonicalUrl}#webpage`,
+			url: canonicalUrl,
+			name: title,
+			description,
+			inLanguage: 'en',
+			isPartOf: { '@id': `${siteUrl}/#website` },
+			about: { '@id': `${siteUrl}/#organization` },
+			dateModified: '2026-09-08',
+		},
+	],
+};
+---
+
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script is:inline>
+			(function () {
+				try {
+					var saved = localStorage.getItem('orbitlee-theme');
+					var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+					document.documentElement.setAttribute('data-theme', theme);
+				} catch (e) {}
+			})();
+		</script>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
+		<meta name="theme-color" content="#0C0814" id="theme-color-meta" />
+		<meta name="color-scheme" content="dark light" />
+		<meta name="author" content="Sachin Verma, Orbitlee" />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="alternate" hreflang="en" href={canonicalUrl} />
+		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+		<meta name="keywords" content={keywords} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Orbitlee" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
+		<link rel="icon" type="image/png" href="/Orbitlee-fav-icon.png?v=6" />
+		<link rel="shortcut icon" href="/favicon.ico?v=6" />
+		<link rel="apple-touch-icon" href="/Orbitlee-fav-icon.png?v=6" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+		<slot name="head" />
+	</head>
+	<body>
+		<a class="skip" href="#main">Skip to content</a>
+		<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+		<StudioNav pathname={pathname} />
+		<main class="wrap" id="main">
+			<slot />
+		</main>
+		<StudioFooter year={year} />
+		<script>
+			import '../scripts/studio.ts';
+		</script>
+	</body>
+</html>

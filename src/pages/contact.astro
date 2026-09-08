@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import StudioLayout from '../layouts/StudioLayout.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const contactSchema = {
@@ -9,67 +9,55 @@ const contactSchema = {
 			"@type": "ContactPage",
 			"@id": `${siteUrl}/contact/#webpage`,
 			url: `${siteUrl}/contact/`,
-			name: "Contact Orbitlee - Book a Free Brand Audit",
-			description: "Contact Orbitlee for a free 30-minute brand audit. Email, phone, or fill out the brief form.",
+			name: "Contact Orbitlee",
+			description: "Contact Orbitlee for a free 30-minute tech and marketing chat. Email, phone, or fill out the brief form.",
 			isPartOf: { "@id": `${siteUrl}/#website` },
 			about: { "@id": `${siteUrl}/#organization` },
 			inLanguage: "en",
 		},
 		{
-			"@type": "LocalBusiness",
-			"@id": `${siteUrl}/#business`,
-			name: "Orbitlee",
-			alternateName: ["Orbitly", "Orbitli", "Orbit Lee"],
-			telephone: "+91-98106-92028",
-			email: "orbitleeee@gmail.com",
-			url: siteUrl,
-			sameAs: ["https://www.instagram.com/orbitlee_"],
-			areaServed: { "@type": "Country", name: "India" },
-			contactPoint: {
-				"@type": "ContactPoint",
-				telephone: "+91-98106-92028",
-				email: "orbitleeee@gmail.com",
-				contactType: "sales",
-				availableLanguage: ["English", "Hindi"],
-			},
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+				{ "@type": "ListItem", position: 2, name: "Contact", item: `${siteUrl}/contact/` },
+			],
 		},
 	],
 };
 
 const services = [
-	"Marketing & Advertising",
-	"Web & App Development",
-	"Branding & Creative",
-	"Growth Consulting",
+	'Digital marketing',
+	'Performance marketing',
+	'Social media',
+	'Software & app development',
+	'Web development',
+	'Branding & creative',
+	'Growth consulting',
 ];
 ---
 
-<Layout
-	title="Contact Orbitlee - Book a Free Brand Audit | +91 98106 92028"
-	description="Contact Orbitlee (also searched as Orbitly, Orbitli) for a free 30-minute brand audit. Email orbitleeee@gmail.com or call +91 98106 92028. Response within 1 business day."
+<StudioLayout
+	title="Contact Orbitlee | Book a Tech & Marketing Chat"
+	description="Talk to Orbitlee about ads, a website or an app. Email orbitleeee@gmail.com or call +91 98106 92028. Reply within one working day."
+	keywords="contact Orbitlee, hire tech marketing agency, book brand audit, Orbitlee email"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
 	</Fragment>
-	<!-- PAGE HERO -->
-	<section class="page-hero">
-		<div class="page-hero__eyebrow">
-			<span class="eyebrow eyebrow--plain">Contact</span>
-		</div>
-		<h1 class="page-hero__title">Let's put your brand <span class="hero__gradient">into orbit.</span></h1>
-		<p class="page-hero__sub">
-			Tell us where you want to go - we'll draw the trajectory and fly it with you. Most briefs get a response within one working day.
-		</p>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/">Home</a> <span>/</span> Contact</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Tech &amp; marketing</p>
+		<h1>Contact Orbitlee. Let’s <em>mix</em> it.</h1>
+		<p class="lead">Ads, a website, an app, or all three. We reply within a working day.</p>
 	</section>
 
-	<!-- CONTACT LAYOUT -->
-	<section class="contact">
-		<div class="contact__intro">
-			<span class="eyebrow eyebrow--plain">Get in touch</span>
-			<h2 class="section__title section__title--left">We'd love to <span class="hero__gradient">hear from you.</span></h2>
-			<p class="about__lead">
-				Drop us a brief below or reach out directly. We respond within one business day and don't do pushy sales calls.
-			</p>
+	<section class="container contact">
+		<div>
+			<span class="eyebrow">Get in touch</span>
+			<h2 class="h2" style="margin-top: 12px;">Drop us a note.</h2>
+			<p class="lead">No pushy sales call. Just a clear next step.</p>
+			<img src="/AURIX-SM-BANNER.jpg" alt="Aurix social banner by Orbitlee" style="margin-top: 24px; border-radius: 16px; width: 100%; object-fit: cover; max-height: 220px;" />
 			<div class="contact__meta">
 				<div class="contact__meta-item">
 					<span class="contact__meta-label">Email</span>
@@ -131,10 +119,10 @@ const services = [
 			</fieldset>
 			<label class="field">
 				<span class="field__label">Tell us about your project <span class="req">*</span></span>
-				<textarea name="message" rows="5" required placeholder="A few lines about your business, what you're trying to solve, and your timeline."></textarea>
+				<textarea name="message" rows="5" required placeholder="A few lines about your business, what you’re trying to solve, and your timeline."></textarea>
 			</label>
 			<div class="form__foot">
-				<button type="submit" class="btn btn--primary btn--lg">Send the brief</button>
+				<button type="submit" class="btn btn--solid">Send the brief</button>
 				<p class="form__note" id="form-note" role="status"></p>
 			</div>
 		</form>
@@ -163,7 +151,7 @@ const services = [
 				try {
 					const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
 					if (res.ok) {
-						note.textContent = "Thanks! Your brief is in. We'll be in touch within one business day.";
+						note.textContent = "Thanks. Your brief is in. We'll be in touch within one business day.";
 						form.reset();
 					} else {
 						let msg = 'Something went wrong. Please try again or email orbitleeee@gmail.com';
@@ -180,4 +168,4 @@ const services = [
 			});
 		}
 	</script>
-</Layout>
+</StudioLayout>
