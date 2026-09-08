@@ -1,5 +1,6 @@
 ---
 import StudioLayout from '../../layouts/StudioLayout.astro';
+import ServiceFigure from '../../components/studio/ServiceFigure.astro';
 import { extraServices, servicePillars, services } from '../../lib/content';
 
 const marketing = servicePillars.filter((s) => s.lane === 'growth');
@@ -61,7 +62,7 @@ const servicesSchema = {
 				<div class="svc-cards" style="grid-template-columns: 1fr; margin-top: 16px;">
 					{marketing.map((s) => (
 						<a class="svc-card" href={s.href}>
-							<img src={s.img} alt={`${s.title} work by Orbitlee`} loading="lazy" width="280" height="280" />
+							<ServiceFigure kind={s.slug} />
 							<div>
 								<h3>{s.title}</h3>
 								<p>{s.blurb}</p>
@@ -76,7 +77,7 @@ const servicesSchema = {
 				<div class="svc-cards" style="grid-template-columns: 1fr; margin-top: 16px;">
 					{technology.map((s) => (
 						<a class="svc-card" href={s.href}>
-							<img src={s.img} alt={`${s.title} work by Orbitlee`} loading="lazy" width="280" height="280" />
+							<ServiceFigure kind={s.slug} />
 							<div>
 								<h3>{s.title}</h3>
 								<p>{s.blurb}</p>
@@ -96,7 +97,7 @@ const servicesSchema = {
 			<div class="svc-cards" style="margin-top: 28px;">
 				{extraServices.map((s) => (
 						<a class="svc-card" href={s.href}>
-							<img src={s.img} alt={`${s.title} by Orbitlee`} loading="lazy" width="280" height="280" />
+							<ServiceFigure kind={s.href.replace(/^\/services\/|\/$/g, '')} />
 						<div>
 							<h3>{s.title}</h3>
 							<p>{s.blurb}</p>

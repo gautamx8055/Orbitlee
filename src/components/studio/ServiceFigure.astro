@@ -1,0 +1,140 @@
+---
+interface Props {
+	kind: string;
+}
+
+const { kind } = Astro.props;
+---
+
+<div class="svc-cast" aria-hidden="true" data-kind={kind}>
+	<svg class="cast__svg" viewBox="0 0 120 120" fill="none">
+		{kind === 'digital-marketing' && (
+			<>
+				<g class="cast__bob">
+					<circle class="cast__skin" cx="42" cy="26" r="11" />
+					<path class="cast__hair" d="M31 24c2-10 20-11 22 0v3c-6-5-16-5-22 0z" />
+					<rect class="cast__skin" x="39" y="36" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--ads" d="M26 42h32l5 30H22l4-30z" />
+					<g class="cast__arm-l"><path class="cast__limb" d="M26 50 L18 72" /></g>
+					<g class="cast__point"><path class="cast__limb" d="M58 50 L78 46" /></g>
+				</g>
+				<circle cx="90" cy="42" r="13" class="svc-cast__ring" />
+				<rect class="cast__shape" x="98" y="56" width="14" height="4" rx="2" transform="rotate(40 98 56)" />
+				<rect x="72" y="70" width="36" height="22" rx="4" class="cast__screen" />
+				<rect class="cast__line cast__line--a" x="76" y="76" width="28" height="3" rx="1" />
+				<rect class="cast__line cast__line--b" x="76" y="82" width="20" height="3" rx="1" />
+			</>
+		)}
+		{kind === 'performance-marketing' && (
+			<>
+				<g class="cast__bob cast__bob--slow">
+					<circle class="cast__skin cast__skin--4" cx="40" cy="26" r="11" />
+					<path class="cast__hair" d="M29 26c2-10 20-11 22 0v2c-6-4-16-4-22 0z" />
+					<rect class="cast__skin cast__skin--4" x="37" y="36" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--ads" d="M24 42h32l5 30H20l4-30z" />
+					<g class="cast__point"><path class="cast__limb" d="M56 50 L74 44" /></g>
+					<path class="cast__limb" d="M24 52 L18 78" />
+				</g>
+				<rect x="70" y="52" width="42" height="42" rx="4" class="cast__screen" />
+				<rect class="cast__bar cast__bar--a" x="76" y="78" width="6" height="12" rx="1" />
+				<rect class="cast__bar cast__bar--b" x="86" y="70" width="6" height="20" rx="1" />
+				<rect class="cast__bar cast__bar--c" x="96" y="62" width="6" height="28" rx="1" />
+			</>
+		)}
+		{kind === 'social-media' && (
+			<>
+				<g class="cast__bob">
+					<circle class="cast__skin cast__skin--3" cx="48" cy="26" r="11" />
+					<path class="cast__hair cast__hair--3" d="M37 24c1-10 22-10 22 1-8-4-16-4-22 0z" />
+					<rect class="cast__skin cast__skin--3" x="45" y="36" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--reel" d="M30 42h36l5 32H26l4-32z" />
+					<g class="cast__cam">
+						<path class="cast__limb" d="M66 50 L82 58" />
+						<rect x="80" y="44" width="22" height="34" rx="4" class="cast__screen" />
+						<rect x="83" y="48" width="16" height="24" rx="2" class="cast__glass" />
+						<rect class="cast__clip cast__clip--1" x="85" y="50" width="12" height="8" rx="1" />
+						<rect class="cast__clip cast__clip--2" x="85" y="60" width="12" height="8" rx="1" />
+						<circle class="cast__rec" cx="91" cy="46" r="2.5" />
+					</g>
+					<path class="cast__limb" d="M30 52 L22 78" />
+				</g>
+			</>
+		)}
+		{kind === 'software-app-development' && (
+			<>
+				<rect class="cast__desk" x="10" y="88" width="100" height="6" rx="2" />
+				<g class="cast__bob">
+					<circle class="cast__skin" cx="52" cy="28" r="11" />
+					<path class="cast__hair" d="M41 26c2-10 20-11 22 0v3c-6-5-16-5-22 0z" />
+					<rect class="cast__skin" x="49" y="38" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--code" d="M36 44h32l5 28H32l4-28z" />
+					<g class="cast__arm-l"><path class="cast__limb" d="M36 50 L26 70" /></g>
+					<g class="cast__arm-r"><path class="cast__limb" d="M68 50 L82 68" /></g>
+				</g>
+				<rect x="30" y="62" width="60" height="38" rx="3" class="cast__screen" />
+				<rect x="33" y="65" width="54" height="26" rx="2" class="cast__glass" />
+				<rect class="cast__line cast__line--a" x="36" y="68" width="48" height="2.5" rx="1" />
+				<rect class="cast__line cast__line--b" x="36" y="73" width="48" height="2.5" rx="1" />
+				<rect class="cast__line cast__line--c" x="36" y="78" width="48" height="2.5" rx="1" />
+				<rect class="cast__cursor" x="36" y="83" width="2" height="5" rx="1" />
+				<rect x="28" y="98" width="64" height="5" rx="1.5" class="cast__keys" />
+			</>
+		)}
+		{kind === 'web-development' && (
+			<>
+				<g class="cast__bob">
+					<circle class="cast__skin cast__skin--2" cx="38" cy="26" r="11" />
+					<path class="cast__hair" d="M27 24c2-10 20-11 22 0v3c-6-5-16-5-22 0z" />
+					<rect class="cast__skin cast__skin--2" x="35" y="36" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--code" d="M22 42h32l5 30H18l4-30z" />
+					<g class="cast__arm-l"><path class="cast__limb" d="M22 50 L14 72" /></g>
+					<g class="cast__arm-r"><path class="cast__limb" d="M54 50 L70 64" /></g>
+				</g>
+				<rect x="62" y="48" width="50" height="42" rx="4" class="cast__screen" />
+				<rect x="62" y="48" width="50" height="8" rx="4" class="cast__keys" />
+				<circle class="cast__dot cast__dot--lime" cx="68" cy="52" r="1.6" />
+				<circle class="cast__dot cast__dot--violet" cx="74" cy="52" r="1.6" />
+				<rect x="65" y="60" width="44" height="26" rx="2" class="cast__glass" />
+				<rect class="cast__line cast__line--a" x="68" y="64" width="38" height="3" rx="1" />
+				<rect class="cast__line cast__line--b" x="68" y="70" width="28" height="3" rx="1" />
+				<rect class="cast__line cast__line--c" x="68" y="76" width="32" height="3" rx="1" />
+			</>
+		)}
+		{(kind === 'branding-creative' || kind === 'branding') && (
+			<>
+				<g class="cast__bob cast__bob--slow">
+					<circle class="cast__skin cast__skin--2" cx="46" cy="26" r="11" />
+					<path class="cast__hair cast__hair--make" d="M35 24c3-11 22-12 24 2-5-3-12-2-18 0z" />
+					<circle class="cast__hair cast__hair--make" cx="58" cy="22" r="5" />
+					<rect class="cast__skin cast__skin--2" x="43" y="36" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--make" d="M30 42h32l6 30H26l4-30z" />
+					<g class="cast__draw">
+						<path class="cast__limb" d="M62 50 L86 62" />
+						<rect x="86" y="58" width="14" height="3" rx="1.5" class="cast__stylus" />
+					</g>
+					<path class="cast__limb" d="M30 50 L22 74" />
+				</g>
+				<rect x="72" y="68" width="38" height="30" rx="3" class="cast__screen" />
+				<circle class="cast__dot cast__dot--lime" cx="84" cy="80" r="5" />
+				<circle class="cast__dot cast__dot--violet" cx="98" cy="80" r="5" />
+				<rect class="cast__shape" x="78" y="90" width="26" height="4" rx="2" />
+			</>
+		)}
+		{kind === 'growth-consulting' && (
+			<>
+				<g class="cast__bob cast__bob--slow">
+					<circle class="cast__skin cast__skin--4" cx="44" cy="24" r="11" />
+					<path class="cast__hair" d="M33 22c2-10 20-11 22 0v2c-6-4-16-4-22 0z" />
+					<rect class="cast__skin cast__skin--4" x="41" y="34" width="6" height="5" rx="1" />
+					<path class="cast__shirt cast__shirt--ads" d="M28 40h32l5 28H24l4-28z" />
+					<g class="cast__point"><path class="cast__limb" d="M60 48 L78 36" /></g>
+					<path class="cast__limb" d="M28 50 L20 74" />
+				</g>
+				<rect x="18" y="86" width="84" height="6" rx="2" class="cast__desk" />
+				<rect class="cast__bar cast__bar--a" x="70" y="58" width="8" height="28" rx="1" />
+				<rect class="cast__bar cast__bar--b" x="84" y="48" width="8" height="38" rx="1" />
+				<rect class="cast__bar cast__bar--c" x="98" y="38" width="8" height="48" rx="1" />
+			</>
+		)}
+	</svg>
+</div>
