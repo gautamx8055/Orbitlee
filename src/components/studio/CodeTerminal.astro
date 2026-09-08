@@ -1,0 +1,28 @@
+---
+const lines = [
+	{ t: 'cmt', v: '// orbitlee / weekly ship' },
+	{ t: 'cmd', v: '$ mix --product mvp --ads same-week' },
+	{ t: 'ok', v: 'ok  scope locked: one job' },
+	{ t: 'ok', v: 'ok  ios + android build' },
+	{ t: 'ok', v: 'ok  hook copy in the sprint' },
+	{ t: 'blank', v: '' },
+	{ t: 'kw', v: 'export function release(week: number) {' },
+	{ t: 'code', v: '  return { status: "live", week }' },
+	{ t: 'kw', v: '}' },
+	{ t: 'blank', v: '' },
+	{ t: 'cmd', v: '$ git tag v0.1.0 && git push --tags' },
+	{ t: 'ok', v: 'ok  shipped' },
+];
+---
+
+<figure class="term" aria-label="Sample product ship in a terminal">
+	<div class="term__bar">
+		<span class="term__dot term__dot--lime"></span>
+		<span class="term__dot term__dot--mute"></span>
+		<span class="term__dot term__dot--violet"></span>
+		<figcaption class="term__title">orbitlee / ship</figcaption>
+	</div>
+	<pre class="term__body"><code>{lines.map((l) => (
+		<span class={`term__line term__line--${l.t}`}>{l.v || '\u00a0'}</span>
+	))}<span class="term__caret" aria-hidden="true"></span></code></pre>
+</figure>
