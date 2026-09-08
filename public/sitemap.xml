@@ -67,9 +67,27 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.orbitlee.com/contact/</loc>
+    <loc>https://www.orbitlee.com/process/</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.orbitlee.com/faq/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.orbitlee.com/privacy/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.orbitlee.com/terms/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

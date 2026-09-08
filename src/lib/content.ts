@@ -1,12 +1,34 @@
 export const featuredWork = [
-	{ client: 'Ortholite', tag: 'Amazon creatives', img: '/2.jpg', href: '/work' },
-	{ client: 'JK Junglee Honey', tag: 'Organic social', img: '/Post 3.png', href: '/work' },
-	{ client: 'Green Elixir', tag: 'AI UGC', img: '/4.jpg', href: '/work' },
-	{ client: 'Windsouls, Goa', tag: '70-page brochure', img: '/9.jpg', href: '/work' },
-	{ client: 'Gaurya Farms', tag: 'Commercial film', img: '/7.jpg', href: '/work' },
-	{ client: 'Budweiser', tag: 'OOH hoardings', img: '/8.jpg', href: '/work' },
-	{ client: 'Aurix', tag: 'Social identity', img: '/AURIX-SM-BANNER.jpg', href: '/work' },
-	{ client: 'Prime Figurzz', tag: 'Thumbnails', img: '/5.jpg', href: '/work' },
+	{ client: 'Ortholite', tag: 'Amazon creatives', img: '/2.jpg', href: '/work/' },
+	{ client: 'JK Junglee Honey', tag: 'Organic social', img: '/Post 3.png', href: '/work/' },
+	{ client: 'Green Elixir', tag: 'AI UGC', img: '/4.jpg', href: '/work/' },
+	{ client: 'Windsouls, Goa', tag: '70-page brochure', img: '/9.jpg', href: '/work/' },
+	{ client: 'Gaurya Farms', tag: 'Commercial film', img: '/7.jpg', href: '/work/' },
+	{ client: 'Budweiser', tag: 'OOH hoardings', img: '/8.jpg', href: '/work/' },
+	{ client: 'Aurix', tag: 'Social identity', img: '/AURIX-SM-BANNER.jpg', href: '/work/' },
+	{ client: 'Mantra Herbal', tag: 'Brand & ads', img: '/6.jpg', href: '/work/' },
+	{ client: 'Prime Figurzz', tag: 'Thumbnails', img: '/5.jpg', href: '/work/' },
+];
+
+export const clientNames = [
+	'Windsouls',
+	'8Ease x Ortholite',
+	'TMproduction',
+	'Green Elixir',
+	'Mantra Herbal',
+	'Dibs Cafe',
+	'Akki Mens Wear',
+	'Prime Figurz',
+	'All set events',
+];
+
+export const testimonials = [
+	{ brand: 'TMproduction', person: 'Tatsam Malhotra', quote: 'The stills and the film finally came from the same brief.' },
+	{ brand: '8Ease', person: 'Gaurav Bajargyan', quote: 'One team for the ads and the assets. That was the point.' },
+	{ brand: 'Dibs Cafe', person: 'Shivang Singhal', quote: 'The feed looks like the cafe. Guests notice.' },
+	{ brand: 'Mantra Herbal', person: 'Vedika Sharma Sethi', quote: 'Ads and the page said the same thing for once.' },
+	{ brand: 'Prime Figurz', person: 'Anubhav Dubey', quote: 'Thumbnails that earn the click without looking cheap.' },
+	{ brand: 'All set events', person: 'Shivam Singh', quote: 'Invite to ads, same look. No second designer.' },
 ];
 
 export type ServiceOffering = {
@@ -44,7 +66,7 @@ export const servicePillars: ServicePillar[] = [
 	{
 		slug: 'digital-marketing',
 		lane: 'growth',
-		href: '/services/digital-marketing',
+		href: '/services/digital-marketing/',
 		title: 'Digital marketing',
 		navLabel: 'Digital marketing',
 		seoTitle: 'Digital Marketing Agency | SEO & Content | Orbitlee',
@@ -76,7 +98,7 @@ export const servicePillars: ServicePillar[] = [
 	{
 		slug: 'performance-marketing',
 		lane: 'growth',
-		href: '/services/performance-marketing',
+		href: '/services/performance-marketing/',
 		title: 'Performance marketing',
 		navLabel: 'Performance marketing',
 		seoTitle: 'Performance Marketing Agency | Meta & Google | Orbitlee',
@@ -108,7 +130,7 @@ export const servicePillars: ServicePillar[] = [
 	{
 		slug: 'social-media',
 		lane: 'growth',
-		href: '/services/social-media',
+		href: '/services/social-media/',
 		title: 'Social media',
 		navLabel: 'Social media',
 		seoTitle: 'Social Media Agency | Reels & Community | Orbitlee',
@@ -140,7 +162,7 @@ export const servicePillars: ServicePillar[] = [
 	{
 		slug: 'software-app-development',
 		lane: 'build',
-		href: '/services/software-app-development',
+		href: '/services/software-app-development/',
 		title: 'Software & apps',
 		navLabel: 'Software & apps',
 		seoTitle: 'App & Software Development Agency | Orbitlee',
@@ -172,7 +194,7 @@ export const servicePillars: ServicePillar[] = [
 	{
 		slug: 'web-development',
 		lane: 'build',
-		href: '/services/web-development',
+		href: '/services/web-development/',
 		title: 'Web development',
 		navLabel: 'Web development',
 		seoTitle: 'Web Development Agency | Sites & Landings | Orbitlee',
@@ -205,14 +227,14 @@ export const servicePillars: ServicePillar[] = [
 
 export const extraServices = [
 	{
-		href: '/services/branding-creative',
+		href: '/services/branding-creative/',
 		title: 'Branding & Creative',
 		blurb: 'Positioning, identity and production that stays consistent.',
 		items: ['Strategy', 'Logo', 'Identity', 'Ads'],
 		img: '/5.jpg',
 	},
 	{
-		href: '/services/growth-consulting',
+		href: '/services/growth-consulting/',
 		title: 'Growth Consulting',
 		blurb: 'A clear look before you spend. Then we can do the work.',
 		items: ['Audit', 'GTM', 'Strategy'],

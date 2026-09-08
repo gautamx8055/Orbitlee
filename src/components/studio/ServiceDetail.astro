@@ -15,13 +15,13 @@ const pageSchema = {
 	'@graph': [
 		{
 			'@type': 'Service',
-			'@id': `${siteUrl}${s.href}/#service`,
+			'@id': `${siteUrl}${s.href}#service`,
 			name: s.title,
 			serviceType: s.title,
 			provider: { '@id': `${siteUrl}/#organization` },
 			areaServed: { '@type': 'Place', name: 'Worldwide' },
 			description: s.lead,
-			url: `${siteUrl}${s.href}/`,
+			url: `${siteUrl}${s.href}`,
 			hasOfferCatalog: {
 				'@type': 'OfferCatalog',
 				name: `${s.title} services`,
@@ -36,7 +36,7 @@ const pageSchema = {
 			itemListElement: [
 				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
 				{ '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}/services/` },
-				{ '@type': 'ListItem', position: 3, name: s.title, item: `${siteUrl}${s.href}/` },
+				{ '@type': 'ListItem', position: 3, name: s.title, item: `${siteUrl}${s.href}` },
 			],
 		},
 		{
@@ -57,13 +57,13 @@ const pageSchema = {
 	</Fragment>
 
 	<section class="pg container">
-		<p class="crumb"><a href="/services">Services</a> <span>/</span> {s.title}</p>
+		<p class="crumb"><a href="/services/">Services</a> <span>/</span> {s.title}</p>
 		<p class="eyebrow"><span class="eyebrow__dot"></span> {s.eyebrow}</p>
 		<h1>{s.headline} <em>{s.headlineEm}</em>.</h1>
 		<p class="lead">{s.lead}</p>
 		<div class="pg__actions">
-			<a href="/contact" class="btn btn--solid">{s.ctaLabel}</a>
-			<a href="/services" class="btn btn--ghost">All services</a>
+			<a href="/contact/" class="btn btn--solid">{s.ctaLabel}</a>
+			<a href="/services/" class="btn btn--ghost">All services</a>
 		</div>
 	</section>
 
@@ -125,6 +125,6 @@ const pageSchema = {
 			<h2>{s.ctaTitle}</h2>
 			<p>{s.ctaBody}</p>
 		</div>
-		<a href="/contact" class="btn btn--solid">{s.ctaLabel}</a>
+		<a href="/contact/" class="btn btn--solid">{s.ctaLabel}</a>
 	</section>
 </StudioLayout>

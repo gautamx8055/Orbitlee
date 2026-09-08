@@ -31,11 +31,11 @@ const brandVariants = ['Orbitly', 'Orbitli', 'Orbit Lee', 'Orbitlee Agency', 'Or
 const offerItems = [
 	...servicePillars.map((s) => ({
 		'@type': 'Offer',
-		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}/` },
+		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}` },
 	})),
 	...extraServices.map((s) => ({
 		'@type': 'Offer',
-		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}/` },
+		itemOffered: { '@type': 'Service', name: s.title, url: `${siteUrl}${s.href}` },
 	})),
 ];
 

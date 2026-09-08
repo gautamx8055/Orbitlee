@@ -1,0 +1,95 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+import { extraServices, servicePillars } from '../lib/content';
+
+const siteUrl = 'https://www.orbitlee.com';
+
+const general = [
+	{ q: 'Is Orbitlee a tech agency or a marketing agency?', a: 'Both. We run digital marketing, performance ads and social, and we build websites and apps. One brief, one team.' },
+	{ q: 'Can I hire only ads or only a website?', a: 'Yes. Hire performance marketing, social, web development or app work on its own, or keep them in one weekly sprint.' },
+	{ q: 'How do we start?', a: 'Book a free 30-minute chat. Bring the ads account, the site, or the product idea. We will say what to spend, what to build, and what to leave alone.' },
+	{ q: 'Where do you work?', a: 'Remote, worldwide. We meet on video and keep updates in writing each week.' },
+];
+
+const extraFaqs = [
+	{ href: extraServices[0].href, title: extraServices[0].title, faqs: [
+		{ q: 'Do you design logos and identity?', a: 'Yes. Strategy, logo, identity and the ads that use them, so the brand does not split across vendors.' },
+		{ q: 'What is AI UGC?', a: 'Ad-style clips made with AI tools, so you can test more variants without a full shoot every time.' },
+	]},
+	{ href: extraServices[1].href, title: extraServices[1].title, faqs: [
+		{ q: 'What does growth consulting include?', a: 'An audit of the funnel, brand and channels, then a short plan you can act on. The same team can run the work after.' },
+		{ q: 'Can you execute the plan?', a: 'Yes. Unlike a slide-only consultant, we can take the mix into ads, social, web and apps.' },
+	]},
+];
+
+const groups = [
+	{ href: '', title: 'Working with Orbitlee', faqs: general },
+	...servicePillars.map((s) => ({ href: s.href, title: s.title, faqs: s.faqs })),
+	...extraFaqs,
+];
+
+const allFaqs = groups.flatMap((g) => g.faqs);
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'FAQPage',
+			url: `${siteUrl}/faq/`,
+			name: 'Orbitlee FAQ',
+			mainEntity: allFaqs.map((f) => ({
+				'@type': 'Question',
+				name: f.q,
+				acceptedAnswer: { '@type': 'Answer', text: f.a },
+			})),
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'FAQ', item: `${siteUrl}/faq/` },
+			],
+		},
+	],
+};
+---
+
+<StudioLayout
+	title="FAQ | Tech & Marketing Agency | Orbitlee"
+	description="Answers about Orbitlee: ads, social, websites, apps, branding and how we work. Short, practical, no slide deck."
+	keywords="Orbitlee FAQ, tech and marketing agency questions, hire Orbitlee"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/">Home</a> <span>/</span> FAQ</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Quick answers</p>
+		<h1>Questions we get about the <em>mix</em>.</h1>
+		<p class="lead">Ads, apps, or both. If it is not here, <a href="/contact/">ask us</a>.</p>
+	</section>
+
+	{groups.map((g) => (
+		<section class="section" style="padding-top: 0;">
+			<div class="container faq">
+				<p class="kicker">{g.title}</p>
+				{g.href && <p class="more" style="margin-top: 0;"><a href={g.href}>Open {g.title}</a></p>}
+				{g.faqs.map((f) => (
+					<details>
+						<summary>{f.q}</summary>
+						<p class="faq__a">{f.a}</p>
+					</details>
+				))}
+			</div>
+		</section>
+	))}
+
+	<section class="cta-block">
+		<div>
+			<h2>Still stuck?</h2>
+			<p>A free 30-minute chat. We’ll keep it practical.</p>
+		</div>
+		<a href="/contact/" class="btn btn--solid">Book a free audit</a>
+	</section>
+</StudioLayout>

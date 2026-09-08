@@ -1,0 +1,63 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+
+const siteUrl = 'https://www.orbitlee.com';
+const updated = '8 September 2026';
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'WebPage',
+			url: `${siteUrl}/privacy/`,
+			name: 'Privacy Policy',
+			dateModified: '2026-09-08',
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'Privacy', item: `${siteUrl}/privacy/` },
+			],
+		},
+	],
+};
+---
+
+<StudioLayout
+	title="Privacy Policy | Orbitlee"
+	description="How Orbitlee uses the information you send us. Contact, forms, and what we do not sell."
+	keywords="Orbitlee privacy policy"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/">Home</a> <span>/</span> Privacy</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> Legal</p>
+		<h1>Privacy <em>policy</em>.</h1>
+		<p class="lead">Last updated {updated}. Plain language. If you need more, email orbitleeee@gmail.com.</p>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container prose">
+			<h2>Who we are</h2>
+			<p>Orbitlee is a tech and marketing agency founded by Sachin Verma. We run ads, social, websites and apps. Contact: orbitleeee@gmail.com, +91 98106 92028.</p>
+			<h2>What we collect</h2>
+			<p>If you write to us or use the contact form, we receive your name, email, company, budget range, the services you tick, and your message. Phone and Instagram DMs are optional. We do not run a login or store payment cards on this site.</p>
+			<h2>How we use it</h2>
+			<p>To reply, quote, and do the work you asked for. We do not sell your details. We do not send bulk newsletters unless you ask.</p>
+			<h2>Who else sees it</h2>
+			<p>The contact form is processed by Formspree. Hosting, email and chat tools may process messages so we can answer you. Instagram and WhatsApp have their own policies when you write us there.</p>
+			<h2>How long we keep it</h2>
+			<p>Briefs and project files stay as long as we need them to deliver and for basic records. You can ask us to delete what we hold that is not required by law.</p>
+			<h2>Cookies and analytics</h2>
+			<p>This site uses a theme preference in your browser (localStorage). We do not add extra marketing pixels on these pages unless a live campaign needs them, and we will say so if we do.</p>
+			<h2>Your choices</h2>
+			<p>Email us to see, correct, or delete what we have about you. If you are in a region with extra rights, we will honour the request we can legally meet.</p>
+			<h2>Kids</h2>
+			<p>This site is for businesses and adults. We do not try to collect data from children.</p>
+			<p><a href="/contact/">Contact us</a> if something here is unclear.</p>
+		</div>
+	</section>
+</StudioLayout>

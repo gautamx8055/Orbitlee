@@ -1,5 +1,6 @@
 ---
 import StudioLayout from '../layouts/StudioLayout.astro';
+import { clientNames } from '../lib/content';
 
 const siteUrl = "https://www.orbitlee.com";
 
@@ -41,7 +42,7 @@ const clientWork = {
 };
 
 const totalCount = clientWork.videos.length + clientWork.branding.length + clientWork.ads.length + clientWork.design.length;
-const featuredClients = ["ADVC", "Horizon RE", "Gaurya Farms", "Green Elixir", "Aurix", "BA"];
+const featuredClients = clientNames;
 
 const workStats = [
 	{ num: `${clientWork.videos.length}`, label: "Ad films & UGC" },
@@ -121,7 +122,7 @@ const pageSchema = {
 		<p class="lead">Ads, films, social, and the sites those campaigns land on.</p>
 		<div class="pg__actions">
 			<a href="#gallery" class="btn btn--solid">See the work</a>
-			<a href="/contact" class="btn btn--ghost">Start a project</a>
+			<a href="/contact/" class="btn btn--ghost">Start a project</a>
 		</div>
 	</section>
 
@@ -248,7 +249,7 @@ const pageSchema = {
 			<h2>Like what you see?</h2>
 			<p>Free 30 minutes. We’ll keep it practical.</p>
 		</div>
-		<a href="/contact" class="btn btn--solid">Book a free audit</a>
+		<a href="/contact/" class="btn btn--solid">Book a free audit</a>
 	</section>
 
 	<script is:inline>

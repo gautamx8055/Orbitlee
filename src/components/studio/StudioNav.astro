@@ -17,11 +17,11 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 
 	<ul class="nav__list">
 		<li>
-			<a href="/work" class={path === '/work' ? 'is-active' : undefined}>Work</a>
+			<a href="/work/" class={path === '/work' ? 'is-active' : undefined}>Work</a>
 		</li>
 		<li class="nav__item--drop" data-nav-drop>
 			<a
-				href="/services"
+				href="/services/"
 				class:list={['nav__parent', { 'is-active': servicesOpen }]}
 				aria-haspopup="true"
 				aria-expanded="false"
@@ -35,7 +35,7 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 					<div>
 						<p class="nav__drop-kicker">Marketing</p>
 						{servicePillars.filter((p) => p.lane === 'growth').map((p) => (
-							<a href={p.href} class={path === p.href ? 'is-active' : undefined}>
+							<a href={p.href} class={path === p.href.replace(/\/+$/, '') ? 'is-active' : undefined}>
 								<strong>{p.navLabel}</strong>
 								<span>{p.items.slice(0, 3).join(' · ')}</span>
 							</a>
@@ -44,21 +44,21 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 					<div>
 						<p class="nav__drop-kicker nav__drop-kicker--t">Technology</p>
 						{servicePillars.filter((p) => p.lane === 'build').map((p) => (
-							<a href={p.href} class={path === p.href ? 'is-active' : undefined}>
+							<a href={p.href} class={path === p.href.replace(/\/+$/, '') ? 'is-active' : undefined}>
 								<strong>{p.navLabel}</strong>
 								<span>{p.items.slice(0, 3).join(' · ')}</span>
 							</a>
 						))}
 					</div>
-					<a class="nav__drop-all" href="/services">All services</a>
+					<a class="nav__drop-all" href="/services/">All services</a>
 				</div>
 			</div>
 		</li>
 		<li>
-			<a href="/about" class={path === '/about' ? 'is-active' : undefined}>About</a>
+			<a href="/about/" class={path === '/about' ? 'is-active' : undefined}>About</a>
 		</li>
 		<li>
-			<a href="/contact" class={path === '/contact' ? 'is-active' : undefined}>Contact</a>
+			<a href="/contact/" class={path === '/contact' ? 'is-active' : undefined}>Contact</a>
 		</li>
 	</ul>
 
@@ -72,7 +72,7 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 				<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4 7 7 0 0 0 20 14.5Z" />
 			</svg>
 		</button>
-		<a href="/contact" class="nav__cta">Let’s talk</a>
+		<a href="/contact/" class="nav__cta">Let’s talk</a>
 		<button class="nav__burger" id="studio-burger" type="button" aria-label="Open menu" aria-expanded="false">
 			<span></span><span></span><span></span>
 		</button>
@@ -80,8 +80,8 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 </nav>
 
 <nav class="mnav" id="studio-mnav" aria-hidden="true">
-	<a href="/work">Work</a>
-	<a href="/services">Services</a>
+	<a href="/work/">Work</a>
+	<a href="/services/">Services</a>
 	<div class="mnav__subs">
 		<p class="mnav__kicker">Marketing</p>
 		{servicePillars.filter((p) => p.lane === 'growth').map((p) => (
@@ -92,9 +92,9 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 			<a href={p.href}>{p.navLabel}</a>
 		))}
 	</div>
-	<a href="/about">About</a>
-	<a href="/contact">Contact</a>
-	<a href="/contact">Let’s talk</a>
+	<a href="/about/">About</a>
+	<a href="/contact/">Contact</a>
+	<a href="/contact/">Let’s talk</a>
 	<div class="mnav__foot">
 		<span>orbitleeee@gmail.com</span>
 		<span>+91 98106 92028</span>

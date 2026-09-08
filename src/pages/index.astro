@@ -1,19 +1,20 @@
 ---
 import StudioLayout from '../layouts/StudioLayout.astro';
 import HeroCast from '../components/studio/HeroCast.astro';
-import { featuredWork, servicePillars } from '../lib/content';
+import { featuredWork, servicePillars, clientNames, testimonials } from '../lib/content';
 
 const marketing = servicePillars.filter((s) => s.lane === 'growth');
 const technology = servicePillars.filter((s) => s.lane === 'build');
 
 const reel = [
 	{ ...featuredWork[1], lane: 'growth' },
-	{ client: 'Product UI', tag: 'App & web', img: '/1.jpg', href: '/work', lane: 'build' },
+	{ client: 'Product UI', tag: 'App & web', img: '/1.jpg', href: '/work/', lane: 'build' },
 	{ ...featuredWork[2], lane: 'growth' },
-	{ client: 'Interface system', tag: 'Design', img: '/3.jpg', href: '/work', lane: 'build' },
+	{ client: 'Interface system', tag: 'Design', img: '/3.jpg', href: '/work/', lane: 'build' },
+	{ ...featuredWork[7], lane: 'growth' },
 	{ ...featuredWork[5], lane: 'growth' },
 	{ ...featuredWork[0], lane: 'growth' },
-	{ client: 'Web surfaces', tag: 'Sites', img: '/2.jpg', href: '/work', lane: 'build' },
+	{ client: 'Web surfaces', tag: 'Sites', img: '/2.jpg', href: '/work/', lane: 'build' },
 	{ ...featuredWork[6], lane: 'growth' },
 ];
 
@@ -65,8 +66,8 @@ const homeSchema = {
 				<h1 class="billboard__title">A tech and marketing agency that runs the ads and writes the software.</h1>
 				<p class="billboard__lead">Hi, we’re Orbitlee. Campaigns that get clicks, and the site or app those clicks deserve. One brief. One week. One team.</p>
 				<div class="hero__actions">
-					<a href="/work" class="btn btn--solid">See the mix</a>
-					<a href="/contact" class="btn btn--ghost">Start a project</a>
+					<a href="/work/" class="btn btn--solid">See the mix</a>
+					<a href="/contact/" class="btn btn--ghost">Start a project</a>
 				</div>
 			</div>
 		</div>
@@ -93,7 +94,7 @@ const homeSchema = {
 		<section class="reel-wrap">
 			<div class="reel">
 				{reel.map((w, i) => (
-					<a class="reel__card mix" data-lane={w.lane} href="/work">
+					<a class="reel__card mix" data-lane={w.lane} href="/work/">
 						<img src={w.img} alt={`${w.client}: ${w.tag} by Orbitlee`} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} width="640" height="800" />
 						<span>
 							<small>{w.lane === 'growth' ? 'Marketing' : 'Technology'}</small>
@@ -134,13 +135,24 @@ const homeSchema = {
 	</div>
 
 	<ul class="stats container" aria-label="Agency results">
-		<li><strong>15+</strong><span>Brands</span></li>
-		<li><strong>3.8×</strong><span>ROAS</span></li>
-		<li><strong>₹12Cr+</strong><span>Media</span></li>
-		<li><strong>94%</strong><span>Stay</span></li>
+		<li><strong>9+</strong><span>Brands</span></li>
+		<li><strong>2.7×</strong><span>ROAS</span></li>
+		<li><strong>$100K+</strong><span>Media</span></li>
+		<li><strong>99%</strong><span>Stay</span></li>
 	</ul>
 
-	<section class="section">
+	<div class="mark" role="region" aria-label="Clients">
+		<div class="mark__track">
+			{clientNames.map((name) => (
+				<span class="mark__item">{name}</span>
+			))}
+			{clientNames.map((name) => (
+				<span class="mark__item mark__item--loop" aria-hidden="true">{name}</span>
+			))}
+		</div>
+	</div>
+
+	<section class="section section--center">
 		<div class="container">
 			<p class="kicker">How a week feels</p>
 			<h2 class="h2">Four moves. Zero extra <em>noise</em>.</h2>
@@ -150,6 +162,24 @@ const homeSchema = {
 						<h3>{p.t}</h3>
 						<p>{p.d}</p>
 					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<p class="kicker">Testimonials</p>
+			<h2 class="h2">They stayed. Here’s <em>why</em>.</h2>
+			<div class="quotes">
+				{testimonials.map((t) => (
+					<figure class="quote">
+						<blockquote>{t.quote}</blockquote>
+						<figcaption>
+							<strong>{t.person}</strong>
+							<small>{t.brand}</small>
+						</figcaption>
+					</figure>
 				))}
 			</div>
 		</div>
@@ -174,6 +204,6 @@ const homeSchema = {
 			<h2>Bring the ads account or the repo.</h2>
 			<p>We’ll tell you what to spend, what to build, and what to leave alone.</p>
 		</div>
-		<a href="/contact" class="btn btn--solid">Let’s mix it</a>
+		<a href="/contact/" class="btn btn--solid">Let’s mix it</a>
 	</section>
 </StudioLayout>

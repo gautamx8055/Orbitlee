@@ -1,0 +1,69 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+
+const siteUrl = 'https://www.orbitlee.com';
+const steps = [
+	{ t: 'Listen', d: 'You bring the messy brief. Ads, a site, an app, or all of it. We ask what has to work this month, not in a 40-page deck.' },
+	{ t: 'Mix', d: 'We decide what to spend, what to build, and in what order. Marketing and product share one calendar.' },
+	{ t: 'Ship', d: 'Creative and product leave the same week. The landing page is live when the ads go live.' },
+	{ t: 'Tune', d: 'Monday numbers. Friday changes. We stay on it until the mix is earning its keep.' },
+];
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'WebPage',
+			url: `${siteUrl}/process/`,
+			name: 'How Orbitlee works',
+			description: 'How Orbitlee runs ads and software in one weekly mix: listen, mix, ship, tune.',
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'How we work', item: `${siteUrl}/process/` },
+			],
+		},
+	],
+};
+---
+
+<StudioLayout
+	title="How We Work | Listen, Mix, Ship, Tune | Orbitlee"
+	description="How Orbitlee works: one weekly mix for ads, social, websites and apps. Listen, mix, ship, tune. Free 30-minute chat."
+	keywords="how Orbitlee works, tech and marketing process, weekly sprints, Orbitlee"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+	</Fragment>
+
+	<section class="pg container">
+		<p class="crumb"><a href="/">Home</a> <span>/</span> Process</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> The mix</p>
+		<h1>How we work. Four moves. Zero extra <em>noise</em>.</h1>
+		<p class="lead">You do not hire a media shop and a software shop and hope they talk. You get one week, one team.</p>
+	</section>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<div class="path">
+				{steps.map((p) => (
+					<article class="path__step">
+						<h2>{p.t}</h2>
+						<p>{p.d}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-block">
+		<div>
+			<p class="kicker">Free 30 minutes</p>
+			<h2>Bring the ads account or the repo.</h2>
+			<p>We’ll say what to spend, what to build, and what to leave alone.</p>
+		</div>
+		<a href="/contact/" class="btn btn--solid">Let’s mix it</a>
+	</section>
+</StudioLayout>
