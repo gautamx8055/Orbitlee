@@ -1,4 +1,6 @@
 ---
+import BrandLockup from './BrandLockup.astro';
+
 interface Props { year: number; }
 const { year } = Astro.props;
 ---
@@ -8,8 +10,9 @@ const { year } = Astro.props;
 		<div class="foot__grid">
 			<div class="foot__col">
 				<div class="foot__brand">
-					<img class="foot__mark" src="/Orbitlee-fav-icon.png" alt="" width="40" height="38" />
-					<p class="foot__word">Orbitlee</p>
+					<a href="/" class="nav__brand" aria-label="Orbitlee home">
+						<BrandLockup size="foot" />
+					</a>
 				</div>
 				<p class="foot__tag">We run the ads. We ship the software. Same Orbitlee.</p>
 				<a href="mailto:orbitleeee@gmail.com">orbitleeee@gmail.com</a>

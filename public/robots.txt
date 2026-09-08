@@ -1,8 +1,9 @@
-# Orbitlee. https://www.orbitlee.com
+# https://www.orbitlee.com
 
 User-agent: *
 Allow: /
 Disallow: /lab/
+Disallow: /lab/generate
 Disallow: /api/
 
-Sitemap: https://www.orbitlee.com/sitemap.xml
+Sitemap: https://www.orbitlee.com/sitemap-index.xml

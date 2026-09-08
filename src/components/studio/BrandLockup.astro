@@ -1,0 +1,15 @@
+---
+import logoWhite from '../../assets/orbitlee-logo-white.png';
+import logoBlack from '../../assets/orbitlee-logo-black.png';
+
+interface Props {
+	size?: 'nav' | 'foot' | 'about';
+}
+
+const { size = 'nav' } = Astro.props;
+---
+
+<span class:list={['lockup', `lockup--${size}`]}>
+	<img class="lockup__img lockup__img--dark" src={logoWhite.src} alt="" width={logoWhite.width} height={logoWhite.height} />
+	<img class="lockup__img lockup__img--light" src={logoBlack.src} alt="" width={logoBlack.width} height={logoBlack.height} />
+</span>

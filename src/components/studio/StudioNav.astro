@@ -1,5 +1,6 @@
 ---
 import { servicePillars } from '../../lib/content';
+import BrandLockup from './BrandLockup.astro';
 
 interface Props {
 	pathname: string;
@@ -11,8 +12,7 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 
 <nav class="nav" id="studio-nav" aria-label="Primary">
 	<a href="/" class="nav__brand" aria-label="Orbitlee home">
-		<img class="nav__mark" src="/Orbitlee-fav-icon.png" alt="" width="36" height="34" />
-		<span class="nav__word">Orbitlee</span>
+		<BrandLockup size="nav" />
 	</a>
 
 	<ul class="nav__list">

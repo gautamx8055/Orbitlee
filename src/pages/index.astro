@@ -6,17 +6,10 @@ import { featuredWork, servicePillars, clientNames, testimonials } from '../lib/
 const marketing = servicePillars.filter((s) => s.lane === 'growth');
 const technology = servicePillars.filter((s) => s.lane === 'build');
 
-const reel = [
-	{ ...featuredWork[1], lane: 'growth' },
-	{ client: 'Product UI', tag: 'App & web', img: '/1.jpg', href: '/work/', lane: 'build' },
-	{ ...featuredWork[2], lane: 'growth' },
-	{ client: 'Interface system', tag: 'Design', img: '/3.jpg', href: '/work/', lane: 'build' },
-	{ ...featuredWork[7], lane: 'growth' },
-	{ ...featuredWork[5], lane: 'growth' },
-	{ ...featuredWork[0], lane: 'growth' },
-	{ client: 'Web surfaces', tag: 'Sites', img: '/2.jpg', href: '/work/', lane: 'build' },
-	{ ...featuredWork[6], lane: 'growth' },
-];
+const reel = featuredWork.map((w) => ({
+	...w,
+	lane: w.img === '/1.jpg' ? 'build' : 'growth',
+}));
 
 const path = [
 	{ t: 'Listen', d: 'You bring the messy brief. Ads, a site, an app, or all of it.' },

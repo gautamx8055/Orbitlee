@@ -3,6 +3,7 @@ import '../styles/studio.css';
 import StudioNav from '../components/studio/StudioNav.astro';
 import StudioFooter from '../components/studio/StudioFooter.astro';
 import { extraServices, servicePillars } from '../lib/content';
+import logoWhite from '../assets/orbitlee-logo-white.png';
 
 interface Props {
 	title?: string;
@@ -17,12 +18,14 @@ const {
 	title = 'Tech & Marketing Agency | Ads + Software | Orbitlee',
 	description = 'Orbitlee is a tech and marketing agency. We run ads and social, and we ship websites and apps. One team. Free 30-minute chat.',
 	keywords = 'tech and marketing agency, performance marketing, web development, app development, Orbitlee',
-	ogImage = 'https://www.orbitlee.com/Orbitlee-logo-transparent.png',
+	ogImage,
 	ogImageAlt = 'Orbitlee, international tech and marketing agency',
 	noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://www.orbitlee.com';
+const logoAbs = new URL(logoWhite.src, Astro.site ?? siteUrl).href;
+const socialImage = ogImage ?? logoAbs;
 const pathname = Astro.url.pathname;
 const slashPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
 const canonicalUrl = `${siteUrl}${slashPath}`;
@@ -48,12 +51,12 @@ const jsonLd = {
 			name: 'Orbitlee',
 			alternateName: brandVariants,
 			url: siteUrl,
-			image: `${siteUrl}/Orbitlee-logo-transparent.png`,
+			image: logoAbs,
 			logo: {
 				'@type': 'ImageObject',
-				url: `${siteUrl}/Orbitlee-logo-transparent.png`,
-				width: 512,
-				height: 512,
+				url: logoAbs,
+				width: logoWhite.width,
+				height: logoWhite.height,
 			},
 			description: 'International tech and marketing agency for digital marketing, performance ads, social media, web development, apps and software.',
 			slogan: 'We Circle, You Grow.',
@@ -138,25 +141,27 @@ const jsonLd = {
 		<meta name="color-scheme" content="dark light" />
 		<meta name="author" content="Sachin Verma, Orbitlee" />
 		<link rel="canonical" href={canonicalUrl} />
-		<link rel="alternate" hreflang="en" href={canonicalUrl} />
-		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+		<link rel="sitemap" type="application/xml" href={`${siteUrl}/sitemap-index.xml`} />
 		<meta name="keywords" content={keywords} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Orbitlee" />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={ogImage} />
+		<meta property="og:image" content={socialImage} />
 		<meta property="og:image:alt" content={ogImageAlt} />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
+		{!ogImage && (
+			<>
+				<meta property="og:image:width" content={String(logoWhite.width)} />
+				<meta property="og:image:height" content={String(logoWhite.height)} />
+			</>
+		)}
 		<meta property="og:locale" content="en_US" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image" content={socialImage} />
 		<meta name="twitter:image:alt" content={ogImageAlt} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
 		<link rel="icon" type="image/png" href="/Orbitlee-fav-icon.png?v=6" />
 		<link rel="shortcut icon" href="/favicon.ico?v=6" />
 		<link rel="apple-touch-icon" href="/Orbitlee-fav-icon.png?v=6" />
