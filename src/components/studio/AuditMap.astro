@@ -1,0 +1,36 @@
+---
+const leaks = [
+	{ t: 'Ads', n: 'Spend with no page match', p: 'high' },
+	{ t: 'Site', n: 'Offer buried below the fold', p: 'mid' },
+	{ t: 'CRM', n: 'Leads go cold after day 2', p: 'high' },
+];
+---
+
+<figure class="mock mock--growth" aria-label="Sample growth audit board">
+	<div class="mock__bar">
+		<span class="term__dot term__dot--lime"></span>
+		<span class="term__dot term__dot--mute"></span>
+		<span class="term__dot term__dot--violet"></span>
+		<p class="mock__title">audit / 90 days</p>
+	</div>
+	<div class="mock__body map">
+		<p class="map__kicker">Where it leaks</p>
+		<ul class="map__leaks">
+			{leaks.map((l) => (
+				<li>
+					<b class:list={[`is-${l.p}`]}>{l.p}</b>
+					<div>
+						<strong>{l.t}</strong>
+						<span>{l.n}</span>
+					</div>
+				</li>
+			))}
+		</ul>
+		<ol class="map__days">
+			<li><small>30</small> Cut the waste</li>
+			<li class="is-on"><small>60</small> Fix the page</li>
+			<li><small>90</small> Scale what earned</li>
+		</ol>
+		<p class="mock__foot">Findings · three moves · next Monday</p>
+	</div>
+</figure>

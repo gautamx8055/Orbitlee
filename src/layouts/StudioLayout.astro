@@ -61,7 +61,6 @@ const jsonLd = {
 			description: 'International tech and marketing agency for digital marketing, performance ads, social media, web development, apps and software.',
 			slogan: 'We Circle, You Grow.',
 			foundingDate: '2024',
-			founder: { '@id': `${siteUrl}/#founder` },
 			sameAs: ['https://www.instagram.com/orbitlee_'],
 			telephone: '+91-99995-58199',
 			email: 'orbitleeee@gmail.com',
@@ -89,13 +88,6 @@ const jsonLd = {
 				name: 'Orbitlee tech and marketing services',
 				itemListElement: offerItems,
 			},
-		},
-		{
-			'@type': 'Person',
-			'@id': `${siteUrl}/#founder`,
-			name: 'Sachin Verma',
-			jobTitle: 'Founder',
-			worksFor: { '@id': `${siteUrl}/#organization` },
 		},
 		{
 			'@type': 'WebSite',
@@ -139,7 +131,7 @@ const jsonLd = {
 		<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
 		<meta name="theme-color" content="#0C0814" id="theme-color-meta" />
 		<meta name="color-scheme" content="dark light" />
-		<meta name="author" content="Sachin Verma, Orbitlee" />
+		<meta name="author" content="Orbitlee" />
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="sitemap" type="application/xml" href={`${siteUrl}/sitemap-index.xml`} />
 		<meta name="keywords" content={keywords} />

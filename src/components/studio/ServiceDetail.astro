@@ -2,6 +2,9 @@
 import StudioLayout from '../../layouts/StudioLayout.astro';
 import CodeTerminal from './CodeTerminal.astro';
 import SiteBrowser from './SiteBrowser.astro';
+import SearchPanel from './SearchPanel.astro';
+import AdsDash from './AdsDash.astro';
+import SocialFeed from './SocialFeed.astro';
 import ServiceDepth from './ServiceDepth.astro';
 import OfferIcon from './OfferIcon.astro';
 import { servicePillars, type ServicePillar } from '../../lib/content';
@@ -13,7 +16,6 @@ interface Props {
 const { service: s } = Astro.props;
 const siteUrl = 'https://www.orbitlee.com';
 const others = servicePillars.filter((p) => p.slug !== s.slug);
-const splitVisual = s.slug === 'software-app-development' || s.slug === 'web-development';
 
 const pageSchema = {
 	'@context': 'https://schema.org',
@@ -61,7 +63,7 @@ const pageSchema = {
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
 
-	<section class:list={['pg', 'container', { 'pg--split': splitVisual }]}>
+	<section class="pg container pg--split">
 		<div>
 			<p class="crumb"><a href="/services/">Services</a> <span>/</span> {s.title}</p>
 			<p class="eyebrow"><span class="eyebrow__dot"></span> {s.eyebrow}</p>
@@ -71,30 +73,18 @@ const pageSchema = {
 				<a href="/contact/" class="btn btn--solid">{s.ctaLabel}</a>
 				<a href="/services/" class="btn btn--ghost">All services</a>
 			</div>
-			{splitVisual && (
-				<div class="pg__story">
-					<p class="kicker">In short</p>
-					<h2 class="h2">How we can <em>help</em>.</h2>
-					<p>{s.story}</p>
-				</div>
-			)}
-		</div>
-		{s.slug === 'software-app-development' && <CodeTerminal />}
-		{s.slug === 'web-development' && <SiteBrowser />}
-	</section>
-
-	{!splitVisual && (
-	<section class="section" style="padding-top: 0;">
-		<div class="container split">
-			<div>
+			<div class="pg__story">
 				<p class="kicker">In short</p>
 				<h2 class="h2">How we can <em>help</em>.</h2>
 				<p>{s.story}</p>
 			</div>
-			<img src={s.img} alt={s.imgAlt} loading="lazy" width="640" height="480" />
 		</div>
+		{s.slug === 'software-app-development' && <CodeTerminal />}
+		{s.slug === 'web-development' && <SiteBrowser />}
+		{s.slug === 'digital-marketing' && <SearchPanel />}
+		{s.slug === 'performance-marketing' && <AdsDash />}
+		{s.slug === 'social-media' && <SocialFeed />}
 	</section>
-	)}
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container">

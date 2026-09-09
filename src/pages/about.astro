@@ -8,9 +8,13 @@ const aboutSchema = {
 	'@graph': [
 		{
 			'@type': 'AboutPage',
+			'@id': `${siteUrl}/about/#webpage`,
 			url: `${siteUrl}/about/`,
 			name: 'About Orbitlee',
+			description: 'Orbitlee is a tech and marketing agency. We run ads and social, and we ship websites and apps. One team. We Circle, You Grow.',
+			isPartOf: { '@id': `${siteUrl}/#website` },
 			about: { '@id': `${siteUrl}/#organization` },
+			inLanguage: 'en',
 		},
 		{
 			'@type': 'BreadcrumbList',
@@ -19,64 +23,82 @@ const aboutSchema = {
 				{ '@type': 'ListItem', position: 2, name: 'About', item: `${siteUrl}/about/` },
 			],
 		},
-		{
-			'@type': 'Person',
-			'@id': `${siteUrl}/#founder`,
-			name: 'Sachin Verma',
-			jobTitle: 'Founder',
-			worksFor: { '@id': `${siteUrl}/#organization` },
-		},
 	],
 };
+
+const lanes = [
+	{ code: 'Mkt', lane: 'm', title: 'Marketing', d: 'Digital, performance ads and social. Creative that has to earn spend, not just look finished.' },
+	{ code: 'Tec', lane: 't', title: 'Technology', d: 'Websites, apps and software. The page and the product are live when the campaign is.' },
+];
 
 const why = [
 	{ t: 'One team', d: 'Ads, social, web and apps in the same week. No vendor ping-pong.' },
 	{ t: 'Honest numbers', d: 'We report Mondays. We change Fridays. Outcomes over slide decks.' },
-	{ t: 'Build + grow', d: 'The page goes live when the ads do. Same calendar, same people.' },
+	{ t: 'Build + grow', d: 'The landing page ships when the ads do. Same calendar, same people.' },
 ];
 ---
 
 <StudioLayout
-	title="About Orbitlee | Tech & Marketing Agency"
-	description="Orbitlee is Sachin Verma’s tech and marketing agency. Ads, social, websites and apps from one crew. We Circle, You Grow."
-	keywords="about Orbitlee, Sachin Verma, tech and marketing agency, ads and software"
+	title="About Us | Tech & Marketing Agency | Orbitlee"
+	description="About Orbitlee: a tech and marketing agency. We run ads and social, and we ship websites and apps. One team. We Circle, You Grow."
+	keywords="about Orbitlee, tech and marketing agency, ads and software, We Circle You Grow"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
 	</Fragment>
 
 	<section class="pg container">
-		<p class="crumb"><a href="/">Home</a> <span>/</span> About</p>
-		<p class="eyebrow"><span class="eyebrow__dot"></span> Tech &amp; marketing agency</p>
-		<h1>A tech and marketing crew. Two crafts. One <em>team</em>.</h1>
-		<p class="lead">Sachin Verma built Orbitlee so brands stop bouncing between a media shop and a software shop.</p>
+		<p class="crumb"><a href="/">Home</a> <span>/</span> About us</p>
+		<p class="eyebrow"><span class="eyebrow__dot"></span> About us</p>
+		<h1>We circle the brief. You <em>grow</em>.</h1>
+		<p class="lead">Orbitlee is a tech and marketing agency. Ads, social, websites and apps. One crew, one week, no handoff graveyard.</p>
 	</section>
 
 	<section class="section" style="padding-top: 0;">
 		<div class="container split">
 			<div>
-				<p>Sachin Verma started Orbitlee so you don’t have to hire a media buyer and a software shop and hope they talk.</p>
-				<p>We manage ads, social, websites and apps as one team. Mondays for numbers. Fridays for changes.</p>
+				<p class="kicker">Who we are</p>
+				<h2 class="h2">An agency built around the <em>mix</em>.</h2>
+				<p>Most brands still split the work: a media shop for spend, a software shop for the site, and a chat thread hoping they line up. We do both, on purpose.</p>
+				<p>The name is the method. We stay in orbit around your product, your ads and your numbers until the mix is earning its keep. Slogan: We Circle, You Grow.</p>
 			</div>
 			<div>
 				<BrandLockup size="about" />
-				<img src="/9.jpg" alt="8Ease cricket campaign still by Orbitlee" loading="lazy" />
+				<img src="/Aurix.jpg" alt="Brand campaign work by Orbitlee" loading="lazy" width="800" height="600" />
 			</div>
 		</div>
 	</section>
 
-	<ul class="stats container">
-		<li><strong>9+</strong><span>Brands scaled</span></li>
-		<li><strong>2.7×</strong><span>Avg. ROAS</span></li>
-		<li><strong>−42%</strong><span>CPL reduction</span></li>
-		<li><strong>99%</strong><span>Retention</span></li>
+	<section class="section" style="padding-top: 0;">
+		<div class="container">
+			<p class="kicker">What we do</p>
+			<h2 class="h2">Two crafts. Same <em>calendar</em>.</h2>
+			<div class="mix-board">
+				{lanes.map((l) => (
+					<article class:list={['mix-row', `mix--${l.lane}`]}>
+						<b>{l.code}</b>
+						<span>
+							<strong>{l.title}</strong>
+							{l.d}
+						</span>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<ul class="stats container" aria-label="Agency results">
+		<li><strong>9+</strong><span>Brands</span></li>
+		<li><strong>2.7×</strong><span>ROAS</span></li>
+		<li><strong>$100K+</strong><span>Media</span></li>
+		<li><strong>99%</strong><span>Stay</span></li>
 	</ul>
 
 	<section class="section">
 		<div class="container">
-			<p class="kicker">Why us</p>
+			<p class="kicker">Why brands hire us</p>
 			<h2 class="h2">Simple, on <em>purpose</em>.</h2>
-			<div class="offer" style="grid-template-columns: 1fr 1fr; margin-top: 32px;">
+			<div class="offer" style="margin-top: 32px;">
 				{why.map((w) => (
 					<article>
 						<h3>{w.t}</h3>
@@ -89,8 +111,8 @@ const why = [
 
 	<section class="cta-block">
 		<div>
-			<h2>Want to say hi?</h2>
-			<p>Free 30 minutes. No slide deck.</p>
+			<h2>Want to talk?</h2>
+			<p>Free 30 minutes. Bring the ads account or the product brief.</p>
 		</div>
 		<a href="/contact/" class="btn btn--solid">Book a free audit</a>
 	</section>

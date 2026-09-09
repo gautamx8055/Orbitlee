@@ -1,0 +1,51 @@
+---
+const rows = [
+	{ ch: 'Meta', spend: '$4.2k', roas: '3.1×' },
+	{ ch: 'Google', spend: '$2.8k', roas: '2.4×' },
+	{ ch: 'YouTube', spend: '$1.1k', roas: '1.9×' },
+];
+---
+
+<figure class="mock mock--ads" aria-label="Sample ads dashboard for performance marketing">
+	<div class="mock__bar">
+		<span class="term__dot term__dot--lime"></span>
+		<span class="term__dot term__dot--mute"></span>
+		<span class="term__dot term__dot--violet"></span>
+		<p class="mock__title">ads / this week</p>
+	</div>
+	<div class="mock__body">
+		<div class="dash__hero">
+			<div>
+				<small>Blended ROAS</small>
+				<strong>2.7×</strong>
+			</div>
+			<div>
+				<small>Spend</small>
+				<strong>$8.1k</strong>
+			</div>
+		</div>
+		<ul class="dash__bars" aria-hidden="true">
+			<li style="--h: 72%"></li>
+			<li style="--h: 48%"></li>
+			<li style="--h: 86%"></li>
+			<li style="--h: 61%"></li>
+			<li style="--h: 94%"></li>
+			<li style="--h: 70%"></li>
+		</ul>
+		<table class="dash__table">
+			<thead>
+				<tr><th>Channel</th><th>Spend</th><th>ROAS</th></tr>
+			</thead>
+			<tbody>
+				{rows.map((r) => (
+					<tr>
+						<td>{r.ch}</td>
+						<td>{r.spend}</td>
+						<td>{r.roas}</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+		<p class="mock__foot">Monday numbers. Friday we cut what did not earn.</p>
+	</div>
+</figure>

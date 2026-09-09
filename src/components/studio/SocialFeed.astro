@@ -1,0 +1,36 @@
+---
+const stories = ['Reel', 'Still', 'UGC', 'Live'];
+---
+
+<figure class="mock mock--social" aria-label="Sample social feed for social media">
+	<div class="mock__bar">
+		<span class="term__dot term__dot--lime"></span>
+		<span class="term__dot term__dot--mute"></span>
+		<span class="term__dot term__dot--violet"></span>
+		<p class="mock__title">social / today</p>
+	</div>
+	<div class="mock__body feed">
+		<ul class="feed__stories">
+			{stories.map((s, i) => (
+				<li class:list={[{ 'is-on': i === 0 }]}>
+					<span></span>
+					{s}
+				</li>
+			))}
+		</ul>
+		<article class="feed__post">
+			<header>
+				<b></b>
+				<div>
+					<strong>your brand</strong>
+					<small>Posted with the ads brief</small>
+				</div>
+			</header>
+			<div class="feed__shot" aria-hidden="true">
+				<span class="feed__play"></span>
+			</div>
+			<p class="feed__cap">Same look in the feed and in the ad. Comments we actually answer.</p>
+			<p class="mock__foot">3 Reels · 12 replies · 1 social ad test</p>
+		</article>
+	</div>
+</figure>

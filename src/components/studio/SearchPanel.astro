@@ -1,0 +1,32 @@
+---
+const results = [
+	{ url: 'orbitlee.com/work', t: 'Work that ranks after the ads stop', d: 'Pages written for the query, not for a keyword list.' },
+	{ url: 'orbitlee.com/services', t: 'SEO, content and email in one week', d: 'Search, a useful page, and a send that follows the click.' },
+	{ url: 'guides / insoles', t: 'What to publish this Friday', d: 'One piece sales can actually send. No filler blog.' },
+];
+---
+
+<figure class="mock mock--search" aria-label="Sample search results for digital marketing">
+	<div class="mock__bar">
+		<span class="term__dot term__dot--lime"></span>
+		<span class="term__dot term__dot--mute"></span>
+		<span class="term__dot term__dot--violet"></span>
+		<p class="mock__title">search / live</p>
+	</div>
+	<div class="mock__body">
+		<div class="serp__q" aria-hidden="true">
+			<span>best support insole</span>
+			<b>Go</b>
+		</div>
+		<ol class="serp">
+			{results.map((r, i) => (
+				<li class:list={[{ 'is-on': i === 0 }]}>
+					<small>{r.url}</small>
+					<strong>{r.t}</strong>
+					<em>{r.d}</em>
+				</li>
+			))}
+		</ol>
+		<p class="mock__foot"><span>+38%</span> clicks this month · 4 pages live</p>
+	</div>
+</figure>

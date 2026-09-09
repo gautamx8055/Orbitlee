@@ -2,6 +2,7 @@
 import StudioLayout from '../../layouts/StudioLayout.astro';
 import ServiceDepth from '../../components/studio/ServiceDepth.astro';
 import OfferIcon from '../../components/studio/OfferIcon.astro';
+import AuditMap from '../../components/studio/AuditMap.astro';
 
 const siteUrl = "https://www.orbitlee.com";
 const pageSchema = {
@@ -86,28 +87,25 @@ const weekly = [
 		<script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 	</Fragment>
 
-	<section class="pg container">
-		<p class="crumb"><a href="/services/">Services</a> <span>/</span> Growth Consulting</p>
-		<p class="eyebrow"><span class="eyebrow__dot"></span> Audit · GTM · Roadmaps</p>
-		<h1>Growth consulting: see what’s leaking. Then <em>fix</em> it.</h1>
-		<p class="lead">A short audit before you spend. If you want, we do the work too.</p>
-		<div class="pg__actions">
-			<a href="/contact/" class="btn btn--solid">Book a growth audit</a>
-			<a href="/services/" class="btn btn--ghost">All services</a>
-		</div>
-	</section>
-
-	<section class="section" style="padding-top: 0;">
-		<div class="container split">
-			<img src="/9.jpg" alt="Strategy and print system work by Orbitlee" loading="lazy" width="800" height="600" />
-			<div>
+	<section class="pg container pg--split">
+		<div>
+			<p class="crumb"><a href="/services/">Services</a> <span>/</span> Growth Consulting</p>
+			<p class="eyebrow"><span class="eyebrow__dot"></span> Audit · GTM · Roadmaps</p>
+			<h1>Growth consulting: see what’s leaking. Then <em>fix</em> it.</h1>
+			<p class="lead">A short audit before you spend. If you want, we do the work too.</p>
+			<div class="pg__actions">
+				<a href="/contact/" class="btn btn--solid">Book a growth audit</a>
+				<a href="/services/" class="btn btn--ghost">All services</a>
+			</div>
+			<div class="pg__story">
 				<p class="kicker">Approach</p>
-				<h2 class="h2">Consulting that actually ships.</h2>
+				<h2 class="h2">Consulting that actually <em>ships</em>.</h2>
 				{approach.map((a) => (
 					<p><strong style="color: var(--ink);">{a.title}.</strong> {a.body}</p>
 				))}
 			</div>
 		</div>
+		<AuditMap />
 	</section>
 
 	<section class="section" style="padding-top: 0;">
