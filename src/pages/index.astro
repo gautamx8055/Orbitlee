@@ -19,8 +19,9 @@ const path = [
 ];
 
 const faqs = [
-	{ q: 'Is Orbitlee a tech agency or a marketing agency?', a: 'Both. We run digital marketing, performance ads and social, and we build websites and apps. One brief, one team.' },
-	{ q: 'Can I hire only ads or only a website?', a: 'Yes. Hire performance marketing, social, web development or app work on its own, or keep them in one weekly sprint.' },
+	{ q: 'Is Orbitlee a tech agency or a marketing agency?', a: 'Both. Orbitlee is a remote tech and marketing agency: digital marketing, performance ads and social, plus web development and app development. One brief, one team. On published accounts we report 2.7× average ROAS, $100K+ media, 9+ brands, and 99% stay.' },
+	{ q: 'Can I hire only ads or only a website?', a: 'Yes. Hire performance marketing, social media, web development or app development on its own, or keep them in one weekly sprint.' },
+	{ q: 'Where is Orbitlee based?', a: 'Remote. We work with brands worldwide on video and in writing. English-first. Phone and WhatsApp on +91 99995 58199.' },
 	{ q: 'How do we start?', a: 'Book a free 30-minute chat. Bring the ads account, the site, or the product idea. We will say what to spend, what to build, and what to leave alone.' },
 ];
 
@@ -41,8 +42,8 @@ const homeSchema = {
 
 <StudioLayout
 	title="Tech & Marketing Agency | Ads + Software | Orbitlee"
-	description="Orbitlee is a tech and marketing agency. We run performance ads and social, and we ship websites and apps. One team. Free 30-minute chat."
-	keywords="tech and marketing agency, performance marketing agency, web development agency, app development, Orbitlee"
+	description="Orbitlee is a remote tech and marketing agency. Performance marketing, SEO, social media, web development and apps for brands worldwide. Free 30-minute chat."
+	keywords="tech and marketing agency, digital marketing agency, performance marketing agency, web development agency, app development, remote marketing agency, Orbitlee"
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
@@ -57,7 +58,7 @@ const homeSchema = {
 			</div>
 			<div class="billboard__copy">
 				<h1 class="billboard__title">A tech and marketing agency that runs the ads and writes the software.</h1>
-				<p class="billboard__lead">Hi, we’re Orbitlee. Campaigns that get clicks, and the site or app those clicks deserve. One brief. One week. One team.</p>
+				<p class="billboard__lead summary">Hi, we’re Orbitlee, a tech and marketing agency. Performance ads, SEO and social, plus the website or app those clicks deserve. One brief. One week. Brands worldwide.</p>
 				<div class="hero__actions">
 					<a href="/work/" class="btn btn--solid">See the mix</a>
 					<a href="/contact/" class="btn btn--ghost">Start a project</a>
@@ -133,6 +134,32 @@ const homeSchema = {
 		<li><strong>$100K+</strong><span>Media</span></li>
 		<li><strong>99%</strong><span>Stay</span></li>
 	</ul>
+
+	<section class="section" style="padding-top: 0;">
+		<div class="container prose">
+			<p class="kicker">Who we serve</p>
+			<h2 class="h2">Remote, English-first, built for brands <em>worldwide</em>.</h2>
+			<p class="summary">Orbitlee is a remote tech and marketing agency. Hire us for digital marketing, performance marketing (Meta ads and Google Ads), social media, web development and app development. We meet on video, write updates every week, and keep ads and product on the same calendar. Slogan: We Circle, You Grow.</p>
+			<table class="geo-table">
+				<thead>
+					<tr>
+						<th>Lane</th>
+						<th>What you hire</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Marketing</td>
+						<td>Digital marketing (SEO, content, email), performance marketing (Meta ads, Google Ads, YouTube), social media and Instagram Reels.</td>
+					</tr>
+					<tr>
+						<td>Technology</td>
+						<td>Web development, landing pages, iOS and Android app development, SaaS MVPs.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 
 	<div class="mark" role="region" aria-label="Clients">
 		<div class="mark__track">

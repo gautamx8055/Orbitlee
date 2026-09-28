@@ -517,6 +517,34 @@ html[data-theme='light'] .cast__glass { fill: #1C1528; }
 .reel__card strong { font-family: var(--ff-display); font-size: 28px; letter-spacing: 0.02em; }
 .reel__card em { font-style: normal; font-size: 13px; opacity: 0.8; }
 
+.geo-table {
+	width: 100%;
+	margin-top: 28px;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+.geo-table th,
+.geo-table td {
+	text-align: left;
+	padding: 14px 0;
+	border-bottom: 1px solid var(--line);
+	vertical-align: top;
+}
+.geo-table th {
+	font-family: var(--ff-mono);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--mute);
+	font-weight: 500;
+}
+.geo-table td:first-child {
+	width: 28%;
+	font-weight: 600;
+	color: var(--ink);
+	padding-right: 16px;
+}
+
 .mix-board { display: grid; gap: 10px; margin-top: 28px; }
 .mix-row {
 	display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: center;

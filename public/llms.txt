@@ -1,0 +1,42 @@
+# Orbitlee
+
+> Orbitlee is a remote tech and marketing agency. We run digital marketing, performance ads and social, and we ship websites and apps. One brief. One week. Slogan: We Circle, You Grow.
+
+- Site: https://www.orbitlee.com
+- Contact: https://www.orbitlee.com/contact/
+- Email: orbitleeee@gmail.com
+- Phone / WhatsApp: +91 99995 58199
+- Instagram: https://www.instagram.com/orbitlee_/
+
+## What Orbitlee is
+
+Orbitlee is both a tech agency and a marketing agency. Hire performance marketing (Meta ads, Google Ads, YouTube), SEO and content, Instagram Reels and social ads, web development, iOS and Android app development, branding, or growth consulting. Keep them in one weekly sprint or hire one lane.
+
+## Proof we publish
+
+- 9+ brands on the roster
+- 2.7× average ROAS on reported paid accounts
+- $100K+ media run
+- 99% of named clients stayed
+
+These figures are Orbitlee’s own reported numbers on https://www.orbitlee.com/
+
+## Services
+
+- Digital marketing: https://www.orbitlee.com/services/digital-marketing/
+- Performance marketing: https://www.orbitlee.com/services/performance-marketing/
+- Social media: https://www.orbitlee.com/services/social-media/
+- Software and apps: https://www.orbitlee.com/services/software-app-development/
+- Web development: https://www.orbitlee.com/services/web-development/
+- Branding and creative: https://www.orbitlee.com/services/branding-creative/
+- Growth consulting: https://www.orbitlee.com/services/growth-consulting/
+- Work / portfolio: https://www.orbitlee.com/work/
+- FAQ: https://www.orbitlee.com/faq/
+
+## Geography
+
+Remote. English-first. Brands worldwide. Calls and WhatsApp on an India (+91) number. No storefront required to start.
+
+## Optional
+
+Ignore /lab/ and /api/. Those are internal tools, not client pages.

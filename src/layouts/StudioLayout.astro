@@ -58,22 +58,32 @@ const jsonLd = {
 				width: logoLight.width,
 				height: logoLight.height,
 			},
-			description: 'International tech and marketing agency for digital marketing, performance ads, social media, web development, apps and software.',
+			description: 'Orbitlee is a remote tech and marketing agency for digital marketing, performance ads, social media, web development, apps and software. Brands worldwide. English-first.',
 			slogan: 'We Circle, You Grow.',
 			foundingDate: '2024',
 			sameAs: ['https://www.instagram.com/orbitlee_'],
 			telephone: '+91-99995-58199',
 			email: 'orbitleeee@gmail.com',
-			areaServed: { '@type': 'Place', name: 'Worldwide' },
+			areaServed: [
+				{ '@type': 'Place', name: 'Worldwide' },
+				{ '@type': 'Country', name: 'India' },
+				{ '@type': 'Country', name: 'United States' },
+				{ '@type': 'Country', name: 'United Kingdom' },
+				{ '@type': 'Country', name: 'United Arab Emirates' },
+			],
 			knowsAbout: [
-				'Tech agency',
-				'Marketing agency',
-				'Digital marketing',
+				'Tech and marketing agency',
+				'Digital marketing agency',
 				'Performance marketing',
+				'Meta ads',
+				'Google Ads',
 				'Social media marketing',
+				'Instagram Reels',
+				'SEO',
 				'Web development',
 				'App development',
-				'Software development',
+				'Brand identity',
+				'AI UGC',
 			],
 			contactPoint: {
 				'@type': 'ContactPoint',
@@ -104,9 +114,15 @@ const jsonLd = {
 			name: title,
 			description,
 			inLanguage: 'en',
+			datePublished: '2024-06-01',
+			dateModified: '2026-09-28',
 			isPartOf: { '@id': `${siteUrl}/#website` },
 			about: { '@id': `${siteUrl}/#organization` },
-			dateModified: '2026-09-08',
+			publisher: { '@id': `${siteUrl}/#organization` },
+			speakable: {
+				'@type': 'SpeakableSpecification',
+				cssSelector: ['h1', '.summary', '.billboard__lead', '.lead', '.faq__a'],
+			},
 		},
 	],
 };
@@ -135,6 +151,8 @@ const jsonLd = {
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="sitemap" type="application/xml" href={`${siteUrl}/sitemap-index.xml`} />
 		<meta name="keywords" content={keywords} />
+		<meta http-equiv="content-language" content="en" />
+		<link rel="alternate" type="text/plain" href={`${siteUrl}/llms.txt`} title="LLM context" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Orbitlee" />
 		<meta property="og:url" content={canonicalUrl} />
@@ -149,6 +167,7 @@ const jsonLd = {
 			</>
 		)}
 		<meta property="og:locale" content="en_US" />
+		<meta property="og:locale:alternate" content="en_IN" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
