@@ -1,10 +1,10 @@
 ---
 import StudioLayout from '../layouts/StudioLayout.astro';
 import { clientNames } from '../lib/content';
-import logoWhite from '../assets/orbitlee-logo-white.png';
+import logoLight from '../assets/orbitlee-logo-light.png';
 
 const siteUrl = "https://www.orbitlee.com";
-const logoAbs = new URL(logoWhite.src, Astro.site ?? siteUrl).href;
+const logoAbs = new URL(logoLight.src, Astro.site ?? siteUrl).href;
 
 const clientWork = {
 	videos: [
@@ -25,12 +25,14 @@ const clientWork = {
 		{ src: "/Post-5.png", label: "XGIMI projector campaign", category: "Social", client: "XGIMI" },
 	],
 	ads: [
-		{ src: "/7.jpg", label: "8Ease wet-foot guide", category: "Paid Ads", client: "8Ease" },
-		{ src: "/8.jpg", label: "8Ease support insole ad", category: "Paid Ads", client: "8Ease" },
-		{ src: "/9.jpg", label: "8Ease match-ready still", category: "Paid Ads", client: "8Ease" },
+		{ src: "/SOMANY-STATIC-1.png", label: "Somany Alaska Natural tile", category: "Paid Ads", client: "Somany" },
+		{ src: "/SOMANY-STATIC-2.png", label: "Somany Elysia hand shower", category: "Paid Ads", client: "Somany" },
+		{ src: "/SOMANY-STATIC-3.png", label: "Somany bathware social still", category: "Paid Ads", client: "Somany" },
+		{ src: "/SOMANY-STATIC-4.png", label: "Somany Crystalo Black tile", category: "Paid Ads", client: "Somany" },
 	],
 	design: [
-		{ src: "/1.jpg", label: "8Ease x Ortholite Cricket Pro pack", category: "Design", client: "8Ease x Ortholite" },
+		{ src: "/Gym-poster.jpg", label: "Gym fitness poster", category: "Design", client: "" },
+		{ src: "/Shoei-Helmet-poster.jpg", label: "Shoei helmet campaign", category: "Design", client: "Shoei" },
 	],
 };
 

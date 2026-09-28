@@ -1,8 +1,10 @@
 export const featuredWork = [
-	{ client: '8Ease x Ortholite', tag: 'Cricket Pro pack', img: '/1.jpg', href: '/work/' },
-	{ client: '8Ease', tag: 'Wet-foot guide', img: '/7.jpg', href: '/work/' },
-	{ client: '8Ease', tag: 'Support insole ad', img: '/8.jpg', href: '/work/' },
-	{ client: '8Ease', tag: 'Match-ready still', img: '/9.jpg', href: '/work/' },
+	{ client: 'Somany', tag: 'Alaska Natural tile', img: '/SOMANY-STATIC-1.png', href: '/work/' },
+	{ client: 'Somany', tag: 'Elysia hand shower', img: '/SOMANY-STATIC-2.png', href: '/work/' },
+	{ client: 'Somany', tag: 'Bathware social still', img: '/SOMANY-STATIC-3.png', href: '/work/' },
+	{ client: 'Somany', tag: 'Crystalo Black tile', img: '/SOMANY-STATIC-4.png', href: '/work/' },
+	{ client: 'Gym poster', tag: 'Fitness ad', img: '/Gym-poster.jpg', href: '/work/' },
+	{ client: 'Shoei', tag: 'Helmet campaign', img: '/Shoei-Helmet-poster.jpg', href: '/work/' },
 	{ client: 'Aurix', tag: 'Smart sunglasses', img: '/Aurix.jpg', href: '/work/' },
 	{ client: 'Aurix', tag: 'Style campaign', img: '/Aurix2.jpg', href: '/work/' },
 	{ client: 'Nike', tag: 'Basketball ad', img: '/Post 1.png', href: '/work/' },
@@ -13,6 +15,7 @@ export const featuredWork = [
 ];
 
 export const clientNames = [
+	'Somany',
 	'Windsouls',
 	'8Ease x Ortholite',
 	'TMproduction',
@@ -133,7 +136,7 @@ export const servicePillars: ServicePillar[] = [
 		headlineEm: 'explain',
 		lead: 'Meta, Google and YouTube: creative and media in the same week, with numbers you can share.',
 		blurb: 'Paid ads with creative, tracking and a clear weekly update.',
-		img: '/8.jpg',
+		img: '/SOMANY-STATIC-2.png',
 		imgAlt: 'Paid creative by Orbitlee',
 		items: ['Meta Ads', 'Google Ads', 'YouTube', 'Lead gen'],
 		story: 'We don’t “boost a post.” We test offers, keep tracking honest, and stop what isn’t working. If the page is the problem, we fix that too.',
@@ -233,7 +236,7 @@ export const servicePillars: ServicePillar[] = [
 		headlineEm: 'ship',
 		lead: 'Apps, SaaS and MVPs: scoped tight, launched, then improved week by week.',
 		blurb: 'iOS, Android and SaaS built to launch and keep moving.',
-		img: '/1.jpg',
+		img: '/Shoei-Helmet-poster.jpg',
 		imgAlt: 'Product and interface work by Orbitlee',
 		items: ['iOS', 'Android', 'SaaS', 'MVP'],
 		story: 'The app isn’t a six-month surprise after a brand film. We agree the first job it must do, then we ship that, and talk to marketing in the same week.',
@@ -334,7 +337,7 @@ export const extraServices = [
 		title: 'Growth Consulting',
 		blurb: 'A clear look before you spend. Then we can do the work.',
 		items: ['Audit', 'GTM', 'Strategy'],
-		img: '/9.jpg',
+		img: '/SOMANY-STATIC-1.png',
 	},
 ];
 
