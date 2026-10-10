@@ -9,6 +9,7 @@ const skip = [
 	'/services/marketing-advertising',
 	'/services/web-app-development',
 	'/sitemap',
+	'/api',
 ];
 
 // https://astro.build/config

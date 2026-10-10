@@ -85,7 +85,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.me
 			</div>
 		</div>
 
-		<form class="form" id="contact-form" action="https://formspree.io/f/moeajqjw" method="POST" novalidate>
+		<form class="form" id="contact-form" action="/api/contact" method="POST" novalidate>
 			<div class="form__row form__row--two">
 				<label class="field">
 					<span class="field__label">Full name <span class="req">*</span></span>
@@ -164,7 +164,6 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.me
 					note.classList.add('form__note--error');
 					return;
 				}
-				data.delete('cf-turnstile-response');
 				note.textContent = '';
 				note.classList.remove('form__note--error');
 				if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
@@ -176,9 +175,14 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.me
 						if (window.turnstile) window.turnstile.reset();
 					} else {
 						let msg = 'Something went wrong. Please try again or email orbitleeee@gmail.com';
-						try { const body = await res.json(); if (body && body.errors && body.errors.length) msg = body.errors.map((er) => er.message).join(', '); } catch (_) {}
+						try {
+							const body = await res.json();
+							if (body && body.error) msg = body.error;
+							else if (body && body.errors && body.errors.length) msg = body.errors.map((er) => er.message).join(', ');
+						} catch (_) {}
 						note.textContent = msg;
 						note.classList.add('form__note--error');
+						if (window.turnstile) window.turnstile.reset();
 					}
 				} catch (err) {
 					note.textContent = 'Network error. Please try again or email orbitleeee@gmail.com';
