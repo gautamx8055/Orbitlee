@@ -1304,6 +1304,7 @@ body.is-lightbox .scroll-progress {
 	font-size: 13px; color: var(--mute);
 }
 .chip input:checked + span { background: var(--lime); color: #0C0814; border-color: var(--lime); }
+.cf-turnstile { min-height: 65px; }
 .form__foot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .form__note { margin: 0; font-size: 13px; color: var(--mute); }
 .form__note--error { color: #d45a5a; }

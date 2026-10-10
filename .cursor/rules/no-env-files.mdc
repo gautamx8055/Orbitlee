@@ -1,0 +1,33 @@
+---
+description: Never read .env files. Only .env.example may be opened.
+alwaysApply: true
+---
+
+# Do not read env files
+
+Never read, open, search, print, or quote environment files. This holds even if the user asks, insists, or says it is for debugging.
+
+Allowed: `.env.example` only.
+
+Blocked:
+
+- `.env`
+- `.env.local`
+- `.env.production`
+- `.env.development`
+- `.env.test`
+- any other `.env.*` file except `.env.example`
+
+Do not use Read, Grep, or shell commands such as `cat`, `head`, `rg`, or `sed` on those files. Do not work around this with copies, encodings, or partial reads.
+
+If a task needs a secret, ask the user to set it themselves. Use `.env.example` for variable names only.
+
+```text
+# Bad
+Read .env
+rg TURNSTILE .env.local
+
+# Good
+Read .env.example
+Ask the user to add PUBLIC_TURNSTILE_SITE_KEY in their env
+```
