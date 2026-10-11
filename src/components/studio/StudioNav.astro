@@ -1,5 +1,5 @@
 ---
-import { servicePillars } from '../../lib/content';
+import { extraServices, servicePillars } from '../../lib/content';
 import BrandLockup from './BrandLockup.astro';
 
 interface Props {
@@ -8,6 +8,9 @@ interface Props {
 const { pathname } = Astro.props;
 const path = pathname.replace(/\/+$/, '') || '/';
 const servicesOpen = path === '/services' || path.startsWith('/services/');
+const marketing = servicePillars.filter((p) => p.lane === 'growth');
+const technology = servicePillars.filter((p) => p.lane === 'build');
+const isHere = (href: string) => path === href.replace(/\/+$/, '');
 ---
 
 <nav class="nav" id="studio-nav" aria-label="Primary">
@@ -80,24 +83,34 @@ const servicesOpen = path === '/services' || path.startsWith('/services/');
 </nav>
 
 <nav class="mnav" id="studio-mnav" aria-hidden="true">
-	<a href="/work/">Work</a>
-	<a href="/services/">Services</a>
-	<div class="mnav__subs">
-		<p class="mnav__kicker">Marketing</p>
-		{servicePillars.filter((p) => p.lane === 'growth').map((p) => (
-			<a href={p.href}>{p.navLabel}</a>
-		))}
-		<p class="mnav__kicker mnav__kicker--t">Technology</p>
-		{servicePillars.filter((p) => p.lane === 'build').map((p) => (
-			<a href={p.href}>{p.navLabel}</a>
-		))}
+	<div class="mnav__scroll">
+		<div class="mnav__primary">
+			<a href="/work/" class={isHere('/work/') ? 'is-active' : undefined}>Work</a>
+			<a href="/about/" class={isHere('/about/') ? 'is-active' : undefined}>About</a>
+			<a href="/contact/" class={isHere('/contact/') ? 'is-active' : undefined}>Contact</a>
+		</div>
+		<div class="mnav__services">
+			<div>
+				<p class="mnav__kicker">Marketing</p>
+				{marketing.map((p) => (
+					<a href={p.href} class={isHere(p.href) ? 'is-active' : undefined}>{p.navLabel}</a>
+				))}
+				{extraServices.map((s) => (
+					<a href={s.href} class={isHere(s.href) ? 'is-active' : undefined}>{s.title}</a>
+				))}
+			</div>
+			<div>
+				<p class="mnav__kicker mnav__kicker--t">Technology</p>
+				{technology.map((p) => (
+					<a href={p.href} class={isHere(p.href) ? 'is-active' : undefined}>{p.navLabel}</a>
+				))}
+			</div>
+		</div>
+		<a class="mnav__all" href="/services/">All services</a>
 	</div>
-	<a href="/about/">About</a>
-	<a href="/contact/">Contact</a>
-	<a href="/contact/">Let’s talk</a>
 	<div class="mnav__foot">
-		<span>orbitleeee@gmail.com</span>
+		<a class="mnav__cta" href="/contact/">Let’s talk</a>
+		<a href="mailto:orbitleeee@gmail.com">orbitleeee@gmail.com</a>
 		<a href="https://wa.me/919999558199" target="_blank" rel="noopener noreferrer">+91 99995 58199</a>
-		<span>Remote · Worldwide</span>
 	</div>
 </nav>

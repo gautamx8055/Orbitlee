@@ -63,7 +63,9 @@ if (burger && mnav) {
 	mnav.querySelectorAll('a').forEach((a) => {
 		a.addEventListener('click', () => {
 			mnav.classList.remove('is-open');
+			mnav.setAttribute('aria-hidden', 'true');
 			burger.classList.remove('is-open');
+			burger.setAttribute('aria-expanded', 'false');
 			document.body.style.overflow = '';
 			if (lenis) lenis.start();
 		});
